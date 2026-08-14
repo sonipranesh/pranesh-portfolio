@@ -761,7 +761,7 @@ nav a:active {
 .work {
     background: var(--ink);
     color: var(--paper);
-    padding: 120px 0 90px;
+    padding: 120px 0 100px;
     position: relative;
     z-index: 20;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -769,19 +769,23 @@ nav a:active {
 
 .work-split-container {
     display: grid;
-    grid-template-columns: 360px 1fr;
+    grid-template-columns: 340px 1fr;
     gap: clamp(32px, 4vw, 70px);
     width: 100%;
     max-width: 1380px;
     margin: 0 auto;
     padding: 0 clamp(24px, 5vw, 60px);
-    align-items: start;
+    align-items: stretch;
+    position: relative;
 }
 
 .work-left-col {
-    position: sticky;
-    top: 130px;
-    z-index: 5;
+    position: sticky !important;
+    top: 140px !important;
+    z-index: 10 !important;
+    height: fit-content !important;
+    align-self: start !important;
+    padding-top: 12px;
 }
 
 .work-subtext {
@@ -796,6 +800,8 @@ nav a:active {
 .work-right-col {
     width: 100%;
     min-width: 0;
+    position: relative;
+    padding-bottom: 200px;
 }
 
 @media (max-width: 1024px) {
@@ -806,13 +812,17 @@ nav a:active {
     }
 
     .work-left-col {
-        position: relative;
-        top: auto;
+        position: relative !important;
+        top: auto !important;
     }
 
     .work-subtext {
         max-width: 100%;
         margin-top: 16px;
+    }
+
+    .work-right-col {
+        padding-bottom: 0;
     }
 }
 
