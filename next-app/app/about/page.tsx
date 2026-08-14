@@ -16,7 +16,7 @@ export default function AboutPage() {
 
     return (
         <div className="about-page-container">
-            {/* NAVIGATION BAR */}
+            {/* NAVBAR */}
             <header className="cways-header about-nav">
                 <Link href="/" className="cways-logo" data-cursor="PRANESH">pranesh soni</Link>
 
@@ -37,7 +37,7 @@ export default function AboutPage() {
 
             {/* MAIN CONTENT AREA */}
             <main className="about-main-content">
-                <div className="about-content-wrapper">
+                <div className="about-hero-block">
                     <div className="section-label">01 / ABOUT PRANESH</div>
                     
                     <h1 className="cways-page-title">
@@ -45,36 +45,56 @@ export default function AboutPage() {
                         <span className="cways-stroke-text-dark">PRANESH.</span>
                     </h1>
 
-                    <div className="about-body-text">
-                        <p>
-                            Pranesh is an AI product manager with over three years of experience building and delivering AI-based products. He worked out early in his career what genuinely excites him, and it is exactly this: <strong>building and shipping products</strong>. What makes the role so rewarding is the chance to sit with a real pain point, understand it properly, and design a solution for it. And when it works, it does more than move a KPI. It brings a real sense of satisfaction, and it pushes against his core thinking every time.
-                        </p>
+                    <p className="cways-hero-subtitle">
+                        Pranesh is an AI product manager with over three years of experience building and delivering AI-based products, turning complex workflows into intuitive, high-value software solutions.
+                    </p>
+                </div>
 
-                        <p>
-                            Both taught him the same lesson: <strong>the hard part of AI products is not the model</strong>, it is understanding the problem well enough to make the answer trustworthy.
-                        </p>
+                {/* HORIZONTAL DIVIDER LINE */}
+                <div className="cways-grid-divider"></div>
 
-                        <p>
-                            He holds an <strong>MBA from IIM Jammu, class of 2023</strong>, along with the <strong>SAFe 6.0 POPM certification</strong>, and his enthusiasm for AI led him to become an <strong>AWS Certified AI Practitioner</strong>. He keeps upskilling in the field as it moves, and his most recent step is building Loop, where he leans fully on the AI tools and capabilities available in the market today to build an end to end brand by himself. He enjoys talking about AI and the technologies around it, and how all of it is reshaping the way businesses are run.
-                        </p>
-
-                        <p>
-                            He also serves as an individual contributor and helps companies and startups offering his services as a <strong>Freelancer for the AI PO/PM domain</strong>.
+                {/* 2x2 GRID BLOCK SYSTEM MATCHING ATTACHED SCREENSHOT */}
+                <div className="cways-2col-grid">
+                    <div className="cways-grid-item">
+                        <h3 className="cways-grid-title">BUILDING & SHIPPING PRODUCTS</h3>
+                        <p className="cways-grid-desc">
+                            He worked out early in his career what genuinely excites him: <strong>building and shipping products</strong>. What makes the role so rewarding is the chance to sit with a real pain point, understand it properly, and design a solution for it. When it works, it does more than move a KPI — it brings a real sense of satisfaction.
                         </p>
                     </div>
 
-                    {/* CALL TO ACTION BUTTONS */}
-                    <div className="about-actions">
-                        <Link href="/#work" className="cways-btn-primary" data-cursor="WORK">VIEW WORK</Link>
-                        <a 
-                            href="#contact" 
-                            onClick={handleLetsBuildTogether} 
-                            className="cways-btn-outline" 
-                            data-cursor="CONNECT"
-                        >
-                            LET'S BUILD TOGETHER
-                        </a>
+                    <div className="cways-grid-item">
+                        <h3 className="cways-grid-title">THE HARD PART IS NOT THE MODEL</h3>
+                        <p className="cways-grid-desc">
+                            Both industry work and hands-on builds taught him the same lesson: <strong>the hard part of AI products is not the model</strong>, it is understanding the problem well enough to make the answer trustworthy and reliable for real users.
+                        </p>
                     </div>
+
+                    <div className="cways-grid-item">
+                        <h3 className="cways-grid-title">EDUCATION & CERTIFICATIONS</h3>
+                        <p className="cways-grid-desc">
+                            He holds an <strong>MBA from IIM Jammu, class of 2023</strong>, along with the <strong>SAFe 6.0 POPM certification</strong>, and is an <strong>AWS Certified AI Practitioner</strong>. He keeps upskilling in the field as it moves, leaning fully on market AI tools to build end-to-end products like Loop.
+                        </p>
+                    </div>
+
+                    <div className="cways-grid-item">
+                        <h3 className="cways-grid-title">FREELANCE AI PO/PM SERVICES</h3>
+                        <p className="cways-grid-desc">
+                            He serves as an individual contributor and helps companies and startups offering his services as a <strong>Freelancer for the AI PO/PM domain</strong> — from initial opportunity discovery and RAG architecture to deployment and adoption.
+                        </p>
+                    </div>
+                </div>
+
+                {/* CALL TO ACTION BUTTONS */}
+                <div className="about-actions">
+                    <Link href="/#work" className="cways-btn-primary" data-cursor="WORK">VIEW WORK</Link>
+                    <a 
+                        href="#contact" 
+                        onClick={handleLetsBuildTogether} 
+                        className="cways-btn-outline" 
+                        data-cursor="CONNECT"
+                    >
+                        LET'S BUILD TOGETHER
+                    </a>
                 </div>
             </main>
 
@@ -84,7 +104,8 @@ export default function AboutPage() {
                     <div className="cways-footer-eyebrow">08 / LET'S BUILD</div>
 
                     <h2 className="cways-footer-heading">
-                        GOT A GOOD <i className="serif">problem?</i>
+                        GOT A GOOD<br />
+                        <span className="cways-stroke-text-dark">PROBLEM?</span>
                     </h2>
 
                     <p className="cways-footer-subtext">
