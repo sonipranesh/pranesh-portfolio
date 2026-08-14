@@ -3037,3 +3037,198 @@ footer {
     pointer-events: none;
     opacity: 0.85;
 }
+
+/* ==========================================================================
+   PHONE SCREEN SIZE ADJUSTMENTS (MOBILE & SMALL TOUCH DISPLAY BREAKPOINTS)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    /* Header & Navigation */
+    .cways-header,
+    .about-nav {
+        top: 14px !important;
+        height: 64px !important;
+        padding: 0 18px !important;
+    }
+
+    .cways-logo {
+        font-size: 1.22rem !important;
+        letter-spacing: -0.02em !important;
+    }
+
+    .cways-nav {
+        gap: 10px !important;
+    }
+
+    .cways-nav a {
+        font-size: 0.65rem !important;
+        letter-spacing: 0.08em !important;
+    }
+
+    .cways-header-cta {
+        padding: 8px 14px !important;
+        font-size: 0.62rem !important;
+    }
+
+    /* Hero Section */
+    .cways-hero-content {
+        padding: 95px 18px 30px !important;
+        max-width: 100% !important;
+    }
+
+    .cways-eyebrow {
+        font-size: 0.7rem !important;
+        letter-spacing: 0.18em !important;
+        word-spacing: 0.3em !important;
+        margin-bottom: 14px !important;
+    }
+
+    .cways-hero-title {
+        font-size: clamp(1.85rem, 7.8vw, 3.2rem) !important;
+        line-height: 0.94 !important;
+        letter-spacing: -0.03em !important;
+        margin-bottom: 18px !important;
+    }
+
+    .cways-hero-sub {
+        font-size: 0.88rem !important;
+        line-height: 1.55 !important;
+        margin-bottom: 28px !important;
+    }
+
+    .cways-hero-actions,
+    .about-actions {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        width: 100% !important;
+        gap: 12px !important;
+    }
+
+    .cways-btn-primary,
+    .cways-btn-outline {
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
+        padding: 14px 22px !important;
+        font-size: 0.68rem !important;
+        box-sizing: border-box !important;
+    }
+
+    .cways-scroll-down {
+        display: none !important;
+    }
+
+    /* About Page */
+    .about-main-content {
+        padding-top: 100px !important;
+        padding-left: 18px !important;
+        padding-right: 18px !important;
+        padding-bottom: 60px !important;
+    }
+
+    .cways-page-title {
+        font-size: clamp(2.2rem, 9vw, 3.8rem) !important;
+        line-height: 0.94 !important;
+    }
+
+    .about-role-tag {
+        font-size: 0.72rem !important;
+        letter-spacing: 0.18em !important;
+        word-spacing: 0.3em !important;
+        margin: 12px 0 20px !important;
+    }
+
+    .cways-hero-subtitle {
+        font-size: 0.98rem !important;
+        line-height: 1.58 !important;
+    }
+
+    .cways-grid-divider {
+        margin: 32px 0 36px !important;
+    }
+
+    .cways-2col-grid {
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+        margin-bottom: 40px !important;
+    }
+
+    .cways-grid-item {
+        padding-bottom: 24px !important;
+        border-bottom: 1px solid rgba(17, 17, 17, 0.08) !important;
+    }
+
+    .cways-grid-item:last-child {
+        border-bottom: none !important;
+        padding-bottom: 0 !important;
+    }
+
+    .cways-grid-title {
+        font-size: 0.8rem !important;
+        letter-spacing: 0.1em !important;
+        margin-bottom: 10px !important;
+    }
+
+    .cways-grid-desc {
+        font-size: 0.9rem !important;
+        line-height: 1.6 !important;
+    }
+
+    /* Section Titles */
+    .cways-section-title {
+        font-size: clamp(2.2rem, 8.5vw, 3.6rem) !important;
+        line-height: 0.94 !important;
+    }
+
+    /* Footer */
+    .cways-footer-socials {
+        gap: 16px !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        margin-bottom: 40px !important;
+    }
+
+    .cways-footer-bottom-bar {
+        flex-direction: column !important;
+        gap: 12px !important;
+        text-align: center !important;
+    }
+
+    .cways-footer-stroke-brand {
+        font-size: clamp(2.2rem, 10vw, 4.2rem) !important;
+        margin-top: 32px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .cways-header,
+    .about-nav {
+        padding: 0 14px !important;
+    }
+
+    .cways-nav {
+        display: none !important; /* Hide secondary links on ultra-small mobile, keep clean brand + CTA */
+    }
+
+    .cways-hero-content {
+        padding: 90px 14px 24px !important;
+    }
+
+    .about-main-content {
+        padding-top: 92px !important;
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+    }
+
+    .cways-hero-title {
+        font-size: clamp(1.65rem, 7.5vw, 2.6rem) !important;
+    }
+
+    .cways-page-title {
+        font-size: clamp(2.0rem, 8.5vw, 3.2rem) !important;
+    }
+
+    .cways-section-title {
+        font-size: clamp(2.0rem, 8.5vw, 3.2rem) !important;
+    }
+}
