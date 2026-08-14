@@ -2530,7 +2530,7 @@ footer {
 }
 
 .about-main-content {
-    padding-top: 115px;
+    padding-top: 150px;
     padding-bottom: 100px;
     padding-left: clamp(24px, 5vw, 60px);
     padding-right: clamp(24px, 5vw, 60px);
@@ -2556,7 +2556,7 @@ footer {
     font-weight: 800;
     letter-spacing: 0.25em;
     word-spacing: 0.5em;
-    color: var(--red);
+    color: #111111;
     text-transform: uppercase;
     margin: 16px 0 28px;
 }

@@ -39,7 +39,7 @@ export default function AboutPage() {
             <main className="about-main-content">
                 <div className="about-hero-block">
                     <h1 className="cways-page-title">
-                        ABOUT<br />
+                        ABOUT.<br />
                         <span className="cways-stroke-text-dark">PRANESH.</span>
                     </h1>
 
