@@ -757,7 +757,7 @@ nav a:active {
     }
 }
 
-/* WORK SECTION & CAROUSEL (STACK CARD 2) */
+/* WORK SECTION WITH 2-COLUMN SPLIT (STACK CARD 2) */
 .work {
     background: var(--ink);
     color: var(--paper);
@@ -765,6 +765,55 @@ nav a:active {
     position: relative;
     z-index: 20;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.work-split-container {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: clamp(32px, 4vw, 70px);
+    width: 100%;
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 0 clamp(24px, 5vw, 60px);
+    align-items: start;
+}
+
+.work-left-col {
+    position: sticky;
+    top: 130px;
+    z-index: 5;
+}
+
+.work-subtext {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: #9e9a92;
+    margin-top: 24px;
+    max-width: 320px;
+}
+
+.work-right-col {
+    width: 100%;
+    min-width: 0;
+}
+
+@media (max-width: 1024px) {
+    .work-split-container {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 0 20px;
+    }
+
+    .work-left-col {
+        position: relative;
+        top: auto;
+    }
+
+    .work-subtext {
+        max-width: 100%;
+        margin-top: 16px;
+    }
 }
 
 .work-head {

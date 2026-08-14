@@ -9,31 +9,28 @@
   scroll-behavior: smooth;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  will-change: scroll-position;
 }
 
 .scroll-stack-inner {
-  padding: 0 0 10rem;
+  padding: 0;
   width: 100%;
-}
-
-.scroll-stack-card-wrapper {
-  position: relative;
 }
 
 .scroll-stack-card {
   transform-origin: top center;
-  will-change: transform, filter;
+  will-change: transform;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   transform-style: preserve-3d;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
   width: 100%;
-  margin: 0 0 40px;
-  border-radius: 28px;
+  margin: 0 0 32px;
+  border-radius: 24px;
   box-sizing: border-box;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   position: relative;
+  transition: transform 0.08s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-stack-end {
