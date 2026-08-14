@@ -845,9 +845,9 @@ export default function Home(): React.JSX.Element {
                     <div className="proto-top">
                         <div>
                             <div className="section-label">04 / HOW I BUILD</div>
-                            <h2 className="cways-section-title light-theme">
+                            <h2 className="cways-section-title">
                                 FROM<br />
-                                <span className="cways-stroke-text-light">PROBLEM</span><br />
+                                <span className="cways-stroke-text-dark">PROBLEM</span><br />
                                 TO PROTOTYPE.
                             </h2>
                         </div>
@@ -937,9 +937,9 @@ export default function Home(): React.JSX.Element {
                 <section className="timeline stack-card">
                     <div className="timeline-head">
                         <div className="section-label">07 / THE PERSON</div>
-                        <h2 className="cways-section-title light-theme">
+                        <h2 className="cways-section-title">
                             HOW I GOT<br />
-                            <span className="cways-stroke-text-light">HERE.</span>
+                            <span className="cways-stroke-text-dark">HERE.</span>
                         </h2>
                     </div>
                     <div className="timeline-track-wrap">
