@@ -273,6 +273,7 @@ export default function Home(): React.JSX.Element {
             tech: string;
             outcome: string;
             demoSample: string;
+            kpisHtml?: string;
         }
 
         const modalData: Record<string, ModalInfo> = {
@@ -291,29 +292,161 @@ export default function Home(): React.JSX.Element {
             },
             sop: {
                 badge: "02 / RETRIEVE",
-                category: "GENAI SOP ASSISTANT / GRAPH RAG",
-                title: "Standard Operating Procedure (SOP) Knowledge Engine",
-                problem: "Laboratory technicians and quality engineers in life sciences waste valuable time searching across thousands of multi-page SOP PDFs during audits and daily operations.",
-                features: "• Semantic Search & Graph RAG topology mapping<br>• Step-by-step procedure extraction with exact section citations<br>• Discrepancy detector across overlapping SOP documents<br>• Multi-modal diagram and table understanding",
-                arch: "Constructs a Graph RAG network linking SOP nodes (SOP Library → Query → Context → Verifiable Answer). Queries retrieve both hierarchical document parents and text chunks.",
-                role: "AI Product Lead & Solution Architect",
-                domain: "Life Sciences Quality & GxP Compliance",
-                tech: "Graph RAG, Vector Search, LlamaIndex, Python, Fast-API",
-                outcome: "Achieved 94% accuracy on multi-step procedural queries.",
-                demoSample: "How do I perform equipment calibration for Bioreactor Unit B3 according to SOP 402?"
+                category: "GENAI SOP ASSISTANT / DOCUMENT DISCOVERY",
+                title: "GenAI SOP Assistant",
+                problem: `<p>Manufacturing operators at AstraZeneca often needed to identify the correct <strong>SOPs, Work Instructions (WIs), and Forms</strong> applicable to different stages of the product lifecycle.</p><p>The challenge wasn't simply finding a document.</p><p>Thousands of documents existed within Veeva Vault, often with multiple versions—some active, some outdated, and others temporarily in edit status. Operators had to manually search, remember relevant document numbers, inspect metadata, validate document status, and determine which version was appropriate before using it.</p><p>Even after finding the right document, locating the required information inside long SOPs created another layer of effort and frequently resulted in <strong>dependency on SMEs for confirmation</strong>.</p><p>We built the <strong>GenAI SOP Assistant</strong> as a controlled document-discovery experience that reduced this dependency without introducing an additional AI-generated interpretation layer.</p><p>Instead of asking the LLM to explain what an SOP says, the assistant answers a more fundamental question:</p><p><strong>“Which approved document should I be looking at—and exactly where?”</strong></p><p>The solution was rolled out across <strong>25 global manufacturing sites in six deployment waves</strong>, with approximately <strong>4–5 sites activated per wave</strong>. It achieved <strong>~79% adoption with 85–90% retention</strong>, while reducing SOP lookup time from approximately <strong>2 hours/week to 20 minutes/week per operator</strong>—saving an estimated <strong>~790,000 minutes every week</strong>.</p>`,
+                features: `• <strong>Natural-Language SOP Discovery</strong> — Users can describe their requirement in natural language rather than remembering document numbers or navigating through Veeva Vault manually. The assistant identifies the relevant SOPs, WIs, or Forms applicable to the query.<br/><br/>• <strong>Authoritative Document Retrieval</strong> — The system surfaces the appropriate document based on its current status and relevance, prioritizing the latest <strong>active</strong> version for operational use. Documents in edit status are explicitly flagged rather than presented as approved content.<br/><br/>• <strong>Page-Level Deep Linking</strong> — Responses include the relevant SOP identifier, page-numbered hyperlink, and highlighted source text, allowing operators to navigate directly to the supporting section of the authoritative document.<br/><br/>• <strong>Direct SOP Number Search</strong> — Users who already know the SOP number can bypass conversational discovery and retrieve the corresponding document directly.<br/><br/>• <strong>Multi-Document Discovery</strong> — When a query maps to multiple applicable documents, the assistant surfaces the relevant set rather than forcing the user into a single-document assumption.<br/><br/>• <strong>Contextual Follow-Up</strong> — Users can continue refining their discovery query through follow-up questions while remaining within the document-retrieval workflow.<br/><br/>• <strong>Controlled AI Experience</strong> — The assistant deliberately does <strong>not generate natural-language answers from SOP content</strong>. This product decision minimizes the risk of AI interpretation or hallucination becoming confused with an authoritative manufacturing procedure.`,
+                arch: `<p>Built as a <strong>retrieval-first RAG architecture</strong> integrating Veeva Vault with an AWS-based knowledge retrieval layer.</p><p>The solution used <strong>Amazon Titan embeddings and Amazon OpenSearch</strong> to support semantic retrieval, with <strong>semantic chunking, hybrid search, and two-stage candidate filtering</strong> to improve the identification and ranking of relevant documents.</p><p>The retrieval workflow was designed around document authority and operational applicability—not simply semantic similarity. Document metadata and status were incorporated so that the experience could prioritize the <strong>latest active version</strong>, while documents in edit status could be explicitly identified rather than surfaced as approved operational guidance.</p><p>A key product decision was to keep the LLM outside the final answer-generation path. Rather than generating an interpretation of an SOP, the system returns the <strong>authoritative source document, relevant page, and highlighted supporting text</strong>.</p><p>This created a deliberate separation between: <strong>AI-powered discovery → Authoritative document → Human interpretation</strong>. For a regulated manufacturing environment, this was an intentional product and risk-control decision.</p><br/><h4 style="margin-top:20px;margin-bottom:10px;font-size:0.92rem;font-weight:700;color:var(--ink);letter-spacing:0.04em;text-transform:uppercase;">AI &amp; RETRIEVAL EVALUATION</h4><p>Because the assistant's primary job is <strong>document discovery rather than answer generation</strong>, evaluation focused on retrieval quality and operational correctness rather than conventional LLM response metrics.</p><p>The evaluation framework was designed around: <strong>Retrieval Hit Rate</strong> (correct SOP appeared in results), <strong>Top-K Recall</strong> (relevant document surfaced in highest-ranked results), <strong>Context Precision</strong> (retrieved documents actually relevant to query), <strong>Context Recall</strong> (retrieval layer captured required documents), <strong>Ranking / Retrieval Relevance</strong> (most applicable documents prioritized), <strong>Document Validity Accuracy</strong> (correct active/usable version surfaced), <strong>Citation / Deep-Link Accuracy</strong> (returned hyperlink and page reference navigated to supporting content), <strong>Abstention / No-Match Accuracy</strong> (avoided surfacing irrelevant document when no match available), and <strong>Multi-Document Recall</strong> (surfaced complete document set for multi-SOP queries).</p><br/><h4 style="margin-top:24px;margin-bottom:12px;font-size:0.95rem;font-weight:700;color:var(--ink);letter-spacing:0.04em;text-transform:uppercase;">PRODUCT OWNERSHIP &amp; ROLLOUT</h4><p>Owned the product lifecycle from <strong>workflow discovery and requirement definition through POC, roadmap, Agile delivery, UAT, production rollout, and change management</strong>.</p><p>Translated manufacturing-user workflows into functional and non-functional requirements, BRD, user stories, acceptance criteria, and prioritized backlog items; collaborated with engineering, architecture, UI/UX, QA, business SMEs, and site stakeholders.</p><p>Led sprint planning, backlog prioritization, daily Agile ceremonies, stakeholder discussions, product demonstrations, UAT coordination, and deployment-related change requests.</p><p>Worked with the testing team to define <strong>retrieval-specific edge cases</strong>, including document relevance, multiple applicable documents, active versus edit-status documents, direct SOP-number searches, and page-level source accuracy.</p><p>For production adoption, supported a <strong>six-wave rollout strategy across 25 global sites</strong>, with each wave activating approximately 4–5 sites. The rollout incorporated <strong>pilot validation, user onboarding, training, change management, SME champions, feedback loops, and site-level adoption tracking</strong>.</p><p>An <strong>admin-only insights dashboard</strong> was also used to monitor adoption and usage behaviour, enabling the product team to identify engagement patterns, retention, and operational KPIs to inform subsequent product decisions.</p>`,
+                role: "AI Product Owner & Prototyper",
+                domain: "Life Sciences · Manufacturing Operations · SOP / Work Instruction Discovery",
+                tech: "AWS Bedrock · Claude Sonnet 5 · Amazon OpenSearch · Amazon S3 · AWS Knowledge Bases · Amazon Titan Embeddings · AWS API Services · AWS Guardrails · Veeva Vault",
+                outcome: "~79% adoption · 85–90% retention · ~2 hours → ~20 minutes weekly SOP lookup time · ~790,000 minutes saved weekly · 25 global sites",
+                demoSample: "How do I perform equipment calibration for Bioreactor Unit B3 according to SOP 402?",
+                kpisHtml: `<div class="kpi-chart-card">
+                    <div class="kpi-card-header">
+                        <h4 class="kpi-chart-title">Before vs After SOP Lookup Time</h4>
+                        <p class="kpi-chart-sub">Weekly SOP lookup effort per operator before vs after introducing the GenAI SOP Assistant.</p>
+                    </div>
+                    <div class="kpi-bar-comparison">
+                        <div class="kpi-bar-group">
+                            <div class="kpi-bar-label-top">
+                                <span>Before AI</span>
+                                <span class="kpi-bar-val">120 min / week</span>
+                            </div>
+                            <div class="kpi-bar-track">
+                                <div class="kpi-bar-fill before" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                        <div class="kpi-bar-group">
+                            <div class="kpi-bar-label-top">
+                                <span>After AI</span>
+                                <span class="kpi-bar-val highlight">20 min / week</span>
+                            </div>
+                            <div class="kpi-bar-track">
+                                <div class="kpi-bar-fill after" style="width: 16.7%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kpi-badge-impact">
+                        <span class="impact-arrow">↓</span> <strong>120 min/week → 20 min/week</strong> (~83% Reduction · ~790,000 mins saved weekly)
+                    </div>
+                </div>
+                <div class="kpi-chart-card">
+                    <div class="kpi-card-header">
+                        <h4 class="kpi-chart-title">Product Adoption &amp; Retention</h4>
+                        <p class="kpi-chart-sub">Production adoption and retention across 25 global manufacturing sites in 6 deployment waves.</p>
+                    </div>
+                    <div class="kpi-metrics-grid">
+                        <div class="kpi-metric-box">
+                            <div class="kpi-ring-wrap">
+                                <svg viewBox="0 0 36 36" class="kpi-ring-svg">
+                                    <path class="ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path class="ring-stroke" strokeDasharray="79, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                </svg>
+                                <span class="ring-text">~79%</span>
+                            </div>
+                            <div class="metric-info">
+                                <div class="metric-name">Adoption</div>
+                                <div class="metric-sub">25 Global Sites</div>
+                            </div>
+                        </div>
+                        <div class="kpi-metric-box">
+                            <div class="kpi-ring-wrap">
+                                <svg viewBox="0 0 36 36" class="kpi-ring-svg">
+                                    <path class="ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path class="ring-stroke retention" strokeDasharray="87.5, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                </svg>
+                                <span class="ring-text" style="font-size: 0.62rem; letter-spacing: -0.05em;">85–90%</span>
+                            </div>
+                            <div class="metric-info">
+                                <div class="metric-name">Retention</div>
+                                <div class="metric-sub">87.5% Midpoint</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kpi-summary-strip">
+                        <span>25 Global Sites</span> • <span>~79% Adoption</span> • <span>85–90% Retention</span>
+                    </div>
+                </div>`
             },
             doc: {
                 badge: "03 / CREATE",
-                category: "AI DOC AUTHOR / REGULATORY DRAFT MODE",
-                title: "AI Regulatory & Clinical Document Author",
-                problem: "Drafting GxP regulatory submissions and clinical study reports requires synthesising research data, lab findings, and rigid compliance templates.",
-                features: "• Conversational outline synthesis & section drafting<br>• Context memory from previous protocol runs<br>• Compliance tone & formatting checker<br>• Real-time human-in-the-loop editing mode",
-                arch: "Employs hierarchical agentic orchestration where a Supervising Agent plans document sections and specialized Writer Agents draft content against domain schemas.",
-                role: "AI Product Owner",
-                domain: "Regulatory Affairs & Clinical Operations",
-                tech: "Multi-Agent Framework, Python, LangChain, Next.js",
-                outcome: "Accelerated first-draft generation timeline by 70%.",
-                demoSample: "Draft Section 3.1 Study Objectives for Clinical Protocol Phase IIa."
+                category: "DOC AUTHOR / WORKFLOW AUTOMATION",
+                title: "Doc Author — Clinical Functional Plan & ICF Workflow Automation",
+                problem: `<p>Study teams at Syneos Health authored a wide range of clinical functional plan templates — TMF, PRP, MDRP, Informed Consent Forms (ICFs), and others — by hand for every study. The work was repetitive, slow, and error-prone: study-specific data had to be manually sourced from multiple systems, and for ICFs specifically, teams walked through a three-tier authoring and compliance process entirely manually — a sponsor-approved Master ICF, up to seven country- or site-specific variants adapted to local regulatory and ethical requirements, and a detailed compliance checklist verifying everything from regulatory citation coverage to document formatting.</p><p>The real challenge wasn't a single bottleneck — it was two structurally different problems disguised as one workflow. Most templates needed straightforward, high-confidence data population from systems that already held the answer. ICFs needed judgment: comparing sponsor-approved master language against country-specific legal and ethical requirements — something a fixed query couldn't do, and something an unconstrained AI couldn't be trusted to do silently inside a regulated consent document.</p><p>Doc Author's automation layer was designed around that distinction rather than defaulting to one AI system for everything. Deterministic template fields are populated by a data pipeline pulling directly from source systems — no model involved, no room for drift. The ICF family, where matching judgment against country-specific rules is unavoidable, uses a constrained, citation-traceable AI workflow with mandatory human review before anything is finalized — never an autonomous edit that ships without a person checking it against its source.</p><p>Now scaling across <strong>10+ plan types in active quarterly production</strong>, the platform has automated an estimated <strong>40% of data pointers on conventional templates</strong> (saving roughly 30 minutes per user per study) and reached roughly <strong>70% automation on ICF and checklist fields</strong>, with manual review error margins down an estimated <strong>80% on the ICF workflow specifically</strong>.</p>`,
+                features: `• <strong>Study-Specific Data Auto-Population</strong> — Conventional plan templates are populated directly from source systems via a structured data pipeline, eliminating manual re-entry of study, protocol, and site information already held elsewhere.<br/><br/>• <strong>Master-to-Country ICF Rule Matching</strong> — Compares sponsor-approved Master ICF language against country-specific requirements gathered during business intake, proposing section-level edits rather than regenerating documents wholesale.<br/><br/>• <strong>Compliance Checklist Auto-Verification</strong> — Checks each checklist requirement against the relevant ICF section(s), including cross-document checks across Main, Assent, and sub-study (e.g. Pregnancy, Pregnant Partner) variants, with every answer traceable to the exact source passage and regulatory citation it was checked against.<br/><br/>• <strong>Human-in-the-Loop Approval Gates</strong> — No AI-proposed edit or checklist answer is finalized without explicit reviewer confirmation; every row carries a status (proposed, needs review, needs mapping, final) rather than auto-submitting.<br/><br/>• <strong>Multi-Template, Multi-Country Scalability</strong> — Built to extend across 7 master ICF variants and multiple country rule sets per study without re-architecting per template type.<br/><br/>• <strong>Controlled, Auditable AI</strong> — Deterministic checks (exact regulatory language, document formatting) are handled by rule-based logic, not the model — the AI is used only where genuine semantic judgment is required, keeping the system's behavior predictable and its outputs defensible in an audit.`,
+                arch: `<p>Built as two purpose-fit pipelines rather than one general system. The conventional-template path is a direct data pipeline: study, protocol, and site data is pulled from source systems and mapped to template fields with no model in the loop, keeping output fully deterministic and instantly auditable.</p><p>The ICF path is a constrained, tool-based AI workflow. A structured rules table — mapping each requirement to its regulatory citation, applicable document type, and source section — drives both the rule-matching step (which compares Master ICF language against country requirements and proposes section-level edits) and the checklist-verification step (which checks presence, absence, and exact regulatory language across the relevant documents). Deterministic checks, like exact-statement matching and document formatting, are handled by rule-based logic rather than the model; the AI is scoped to semantic presence/absence judgments only, each returned with a short rationale tied to the source text it evaluated. Every proposed edit and checklist answer is surfaced to a reviewer with its full source trail before it can be marked final — the system proposes, it does not decide.</p>`,
+                role: "Product Owner / Business Analyst",
+                domain: "Life Sciences · Clinical Operations · Regulatory Document Automation",
+                tech: "Python · Data Pipelines · LLM Orchestration · Vector Search & Embeddings · Document Processing & Extraction · Cloud Infrastructure",
+                outcome: "~40% conventional fields automated · ~30 mins saved per user/study · ~70% automation on ICF workflow · ~80% reduction in ICF review error margin · 10+ plan types scaled (Jan 2026 – present)",
+                demoSample: "Draft Section 3.1 Study Objectives for Clinical Protocol Phase IIa.",
+                kpisHtml: `<div class="kpi-chart-card">
+                    <div class="kpi-card-header">
+                        <h4 class="kpi-chart-title">Workflow Automation Rate</h4>
+                        <p class="kpi-chart-sub">Automation percentage across conventional templates vs ICF &amp; checklist workflows.</p>
+                    </div>
+                    <div class="kpi-bar-comparison">
+                        <div class="kpi-bar-group">
+                            <div class="kpi-bar-label-top">
+                                <span>Conventional Templates</span>
+                                <span class="kpi-bar-val">~40% Automated</span>
+                            </div>
+                            <div class="kpi-bar-track">
+                                <div class="kpi-bar-fill before" style="width: 40%;"></div>
+                            </div>
+                        </div>
+                        <div class="kpi-bar-group">
+                            <div class="kpi-bar-label-top">
+                                <span>ICF &amp; Checklist Workflow</span>
+                                <span class="kpi-bar-val highlight">~70% Automated</span>
+                            </div>
+                            <div class="kpi-bar-track">
+                                <div class="kpi-bar-fill after" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kpi-badge-impact">
+                        <span class="impact-arrow">↓</span> <strong>~80% Reduction in ICF Review Error Margin</strong> · ~30 Mins Saved / User / Study
+                    </div>
+                </div>
+                <div class="kpi-chart-card">
+                    <div class="kpi-card-header">
+                        <h4 class="kpi-chart-title">Production Scale &amp; Quality</h4>
+                        <p class="kpi-chart-sub">Active quarterly production footprint and review error reduction.</p>
+                    </div>
+                    <div class="kpi-metrics-grid">
+                        <div class="kpi-metric-box">
+                            <div class="kpi-ring-wrap">
+                                <svg viewBox="0 0 36 36" class="kpi-ring-svg">
+                                    <path class="ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path class="ring-stroke" strokeDasharray="70, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                </svg>
+                                <span class="ring-text">~70%</span>
+                            </div>
+                            <div class="metric-info">
+                                <div class="metric-name">ICF Automation</div>
+                                <div class="metric-sub">7 Master Variants</div>
+                            </div>
+                        </div>
+                        <div class="kpi-metric-box">
+                            <div class="kpi-ring-wrap">
+                                <svg viewBox="0 0 36 36" class="kpi-ring-svg">
+                                    <path class="ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path class="ring-stroke retention" strokeDasharray="80, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                </svg>
+                                <span class="ring-text">~80%</span>
+                            </div>
+                            <div class="metric-info">
+                                <div class="metric-name">Error Reduction</div>
+                                <div class="metric-sub">ICF Review Margin</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kpi-summary-strip">
+                        <span>10+ Plan Types Scaled</span> • <span>~70% ICF Automation</span> • <span>~80% Error Reduction</span>
+                    </div>
+                </div>`
             }
         };
 
@@ -347,10 +480,18 @@ export default function Home(): React.JSX.Element {
             if (techEl) techEl.textContent = data.tech;
             if (outEl) outEl.textContent = data.outcome;
 
-            const sandboxInput = document.getElementById('sandboxInput') as HTMLInputElement | null;
-            const sandboxOutput = document.getElementById('sandboxOutput');
-            if (sandboxInput) sandboxInput.value = data.demoSample || '';
-            if (sandboxOutput) { sandboxOutput.classList.remove('active'); sandboxOutput.innerHTML = ''; }
+            const kpisTabBtn = document.getElementById('modalKpiTabBtn');
+            const kpisWrapper = document.getElementById('modalKpisWrapper');
+
+            if (data.kpisHtml) {
+                if (kpisTabBtn) kpisTabBtn.style.display = 'inline-block';
+                if (kpisWrapper) kpisWrapper.innerHTML = data.kpisHtml;
+            } else {
+                if (kpisTabBtn) kpisTabBtn.style.display = 'none';
+                // Reset active tab to overview if KPI tab was open
+                const overviewBtn = document.querySelector('.modal-tab[data-tab="overview"]') as HTMLElement;
+                if (overviewBtn) overviewBtn.click();
+            }
 
             if (modalBackdrop) modalBackdrop.classList.add('active');
             if (projectModal) projectModal.classList.add('active');
@@ -506,42 +647,58 @@ export default function Home(): React.JSX.Element {
 
             <main id="top" className={`stack-container ${welcomeStep < 2 ? 'intro-active' : 'intro-flowing'}`}>
 
-                {/* HERO SECTION (PINNED STICKY LAYER 1 WITH NAVBAR AT TOP) */}
-                <section className="hero-layer" id="heroLayer">
+                {/* HERO SECTION (CWAYS.IN EXACT REPLICATED DESIGN) */}
+                <section className="hero-layer cways-hero-theme" id="heroLayer">
                     {/* NAVBAR AT THE TOP OF HERO SECTION */}
-                    <header>
-                        <nav>
-                            <a href="#work" data-cursor="WORK">WORK</a>
-                            <a href="#lab" data-cursor="PLAY">LAB</a>
-                            <a href="#about" data-cursor="ME">ME</a>
-                            <a href="#contact" data-cursor="TALK">TALK</a>
+                    <header className="cways-header">
+                        <a href="#top" className="cways-logo">cways</a>
+
+                        <nav className="cways-nav">
+                            <a href="#about" data-cursor="ABOUT">ABOUT</a>
+                            <a href="#services" data-cursor="SERVICES">SERVICES</a>
+                            <a href="#work" data-cursor="PORTFOLIO">PORTFOLIO</a>
+                            <a href="#insights" data-cursor="INSIGHTS">INSIGHTS</a>
+                            <a href="#process" data-cursor="PROCESS">PROCESS</a>
+                            <a href="#why" data-cursor="WHY">WHY CWAYS</a>
                         </nav>
 
                         <div className="header-actions">
-                            <a href="#contact" className="header-cta" data-cursor="CONTACT">
-                                LET'S BUILD <span className="arrow">↗</span>
+                            <a href="#contact" className="cways-header-cta" data-cursor="CONTACT">
+                                LET'S BUILD
                             </a>
                         </div>
                     </header>
-                    <canvas id="heroCanvas"></canvas>
-                    {/* HERO TITLE & INTERACTIVE ELEMENTS */}
 
-                    <h1 className="hero-title" id="heroTitle">
-                        I BUILD<br />
-                        <span className="indent"><span className="serif">AI</span> PRODUCTS</span><br />
-                        <span className="indent">THAT TURN</span><br />
-                        <span className="indent"><span className="serif">COMPLEXITY</span></span><br />
-                        INTO POSSIBILITY.
-                    </h1>
+                    {/* ATMOSPHERIC DUAL LIGHTING BACKGROUND OVERLAY */}
+                    <div className="cways-hero-bg-overlay"></div>
 
-                    <div className="orb" id="orb"><span className="orb-dot"></span></div>
+                    {/* HERO TITLE & CONTENT */}
+                    <div className="cways-hero-content">
+                        <div className="cways-eyebrow">W E A R E C W A Y S</div>
 
-                    <div className="hero-scroll">SCROLL TO UNVEIL THE LAB ↓</div>
-                    <div className="hero-note">
-                        <span>01 / THE IDEA</span>
-                        I'm Pranesh — an AI Product Owner building AI capabilities for life sciences, taking ideas from workflow
-                        to working prototype.
+                        <h1 className="cways-hero-title">
+                            CRAFTING<br />
+                            DIGITAL<br />
+                            EXPERIENCES<br />
+                            THAT MOVE<br />
+                            <span className="cways-stroke-text">PEOPLE.</span>
+                        </h1>
+
+                        <p className="cways-hero-sub">
+                            An independent creative design and technology lab. We shape immersive web
+                            experiences, state-of-the-art visual layouts, and digital motion masterpieces
+                            for brands that refuse to be forgotten.
+                        </p>
+
+                        <div className="cways-hero-actions">
+                            <a href="#work" className="cways-btn-primary" data-cursor="WORK">VIEW WORK</a>
+                            <a href="#contact" className="cways-btn-outline" data-cursor="BUILD">LET'S BUILD TOGETHER</a>
+                        </div>
                     </div>
+
+                    <a href="#manifesto" className="cways-scroll-down">
+                        SCROLL DOWN <span className="arrow">↓</span>
+                    </a>
                 </section>
 
                 {/* MANIFESTO (OVERLAPPING STACK CARD 1) */}
@@ -862,7 +1019,7 @@ export default function Home(): React.JSX.Element {
                     <div className="modal-tabs">
                         <button className="modal-tab active" data-tab="overview">OVERVIEW</button>
                         <button className="modal-tab" data-tab="architecture">ARCHITECTURE & RAG</button>
-                        <button className="modal-tab" data-tab="kpis">PRODUCT KPIs &amp; IMPACT</button>
+                        <button className="modal-tab" id="modalKpiTabBtn" data-tab="kpis">PRODUCT KPIs &amp; IMPACT</button>
                     </div>
 
                     <div className="tab-pane active" id="tab-overview">
@@ -916,7 +1073,7 @@ export default function Home(): React.JSX.Element {
 
                     <div className="tab-pane" id="tab-kpis">
                         <h3 className="modal-section-title">Product Impact &amp; Business KPIs</h3>
-                        <div className="kpi-charts-wrapper">
+                        <div className="kpi-charts-wrapper" id="modalKpisWrapper">
                             
                             {/* CHART 1: CONTRACT REVIEW EFFORT REDUCTION */}
                             <div className="kpi-chart-card">
