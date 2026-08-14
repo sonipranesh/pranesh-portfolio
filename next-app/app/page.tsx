@@ -647,23 +647,21 @@ export default function Home(): React.JSX.Element {
 
             <main id="top" className={`stack-container ${welcomeStep < 2 ? 'intro-active' : 'intro-flowing'}`}>
 
-                {/* HERO SECTION (EXACT CWAYS.IN SCREENSHOT REPLICATION) */}
+                {/* HERO SECTION (CWAYS.IN REPLICATED DESIGN & SINGLE SCROLL FLOW) */}
                 <section className="hero-layer cways-hero-theme" id="heroLayer">
-                    {/* NON-STICKY NAVBAR AT TOP OF HERO SECTION */}
-                    <header className="cways-header cways-header-relative">
-                        <a href="#top" className="cways-logo" data-cursor="CWAYS">cways</a>
+                    {/* NAVBAR AT THE TOP OF HERO SECTION (CWAYS STYLE WITH ORIGINAL SECTION NAMES) */}
+                    <header className="cways-header">
+                        <a href="#top" className="cways-logo" data-cursor="PRANESH">Pranesh Soni</a>
 
                         <nav className="cways-nav">
-                            <a href="#about" data-cursor="ABOUT">ABOUT</a>
-                            <a href="#work" data-cursor="SERVICES">SERVICES</a>
-                            <a href="#work" data-cursor="PORTFOLIO">PORTFOLIO</a>
-                            <a href="#lab" data-cursor="INSIGHTS">INSIGHTS</a>
-                            <a href="#about" data-cursor="PROCESS">PROCESS</a>
-                            <a href="#contact" data-cursor="WHY">WHY CWAYS</a>
+                            <a href="#work" data-cursor="WORK">WORK</a>
+                            <a href="#lab" data-cursor="PLAY">LAB</a>
+                            <a href="#about" data-cursor="ME">ME</a>
+                            <a href="#contact" data-cursor="TALK">TALK</a>
                         </nav>
 
                         <div className="header-actions">
-                            <a href="https://wa.me/?text=Hi%20Pranesh%2C%20I%20would%20like%20to%20connect%20with%20you%20regarding%20an%20AI%20product%20opportunity." target="_blank" rel="noopener noreferrer" className="cways-header-cta" data-cursor="CONTACT">
+                            <a href="#contact" className="cways-header-cta" data-cursor="CONTACT">
                                 LET'S BUILD
                             </a>
                         </div>
@@ -674,31 +672,35 @@ export default function Home(): React.JSX.Element {
 
                     {/* HERO TITLE & CONTENT */}
                     <div className="cways-hero-content">
-                        <div className="cways-eyebrow">W E A R E C W A Y S</div>
+                        <div className="cways-eyebrow">A I   P R O D U C T   O W N E R</div>
 
                         <h1 className="cways-hero-title">
-                            CRAFTING<br />
-                            DIGITAL<br />
-                            EXPERIENCES<br />
-                            THAT MOVE<br />
-                            <span className="cways-stroke-text">PEOPLE.</span>
+                            I BUILD<br />
+                            AI PRODUCTS<br />
+                            THAT TURN<br />
+                            COMPLEXITY<br />
+                            <span className="cways-stroke-text">INTO POSSIBILITY.</span>
                         </h1>
 
                         <p className="cways-hero-sub">
-                            An independent creative design and technology lab. We shape immersive web
-                            experiences, state-of-the-art visual layouts, and digital motion masterpieces
-                            for brands that refuse to be forgotten.
+                            I'm Pranesh — an AI Product Owner building AI capabilities for life sciences, taking ideas from workflow to working prototype.
                         </p>
 
                         <div className="cways-hero-actions">
                             <a href="#work" className="cways-btn-primary" data-cursor="WORK">VIEW WORK</a>
-                            <a href="https://wa.me/?text=Hi%20Pranesh%2C%20I%20would%20like%20to%20connect%20with%20you%20regarding%20an%20AI%20product%20opportunity." target="_blank" rel="noopener noreferrer" className="cways-btn-outline" data-cursor="WHATSAPP">
+                            <a
+                                href="https://api.whatsapp.com/send?phone=919876543210&text=Hi%20Pranesh,%20I'd%20like%20to%20connect%20about%20an%20AI%20product%20opportunity!"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="cways-btn-outline"
+                                data-cursor="WHATSAPP"
+                            >
                                 LET'S BUILD TOGETHER
                             </a>
                         </div>
                     </div>
 
-                    <a href="#work" className="cways-scroll-down">
+                    <a href="#manifesto" className="cways-scroll-down">
                         SCROLL DOWN <span className="arrow">↓</span>
                     </a>
                 </section>
