@@ -17,10 +17,20 @@ export default function Home(): React.JSX.Element {
     };
 
     useEffect(() => {
+        if (typeof window !== 'undefined' && sessionStorage.getItem('welcomeShown') === 'true') {
+            setWelcomeStep(3);
+            return;
+        }
+
         // Stage 0: "Hi, I'm" + Avatar + "Pranesh"
         const t1 = setTimeout(() => setWelcomeStep(1), 2600); // 360° spin & switch to "I'm" + Avatar + "an AI Product Manager"
         const t2 = setTimeout(() => setWelcomeStep(2), 5400); // Trigger parallel upward flight motion
-        const t3 = setTimeout(() => setWelcomeStep(3), 6800); // Hide overlay after transition finishes
+        const t3 = setTimeout(() => {
+            setWelcomeStep(3);
+            if (typeof window !== 'undefined') {
+                sessionStorage.setItem('welcomeShown', 'true');
+            }
+        }, 6800);
 
         return () => {
             clearTimeout(t1);
@@ -31,6 +41,9 @@ export default function Home(): React.JSX.Element {
 
     const handleSkipWelcome = () => {
         setWelcomeStep(3);
+        if (typeof window !== 'undefined') {
+            sessionStorage.setItem('welcomeShown', 'true');
+        }
     };
 
     const renderLetters = (text: string, baseDelay = 0): React.JSX.Element[] => {
@@ -888,22 +901,29 @@ export default function Home(): React.JSX.Element {
                     </div>
                 </section>
 
-                {/* BELIEF (OVERLAPPING STACK CARD 5) */}
+                {/* BELIEF */}
                 <section className="belief stack-card">
                     <div>
-                        <div className="tiny">06 / WHY AI?</div>
-                        <h2>EVERYONE<br />DESERVES<br />A <i>JARVIS.</i></h2>
+                        <div className="section-label">06 / WHY AI?</div>
+                        <h2 className="cways-section-title">
+                            EVERYONE<br />
+                            DESERVES<br />
+                            <span className="cways-stroke-text-dark">A JARVIS.</span>
+                        </h2>
                         <p>AI removes the friction between intent and execution. It makes humans more capable and lets an
                             individual take an idea from workflow to working software.</p>
                     </div>
                     <div className="jarvis">JARVIS // HUMAN CAPABILITY SHOULD EXPAND.</div>
                 </section>
 
-                {/* TIMELINE (OVERLAPPING STACK CARD 6) */}
+                {/* TIMELINE */}
                 <section className="timeline stack-card">
                     <div className="timeline-head">
                         <div className="section-label">07 / THE PERSON</div>
-                        <h2>HOW I GOT<br /><i>here.</i></h2>
+                        <h2 className="cways-section-title">
+                            HOW I GOT<br />
+                            <span className="cways-stroke-text-dark">HERE.</span>
+                        </h2>
                     </div>
                     <div className="timeline-track-wrap">
                         <div className="timeline-track">
