@@ -925,27 +925,36 @@ nav a:active {
 }
 
 .lab-project {
-    width: 42vw;
-    min-width: 460px;
-    height: 60vh;
-    min-height: 480px;
+    width: 100% !important;
+    max-width: 680px !important;
+    height: auto !important;
+    min-height: 520px !important;
     position: relative;
     cursor: pointer;
-    flex-shrink: 0;
+    margin-left: auto !important;
+    margin-right: 0 !important;
 }
 
 .project-art {
-    position: absolute;
-    inset: 0;
-    border-radius: 24px;
-    overflow: hidden;
-    transition: .5s var(--ease);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 520px !important;
+    border-radius: 28px !important;
+    overflow: hidden !important;
+    padding: 28px 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    box-sizing: border-box !important;
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4) !important;
 }
 
 .lab-project:hover .project-art {
-    transform: translateY(-10px) scale(1.01);
-    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+    transform: translateY(-6px) scale(1.01) !important;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6) !important;
 }
 
 .p1 {
@@ -961,18 +970,21 @@ nav a:active {
 }
 
 .project-num {
-    position: absolute;
-    top: 20px;
-    left: 20px;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    display: inline-flex !important;
+    align-self: flex-start !important;
     font-family: var(--font-mono);
     font-size: 0.72rem;
-    font-weight: 600;
-    background: var(--paper);
-    color: var(--ink);
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.95);
+    color: #111111;
     padding: 6px 14px;
     border-radius: 9999px;
-    z-index: 4;
+    margin-bottom: 16px !important;
     letter-spacing: .05em;
+    z-index: 4;
 }
 
 .project-name {
