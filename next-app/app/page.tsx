@@ -4,6 +4,8 @@ import React, { useEffect } from 'react';
 import Link from 'next/link';
 
 export default function Home(): React.JSX.Element {
+    const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
+
     const handleLetsBuildTogether = (e: React.MouseEvent) => {
         e.preventDefault();
         const isMobile = typeof window !== 'undefined' && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -613,11 +615,56 @@ export default function Home(): React.JSX.Element {
                         </nav>
 
                         <div className="header-actions">
+                            <button 
+                                className="cways-menu-toggle" 
+                                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                                aria-label="Toggle navigation menu"
+                            >
+                                {isMenuOpen ? "CLOSE ✕" : "MENU"}
+                            </button>
                             <a href="#contact" onClick={handleLetsBuildTogether} className="cways-header-cta" data-cursor="CONTACT">
                                 LET'S BUILD
                             </a>
                         </div>
                     </header>
+
+                    {/* FULL SCREEN OVERLAY MOBILE & PORTRAIT MENU DRAWER */}
+                    {isMenuOpen && (
+                        <div className="cways-mobile-menu-overlay">
+                            <div className="cways-mobile-menu-header">
+                                <Link href="/" className="cways-logo" onClick={() => setIsMenuOpen(false)}>pranesh soni</Link>
+                                <button className="cways-mobile-menu-close" onClick={() => setIsMenuOpen(false)}>
+                                    CLOSE ✕
+                                </button>
+                            </div>
+                            <div className="cways-mobile-menu-links">
+                                <Link href="/about" onClick={() => setIsMenuOpen(false)}>
+                                    <span className="num">01</span> ABOUT
+                                </Link>
+                                <a href="#work" onClick={() => setIsMenuOpen(false)}>
+                                    <span className="num">02</span> SERVICES
+                                </a>
+                                <a href="#work" onClick={() => setIsMenuOpen(false)}>
+                                    <span className="num">03</span> PORTFOLIO
+                                </a>
+                                <a href="#manifesto" onClick={() => setIsMenuOpen(false)}>
+                                    <span className="num">04</span> BLOGS
+                                </a>
+                                <Link href="/about" onClick={() => setIsMenuOpen(false)}>
+                                    <span className="num">05</span> WHY ME
+                                </Link>
+                            </div>
+                            <div className="cways-mobile-menu-footer">
+                                <a 
+                                    href="#contact" 
+                                    onClick={(e) => { setIsMenuOpen(false); handleLetsBuildTogether(e); }} 
+                                    className="cways-btn-primary"
+                                >
+                                    LET'S BUILD TOGETHER
+                                </a>
+                            </div>
+                        </div>
+                    )}
 
                     {/* ATMOSPHERIC DUAL LIGHTING BACKGROUND OVERLAY */}
                     <div className="cways-hero-bg-overlay"></div>
