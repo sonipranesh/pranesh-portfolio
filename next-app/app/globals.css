@@ -2500,7 +2500,10 @@ footer {
     position: absolute !important;
     top: 24px !important;
     left: 0;
+    right: 0;
     width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
     height: 84px;
     z-index: 100;
     padding: 0 clamp(24px, 5vw, 60px);
@@ -2530,7 +2533,7 @@ footer {
 }
 
 .about-main-content {
-    padding: 115px clamp(24px, 5vw, 60px) 100px;
+    padding: 110px clamp(24px, 5vw, 60px) 100px;
     max-width: 1240px;
     margin: 0 auto;
     width: 100%;
