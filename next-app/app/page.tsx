@@ -840,21 +840,24 @@ export default function Home(): React.JSX.Element {
                     </div>
                 </section>
 
-                {/* HOW I BUILD (OVERLAPPING STACK CARD 3) */}
+                {/* SECTION 4: HOW I BUILD */}
                 <section className="prototype stack-card" id="about">
                     <div className="proto-top">
                         <div>
                             <div className="section-label">04 / HOW I BUILD</div>
-                            <h2>FROM<br /><i>problem</i><br />TO prototype.</h2>
+                            <h2 className="cways-section-title light-theme">
+                                FROM<br />
+                                <span className="cways-stroke-text-light">PROBLEM</span><br />
+                                TO PROTOTYPE.
+                            </h2>
                         </div>
-                        <p>I enjoy understanding the core business problem, shaping the workflow, architecting the RAG pipeline,
-                            and building functional AI prototypes.</p>
+                        <p>I enjoy understanding the core business problem, shaping the workflow, architecting the RAG pipeline, and building functional AI products.</p>
                     </div>
                     <div className="os">
                         <div className="os-step">
                             <span className="os-num">01</span>
                             <h3>DISCOVER</h3>
-                            <p>Client pain points<br />Business workflow<br />Gaps & opportunities</p>
+                            <p>Client pain points<br />Business workflow<br />Gaps &amp; opportunities</p>
                         </div>
                         <div className="os-step">
                             <span className="os-num">02</span>
@@ -879,48 +882,64 @@ export default function Home(): React.JSX.Element {
                     </div>
                 </section>
 
-                {/* THE LAB (OVERLAPPING STACK CARD 4) */}
-                <section className="lab stack-card" id="lab">
-                    <div className="section-label">05 / THE LAB</div>
-                    <h2>WHAT IF<br />AI COULD<br /><i>build this?</i></h2>
-                    <div className="lab-sub">Give the lab a product problem. It will turn your prompt into an actionable 5-step AI
-                        product flow.</div>
-                    <div className="playground">
-                        <div className="play-label">PRODUCT PROTOTYPING MACHINE / 001</div>
-                        <div className="prompt-row">
-                            <input id="prompt" className="prompt" placeholder="e.g. automate clinical trial protocol review..."
-                                autoComplete="off" />
-                            <button className="run" id="run" aria-label="Run Prototype Generator">→</button>
+                {/* SECTION 5: WHY ME */}
+                <section className="why-me-section stack-card" id="why-me">
+                    <div className="why-me-inner">
+                        <div className="section-label">05 / WHY ME</div>
+                        <h2 className="cways-section-title light-theme">
+                            WHY<br />
+                            <span className="cways-stroke-text-light">ME.</span>
+                        </h2>
+                        <div className="why-me-sub">
+                            Bridging complex AI technology with enterprise business impact across life sciences, healthcare &amp; clinical operations.
                         </div>
-                        <div className="result" id="result">
-                            <b>GENAI PRODUCT FLOW GENERATED</b>
-                            <div className="result-grid" id="resultGrid"></div>
+
+                        <div className="why-me-grid">
+                            <div className="why-card">
+                                <div className="why-num">01 / DUAL CAPABILITY</div>
+                                <h3>STRATEGIC VISION + AI MASTERY</h3>
+                                <p>IIM Jammu MBA combined with AWS Certified AI Practitioner credentials. I translate high-level business goals into practical prompt engineering, RAG pipelines, and agentic workflows.</p>
+                            </div>
+                            <div className="why-card">
+                                <div className="why-num">02 / PROVEN SCALE</div>
+                                <h3>ENTERPRISE SCALE &amp; ADOPTION</h3>
+                                <p>Track record of shipping enterprise GenAI products for AstraZeneca &amp; Syneos Health — powering 550+ legal users, 25 manufacturing sites, 89% adoption, and saving 790,000 mins/week.</p>
+                            </div>
+                            <div className="why-card">
+                                <div className="why-num">03 / COMPLIANCE RIGOR</div>
+                                <h3>GXP &amp; REGULATORY RIGOR</h3>
+                                <p>Deep experience operating within GxP, 21 CFR Part 11, ICH GCP, and Veeva Vault document ecosystems, ensuring AI solutions maintain strict data governance and compliance audit trails.</p>
+                            </div>
+                            <div className="why-card">
+                                <div className="why-num">04 / END-TO-END LEADERSHIP</div>
+                                <h3>END-TO-END PRODUCT LEADERSHIP</h3>
+                                <p>From user discovery, workflow mapping, and PRD authoring to model evaluation, prototype coding, cross-functional stakeholder alignment, and organizational change management.</p>
+                            </div>
                         </div>
                     </div>
                 </section>
 
-                {/* BELIEF */}
+                {/* SECTION 6: WHY AI? */}
                 <section className="belief stack-card">
                     <div>
                         <div className="section-label">06 / WHY AI?</div>
-                        <h2 className="cways-section-title">
+                        <h2 className="cways-section-title light-theme">
                             EVERYONE<br />
                             DESERVES<br />
-                            <span className="cways-stroke-text-dark">A JARVIS.</span>
+                            <span className="cways-stroke-text-light">A JARVIS.</span>
                         </h2>
-                        <p>AI removes the friction between intent and execution. It makes humans more capable and lets an
-                            individual take an idea from workflow to working software.</p>
+                        <p>AI removes the friction between intent and execution. It makes humans more capable and lets an individual take an idea from workflow to working software.</p>
                     </div>
                     <div className="jarvis">JARVIS // HUMAN CAPABILITY SHOULD EXPAND.</div>
                 </section>
 
-                {/* TIMELINE */}
+                {/* SECTION 7: TIMELINE */}
                 <section className="timeline stack-card">
                     <div className="timeline-head">
                         <div className="section-label">07 / THE PERSON</div>
-                        <h2 className="cways-section-title">
+                        <h2 className="cways-section-title light-theme">
                             HOW I GOT<br />
-                            <span className="cways-stroke-text-dark">HERE.</span>
+                            <span className="cways-stroke-text-light">HERE.</span>
                         </h2>
                     </div>
                     <div className="timeline-track-wrap">

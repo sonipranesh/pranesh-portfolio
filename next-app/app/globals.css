@@ -867,6 +867,94 @@ nav a:active {
     }
 }
 
+/* SECTION 5: WHY ME STYLES */
+.why-me-section {
+    background: #090909;
+    color: var(--paper);
+    padding: 120px 0;
+    position: relative;
+    z-index: 20;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.why-me-inner {
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 0 clamp(24px, 5vw, 60px);
+}
+
+.why-me-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1rem, 1.8vw, 1.25rem);
+    line-height: 1.6;
+    color: #9e9a92;
+    margin: -12px 0 48px;
+    max-width: 680px;
+}
+
+.why-me-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    width: 100%;
+}
+
+.why-card {
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 36px 32px;
+    position: relative;
+    transition: all 0.35s var(--ease);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.why-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.22);
+    transform: translateY(-4px);
+}
+
+.why-num {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--red, #ef6047);
+    letter-spacing: 0.1em;
+    margin-bottom: 18px;
+}
+
+.why-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.why-card p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.93rem;
+    line-height: 1.65;
+    color: #a3a099;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .why-me-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .why-card {
+        padding: 24px 20px;
+    }
+}
+
 .work-head {
     padding: 0 6vw 48px;
     display: flex;
