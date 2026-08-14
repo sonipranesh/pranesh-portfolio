@@ -2467,7 +2467,8 @@ footer {
     font-family: 'Inter', sans-serif;
     font-size: 0.78rem;
     font-weight: 700;
-    letter-spacing: 0.35em;
+    letter-spacing: 0.25em;
+    word-spacing: 0.6em;
     color: #ff5533;
     text-transform: uppercase;
     margin-bottom: 22px;
@@ -2475,14 +2476,93 @@ footer {
 
 .cways-hero-title {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    font-size: clamp(3.8rem, 7.2vw, 7.8rem);
+    font-size: clamp(2.6rem, 5.0vw, 5.2rem);
     font-weight: 900;
-    line-height: 0.86;
-    letter-spacing: -0.045em;
+    line-height: 0.88;
+    letter-spacing: -0.04em;
     text-transform: uppercase;
     color: #ffffff;
-    margin: 0 0 26px;
+    margin: 0 0 22px;
     user-select: none;
+}
+
+/* DEDICATED ABOUT PAGE STYLING */
+.about-page-container {
+    min-height: 100vh;
+    background: var(--paper);
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.about-nav {
+    position: relative !important;
+    top: 0 !important;
+    background: var(--paper) !important;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.08) !important;
+}
+
+.about-nav .cways-logo,
+.about-nav .cways-nav a,
+.about-nav .cways-header-cta {
+    color: var(--ink) !important;
+    border-color: rgba(17, 17, 17, 0.25) !important;
+}
+
+.about-nav .cways-nav a:hover,
+.about-nav .cways-nav a.active {
+    color: var(--red) !important;
+}
+
+.about-main-content {
+    padding: 60px clamp(24px, 6vw, 80px) 80px;
+    max-width: 960px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.about-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    word-spacing: 0.6em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.about-hero-title {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(2.8rem, 6vw, 5.2rem);
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+    margin: 0 0 40px;
+}
+
+.about-body-text {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+    line-height: 1.68;
+    color: #2b2b2b;
+}
+
+.about-body-text p {
+    margin-bottom: 32px;
+}
+
+.about-body-text strong {
+    font-weight: 800;
+    color: var(--ink);
+}
+
+.about-actions {
+    display: flex;
+    gap: 18px;
+    margin-top: 48px;
+    flex-wrap: wrap;
 }
 
 .cways-stroke-text {

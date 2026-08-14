@@ -1,9 +1,20 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import Link from 'next/link';
 
 export default function Home(): React.JSX.Element {
     const [welcomeStep, setWelcomeStep] = React.useState<number>(0);
+
+    const handleLetsBuildTogether = (e: React.MouseEvent) => {
+        e.preventDefault();
+        const isMobile = typeof window !== 'undefined' && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        if (isMobile) {
+            window.open("https://api.whatsapp.com/send?phone=772796969906&text=Hi%20Pranesh,%20I'd%20like%20to%20connect%20about%20an%20AI%20product%20opportunity!", "_blank");
+        } else {
+            window.open("https://www.linkedin.com/in/pranesh-soni", "_blank");
+        }
+    };
 
     useEffect(() => {
         // Stage 0: "Hi, I'm" + Avatar + "Pranesh"
@@ -649,19 +660,20 @@ export default function Home(): React.JSX.Element {
 
                 {/* HERO SECTION (CWAYS.IN REPLICATED DESIGN & SINGLE SCROLL FLOW) */}
                 <section className="hero-layer cways-hero-theme" id="heroLayer">
-                    {/* NAVBAR AT THE TOP OF HERO SECTION (CWAYS STYLE WITH ORIGINAL SECTION NAMES) */}
+                    {/* NAVBAR AT THE TOP OF HERO SECTION (CWAYS STYLE WITH REPLICATED DESIGN) */}
                     <header className="cways-header">
-                        <a href="#top" className="cways-logo" data-cursor="PRANESH">Pranesh Soni</a>
+                        <Link href="/" className="cways-logo" data-cursor="PRANESH">pranesh soni</Link>
 
                         <nav className="cways-nav">
-                            <a href="#work" data-cursor="WORK">WORK</a>
-                            <a href="#lab" data-cursor="PLAY">LAB</a>
-                            <a href="#about" data-cursor="ME">ME</a>
-                            <a href="#contact" data-cursor="TALK">TALK</a>
+                            <Link href="/about" data-cursor="ABOUT">About</Link>
+                            <a href="#work" data-cursor="SERVICES">Services</a>
+                            <a href="#work" data-cursor="PORTFOLIO">Portfolio</a>
+                            <a href="#manifesto" data-cursor="BLOGS">Blogs</a>
+                            <Link href="/about" data-cursor="WHY ME">Why Me</Link>
                         </nav>
 
                         <div className="header-actions">
-                            <a href="#contact" className="cways-header-cta" data-cursor="CONTACT">
+                            <a href="#contact" onClick={handleLetsBuildTogether} className="cways-header-cta" data-cursor="CONTACT">
                                 LET'S BUILD
                             </a>
                         </div>
@@ -672,7 +684,7 @@ export default function Home(): React.JSX.Element {
 
                     {/* HERO TITLE & CONTENT */}
                     <div className="cways-hero-content">
-                        <div className="cways-eyebrow">A I   P R O D U C T   O W N E R</div>
+                        <div className="cways-eyebrow">AI PRODUCT OWNER</div>
 
                         <h1 className="cways-hero-title">
                             I BUILD<br />
@@ -689,11 +701,10 @@ export default function Home(): React.JSX.Element {
                         <div className="cways-hero-actions">
                             <a href="#work" className="cways-btn-primary" data-cursor="WORK">VIEW WORK</a>
                             <a
-                                href="https://api.whatsapp.com/send?phone=919876543210&text=Hi%20Pranesh,%20I'd%20like%20to%20connect%20about%20an%20AI%20product%20opportunity!"
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                href="#contact"
+                                onClick={handleLetsBuildTogether}
                                 className="cways-btn-outline"
-                                data-cursor="WHATSAPP"
+                                data-cursor="BUILD"
                             >
                                 LET'S BUILD TOGETHER
                             </a>
@@ -705,13 +716,10 @@ export default function Home(): React.JSX.Element {
                     </a>
                 </section>
 
-                {/* MANIFESTO (OVERLAPPING STACK CARD 1) */}
+                {/* MANIFESTO SECTION */}
                 <section className="manifesto stack-card" id="manifesto">
                     <div className="section-label">02 / THE POINT OF VIEW</div>
                     <h2>Technology is interesting.<br /><i>What people can do with it</i><br />is more interesting.</h2>
-                    <span className="float-word fw1">AI × PRODUCT</span>
-                    <span className="float-word fw2">BUILD → TEST → LEARN</span>
-                    <span className="float-word fw3">LESS FRICTION</span>
                 </section>
 
                 {/* WORK SECTION & CAROUSEL (OVERLAPPING STACK CARD 2) */}
