@@ -727,10 +727,10 @@ export default function Home(): React.JSX.Element {
                     </h2>
                 </section>
 
-                {/* WORK SECTION WITH 2-COLUMN SPLIT & PARALLEL SCROLL STACK CARDS */}
-                <section className="work stack-card" id="work">
+                {/* SECTION 3: PURE CSS STICKY STACKING CARDS */}
+                <section className="work-sticky-section" id="work">
                     <div className="work-split-container">
-                        {/* LEFT COLUMN: STICKY SECTION HEADLINE & DESCRIPTION */}
+                        {/* LEFT COLUMN: STICKY SECTION HEADING & SUBTEXT */}
                         <div className="work-left-col">
                             <div className="section-label">03 / SELECTED BUILDS</div>
                             <h2 className="cways-section-title light-theme">
@@ -743,101 +743,99 @@ export default function Home(): React.JSX.Element {
                             </p>
                         </div>
 
-                        {/* RIGHT COLUMN: SCROLL STACK CARDS */}
+                        {/* RIGHT COLUMN: PURE CSS STICKY STACKING CARDS */}
                         <div className="work-right-col">
-                            <ScrollStack useWindowScroll={true} itemDistance={320} itemScale={0.04} itemStackDistance={20} baseScale={0.88}>
-                                {/* PROJECT 1 */}
-                                <ScrollStackItem>
-                                    <article className="lab-project" data-cursor="OPEN PROJECT" data-project="contract">
-                                        <div className="project-art p1">
-                                            <span className="project-num">01 / REASON — ASTRAZENECA</span>
-                                            <div className="mock contract-ui">
-                                                <div className="mini-mono">GENAI CONTRACTING ASSISTANT / CLAUSE ANALYSER</div>
-                                                <div className="mini-title">Risk detected in<br />vendor terms.</div>
-                                                <div className="chips">
-                                                    <span className="chip hot">60-65% TIME SAVED</span>
-                                                    <span className="chip">550+ USERS</span>
-                                                    <span className="chip">89% ADOPTION</span>
-                                                </div>
-                                                <div className="risk">
-                                                    UNFAVOURABLE LIABILITY LANGUAGE<br /><br />
-                                                    RAG analysis over contract templates. Retrieve evidence → highlight risk → regenerate compliant clauses with page-level citations.
-                                                </div>
+                            {/* CARD 1 */}
+                            <div className="sticky-card-item card-1">
+                                <article className="lab-project" data-cursor="OPEN PROJECT" data-project="contract">
+                                    <div className="project-art p1">
+                                        <span className="project-num">01 / REASON — ASTRAZENECA</span>
+                                        <div className="mock contract-ui">
+                                            <div className="mini-mono">GENAI CONTRACTING ASSISTANT / CLAUSE ANALYSER</div>
+                                            <div className="mini-title">Risk detected in<br />vendor terms.</div>
+                                            <div className="chips">
+                                                <span className="chip hot">60-65% TIME SAVED</span>
+                                                <span className="chip">550+ USERS</span>
+                                                <span className="chip">89% ADOPTION</span>
                                             </div>
-                                            <div className="project-name">
-                                                <small>RISK / NEGOTIATE / RAG ANALYSIS</small>
-                                                GenAI Contracting Assistant
+                                            <div className="risk">
+                                                UNFAVOURABLE LIABILITY LANGUAGE<br /><br />
+                                                RAG analysis over contract templates. Retrieve evidence → highlight risk → regenerate compliant clauses with page-level citations.
                                             </div>
-                                            <div className="project-open-badge">EXPLORE PROJECT ↗</div>
                                         </div>
-                                    </article>
-                                </ScrollStackItem>
+                                        <div className="project-name">
+                                            <small>RISK / NEGOTIATE / RAG ANALYSIS</small>
+                                            GenAI Contracting Assistant
+                                        </div>
+                                        <div className="project-open-badge">EXPLORE PROJECT ↗</div>
+                                    </div>
+                                </article>
+                            </div>
 
-                                {/* PROJECT 2 */}
-                                <ScrollStackItem>
-                                    <article className="lab-project" data-cursor="OPEN PROJECT" data-project="sop">
-                                        <div className="project-art p2">
-                                            <span className="project-num">02 / RETRIEVE — ASTRAZENECA</span>
-                                            <div className="mock sop-ui">
-                                                <div className="mini-mono">GENAI SOP ASSISTANT / VEEVA VAULT RAG</div>
-                                                <div className="mini-title">Query 25 global<br />manufacturing sites.</div>
-                                                <div className="chips">
-                                                    <span className="chip hot">790K MINS/WK SAVED</span>
-                                                    <span className="chip">VEEVA VAULT</span>
-                                                    <span className="chip">PAGE HYPERLINKS</span>
-                                                </div>
-                                                <div className="graph">
-                                                    <span className="line l1"></span><span className="line l2"></span>
-                                                    <span className="line l3"></span><span className="line l4"></span>
-                                                    <div className="node n1">VEEVA<br />VAULT</div>
-                                                    <div className="node n2">QUERY</div>
-                                                    <div className="node n3">CHUNKS</div>
-                                                    <div className="node n4">HYPERLINK</div>
-                                                    <div className="node n5">SOP ID</div>
-                                                </div>
-                                                <div className="risk" style={{ background: '#eaf2fd', borderLeftColor: '#5d81e0', color: '#111' }}>
-                                                    LOOKUP TIME: ~2 HRS/WK → ~20 MINS/WK<br /><br />
-                                                    Instant SOP retrieval across thousands of Veeva Vault documents with exact page-level citations &amp; £59k–£75k MAU savings.
-                                                </div>
+                            {/* CARD 2 */}
+                            <div className="sticky-card-item card-2">
+                                <article className="lab-project" data-cursor="OPEN PROJECT" data-project="sop">
+                                    <div className="project-art p2">
+                                        <span className="project-num">02 / RETRIEVE — ASTRAZENECA</span>
+                                        <div className="mock sop-ui">
+                                            <div className="mini-mono">GENAI SOP ASSISTANT / VEEVA VAULT RAG</div>
+                                            <div className="mini-title">Query 25 global<br />manufacturing sites.</div>
+                                            <div className="chips">
+                                                <span className="chip hot">790K MINS/WK SAVED</span>
+                                                <span className="chip">VEEVA VAULT</span>
+                                                <span className="chip">PAGE HYPERLINKS</span>
                                             </div>
-                                            <div className="project-name">
-                                                <small>KNOWLEDGE / SEARCH / VEEVA RAG</small>
-                                                GenAI SOP Assistant
+                                            <div className="graph">
+                                                <span className="line l1"></span><span className="line l2"></span>
+                                                <span className="line l3"></span><span className="line l4"></span>
+                                                <div className="node n1">VEEVA<br />VAULT</div>
+                                                <div className="node n2">QUERY</div>
+                                                <div className="node n3">CHUNKS</div>
+                                                <div className="node n4">HYPERLINK</div>
+                                                <div className="node n5">SOP ID</div>
                                             </div>
-                                            <div className="project-open-badge">EXPLORE PROJECT ↗</div>
+                                            <div className="risk" style={{ background: '#eaf2fd', borderLeftColor: '#5d81e0', color: '#111' }}>
+                                                LOOKUP TIME: ~2 HRS/WK → ~20 MINS/WK<br /><br />
+                                                Instant SOP retrieval across thousands of Veeva Vault documents with exact page-level citations &amp; £59k–£75k MAU savings.
+                                            </div>
                                         </div>
-                                    </article>
-                                </ScrollStackItem>
+                                        <div className="project-name">
+                                            <small>KNOWLEDGE / SEARCH / VEEVA RAG</small>
+                                            GenAI SOP Assistant
+                                        </div>
+                                        <div className="project-open-badge">EXPLORE PROJECT ↗</div>
+                                    </div>
+                                </article>
+                            </div>
 
-                                {/* PROJECT 3 */}
-                                <ScrollStackItem>
-                                    <article className="lab-project" data-cursor="OPEN PROJECT" data-project="doc">
-                                        <div className="project-art p3">
-                                            <span className="project-num">03 / CREATE — SYNEOS HEALTH</span>
-                                            <div className="mock doc-ui">
-                                                <div className="mini-mono">CLINICAL PLAN WORKFLOW AUTOMATION / GXP</div>
-                                                <h3>Automating TMF &amp;<br />master ICF drafts<span className="cursor-block"></span></h3>
-                                                <div className="chips">
-                                                    <span className="chip hot">70% AUTOMATED</span>
-                                                    <span className="chip">21 CFR / ICH GCP</span>
-                                                    <span className="chip">HUMAN IN LOOP</span>
-                                                </div>
-                                                <div className="doc-line"></div>
-                                                <div className="doc-line short"></div>
-                                                <div className="doc-box">
-                                                    SQL DATA PIPELINE (10+ PLAN TYPES)<br /><br />
-                                                    AGENTIC ICF GENERATION &amp; COMPLIANCE CHECKLISTS
-                                                </div>
+                            {/* CARD 3 */}
+                            <div className="sticky-card-item card-3">
+                                <article className="lab-project" data-cursor="OPEN PROJECT" data-project="doc">
+                                    <div className="project-art p3">
+                                        <span className="project-num">03 / CREATE — SYNEOS HEALTH</span>
+                                        <div className="mock doc-ui">
+                                            <div className="mini-mono">CLINICAL PLAN WORKFLOW AUTOMATION / GXP</div>
+                                            <h3>Automating TMF &amp;<br />master ICF drafts<span className="cursor-block"></span></h3>
+                                            <div className="chips">
+                                                <span className="chip hot">70% AUTOMATED</span>
+                                                <span className="chip">21 CFR / ICH GCP</span>
+                                                <span className="chip">HUMAN IN LOOP</span>
                                             </div>
-                                            <div className="project-name">
-                                                <small>AUTHOR / WORKFLOW / AGENTIC GXP</small>
-                                                AI Doc Author
+                                            <div className="doc-line"></div>
+                                            <div className="doc-line short"></div>
+                                            <div className="doc-box">
+                                                SQL DATA PIPELINE (10+ PLAN TYPES)<br /><br />
+                                                AGENTIC ICF GENERATION &amp; COMPLIANCE CHECKLISTS
                                             </div>
-                                            <div className="project-open-badge">EXPLORE PROJECT ↗</div>
                                         </div>
-                                    </article>
-                                </ScrollStackItem>
-                            </ScrollStack>
+                                        <div className="project-name">
+                                            <small>AUTHOR / WORKFLOW / AGENTIC GXP</small>
+                                            AI Doc Author
+                                        </div>
+                                        <div className="project-open-badge">EXPLORE PROJECT ↗</div>
+                                    </div>
+                                </article>
+                            </div>
                         </div>
                     </div>
                 </section>

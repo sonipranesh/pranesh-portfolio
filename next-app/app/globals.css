@@ -757,11 +757,11 @@ nav a:active {
     }
 }
 
-/* WORK SECTION WITH 2-COLUMN SPLIT (STACK CARD 2) */
-.work {
+/* WORK SECTION WITH PURE CSS STICKY STACKING CARDS */
+.work-sticky-section {
     background: var(--ink);
     color: var(--paper);
-    padding: 120px 0 100px;
+    padding: 100px 0 140px;
     position: relative;
     z-index: 20;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -775,13 +775,14 @@ nav a:active {
     max-width: 1380px;
     margin: 0 auto;
     padding: 0 clamp(24px, 5vw, 60px);
-    align-items: stretch;
+    align-items: start;
     position: relative;
 }
 
+/* 2. STICKY LEFT COLUMN */
 .work-left-col {
     position: sticky !important;
-    top: 140px !important;
+    top: 10vh !important;
     z-index: 10 !important;
     height: fit-content !important;
     align-self: start !important;
@@ -797,11 +798,49 @@ nav a:active {
     max-width: 320px;
 }
 
+/* 3. PURE CSS STICKY STACKING CARDS (RIGHT COLUMN) */
 .work-right-col {
     width: 100%;
     min-width: 0;
     position: relative;
-    padding-bottom: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.sticky-card-stack {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 680px;
+    margin-left: auto;
+    position: relative;
+}
+
+.sticky-card-item {
+    position: sticky !important;
+    top: 15vh !important;
+    width: 100% !important;
+    max-width: 680px !important;
+    margin-bottom: 45vh !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+}
+
+.sticky-card-item:last-child {
+    margin-bottom: 0 !important;
+}
+
+.sticky-card-item.card-1 {
+    z-index: 1 !important;
+}
+
+.sticky-card-item.card-2 {
+    z-index: 2 !important;
+}
+
+.sticky-card-item.card-3 {
+    z-index: 3 !important;
 }
 
 @media (max-width: 1024px) {
@@ -821,8 +860,10 @@ nav a:active {
         margin-top: 16px;
     }
 
-    .work-right-col {
-        padding-bottom: 0;
+    .sticky-card-item {
+        position: relative !important;
+        top: auto !important;
+        margin-bottom: 32px !important;
     }
 }
 
