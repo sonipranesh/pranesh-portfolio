@@ -971,6 +971,9 @@ export default function Home(): React.JSX.Element {
                             <a href="https://www.linkedin.com/in/pranesh-soni" target="_blank" rel="noopener noreferrer" data-cursor="LINKEDIN">
                                 LINKEDIN
                             </a>
+                            <a href="https://substack.com/@praneshsoni" target="_blank" rel="noopener noreferrer" data-cursor="SUBSTACK">
+                                SUBSTACK
+                            </a>
                         </div>
 
                         {/* BOTTOM COPYRIGHT & BACK TO TOP BAR */}

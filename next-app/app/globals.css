@@ -2971,16 +2971,21 @@ footer {
 
 .cways-footer-email {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(2.2rem, 5.4vw, 5.6rem);
+    font-size: clamp(1.1rem, 4.2vw, 3.2rem);
     font-weight: 900;
     letter-spacing: -0.035em;
     color: #111111;
     text-transform: uppercase;
     text-decoration: none;
-    line-height: 1;
-    margin-bottom: 40px;
+    line-height: 1.1;
+    margin-bottom: 28px;
     transition: opacity 0.25s ease;
-    word-break: break-word;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .cways-footer-email:hover {
@@ -2990,24 +2995,29 @@ footer {
 .cways-footer-author-row {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: clamp(6px, 1.5vw, 12px);
     font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
+    font-size: clamp(0.62rem, 1.8vw, 0.75rem);
     font-weight: 700;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.12em;
     color: #111111;
     text-transform: uppercase;
     margin-bottom: 28px;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start;
+    white-space: nowrap !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 .cways-footer-author-row .author-dot {
-    width: 7px;
-    height: 7px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
     background: #111111;
     display: inline-block;
+    flex-shrink: 0;
 }
 
 .cways-footer-author-row .author-title {
@@ -3580,6 +3590,23 @@ footer {
     }
 
     /* Footer */
+    .cways-footer-email {
+        font-size: clamp(0.85rem, 4.8vw, 1.8rem) !important;
+        white-space: nowrap !important;
+        word-break: keep-all !important;
+        max-width: 100% !important;
+        margin-bottom: 24px !important;
+    }
+
+    .cways-footer-author-row {
+        white-space: nowrap !important;
+        flex-wrap: nowrap !important;
+        font-size: clamp(0.58rem, 2.6vw, 0.72rem) !important;
+        gap: 6px !important;
+        margin-bottom: 24px !important;
+        max-width: 100% !important;
+    }
+
     .cways-footer-socials {
         gap: 16px !important;
         flex-wrap: wrap !important;
