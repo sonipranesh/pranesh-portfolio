@@ -936,13 +936,6 @@ export default function Home(): React.JSX.Element {
 
                 {/* REPLICATED CWAYS.IN FOOTER DESIGN */}
                 <footer className="cways-footer-theme">
-                    {/* TOP FLOATING BLACK PILL CTA */}
-                    <div className="cways-footer-pill-wrap">
-                        <a href="mailto:praneshsoni@outlook.com" className="cways-footer-pill" data-cursor="BUILD">
-                            INITIALIZE PROJECT <span className="arrow">↗</span>
-                        </a>
-                    </div>
-
                     <div className="cways-footer-inner">
                         {/* EYEBROW TAG */}
                         <div className="cways-footer-eyebrow">L E T ' S   C R E A T E   A   S T A T E M E N T</div>
