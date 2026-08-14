@@ -910,37 +910,55 @@ export default function Home(): React.JSX.Element {
                     </div>
                 </section>
 
-                {/* CONTACT & FOOTER (OVERLAPPING STACK CARD 7) */}
-                <section className="contact stack-card" id="contact">
-                    <div>
-                        <div className="section-label">08 / LET'S BUILD</div>
-                        <h2>GOT A<br />GOOD<br /><i>problem?</i></h2>
+                {/* REPLICATED CWAYS.IN FOOTER DESIGN */}
+                <footer className="cways-footer-theme" id="contact">
+                    {/* TOP FLOATING BLACK PILL CTA */}
+                    <div className="cways-footer-pill-wrap">
+                        <a href="mailto:praneshsoni@outlook.com" className="cways-footer-pill" data-cursor="BUILD">
+                            INITIALIZE PROJECT <span className="arrow">↗</span>
+                        </a>
                     </div>
 
-                    <div className="contact-bottom">
-                        <div className="contact-info">
-                            <p>AI product opportunity, prototype build, life sciences RAG solution, or strategic advisory —
-                                let's start a conversation.</p>
-                            <div className="status-pill">
-                                <span className="status-dot"></span>
-                                AVAILABLE FOR AI PRODUCT OPPORTUNITIES & PROTOTYPING
+                    <div className="cways-footer-inner">
+                        {/* EYEBROW TAG */}
+                        <div className="cways-footer-eyebrow">L E T ' S   C R E A T E   A   S T A T E M E N T</div>
+
+                        {/* HUGE EMAIL HIGHLIGHT */}
+                        <a href="mailto:praneshsoni@outlook.com" className="cways-footer-email" data-cursor="EMAIL">
+                            PRANESHSONI@OUTLOOK.COM
+                        </a>
+
+                        {/* AUTHOR & ROLE ROW */}
+                        <div className="cways-footer-author-row">
+                            <span className="author-dot"></span>
+                            <span className="author-name">PRANESH SONI</span>
+                            <span className="author-sep">—</span>
+                            <span className="author-title">AI PRODUCT OWNER & BUILDER</span>
+                        </div>
+
+                        {/* SOCIAL LINK ROW */}
+                        <div className="cways-footer-socials">
+                            <a href="https://www.linkedin.com/in/pranesh-soni" target="_blank" rel="noopener noreferrer" data-cursor="LINKEDIN">
+                                LINKEDIN
+                            </a>
+                        </div>
+
+                        {/* BOTTOM COPYRIGHT & BACK TO TOP BAR */}
+                        <div className="cways-footer-bottom-bar">
+                            <div className="cways-footer-copy">© 2026 PRANESH SONI.</div>
+                            <div className="cways-footer-nav-links">
+                                <a href="#top" className="cways-back-top" data-cursor="TOP">
+                                    Back to top <span className="arrow">↑</span>
+                                </a>
                             </div>
                         </div>
 
-                        <div className="links">
-                            <a href="mailto:pranesh.soni@example.com" data-cursor="SEND EMAIL">EMAIL ME ↗</a>
-                            <a href="https://www.linkedin.com/" target="_blank" rel="noopener" data-cursor="LINKEDIN">LINKEDIN
-                                ↗</a>
-                            <a href="https://github.com/" target="_blank" rel="noopener" data-cursor="GITHUB">GITHUB ↗</a>
+                        {/* ULTRA-LARGE OUTLINE STROKE BRAND TEXT AT BOTTOM */}
+                        <div className="cways-footer-stroke-brand">
+                            PRANESH SONI
                         </div>
                     </div>
-
-                    <footer>
-                        <div>PRANESH SONI / AI PRODUCT OWNER & BUILDER</div>
-                        <div>AI · PRODUCT MANAGEMENT · LIFE SCIENCES</div>
-                        <div>© 2026 PRANESH SONI</div>
-                    </footer>
-                </section>
+                </footer>
 
             </main>
 
