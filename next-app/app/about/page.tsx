@@ -36,9 +36,17 @@ export default function AboutPage() {
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         aria-label="Toggle navigation menu"
                     >
-                        {isMenuOpen ? "CLOSE ✕" : "MENU"}
+                        {isMenuOpen ? "CLOSE ✕" : (
+                            <span className="hamburger-wrap">
+                                <svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 1.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                                    <path d="M1 6.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                                    <path d="M1 11.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                                </svg>
+                            </span>
+                        )}
                     </button>
-                    <a href="#contact" onClick={handleLetsBuildTogether} className="cways-header-cta" data-cursor="CONTACT">
+                    <a href="#contact" onClick={handleLetsBuildTogether} className="cways-header-cta cways-desktop-only-cta" data-cursor="CONTACT">
                         LET'S BUILD
                     </a>
                 </div>

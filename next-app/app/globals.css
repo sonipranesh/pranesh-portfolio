@@ -3176,15 +3176,24 @@ footer {
    PORTRAIT IPADS, TABLETS & VERTICAL PHONE SCREEN BREAKPOINTS (<= 1024px)
    ========================================================================== */
 
+.hamburger-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 14px;
+}
+
 @media (max-width: 1024px) {
     .cways-nav {
-        display: none !important; /* Hide inline links, populate sections in Menu button overlay */
+        display: none !important; /* Hide inline text links */
     }
 
     .cways-menu-toggle {
-        display: inline-flex !important; /* Show MENU button on right side */
+        display: inline-flex !important; /* Show 3-line menu button on right side */
         align-items: center;
         justify-content: center;
+        padding: 10px 18px !important;
     }
 
     .header-actions {
@@ -3193,28 +3202,84 @@ footer {
         gap: 10px;
     }
 
-    .cways-header-cta {
-        display: inline-flex !important;
-    }
-
     .cways-hero-content {
         max-width: 100% !important;
         padding: 110px clamp(20px, 4vw, 40px) 40px !important;
+        text-align: left !important;
+        margin-left: 0 !important;
     }
 
     .cways-hero-title {
         font-size: clamp(2.1rem, 6.2vw, 4.2rem) !important;
         line-height: 0.94 !important;
+        text-align: left !important;
     }
 
     .about-main-content {
         padding-left: clamp(20px, 4vw, 40px) !important;
         padding-right: clamp(20px, 4vw, 40px) !important;
+        text-align: left !important;
+    }
+
+    /* PROJECT CARDS OVERLAP FIX FOR TABLETS & IPADS */
+    .project-strip {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 36px !important;
+        width: 100% !important;
+        transform: none !important;
+    }
+
+    .lab-project {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: unset !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .project-art {
+        position: relative !important;
+        inset: auto !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 380px !important;
+        padding: 24px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        border-radius: 20px !important;
+        box-sizing: border-box !important;
+    }
+
+    .mock,
+    .contract-ui,
+    .doc-ui {
+        position: relative !important;
+        inset: auto !important;
+        width: 100% !important;
+        height: auto !important;
+        transform: none !important;
+        margin: 16px 0 !important;
+        padding: 18px !important;
+        box-sizing: border-box !important;
+    }
+
+    .mini-title,
+    .doc-ui h3 {
+        font-size: clamp(1.3rem, 5vw, 1.8rem) !important;
+        line-height: 1.15 !important;
+        margin: 10px 0 !important;
     }
 }
 
 @media (max-width: 768px) {
-    /* Header & Navigation */
+    /* Header & Navigation: Hide "LET'S BUILD" on top right, show ONLY 3-line hamburger menu icon */
+    .cways-desktop-only-cta {
+        display: none !important;
+    }
+
     .cways-header,
     .about-nav {
         top: 14px !important;
@@ -3227,15 +3292,16 @@ footer {
         letter-spacing: -0.02em !important;
     }
 
-    .cways-header-cta {
-        padding: 8px 14px !important;
-        font-size: 0.62rem !important;
+    .cways-menu-toggle {
+        padding: 9px 14px !important;
     }
 
-    /* Hero Section */
+    /* Hero Section - Text starts cleanly from the left edge */
     .cways-hero-content {
         padding: 95px 18px 30px !important;
         max-width: 100% !important;
+        text-align: left !important;
+        margin-left: 0 !important;
     }
 
     .cways-eyebrow {
@@ -3243,6 +3309,7 @@ footer {
         letter-spacing: 0.18em !important;
         word-spacing: 0.3em !important;
         margin-bottom: 14px !important;
+        text-align: left !important;
     }
 
     .cways-hero-title {
@@ -3250,12 +3317,15 @@ footer {
         line-height: 0.94 !important;
         letter-spacing: -0.03em !important;
         margin-bottom: 18px !important;
+        text-align: left !important;
     }
 
     .cways-hero-sub {
         font-size: 0.88rem !important;
         line-height: 1.55 !important;
         margin-bottom: 28px !important;
+        text-align: left !important;
+        max-width: 100% !important;
     }
 
     .cways-hero-actions,
@@ -3280,17 +3350,96 @@ footer {
         display: none !important;
     }
 
+    /* SECTION CONTAINERS: Text starts cleanly at left edge across every page section */
+    .stack-card,
+    .manifesto,
+    .work,
+    .prototype,
+    .lab,
+    .belief,
+    .about-main-content {
+        padding-left: 18px !important;
+        padding-right: 18px !important;
+        text-align: left !important;
+    }
+
+    .work-head {
+        flex-direction: column !important;
+        gap: 20px !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+    }
+
+    .work-head-right p {
+        text-align: left !important;
+        width: 100% !important;
+    }
+
+    /* PROJECT CARDS OVERLAP FIX FOR SMALL PHONE SCREENS */
+    .project-strip {
+        gap: 28px !important;
+    }
+
+    .project-art {
+        padding: 18px !important;
+        min-height: auto !important;
+    }
+
+    .mock,
+    .contract-ui,
+    .doc-ui {
+        padding: 14px !important;
+        border-radius: 12px !important;
+    }
+
+    .mini-title,
+    .doc-ui h3 {
+        font-size: 1.25rem !important;
+        line-height: 1.15 !important;
+    }
+
+    .risk,
+    .doc-box {
+        font-size: 0.72rem !important;
+        padding: 8px 10px !important;
+    }
+
+    .graph {
+        position: relative !important;
+        inset: auto !important;
+        height: 150px !important;
+        width: 100% !important;
+        margin: 14px 0 !important;
+    }
+
+    .node {
+        width: 65px !important;
+        height: 65px !important;
+        font-size: 0.6rem !important;
+    }
+
+    .project-name {
+        font-size: 1.1rem !important;
+        margin-top: 14px !important;
+    }
+
+    .project-name small {
+        font-size: 0.65rem !important;
+    }
+
     /* About Page */
     .about-main-content {
         padding-top: 100px !important;
         padding-left: 18px !important;
         padding-right: 18px !important;
         padding-bottom: 60px !important;
+        text-align: left !important;
     }
 
     .cways-page-title {
         font-size: clamp(2.2rem, 9vw, 3.8rem) !important;
         line-height: 0.94 !important;
+        text-align: left !important;
     }
 
     .about-role-tag {
@@ -3298,11 +3447,13 @@ footer {
         letter-spacing: 0.18em !important;
         word-spacing: 0.3em !important;
         margin: 12px 0 20px !important;
+        text-align: left !important;
     }
 
     .cways-hero-subtitle {
         font-size: 0.98rem !important;
         line-height: 1.58 !important;
+        text-align: left !important;
     }
 
     .cways-grid-divider {
@@ -3318,6 +3469,7 @@ footer {
     .cways-grid-item {
         padding-bottom: 24px !important;
         border-bottom: 1px solid rgba(17, 17, 17, 0.08) !important;
+        text-align: left !important;
     }
 
     .cways-grid-item:last-child {
@@ -3329,31 +3481,35 @@ footer {
         font-size: 0.8rem !important;
         letter-spacing: 0.1em !important;
         margin-bottom: 10px !important;
+        text-align: left !important;
     }
 
     .cways-grid-desc {
         font-size: 0.9rem !important;
         line-height: 1.6 !important;
+        text-align: left !important;
     }
 
     /* Section Titles */
     .cways-section-title {
         font-size: clamp(2.2rem, 8.5vw, 3.6rem) !important;
         line-height: 0.94 !important;
+        text-align: left !important;
     }
 
     /* Footer */
     .cways-footer-socials {
         gap: 16px !important;
         flex-wrap: wrap !important;
-        justify-content: center !important;
+        justify-content: flex-start !important;
         margin-bottom: 40px !important;
     }
 
     .cways-footer-bottom-bar {
         flex-direction: column !important;
         gap: 12px !important;
-        text-align: center !important;
+        text-align: left !important;
+        align-items: flex-start !important;
     }
 
     .cways-footer-stroke-brand {
@@ -3366,10 +3522,6 @@ footer {
     .cways-header,
     .about-nav {
         padding: 0 14px !important;
-    }
-
-    .cways-nav {
-        display: none !important; /* Hide secondary links on ultra-small mobile, keep clean brand + CTA */
     }
 
     .cways-hero-content {
