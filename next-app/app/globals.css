@@ -2589,9 +2589,10 @@ footer {
 /* REPLICATED 2-COLUMN GRID SYSTEM (EXACT MATCH TO ATTACHED SCREENSHOT) */
 .cways-grid-divider {
     width: 100%;
+    max-width: 1240px;
     height: 1px;
     background: rgba(17, 17, 17, 0.12);
-    margin: 48px 0 54px;
+    margin: 52px 0 52px;
 }
 
 .cways-hero-subtitle {
@@ -2606,7 +2607,9 @@ footer {
 .cways-2col-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 48px clamp(32px, 5vw, 80px);
+    gap: 48px clamp(40px, 6vw, 100px);
+    max-width: 1240px;
+    width: 100%;
     margin-bottom: 56px;
 }
 
@@ -2620,6 +2623,24 @@ footer {
 .cways-grid-item {
     display: flex;
     flex-direction: column;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.cways-grid-item:nth-last-child(-n+2) {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .cways-grid-item:nth-last-child(-n+2) {
+        border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+        padding-bottom: 36px;
+    }
+    .cways-grid-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
 }
 
 .cways-grid-title {
@@ -2629,7 +2650,7 @@ footer {
     letter-spacing: 0.12em;
     color: #111111;
     text-transform: uppercase;
-    margin: 0 0 12px;
+    margin: 0 0 14px;
 }
 
 .cways-grid-desc {
