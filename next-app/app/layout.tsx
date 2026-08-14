@@ -29,6 +29,8 @@ export default function RootLayout({
           CURL={2}
           SPLAT_RADIUS={0.1}
           SPLAT_FORCE={4500}
+          RAINBOW_MODE={false}
+          COLOR="#f4f1ea"
         />
         {children}
       </body>
