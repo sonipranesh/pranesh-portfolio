@@ -745,7 +745,7 @@ export default function Home(): React.JSX.Element {
 
                         {/* RIGHT COLUMN: SCROLL STACK CARDS */}
                         <div className="work-right-col">
-                            <ScrollStack useWindowScroll={true} itemDistance={36} itemScale={0.03} itemStackDistance={20} baseScale={0.88}>
+                            <ScrollStack useWindowScroll={true} itemDistance={320} itemScale={0.04} itemStackDistance={20} baseScale={0.88}>
                                 {/* PROJECT 1 */}
                                 <ScrollStackItem>
                                     <article className="lab-project" data-cursor="OPEN PROJECT" data-project="contract">
