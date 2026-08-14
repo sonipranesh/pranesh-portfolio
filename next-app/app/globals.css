@@ -3402,6 +3402,7 @@ footer {
     }
 
     /* MOBILE COMPACT SECTION HEIGHTS: Remove 85vh/90vh/100vh so sections wrap tightly around text */
+    /* MOBILE UNIFORM SECTION SPACING: Section 2, Section 3, Section 4 all start with identical 48px top padding */
     .hero-layer,
     .manifesto,
     .work,
@@ -3425,8 +3426,9 @@ footer {
 
     .manifesto h2,
     .proto-top h2,
+    .work-head h2,
     .lab h2 {
-        margin-top: 18px !important;
+        margin-top: 14px !important;
     }
 
     .proto-top p {
@@ -3455,23 +3457,24 @@ footer {
         margin: 12px 0 6px !important;
     }
 
-    /* SECTION 3 (.work): Compact padding to eliminate redundant top space on phone screens */
-    .work {
-        padding-top: 32px !important;
-        padding-bottom: 36px !important;
-    }
-
+    /* SECTION 3 (.work): Clean container alignment matching Section 2 & 4 */
     .work-head {
+        padding: 0 !important;
+        margin: 0 !important;
         flex-direction: column !important;
         gap: 12px !important;
         align-items: flex-start !important;
         text-align: left !important;
-        margin-bottom: 0 !important;
+    }
+
+    .work-head .section-label {
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     .work-head h2 {
-        margin-top: 8px !important;
-        margin-bottom: 10px !important;
+        margin-top: 14px !important;
+        margin-bottom: 12px !important;
         font-size: clamp(2.0rem, 8.5vw, 3.4rem) !important;
         line-height: 0.94 !important;
     }
@@ -3489,7 +3492,7 @@ footer {
     }
 
     .project-strip-wrap {
-        padding: 16px 0 0 !important;
+        padding: 20px 0 0 !important;
         margin-top: 16px !important;
     }
 
