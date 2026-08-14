@@ -46,8 +46,13 @@ export default function AboutPage() {
                             </span>
                         )}
                     </button>
-                    <a href="#contact" onClick={handleLetsBuildTogether} className="cways-header-cta cways-desktop-only-cta" data-cursor="CONTACT">
-                        LET'S BUILD
+                    <a 
+                        href="/Pranesh_Soni_Resume.pdf" 
+                        download="Pranesh_Soni_Resume.pdf" 
+                        className="cways-header-cta cways-desktop-only-cta" 
+                        data-cursor="DOWNLOAD RESUME"
+                    >
+                        RESUME <span className="arrow" style={{ transform: 'none', marginLeft: '6px', fontSize: '0.95rem' }}>↓</span>
                     </a>
                 </div>
             </header>

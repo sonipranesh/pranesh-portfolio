@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import Link from 'next/link';
+import ScrollStack, { ScrollStackItem } from '@/app/components/ScrollStack';
 
 export default function Home(): React.JSX.Element {
     const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
@@ -630,8 +631,13 @@ export default function Home(): React.JSX.Element {
                                     </span>
                                 )}
                             </button>
-                            <a href="#contact" onClick={handleLetsBuildTogether} className="cways-header-cta cways-desktop-only-cta" data-cursor="CONTACT">
-                                LET'S BUILD
+                            <a 
+                                href="/Pranesh_Soni_Resume.pdf" 
+                                download="Pranesh_Soni_Resume.pdf" 
+                                className="cways-header-cta cways-desktop-only-cta" 
+                                data-cursor="DOWNLOAD RESUME"
+                            >
+                                RESUME <span className="arrow" style={{ transform: 'none', marginLeft: '6px', fontSize: '0.95rem' }}>↓</span>
                             </a>
                         </div>
                     </header>
@@ -721,7 +727,7 @@ export default function Home(): React.JSX.Element {
                     </h2>
                 </section>
 
-                {/* WORK SECTION & CAROUSEL */}
+                {/* WORK SECTION WITH SCROLL STACK CARDS */}
                 <section className="work stack-card" id="work">
                     <div className="work-head">
                         <div>
@@ -733,94 +739,104 @@ export default function Home(): React.JSX.Element {
                             </h2>
                         </div>
                         <div className="work-head-right">
-                            <p>Interactive AI product prototypes exploring reasoning, retrieval, and document creation.</p>
-                            <div className="strip-controls">
-                                <button className="strip-btn" id="stripPrev" aria-label="Previous Project">←</button>
-                                <div className="strip-indicators">
-                                    <span className="indicator-dot active" data-index="0">01 / REASON</span>
-                                    <span className="indicator-dot" data-index="1">02 / RETRIEVE</span>
-                                    <span className="indicator-dot" data-index="2">03 / CREATE</span>
-                                </div>
-                                <button className="strip-btn" id="stripNext" aria-label="Next Project">→</button>
-                            </div>
+                            <p>Actual enterprise AI products I built from vision to production rollout across life sciences &amp; clinical operations.</p>
                         </div>
                     </div>
 
-                    <div className="project-strip-wrap" id="projectStripWrap">
-                        <div className="project-strip" id="projectStrip">
-
+                    <div className="project-stack-container" style={{ padding: '0 6vw 40px' }}>
+                        <ScrollStack useWindowScroll={true} itemDistance={40} itemScale={0.03} itemStackDistance={20} baseScale={0.88}>
                             {/* PROJECT 1 */}
-                            <article className="lab-project" data-cursor="OPEN PROJECT" data-project="contract">
-                                <div className="project-art p1">
-                                    <span className="project-num">01 / REASON</span>
-                                    <div className="mock contract-ui">
-                                        <div className="mini-mono">GENAI CONTRACTING ASSISTANT / CLAUSE ANALYSER</div>
-                                        <div className="mini-title">Risk<br />detected.</div>
-                                        <div className="chips">
-                                            <span className="chip hot">HIGH RISK</span>
-                                            <span className="chip">CLAUSE 7.2</span>
-                                            <span className="chip">SOURCE VERIFIED</span>
+                            <ScrollStackItem>
+                                <article className="lab-project" data-cursor="OPEN PROJECT" data-project="contract">
+                                    <div className="project-art p1">
+                                        <span className="project-num">01 / REASON — ASTRAZENECA</span>
+                                        <div className="mock contract-ui">
+                                            <div className="mini-mono">GENAI CONTRACTING ASSISTANT / CLAUSE ANALYSER</div>
+                                            <div className="mini-title">Risk detected in<br />vendor terms.</div>
+                                            <div className="chips">
+                                                <span className="chip hot">60-65% TIME SAVED</span>
+                                                <span className="chip">550+ USERS</span>
+                                                <span className="chip">89% ADOPTION</span>
+                                            </div>
+                                            <div className="risk">
+                                                UNFAVOURABLE LIABILITY LANGUAGE<br /><br />
+                                                RAG analysis over contract templates. Retrieve evidence → highlight risk → regenerate compliant clauses with page-level citations.
+                                            </div>
                                         </div>
-                                        <div className="risk">
-                                            UNFAVOURABLE LIABILITY LANGUAGE<br /><br />
-                                            AI analysis grounded in source documents. Retrieve evidence → explain risk →
-                                            regenerate terms.
+                                        <div className="project-name">
+                                            <small>RISK / NEGOTIATE / RAG ANALYSIS</small>
+                                            GenAI Contracting Assistant
                                         </div>
+                                        <div className="project-open-badge">EXPLORE PROJECT ↗</div>
                                     </div>
-                                    <div className="project-name">
-                                        <small>RISK / NEGOTIATE / ANALYSE</small>
-                                        GenAI Contracting Assistant
-                                    </div>
-                                    <div className="project-open-badge">EXPLORE PROJECT ↗</div>
-                                </div>
-                            </article>
+                                </article>
+                            </ScrollStackItem>
 
                             {/* PROJECT 2 */}
-                            <article className="lab-project" data-cursor="OPEN PROJECT" data-project="sop">
-                                <div className="project-art p2">
-                                    <span className="project-num">02 / RETRIEVE</span>
-                                    <div className="graph">
-                                        <span className="line l1"></span><span className="line l2"></span><span
-                                            className="line l3"></span><span className="line l4"></span>
-                                        <div className="node n1">SOP<br />LIBRARY</div>
-                                        <div className="node n2">QUESTION</div>
-                                        <div className="node n3">SOURCE</div>
-                                        <div className="node n4">CONTEXT</div>
-                                        <div className="node n5">ANSWER</div>
+                            <ScrollStackItem>
+                                <article className="lab-project" data-cursor="OPEN PROJECT" data-project="sop">
+                                    <div className="project-art p2">
+                                        <span className="project-num">02 / RETRIEVE — ASTRAZENECA</span>
+                                        <div className="mock sop-ui">
+                                            <div className="mini-mono">GENAI SOP ASSISTANT / VEEVA VAULT RAG</div>
+                                            <div className="mini-title">Query 25 global<br />manufacturing sites.</div>
+                                            <div className="chips">
+                                                <span className="chip hot">790K MINS/WK SAVED</span>
+                                                <span className="chip">VEEVA VAULT</span>
+                                                <span className="chip">PAGE HYPERLINKS</span>
+                                            </div>
+                                            <div className="graph">
+                                                <span className="line l1"></span><span className="line l2"></span>
+                                                <span className="line l3"></span><span className="line l4"></span>
+                                                <div className="node n1">VEEVA<br />VAULT</div>
+                                                <div className="node n2">QUERY</div>
+                                                <div className="node n3">CHUNKS</div>
+                                                <div className="node n4">HYPERLINK</div>
+                                                <div className="node n5">SOP ID</div>
+                                            </div>
+                                            <div className="risk" style={{ background: '#eaf2fd', borderLeftColor: '#5d81e0', color: '#111' }}>
+                                                LOOKUP TIME: ~2 HRS/WK → ~20 MINS/WK<br /><br />
+                                                Instant SOP retrieval across thousands of Veeva Vault documents with exact page-level citations &amp; £59k–£75k MAU savings.
+                                            </div>
+                                        </div>
+                                        <div className="project-name">
+                                            <small>KNOWLEDGE / SEARCH / VEEVA RAG</small>
+                                            GenAI SOP Assistant
+                                        </div>
+                                        <div className="project-open-badge">EXPLORE PROJECT ↗</div>
                                     </div>
-                                    <div className="project-name">
-                                        <small>KNOWLEDGE / SEARCH / RAG</small>
-                                        GenAI SOP Assistant
-                                    </div>
-                                    <div className="project-open-badge">EXPLORE PROJECT ↗</div>
-                                </div>
-                            </article>
+                                </article>
+                            </ScrollStackItem>
 
                             {/* PROJECT 3 */}
-                            <article className="lab-project" data-cursor="OPEN PROJECT" data-project="doc">
-                                <div className="project-art p3">
-                                    <span className="project-num">03 / CREATE</span>
-                                    <div className="mock doc-ui">
-                                        <div className="mini-mono">AI DOC AUTHOR / DRAFT MODE</div>
-                                        <h3>Write the<br />first draft<span className="cursor-block"></span></h3>
-                                        <div className="doc-line"></div>
-                                        <div className="doc-line"></div>
-                                        <div className="doc-line short"></div>
-                                        <div className="doc-box">
-                                            GENERATE STRUCTURE<br /><br />
-                                            USE CONTEXT<br /><br />
-                                            REFINE WITH AI
+                            <ScrollStackItem>
+                                <article className="lab-project" data-cursor="OPEN PROJECT" data-project="doc">
+                                    <div className="project-art p3">
+                                        <span className="project-num">03 / CREATE — SYNEOS HEALTH</span>
+                                        <div className="mock doc-ui">
+                                            <div className="mini-mono">CLINICAL PLAN WORKFLOW AUTOMATION / GXP</div>
+                                            <h3>Automating TMF &amp;<br />master ICF drafts<span className="cursor-block"></span></h3>
+                                            <div className="chips">
+                                                <span className="chip hot">70% AUTOMATED</span>
+                                                <span className="chip">21 CFR / ICH GCP</span>
+                                                <span className="chip">HUMAN IN LOOP</span>
+                                            </div>
+                                            <div className="doc-line"></div>
+                                            <div className="doc-line short"></div>
+                                            <div className="doc-box">
+                                                SQL DATA PIPELINE (10+ PLAN TYPES)<br /><br />
+                                                AGENTIC ICF GENERATION &amp; COMPLIANCE CHECKLISTS
+                                            </div>
                                         </div>
+                                        <div className="project-name">
+                                            <small>AUTHOR / WORKFLOW / AGENTIC GXP</small>
+                                            AI Doc Author
+                                        </div>
+                                        <div className="project-open-badge">EXPLORE PROJECT ↗</div>
                                     </div>
-                                    <div className="project-name">
-                                        <small>AUTHOR / STRUCTURE / REFINE</small>
-                                        AI Doc Author
-                                    </div>
-                                    <div className="project-open-badge">EXPLORE PROJECT ↗</div>
-                                </div>
-                            </article>
-
-                        </div>
+                                </article>
+                            </ScrollStackItem>
+                        </ScrollStack>
                     </div>
                 </section>
 

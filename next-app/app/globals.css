@@ -983,24 +983,28 @@ nav a:active {
     height: auto;
     background: #fffdf8;
     color: #111;
-    border-radius: 14px;
+    border-radius: 16px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, .2);
     box-sizing: border-box;
     margin: 14px 0;
 }
 
-.contract-ui {
+.contract-ui,
+.sop-ui,
+.doc-ui {
     position: relative;
     left: auto;
     right: auto;
     top: auto;
     bottom: auto;
     transform: none;
-    padding: 16px 18px;
+    padding: 18px 20px;
     transition: .5s var(--ease);
 }
 
-.lab-project:hover .contract-ui {
+.lab-project:hover .contract-ui,
+.lab-project:hover .sop-ui,
+.lab-project:hover .doc-ui {
     transform: scale(1.01);
 }
 
@@ -3339,7 +3343,8 @@ footer {
     }
 
     .cways-logo {
-        font-size: 1.22rem !important;
+        font-size: clamp(1.45rem, 5.8vw, 2.3rem) !important;
+        font-weight: 600 !important;
         letter-spacing: -0.02em !important;
     }
 
