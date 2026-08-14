@@ -4,8 +4,6 @@ import React, { useEffect } from 'react';
 import Link from 'next/link';
 
 export default function Home(): React.JSX.Element {
-    const [welcomeStep, setWelcomeStep] = React.useState<number>(0);
-
     const handleLetsBuildTogether = (e: React.MouseEvent) => {
         e.preventDefault();
         const isMobile = typeof window !== 'undefined' && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -14,51 +12,6 @@ export default function Home(): React.JSX.Element {
         } else {
             window.open("https://www.linkedin.com/in/pranesh-soni", "_blank");
         }
-    };
-
-    useEffect(() => {
-        if (typeof window !== 'undefined' && sessionStorage.getItem('welcomeShown') === 'true') {
-            setWelcomeStep(3);
-            return;
-        }
-
-        // Stage 0: "Hi, I'm" + Avatar + "Pranesh"
-        const t1 = setTimeout(() => setWelcomeStep(1), 2600); // 360° spin & switch to "I'm" + Avatar + "an AI Product Manager"
-        const t2 = setTimeout(() => setWelcomeStep(2), 5400); // Trigger parallel upward flight motion
-        const t3 = setTimeout(() => {
-            setWelcomeStep(3);
-            if (typeof window !== 'undefined') {
-                sessionStorage.setItem('welcomeShown', 'true');
-            }
-        }, 6800);
-
-        return () => {
-            clearTimeout(t1);
-            clearTimeout(t2);
-            clearTimeout(t3);
-        };
-    }, []);
-
-    const handleSkipWelcome = () => {
-        setWelcomeStep(3);
-        if (typeof window !== 'undefined') {
-            sessionStorage.setItem('welcomeShown', 'true');
-        }
-    };
-
-    const renderLetters = (text: string, baseDelay = 0): React.JSX.Element[] => {
-        return text.split('').map((char, index) => (
-            <span
-                key={index}
-                className="char-span"
-                style={{
-                    ['--delay' as any]: `${baseDelay + index * 0.035}s`,
-                    whiteSpace: char === ' ' ? 'pre' : 'normal',
-                }}
-            >
-                {char}
-            </span>
-        ));
     };
 
     useEffect(() => {
@@ -639,37 +592,11 @@ export default function Home(): React.JSX.Element {
     return (
         <>
 
-            {/* WELCOME LOADER OVERLAY (MANON JOUET STYLE WITH PAPER BACKGROUND & FLOWING UP TRANSITION) */}
-            {welcomeStep < 3 && (
-                <div className={`welcome-overlay ${welcomeStep === 2 ? 'flowing-up' : ''}`}>
-                    <div className="welcome-row">
-                        <span className="welcome-prefix">
-                            {welcomeStep === 0 ? "Hi, I'm" : "I'm"}
-                        </span>
-
-                        <img
-                            src="/pranesh_avatar.png"
-                            alt="Pranesh Soni"
-                            className={`welcome-avatar-badge ${welcomeStep >= 1 ? 'rotate-360' : ''}`}
-                        />
-
-                        <div className="text-switcher-wrap">
-                            <div className={`switcher-line ${welcomeStep === 0 ? 'active' : 'exit'}`}>
-                                <span className="red-highlight">{renderLetters('Pranesh', 0.1)}</span>
-                            </div>
-                            <div className={`switcher-line ${welcomeStep === 1 ? 'active' : ''}`}>
-                                <span className="red-highlight">{renderLetters('an AI Product Manager', 0.1)}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
-
             <div className="noise"></div>
             <div className="cursor" id="cursor"></div>
             <div className="cursor-label" id="cursorLabel"></div>
 
-            <main id="top" className={`stack-container ${welcomeStep < 2 ? 'intro-active' : 'intro-flowing'}`}>
+            <main id="top" className="stack-container intro-flowing">
 
                 {/* HERO SECTION (CWAYS.IN REPLICATED DESIGN & SINGLE SCROLL FLOW) */}
                 <section className="hero-layer cways-hero-theme" id="heroLayer">
