@@ -2530,11 +2530,22 @@ footer {
 }
 
 .about-main-content {
-    padding: 180px clamp(24px, 6vw, 80px) 100px;
-    max-width: 1180px;
+    padding: 180px clamp(24px, 5vw, 60px) 100px;
+    max-width: 1240px;
     margin: 0 auto;
     width: 100%;
     text-align: left;
+}
+
+.about-role-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    word-spacing: 0.5em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin: 16px 0 28px;
 }
 
 /* REPLICATED 2-COLUMN GRID SYSTEM (EXACT MATCH TO ATTACHED SCREENSHOT) */

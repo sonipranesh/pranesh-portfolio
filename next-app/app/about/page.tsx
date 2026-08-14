@@ -38,12 +38,12 @@ export default function AboutPage() {
             {/* MAIN CONTENT AREA */}
             <main className="about-main-content">
                 <div className="about-hero-block">
-                    <div className="section-label">01 / ABOUT PRANESH</div>
-                    
                     <h1 className="cways-page-title">
                         ABOUT<br />
                         <span className="cways-stroke-text-dark">PRANESH.</span>
                     </h1>
+
+                    <div className="about-role-tag">AI PRODUCT OWNER / MANAGER</div>
 
                     <p className="cways-hero-subtitle">
                         Pranesh is an AI product manager with over three years of experience building and delivering AI-based products, turning complex workflows into intuitive, high-value software solutions.
