@@ -719,15 +719,23 @@ export default function Home(): React.JSX.Element {
                 {/* MANIFESTO SECTION */}
                 <section className="manifesto stack-card" id="manifesto">
                     <div className="section-label">02 / THE POINT OF VIEW</div>
-                    <h2>Technology is interesting.<br /><i>What people can do with it</i><br />is more interesting.</h2>
+                    <h2 className="cways-section-title">
+                        TECHNOLOGY IS INTERESTING.<br />
+                        <span className="cways-stroke-text-dark">WHAT PEOPLE DO WITH IT</span><br />
+                        IS MORE INTERESTING.
+                    </h2>
                 </section>
 
-                {/* WORK SECTION & CAROUSEL (OVERLAPPING STACK CARD 2) */}
+                {/* WORK SECTION & CAROUSEL */}
                 <section className="work stack-card" id="work">
                     <div className="work-head">
                         <div>
                             <div className="section-label">03 / SELECTED BUILDS</div>
-                            <h2>THREE<br /><i>things</i><br />I built.</h2>
+                            <h2 className="cways-section-title light-theme">
+                                THREE<br />
+                                <span className="cways-stroke-text-light">THINGS</span><br />
+                                I BUILT.
+                            </h2>
                         </div>
                         <div className="work-head-right">
                             <p>Interactive AI product prototypes exploring reasoning, retrieval, and document creation.</p>
@@ -934,7 +942,8 @@ export default function Home(): React.JSX.Element {
 
                         {/* HEADING */}
                         <h2 className="cways-footer-heading">
-                            GOT A GOOD <i className="serif">problem?</i>
+                            GOT A GOOD<br />
+                            <span className="cways-stroke-text-dark">PROBLEM?</span>
                         </h2>
 
                         {/* SUBTEXT */}

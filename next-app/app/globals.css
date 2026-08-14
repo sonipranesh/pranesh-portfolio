@@ -2733,23 +2733,44 @@ footer {
     margin-bottom: 16px;
 }
 
-.cways-footer-heading {
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(2.4rem, 5.5vw, 5.2rem);
+/* UNIFIED EXPLICIT DESIGN TYPOGRAPHY SYSTEM (MATCHING ATTACHED SCREENSHOT) */
+.cways-section-title,
+.cways-page-title,
+.cways-footer-heading,
+.manifesto h2,
+.work-head h2 {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: clamp(2.8rem, 6.2vw, 6.2rem);
     font-weight: 900;
-    letter-spacing: -0.03em;
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
     color: #111111;
-    line-height: 1.04;
-    margin: 0 0 18px;
+    margin: 0 0 28px;
+}
+
+.cways-section-title.light-theme,
+.work-head h2 {
+    color: #ffffff;
+}
+
+.cways-stroke-text-dark {
+    color: transparent;
+    -webkit-text-stroke: 1.8px rgba(17, 17, 17, 0.35);
+    display: inline-block;
+    letter-spacing: -0.03em;
+    font-weight: 900;
     text-transform: uppercase;
 }
 
-.cways-footer-heading .serif {
-    font-family: 'Cormorant Garamond', 'The Seasons', serif;
-    font-weight: 400;
-    font-style: italic;
-    text-transform: lowercase;
-    color: #111111;
+.cways-stroke-text-light,
+.cways-stroke-text {
+    color: transparent;
+    -webkit-text-stroke: 1.8px rgba(255, 255, 255, 0.45);
+    display: inline-block;
+    letter-spacing: -0.03em;
+    font-weight: 900;
+    text-transform: uppercase;
 }
 
 .cways-footer-subtext {

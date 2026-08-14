@@ -38,9 +38,12 @@ export default function AboutPage() {
             {/* MAIN CONTENT AREA */}
             <main className="about-main-content">
                 <div className="about-content-wrapper">
-                    <div className="about-eyebrow">A I   P R O D U C T   O W N E R</div>
+                    <div className="section-label">01 / ABOUT PRANESH</div>
                     
-                    <h1 className="about-hero-title">About Pranesh.</h1>
+                    <h1 className="cways-page-title">
+                        ABOUT<br />
+                        <span className="cways-stroke-text-dark">PRANESH.</span>
+                    </h1>
 
                     <div className="about-body-text">
                         <p>
