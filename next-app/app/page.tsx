@@ -279,14 +279,14 @@ export default function Home(): React.JSX.Element {
             contract: {
                 badge: "01 / REASON",
                 category: "GENAI CONTRACTING ASSISTANT / CLAUSE ANALYSER",
-                title: "Contract Liability & Clause Analyser",
-                problem: "Enterprise legal and procurement teams spend hundreds of hours verifying complex supplier agreements against strict liability caps and risk guardrails.",
-                features: "• Grounded RAG clause retrieval & citation mapping<br>• Automated Risk Score Engine (High / Medium / Low)<br>• Counter-proposal clause generator tuned to corporate policy<br>• Audit trail export for legal review",
-                arch: "Built on a hybrid RAG pipeline using dense embeddings and semantic reranking. Prompts enforce strict grounding to prevent hallucinations when evaluating indemnification terms.",
+                title: "GenAI Contracting Assistant",
+                problem: `<p>Legal and procurement teams at AstraZeneca were spending significant time manually reviewing third-party contracts—interpreting clauses, comparing proposed language against internal contracting guidance such as the CAN Handbook, identifying potential risks, negotiating alternative language, and extracting key information from lengthy agreements.</p><p>The process was <strong>manual, time-intensive, and susceptible to comparison errors</strong>, particularly when reviewers had to cross-reference contracts against multiple enterprise reference documents.</p><p>We built the <strong>GenAI Contracting Assistant</strong> to transform this workflow into an AI-assisted review and negotiation experience—enabling users to query enterprise knowledge, trace answers back to source citations, compare clauses against approved references, analyze complete contracts, and identify potential contractual risks.</p><p>The production solution scaled to <strong>~550 users</strong>, achieving <strong>~89% adoption and ~97% retention</strong>, while reducing contract-review effort by <strong>60–65%</strong> and eliminating manual comparison errors in contract analysis.</p>`,
+                features: `• <strong>Grounded RAG & Citation Mapping</strong> — Natural-language querying across ~300 enterprise reference documents, with source-level citations to maintain traceability and enable reviewers to validate AI-generated responses.<br/><br/>• <strong>Intelligent Clause Comparison</strong> — Compares pasted contractual clauses against approved reference language, surfaces relevant deviations, and enables contextual follow-up Q&A on the clause being reviewed.<br/><br/>• <strong>Contract Intelligence & Risk Assessment</strong> — Upload an entire contract for AI-powered summarization, contract-specific Q&A, information retrieval, and identification of potential risks categorized as <strong>High / Medium / Low</strong> across applicable risk sub-domains.<br/><br/>• <strong>Policy-Aware Counter-Proposals</strong> — Generates alternative clause language aligned with organizational contracting guidance, allowing reviewers to move from identifying a potential issue toward evaluating a possible negotiation position.<br/><br/>• <strong>Human-in-the-Loop Review</strong> — Incorporates human feedback into the product workflow to improve response alignment while keeping domain experts involved in high-impact decisions.`,
+                arch: `<p>Designed around a <strong>Retrieval-Augmented Generation (RAG)</strong> architecture, connecting Claude Haiku 4.0 with an enterprise knowledge layer containing ~300 reference documents. AWS services including S3, DynamoDB, Bedrock, Lambda and API Gateway supported the application workflow, while AWS Guardrails provided additional control over model behaviour.</p><p>The product was intentionally configured for <strong>low-temperature, grounded generation</strong>, with retrieval context and citation mapping used to reduce unsupported responses and improve traceability.</p><p>For AI quality validation, I worked with the testing team to establish evaluation dimensions spanning <strong>Context Recall, Context Precision, Retrieval Hit Rate, Top-K Recall, Answer Accuracy, Faithfulness/Groundedness, Relevance, Completeness, Citation Precision, Citation Recall, Hallucination Rate, Abstention Accuracy, and Out-of-Scope Leakage</strong>.</p><br/><h4 style="margin-top:24px;margin-bottom:12px;font-size:0.95rem;font-weight:700;color:var(--ink);letter-spacing:0.04em;text-transform:uppercase;">PRODUCT OWNERSHIP</h4><p>Owned the product lifecycle from <strong>workflow discovery and requirements definition through POC, roadmap, Agile delivery, UAT, production deployment, and change management</strong>.</p><p>Translated business workflows into functional and non-functional requirements, BRD, user stories, acceptance criteria, and prioritized backlog items; collaborated with architecture, engineering, UI/UX, QA, business SMEs, and leadership throughout delivery.</p><p>Led sprint planning and backlog discussions, conducted product demos with business leadership, collaborated with QA on AI-specific edge cases and response validation, supported UAT, and managed CRs for subsequent deployments.</p><p>The role also involved shaping the <strong>AI interaction design itself</strong>—working with UI/UX and technical teams to determine how retrieval, citations, clause comparison, contract analysis, risk identification, and human feedback should come together as a coherent enterprise workflow.</p>`,
                 role: "AI Product Owner & Prototyper",
                 domain: "Enterprise Contracting / Life Sciences",
-                tech: "Python, Vector Database, RAG Pipeline, Claude/GPT-4, React",
-                outcome: "Cut initial contract clause risk review from 4 hours to 15 minutes.",
+                tech: "AWS Bedrock · Claude Haiku 4.0 · RAG · Amazon S3 · Amazon DynamoDB · AWS Lambda · Amazon API Gateway · AWS Guardrails · Python · React",
+                outcome: "60–65% reduction in contract-review effort · ~550 users · ~89% adoption · ~97% retention · Manual comparison errors eliminated",
                 demoSample: "Clause 7.2 Liability Cap: Contractor liability shall be uncapped for indirect and consequential damages."
             },
             sop: {
@@ -445,18 +445,29 @@ export default function Home(): React.JSX.Element {
             });
         }
 
-        // Scroll handler for compact glass header state
+        // Scroll handler for auto-hiding traditional navbar (hide on scroll down, show on scroll up)
+        let lastScrollY = window.scrollY;
         const handleHeaderScroll = () => {
             const header = document.querySelector('header');
-            if (header) {
-                if (window.scrollY > 20) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
+            if (!header) return;
+
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
+
+            if (currentScrollY > 80 && currentScrollY > lastScrollY) {
+                header.classList.add('nav-hidden');
+            } else if (currentScrollY < lastScrollY) {
+                header.classList.remove('nav-hidden');
+            }
+
+            lastScrollY = Math.max(0, currentScrollY);
         };
-        window.addEventListener('scroll', handleHeaderScroll);
+        window.addEventListener('scroll', handleHeaderScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleHeaderScroll);
     }, []);
 
@@ -499,11 +510,6 @@ export default function Home(): React.JSX.Element {
                 <section className="hero-layer" id="heroLayer">
                     {/* NAVBAR AT THE TOP OF HERO SECTION */}
                     <header>
-                        <a className="logo" href="#top">
-                            <img className="logo-avatar-badge" src="/pranesh_avatar.png" alt="Pranesh" />
-                            <img className="brand-icon" src="/logo.png?v=3" alt="Pranesh Soni" />
-                        </a>
-
                         <nav>
                             <a href="#work" data-cursor="WORK">WORK</a>
                             <a href="#lab" data-cursor="PLAY">LAB</a>
@@ -856,13 +862,13 @@ export default function Home(): React.JSX.Element {
                     <div className="modal-tabs">
                         <button className="modal-tab active" data-tab="overview">OVERVIEW</button>
                         <button className="modal-tab" data-tab="architecture">ARCHITECTURE & RAG</button>
-                        <button className="modal-tab" data-tab="demo">INTERACTIVE DEMO</button>
+                        <button className="modal-tab" data-tab="kpis">PRODUCT KPIs &amp; IMPACT</button>
                     </div>
 
                     <div className="tab-pane active" id="tab-overview">
                         <div className="modal-grid">
                             <div>
-                                <h3 className="modal-section-title">Problem & Impact</h3>
+                                <h3 className="modal-section-title">Problem &amp; Impact</h3>
                                 <div className="modal-text" id="modalProblemText">
                                     Enterprise legal teams spend hundreds of hours manually verifying vendor contracts against
                                     internal liability guardrails. This tool automatically retrieves relevant clauses, flags
@@ -880,7 +886,7 @@ export default function Home(): React.JSX.Element {
                                 <div className="modal-spec-card">
                                     <div className="spec-item">
                                         <label>Role</label>
-                                        <span id="modalRole">AI Product Owner & Prototyper</span>
+                                        <span id="modalRole">AI Product Owner &amp; Prototyper</span>
                                     </div>
                                     <div className="spec-item">
                                         <label>Domain</label>
@@ -900,7 +906,7 @@ export default function Home(): React.JSX.Element {
                     </div>
 
                     <div className="tab-pane" id="tab-architecture">
-                        <h3 className="modal-section-title">System Architecture & Knowledge Retrieval</h3>
+                        <h3 className="modal-section-title">System Architecture &amp; Knowledge Retrieval</h3>
                         <div className="modal-text" id="modalArchText">
                             Documents are parsed into semantic chunks and stored in a vector index with metadata filtering.
                             Query processing runs dual-stage retrieval: dense vector similarity followed by reranking against
@@ -908,14 +914,81 @@ export default function Home(): React.JSX.Element {
                         </div>
                     </div>
 
-                    <div className="tab-pane" id="tab-demo">
-                        <h3 className="modal-section-title">Live Prototype Sandbox</h3>
-                        <p className="modal-text">Try out a simulated version of this AI product capability:</p>
-                        <div className="demo-sandbox">
-                            <textarea id="sandboxInput" className="demo-input" rows={3}
-                                placeholder="Enter a contract clause or query..."></textarea>
-                            <button className="demo-btn" id="sandboxRun">ANALYSE WITH AI →</button>
-                            <div className="demo-output" id="sandboxOutput"></div>
+                    <div className="tab-pane" id="tab-kpis">
+                        <h3 className="modal-section-title">Product Impact &amp; Business KPIs</h3>
+                        <div className="kpi-charts-wrapper">
+                            
+                            {/* CHART 1: CONTRACT REVIEW EFFORT REDUCTION */}
+                            <div className="kpi-chart-card">
+                                <div className="kpi-card-header">
+                                    <h4 className="kpi-chart-title">Contract Review Effort</h4>
+                                    <p className="kpi-chart-sub">Measured reduction in review effort after introducing the GenAI Contracting Assistant.</p>
+                                </div>
+                                <div className="kpi-bar-comparison">
+                                    <div className="kpi-bar-group">
+                                        <div className="kpi-bar-label-top">
+                                            <span>Before AI</span>
+                                            <span className="kpi-bar-val">100%</span>
+                                        </div>
+                                        <div className="kpi-bar-track">
+                                            <div className="kpi-bar-fill before" style={{ width: '100%' }}></div>
+                                        </div>
+                                    </div>
+                                    <div className="kpi-bar-group">
+                                        <div className="kpi-bar-label-top">
+                                            <span>After AI</span>
+                                            <span className="kpi-bar-val highlight">37.5%</span>
+                                        </div>
+                                        <div className="kpi-bar-track">
+                                            <div className="kpi-bar-fill after" style={{ width: '37.5%' }}></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="kpi-badge-impact">
+                                    <span className="impact-arrow">↓</span> <strong>60–65% Reduction</strong> in Contract-Review Effort
+                                </div>
+                            </div>
+
+                            {/* CHART 2: PRODUCTION ADOPTION & RETENTION */}
+                            <div className="kpi-chart-card">
+                                <div className="kpi-card-header">
+                                    <h4 className="kpi-chart-title">From Capability to Adoption</h4>
+                                    <p className="kpi-chart-sub">Production adoption and retention of the GenAI Contracting Assistant.</p>
+                                </div>
+                                <div className="kpi-metrics-grid">
+                                    <div className="kpi-metric-box">
+                                        <div className="kpi-ring-wrap">
+                                            <svg viewBox="0 0 36 36" className="kpi-ring-svg">
+                                                <path className="ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                                <path className="ring-stroke" strokeDasharray="89, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                            </svg>
+                                            <span className="ring-text">89%</span>
+                                        </div>
+                                        <div className="metric-info">
+                                            <div className="metric-name">Adoption</div>
+                                            <div className="metric-sub">~550 active users</div>
+                                        </div>
+                                    </div>
+
+                                    <div className="kpi-metric-box">
+                                        <div className="kpi-ring-wrap">
+                                            <svg viewBox="0 0 36 36" className="kpi-ring-svg">
+                                                <path className="ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                                <path className="ring-stroke retention" strokeDasharray="97, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                            </svg>
+                                            <span className="ring-text">97%</span>
+                                        </div>
+                                        <div className="metric-info">
+                                            <div className="metric-name">Retention</div>
+                                            <div className="metric-sub">Long-term active usage</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="kpi-summary-strip">
+                                    <span>~550 Active Users</span> • <span>89% Adoption</span> • <span>97% Retention</span>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
