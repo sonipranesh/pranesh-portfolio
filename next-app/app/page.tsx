@@ -910,35 +910,21 @@ export default function Home(): React.JSX.Element {
                     </div>
                 </section>
 
-                {/* CONTACT SECTION (LET'S BUILD / GOT A GOOD PROBLEM) */}
-                <section className="contact stack-card" id="contact">
-                    <div>
-                        <div className="section-label">08 / LET'S BUILD</div>
-                        <h2>GOT A<br />GOOD<br /><i>problem?</i></h2>
-                    </div>
-
-                    <div className="contact-bottom">
-                        <div className="contact-info">
-                            <p>AI product opportunity, prototype build, life sciences RAG solution, or strategic advisory —
-                                let's start a conversation.</p>
-                            <div className="status-pill">
-                                <span className="status-dot"></span>
-                                AVAILABLE FOR AI PRODUCT OPPORTUNITIES & PROTOTYPING
-                            </div>
-                        </div>
-
-                        <div className="links">
-                            <a href="mailto:praneshsoni@outlook.com" data-cursor="SEND EMAIL">EMAIL ME ↗</a>
-                            <a href="https://www.linkedin.com/in/pranesh-soni" target="_blank" rel="noopener noreferrer" data-cursor="LINKEDIN">LINKEDIN ↗</a>
-                        </div>
-                    </div>
-                </section>
-
-                {/* REPLICATED CWAYS.IN FOOTER DESIGN */}
-                <footer className="cways-footer-theme">
+                {/* UNIFIED CWAYS.IN STYLE FOOTER WITH MERGED HEADING & CONTENT */}
+                <footer className="cways-footer-theme" id="contact">
                     <div className="cways-footer-inner">
                         {/* EYEBROW TAG */}
-                        <div className="cways-footer-eyebrow">L E T ' S   C R E A T E   A   S T A T E M E N T</div>
+                        <div className="cways-footer-eyebrow">08 / LET'S BUILD</div>
+
+                        {/* HEADING */}
+                        <h2 className="cways-footer-heading">
+                            GOT A GOOD <i className="serif">problem?</i>
+                        </h2>
+
+                        {/* SUBTEXT */}
+                        <p className="cways-footer-subtext">
+                            AI product opportunity, prototype build, life sciences RAG solution, or strategic advisory — let's start a conversation.
+                        </p>
 
                         {/* HUGE EMAIL HIGHLIGHT */}
                         <a href="mailto:praneshsoni@outlook.com" className="cways-footer-email" data-cursor="EMAIL">
