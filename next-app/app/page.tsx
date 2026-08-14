@@ -647,19 +647,17 @@ export default function Home(): React.JSX.Element {
 
             <main id="top" className={`stack-container ${welcomeStep < 2 ? 'intro-active' : 'intro-flowing'}`}>
 
-                {/* HERO SECTION (CWAYS.IN EXACT REPLICATED DESIGN) */}
+                {/* HERO SECTION (CWAYS.IN REPLICATED DESIGN & SINGLE SCROLL FLOW) */}
                 <section className="hero-layer cways-hero-theme" id="heroLayer">
-                    {/* NAVBAR AT THE TOP OF HERO SECTION */}
+                    {/* NAVBAR AT THE TOP OF HERO SECTION (CWAYS STYLE WITH ORIGINAL SECTION NAMES) */}
                     <header className="cways-header">
-                        <a href="#top" className="cways-logo">cways</a>
+                        <a href="#top" className="cways-logo" data-cursor="PRANESH">Pranesh Soni</a>
 
                         <nav className="cways-nav">
-                            <a href="#about" data-cursor="ABOUT">ABOUT</a>
-                            <a href="#services" data-cursor="SERVICES">SERVICES</a>
-                            <a href="#work" data-cursor="PORTFOLIO">PORTFOLIO</a>
-                            <a href="#insights" data-cursor="INSIGHTS">INSIGHTS</a>
-                            <a href="#process" data-cursor="PROCESS">PROCESS</a>
-                            <a href="#why" data-cursor="WHY">WHY CWAYS</a>
+                            <a href="#work" data-cursor="WORK">WORK</a>
+                            <a href="#lab" data-cursor="PLAY">LAB</a>
+                            <a href="#about" data-cursor="ME">ME</a>
+                            <a href="#contact" data-cursor="TALK">TALK</a>
                         </nav>
 
                         <div className="header-actions">
@@ -674,20 +672,18 @@ export default function Home(): React.JSX.Element {
 
                     {/* HERO TITLE & CONTENT */}
                     <div className="cways-hero-content">
-                        <div className="cways-eyebrow">W E A R E C W A Y S</div>
+                        <div className="cways-eyebrow">A I   P R O D U C T   O W N E R</div>
 
                         <h1 className="cways-hero-title">
-                            CRAFTING<br />
-                            DIGITAL<br />
-                            EXPERIENCES<br />
-                            THAT MOVE<br />
-                            <span className="cways-stroke-text">PEOPLE.</span>
+                            I BUILD<br />
+                            AI PRODUCTS<br />
+                            THAT TURN<br />
+                            COMPLEXITY<br />
+                            <span className="cways-stroke-text">INTO POSSIBILITY.</span>
                         </h1>
 
                         <p className="cways-hero-sub">
-                            An independent creative design and technology lab. We shape immersive web
-                            experiences, state-of-the-art visual layouts, and digital motion masterpieces
-                            for brands that refuse to be forgotten.
+                            I'm Pranesh — an AI Product Owner building AI capabilities for life sciences, taking ideas from workflow to working prototype.
                         </p>
 
                         <div className="cways-hero-actions">
@@ -1074,7 +1070,7 @@ export default function Home(): React.JSX.Element {
                     <div className="tab-pane" id="tab-kpis">
                         <h3 className="modal-section-title">Product Impact &amp; Business KPIs</h3>
                         <div className="kpi-charts-wrapper" id="modalKpisWrapper">
-                            
+
                             {/* CHART 1: CONTRACT REVIEW EFFORT REDUCTION */}
                             <div className="kpi-chart-card">
                                 <div className="kpi-card-header">
