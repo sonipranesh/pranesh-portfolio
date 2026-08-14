@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import SplashCursor from "./components/SplashCursor";
 
 export const metadata: Metadata = {
   title: "Pranesh Soni — AI Product Owner & Builder",
@@ -21,7 +22,16 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <SplashCursor
+          DENSITY_DISSIPATION={6}
+          VELOCITY_DISSIPATION={2.5}
+          CURL={2}
+          SPLAT_RADIUS={0.1}
+          SPLAT_FORCE={4500}
+        />
+        {children}
+      </body>
     </html>
   );
 }
