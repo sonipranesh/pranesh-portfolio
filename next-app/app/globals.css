@@ -3933,6 +3933,104 @@ footer {
     position: relative;
 }
 
+/* ==========================================================================
+   CREATIVE WRITING & TYPING BACKGROUND FOR BLOGS
+   ========================================================================== */
+.writing-background-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+/* SUBTLE NOTEBOOK GUIDELINES */
+.paper-lines {
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        transparent,
+        transparent 31px,
+        rgba(0, 0, 0, 0.032) 32px
+    );
+    opacity: 0.85;
+}
+
+.margin-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: clamp(20px, 4vw, 50px);
+    width: 1px;
+    background: rgba(239, 96, 71, 0.12); /* Subtle editorial red margin line */
+}
+
+/* FOUNTAIN PEN ANIMATED PATH */
+.pen-drawing-svg {
+    position: absolute;
+    top: 100px;
+    right: 3%;
+    width: clamp(350px, 55vw, 850px);
+    height: auto;
+    opacity: 0.28;
+}
+
+.pen-path {
+    stroke: rgba(17, 17, 17, 0.22);
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-dasharray: 1400;
+    stroke-dashoffset: 1400;
+    animation: drawInkLine 10s ease-in-out infinite alternate;
+}
+
+@keyframes drawInkLine {
+    0% {
+        stroke-dashoffset: 1400;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* FLOATING TYPEWRITER GLYPHS */
+.floating-glyphs-layer {
+    position: absolute;
+    inset: 0;
+}
+
+.glyph {
+    position: absolute;
+    font-family: var(--font-mono);
+    color: rgba(17, 17, 17, 0.05);
+    font-weight: 700;
+    user-select: none;
+    animation: floatGlyph 12s ease-in-out infinite alternate;
+}
+
+.g1 { top: 180px; left: 8%; font-size: 3rem; animation-delay: 0s; }
+.g2 { top: 320px; right: 12%; font-size: 2.5rem; animation-delay: 2s; }
+.g3 { top: 600px; left: 4%; font-size: 2.2rem; animation-delay: 4s; }
+.g4 { top: 950px; right: 6%; font-size: 2.8rem; animation-delay: 1s; }
+.g5 { top: 1200px; left: 10%; font-size: 1.1rem; border: 1px solid rgba(0,0,0,0.06); padding: 4px 8px; border-radius: 6px; animation-delay: 3s; }
+.g6 { top: 1500px; right: 14%; font-size: 1.1rem; animation-delay: 5s; }
+.g7 { top: 1850px; left: 6%; font-size: 1.1rem; border: 1px solid rgba(0,0,0,0.06); padding: 4px 8px; border-radius: 6px; animation-delay: 2.5s; }
+.g8 { top: 2200px; right: 10%; font-size: 1.1rem; border: 1px solid rgba(0,0,0,0.06); padding: 4px 8px; border-radius: 6px; animation-delay: 0.5s; }
+.g9 { top: 2500px; left: 12%; font-size: 2.8rem; animation-delay: 3.5s; }
+.g10 { top: 2800px; right: 8%; font-size: 2.2rem; animation-delay: 1.8s; }
+
+@keyframes floatGlyph {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-18px) rotate(4deg);
+    }
+    100% {
+        transform: translateY(12px) rotate(-3deg);
+    }
+}
+
 .blogs-main-content {
     padding-top: 150px;
     padding-bottom: 120px;

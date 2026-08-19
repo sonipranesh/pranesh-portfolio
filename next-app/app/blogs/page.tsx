@@ -214,6 +214,32 @@ export default function BlogsPage() {
   return (
     <div className="blogs-page-wrapper">
       <div className="noise"></div>
+      
+      {/* CREATIVE WRITING & TYPING BACKGROUND LAYER */}
+      <div className="writing-background-layer">
+        <div className="paper-lines"></div>
+        <div className="margin-line"></div>
+
+        {/* FOUNTAIN PEN INK STROKE DRAWING SVG */}
+        <svg className="pen-drawing-svg" viewBox="0 0 1200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 50,200 Q 200,80 400,220 T 750,150 T 1150,250" className="pen-path" />
+        </svg>
+
+        {/* FLOATING TYPEWRITER GLYPHS & KEYCAPS */}
+        <div className="floating-glyphs-layer">
+          <span className="glyph g1">¶</span>
+          <span className="glyph g2">§</span>
+          <span className="glyph g3">✎</span>
+          <span className="glyph g4">✍</span>
+          <span className="glyph g5">⌘K</span>
+          <span className="glyph g6">[prose]</span>
+          <span className="glyph g7">↵ enter</span>
+          <span className="glyph g8">shift ⇧</span>
+          <span className="glyph g9">¶</span>
+          <span className="glyph g10">✍</span>
+        </div>
+      </div>
+
       <div className="cursor" id="cursor">
         <span className="cursor-label" id="cursorLabel"></span>
       </div>
