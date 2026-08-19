@@ -268,7 +268,73 @@ export default function Home(): React.JSX.Element {
                 domain: "Enterprise Contracting / Life Sciences",
                 tech: "AWS Bedrock · Claude Haiku 4.0 · RAG · Amazon S3 · Amazon DynamoDB · AWS Lambda · Amazon API Gateway · AWS Guardrails · Python · React",
                 outcome: "60–65% reduction in contract-review effort · ~550 users · ~89% adoption · ~97% retention · Manual comparison errors eliminated",
-                demoSample: "Clause 7.2 Liability Cap: Contractor liability shall be uncapped for indirect and consequential damages."
+                demoSample: "Clause 7.2 Liability Cap: Contractor liability shall be uncapped for indirect and consequential damages.",
+                kpisHtml: `<div class="kpi-chart-card">
+                    <div class="kpi-card-header">
+                        <h4 class="kpi-chart-title">Contract Review Time Effort Reduction</h4>
+                        <p class="kpi-chart-sub">Contract review and risk identification effort before vs after deploying the GenAI Contracting Assistant.</p>
+                    </div>
+                    <div class="kpi-bar-comparison">
+                        <div class="kpi-bar-group">
+                            <div class="kpi-bar-label-top">
+                                <span>Before AI</span>
+                                <span class="kpi-bar-val">100% Manual Review</span>
+                            </div>
+                            <div class="kpi-bar-track">
+                                <div class="kpi-bar-fill before" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                        <div class="kpi-bar-group">
+                            <div class="kpi-bar-label-top">
+                                <span>After AI</span>
+                                <span class="kpi-bar-val highlight">35–40% Effort (60–65% Time Saved)</span>
+                            </div>
+                            <div class="kpi-bar-track">
+                                <div class="kpi-bar-fill after" style="width: 37.5%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kpi-badge-impact">
+                        <span class="impact-arrow">↓</span> <strong>60–65% Reduction in Review Effort</strong> · Manual Comparison Errors Eliminated
+                    </div>
+                </div>
+                <div class="kpi-chart-card">
+                    <div class="kpi-card-header">
+                        <h4 class="kpi-chart-title">Product Scale &amp; Adoption</h4>
+                        <p class="kpi-chart-sub">Production adoption, user scaling, and retention metrics across legal &amp; procurement teams.</p>
+                    </div>
+                    <div class="kpi-metrics-grid">
+                        <div class="kpi-metric-box">
+                            <div class="kpi-ring-wrap">
+                                <svg viewBox="0 0 36 36" class="kpi-ring-svg">
+                                    <path class="ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path class="ring-stroke" strokeDasharray="89, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                </svg>
+                                <span class="ring-text">~89%</span>
+                            </div>
+                            <div class="metric-info">
+                                <div class="metric-name">Adoption</div>
+                                <div class="metric-sub">~550 Legal Users</div>
+                            </div>
+                        </div>
+                        <div class="kpi-metric-box">
+                            <div class="kpi-ring-wrap">
+                                <svg viewBox="0 0 36 36" class="kpi-ring-svg">
+                                    <path class="ring-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path class="ring-stroke retention" strokeDasharray="97, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                </svg>
+                                <span class="ring-text">~97%</span>
+                            </div>
+                            <div class="metric-info">
+                                <div class="metric-name">Retention</div>
+                                <div class="metric-sub">User Loyalty</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kpi-summary-strip">
+                        <span>~550 Legal Users</span> • <span>~89% Adoption</span> • <span>~97% Retention</span>
+                    </div>
+                </div>`
             },
             sop: {
                 badge: "02 / RETRIEVE",
