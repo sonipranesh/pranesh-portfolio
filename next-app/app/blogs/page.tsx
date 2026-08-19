@@ -7,6 +7,7 @@ interface BlogPost {
   id: string;
   category: string;
   tag: string;
+  number: string;
   title: string;
   subtitle: string;
   date: string;
@@ -20,7 +21,8 @@ const BLOG_POSTS: BlogPost[] = [
   {
     id: 'rag-at-scale',
     category: 'RAG & EVALUATION',
-    tag: '01 / SYSTEM ARCHITECTURE',
+    tag: 'SYSTEM ARCHITECTURE',
+    number: '01',
     title: 'Why Most Enterprise RAG Systems Fail at Scale — And How Grounded Evaluation Fixes It',
     subtitle: 'Moving past naive cosine similarity toward hybrid search, page-level citation mapping, and rigorous evaluation dimensions.',
     date: 'AUG 2026',
@@ -57,7 +59,8 @@ const BLOG_POSTS: BlogPost[] = [
   {
     id: 'agentic-workflows-gxp',
     category: 'ENTERPRISE GenAI',
-    tag: '02 / AGENTIC WORKFLOWS',
+    tag: 'AGENTIC WORKFLOWS',
+    number: '02',
     title: 'The Shift from Conversational Chatbots to Autonomous Agentic Workflows in GxP',
     subtitle: 'Why single-prompt chat windows are being replaced by multi-agent tool execution and deterministic validation gates.',
     date: 'JUL 2026',
@@ -88,7 +91,8 @@ const BLOG_POSTS: BlogPost[] = [
   {
     id: 'veeva-vault-genai-lessons',
     category: 'ENTERPRISE SCALE',
-    tag: '03 / LESSONS FROM FIELD',
+    tag: 'LESSONS FROM FIELD',
+    number: '03',
     title: 'Veeva Vault + GenAI: Lessons from 25 Global Site Deployments',
     subtitle: 'Product design, wave-based site activation, and change management strategies for 790,000 minutes saved weekly.',
     date: 'JUN 2026',
@@ -119,7 +123,8 @@ const BLOG_POSTS: BlogPost[] = [
   {
     id: 'po-framework-evals',
     category: 'PRODUCT LEADERSHIP',
-    tag: '04 / AI PRODUCT OWNERSHIP',
+    tag: 'AI PRODUCT OWNERSHIP',
+    number: '04',
     title: 'The AI Product Owner’s Guide to LLM Evaluation & Edge Case Management',
     subtitle: 'How product leaders can bridge the gap between engineering benchmarks and real-world business adoption.',
     date: 'MAY 2026',
@@ -155,7 +160,6 @@ export default function BlogsPage() {
   useEffect(() => {
     const cursor = document.getElementById('cursor');
     const label = document.getElementById('cursorLabel');
-    let bindCursorEvents = () => {};
 
     if (matchMedia('(pointer:fine)').matches && cursor && label) {
       const onMouseMove = (e: MouseEvent) => {
@@ -171,7 +175,7 @@ export default function BlogsPage() {
           cursor.classList.add('active');
           let text = target.dataset.cursor;
           if (!text) {
-            if (target.classList.contains('blog-card')) text = 'READ ESSAY';
+            if (target.classList.contains('perspective-card')) text = 'READ PERSPECTIVE';
             else if (target.classList.contains('cways-logo')) text = 'HOME';
             else text = target.textContent?.trim().slice(0, 20) || 'EXPLORE';
           }
@@ -186,22 +190,18 @@ export default function BlogsPage() {
         }
       }
 
-      bindCursorEvents = function () {
-        document.querySelectorAll('[data-cursor], a, button, .blog-card, .filter-chip').forEach(el => {
-          el.removeEventListener('mouseenter', onMouseEnter);
-          el.removeEventListener('mouseleave', onMouseLeave);
-          el.addEventListener('mouseenter', onMouseEnter);
-          el.addEventListener('mouseleave', onMouseLeave);
-        });
-      };
-
-      bindCursorEvents();
+      document.querySelectorAll('[data-cursor], a, button, .perspective-card, .editorial-spotlight-card, .perspective-filter-btn').forEach(el => {
+        el.removeEventListener('mouseenter', onMouseEnter);
+        el.removeEventListener('mouseleave', onMouseLeave);
+        el.addEventListener('mouseenter', onMouseEnter);
+        el.addEventListener('mouseleave', onMouseLeave);
+      });
 
       return () => {
         window.removeEventListener('mousemove', onMouseMove);
       };
     }
-  }, []);
+  }, [selectedCategory, activePost]);
 
   const categories = ['ALL', 'RAG & EVALUATION', 'ENTERPRISE GenAI', 'ENTERPRISE SCALE', 'PRODUCT LEADERSHIP'];
 
@@ -209,10 +209,10 @@ export default function BlogsPage() {
     ? BLOG_POSTS
     : BLOG_POSTS.filter(post => post.category === selectedCategory);
 
-  const featuredPost = BLOG_POSTS[0];
+  const spotlightPost = BLOG_POSTS[0];
 
   return (
-    <div className="blogs-page-wrapper">
+    <div className="perspective-page-wrapper">
       <div className="noise"></div>
       <div className="cursor" id="cursor">
         <span className="cursor-label" id="cursorLabel"></span>
@@ -286,90 +286,116 @@ export default function BlogsPage() {
         </div>
       )}
 
-      {/* MAIN CONTENT AREA */}
-      <main className="blogs-main-content">
-        {/* BLOG HERO SECTION */}
-        <section className="blogs-hero">
-          <div className="blogs-hero-inner">
-            <div className="section-label">04 / WRITING &amp; ESSAYS</div>
-            <h1 className="cways-section-title">
-              AI PRODUCT<br />
-              <span className="cways-stroke-text-dark">PERSPECTIVES &amp;</span><br />
-              ESSAYS.
-            </h1>
-            <p className="blogs-hero-sub">
-              Deep dives on AI product ownership, enterprise RAG evaluation, agentic workflows, and shipping compliant GenAI systems across life sciences &amp; healthcare.
-            </p>
+      {/* MAIN CONTAINER */}
+      <main className="perspective-container">
+        {/* HERO SECTION - PERSPECTIVES */}
+        <section className="perspective-hero">
+          <div className="perspective-hero-badge">04 / ESSAYS &amp; THOUGHT LEADERSHIP</div>
+          <h1 className="perspective-title">Perspectives.</h1>
+          <p className="perspective-subtitle">
+            Long-form essays on enterprise RAG evaluation, agentic workflow design, LLM hallucination suppression, and shipping compliant GenAI products.
+          </p>
+        </section>
+
+        {/* EDITORIAL SPOTLIGHT FEATURE */}
+        <section className="perspective-spotlight-section">
+          <div className="editorial-spotlight-card" onClick={() => setActivePost(spotlightPost)} data-cursor="READ FEATURED">
+            <div className="spotlight-left">
+              <div className="spotlight-meta-bar">
+                <span className="spotlight-badge">FEATURED ESSAY</span>
+                <span className="spotlight-date">{spotlightPost.date} • {spotlightPost.readTime}</span>
+              </div>
+              <h2 className="spotlight-title">{spotlightPost.title}</h2>
+              <p className="spotlight-excerpt">{spotlightPost.excerpt}</p>
+              <div className="spotlight-action">
+                <span className="spotlight-read-btn">READ ESSAY <span className="arrow">↗</span></span>
+                <span className="spotlight-category-tag">{spotlightPost.category}</span>
+              </div>
+            </div>
+            <div className="spotlight-right">
+              <div className="spotlight-preview-box">
+                <div className="preview-top-bar">
+                  <span className="preview-dot red"></span>
+                  <span className="preview-dot yellow"></span>
+                  <span className="preview-dot green"></span>
+                  <span className="preview-filename">evaluation_framework.py</span>
+                </div>
+                <div className="preview-content">
+                  <div className="code-line"><span className="code-kw">class</span> <span className="code-fn">GroundedEvaluator</span>:</div>
+                  <div className="code-line indent">def <span className="code-fn">assess_precision</span>(self, recall_chunks):</div>
+                  <div className="code-line indent-2">context_score = verify_retrieval(recall_chunks)</div>
+                  <div className="code-line indent-2">citation_valid = check_page_anchors(recall_chunks)</div>
+                  <div className="code-line indent-2"><span className="code-kw">return</span> context_score &gt; 0.97 <span className="code-kw">and</span> citation_valid</div>
+                </div>
+                <div className="preview-stat-card">
+                  <div className="stat-num">97.4%</div>
+                  <div className="stat-label">Citation Precision Achieved</div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* FEATURED ESSAY BANNER */}
-        <section className="featured-blog-section">
-          <div className="featured-blog-card" onClick={() => setActivePost(featuredPost)} data-cursor="FEATURED ESSAY">
-            <div className="featured-tag-strip">
-              <span className="featured-badge">FEATURED ESSAY</span>
-              <span className="blog-meta-info">{featuredPost.date} • {featuredPost.readTime}</span>
-            </div>
-            <h2 className="featured-title">{featuredPost.title}</h2>
-            <p className="featured-sub">{featuredPost.subtitle}</p>
-            <p className="featured-excerpt">{featuredPost.excerpt}</p>
-            <div className="featured-footer">
-              <span className="read-btn">READ ESSAY ↗</span>
-              <span className="tag-pill">{featuredPost.category}</span>
-            </div>
-          </div>
-        </section>
-
-        {/* CATEGORY FILTER CHIPS */}
-        <section className="blogs-filter-section">
-          <div className="filter-chips-container">
-            {categories.map(cat => (
-              <button
-                key={cat}
-                className={`filter-chip ${selectedCategory === cat ? 'active' : ''}`}
-                onClick={() => setSelectedCategory(cat)}
-                data-cursor={cat}
-              >
-                {cat}
-              </button>
-            ))}
+        {/* FILTER CHIPS NAVIGATION */}
+        <section className="perspective-filter-bar">
+          <div className="filter-scroll-wrap">
+            {categories.map(cat => {
+              const count = cat === 'ALL'
+                ? BLOG_POSTS.length
+                : BLOG_POSTS.filter(p => p.category === cat).length;
+              return (
+                <button
+                  key={cat}
+                  className={`perspective-filter-btn ${selectedCategory === cat ? 'active' : ''}`}
+                  onClick={() => setSelectedCategory(cat)}
+                  data-cursor={cat}
+                >
+                  <span className="filter-name">{cat}</span>
+                  <span className="filter-count">{count}</span>
+                </button>
+              );
+            })}
           </div>
         </section>
 
         {/* ARTICLES GRID */}
-        <section className="blogs-grid-section">
-          <div className="blogs-grid">
-            {filteredPosts.map(post => (
+        <section className="perspective-grid-section">
+          <div className="perspective-grid">
+            {filteredPosts.map((post) => (
               <article
                 key={post.id}
-                className="blog-card"
+                className="perspective-card"
                 onClick={() => setActivePost(post)}
-                data-cursor="READ ARTICLE"
+                data-cursor="READ ESSAY"
               >
-                <div className="blog-card-top">
-                  <span className="blog-tag">{post.tag}</span>
-                  <span className="blog-meta-date">{post.date} • {post.readTime}</span>
+                <div className="card-header-bar">
+                  <span className="card-num">{post.number} / {post.tag}</span>
+                  <span className="card-readtime">{post.readTime}</span>
                 </div>
-                <h3 className="blog-card-title">{post.title}</h3>
-                <p className="blog-card-excerpt">{post.excerpt}</p>
-                <div className="blog-card-footer">
-                  <span className="read-link">READ FULL ESSAY ↗</span>
-                  <span className="category-label">{post.category}</span>
+                <h3 className="card-title">{post.title}</h3>
+                <p className="card-excerpt">{post.excerpt}</p>
+                <div className="card-footer-bar">
+                  <span className="card-read-action">READ ESSAY <span className="arrow">↗</span></span>
+                  <span className="card-date-badge">{post.date}</span>
                 </div>
               </article>
             ))}
           </div>
         </section>
 
-        {/* SUBSTACK / NEWSLETTER SECTION */}
-        <section className="blogs-newsletter-section">
-          <div className="newsletter-box">
-            <div className="section-label">SUBSCRIBE / THOUGHT LEADERSHIP</div>
-            <h2>STAY UPDATED ON AI PRODUCT ESSAYS.</h2>
-            <p>Get long-form insights on enterprise RAG evaluation, prompt engineering, and GenAI product leadership delivered to your inbox.</p>
-            <div className="newsletter-form">
-              <input type="email" placeholder="Enter your work email address" className="newsletter-input" />
-              <button className="newsletter-btn" data-cursor="SUBSCRIBE" onClick={() => alert("Thank you for subscribing! You will receive the latest AI product essays.")}>
+        {/* NEWSLETTER SUBSCRIBE */}
+        <section className="perspective-newsletter">
+          <div className="newsletter-card">
+            <div className="newsletter-badge">PERSPECTIVES NEWSLETTER</div>
+            <h2>Get long-form AI product essays delivered to your inbox.</h2>
+            <p>No spam. Only deep technical analyses on RAG evaluation, agent architectures, and LLM product leadership.</p>
+            <div className="newsletter-form-row">
+              <input type="email" placeholder="Enter your work email address" className="perspective-email-input" />
+              <button
+                className="perspective-submit-btn"
+                data-cursor="SUBSCRIBE"
+                onClick={() => alert("Thank you for subscribing to Perspectives!")}
+              >
                 SUBSCRIBE ↗
               </button>
             </div>
@@ -377,23 +403,20 @@ export default function BlogsPage() {
         </section>
       </main>
 
-      {/* FULL ARTICLE READING MODAL */}
+      {/* ARTICLE READER MODAL */}
       {activePost && (
-        <div className="blog-modal-backdrop active" onClick={() => setActivePost(null)}>
-          <div className="blog-modal-content active" onClick={e => e.stopPropagation()}>
-            <div className="blog-modal-header">
-              <span className="modal-badge">{activePost.tag}</span>
-              <button className="modal-close" onClick={() => setActivePost(null)} data-cursor="CLOSE">✕</button>
+        <div className="perspective-modal-backdrop active" onClick={() => setActivePost(null)}>
+          <div className="perspective-modal-drawer active" onClick={e => e.stopPropagation()}>
+            <div className="drawer-header">
+              <span className="drawer-meta">{activePost.number} / {activePost.category} • {activePost.date} • {activePost.readTime}</span>
+              <button className="drawer-close-btn" onClick={() => setActivePost(null)} data-cursor="CLOSE">CLOSE ✕</button>
             </div>
-            <div className="blog-modal-body">
-              <div className="blog-modal-meta">
-                <span>{activePost.date}</span> • <span>{activePost.readTime}</span> • <span className="category-pill">{activePost.category}</span>
-              </div>
-              <h1 className="blog-modal-title">{activePost.title}</h1>
-              <p className="blog-modal-subtitle">{activePost.subtitle}</p>
+            <div className="drawer-body">
+              <h1 className="drawer-title">{activePost.title}</h1>
+              <p className="drawer-subtitle">{activePost.subtitle}</p>
 
-              <div className="takeaways-card">
-                <h4>KEY TAKEAWAYS</h4>
+              <div className="drawer-takeaways-box">
+                <div className="takeaways-title">EXECUTIVE SUMMARY &amp; KEY TAKEAWAYS</div>
                 <ul>
                   {activePost.keyTakeaways.map((item, idx) => (
                     <li key={idx}>{item}</li>
@@ -401,11 +424,11 @@ export default function BlogsPage() {
                 </ul>
               </div>
 
-              <div className="blog-article-html" dangerouslySetInnerHTML={{ __html: activePost.content }} />
+              <div className="drawer-article-content" dangerouslySetInnerHTML={{ __html: activePost.content }} />
 
-              <div className="blog-modal-footer">
+              <div className="drawer-footer">
                 <button className="cways-btn-primary" onClick={() => setActivePost(null)} data-cursor="CLOSE">
-                  CLOSE ESSAY ✕
+                  CLOSE ARTICLE ✕
                 </button>
               </div>
             </div>
