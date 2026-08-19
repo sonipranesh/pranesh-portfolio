@@ -95,7 +95,7 @@ export default function Home(): React.JSX.Element {
             });
         }
 
-        // 4.5 HEADER SCROLL REVEAL OBSERVER
+        // 4.5 SECTION HEADER SCROLL REVEAL OBSERVER (TRIGGERS AS EACH SECTION ENTERS VIEWPORT)
         const headerRevealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -103,12 +103,12 @@ export default function Home(): React.JSX.Element {
                 }
             });
         }, {
-            threshold: 0.12,
-            rootMargin: '0px 0px -40px 0px'
+            threshold: 0.18,
+            rootMargin: '0px 0px -50px 0px'
         });
 
-        document.querySelectorAll('.cways-section-title, .cways-hero-title, .cways-footer-heading, .section-label, .belief-quote, .os-title-block').forEach(el => {
-            el.classList.add('header-reveal-target');
+        document.querySelectorAll('section:not(.hero-layer) .cways-section-title, section:not(.hero-layer) .section-label, .cways-footer-heading, .belief-quote, .os-title-block').forEach(el => {
+            el.classList.add('section-header-hidden');
             headerRevealObserver.observe(el);
         });
 
