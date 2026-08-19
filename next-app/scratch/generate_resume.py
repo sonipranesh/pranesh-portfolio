@@ -119,19 +119,19 @@ story.append(Paragraph("PROJECTS", section_heading))
 story.append(HRFlowable(width="100%", thickness=0.5, color=colors.HexColor('#cccccc'), spaceBefore=1, spaceAfter=5))
 
 # Doc Author
-story.append(Paragraph("<b>Doc Author</b> – Clinical Functional Plan Workflow Automation (Syneos Health) <font color='#555555' size=8.5>(Jan 2026 – Present)</font>", job_title_style))
+story.append(Paragraph("<b>Doc Author</b> – Clinical Functional Plan Workflow Automation (Client 2) <font color='#555555' size=8.5>(Jan 2026 – Present)</font>", job_title_style))
 story.append(Paragraph("• Leading gap analysis and requirements gathering across clinical functional plan templates (TMF, ICF, and others), replacing a fully manual, time-intensive authoring process. Designed two automation approaches: a <b>SQL-based data pipeline</b> auto-populating conventional templates from study-specific source data, and an <b>agentic GenAI workflow</b> using <b>LLM-based prompt engineering</b> to convert master ICFs into country-specific ICFs and auto-populate compliance checklists against regulatory citations (21 CFR, ICH GCP), with a <b>human-in-the-loop</b> review architecture for GxP-aligned validation.", bullet_style))
 story.append(Paragraph("• <b>Business impact:</b> Scaled the SQL-based flow to 10+ plan types in active production, automating ~40% of data pointers and saving ~30 minutes per user per study, with data-entry errors reduced by an estimated 20–25%. ICF agentic flow achieving ~70% automation with review error margin reduced by ~80%.", bullet_style))
 story.append(Spacer(1, 4))
 
 # SOP Assistant
-story.append(Paragraph("<b>SOP Assistant</b> – AstraZeneca <font color='#555555' size=8.5>(July 2024 – Dec 2025)</font>", job_title_style))
+story.append(Paragraph("<b>SOP Assistant</b> – Client 1 <font color='#555555' size=8.5>(July 2024 – Dec 2025)</font>", job_title_style))
 story.append(Paragraph("• GenAI assistant for global manufacturing site operators to retrieve Standard Operating Procedures (SOPs) across regulated production environments. Enables query-based retrieval of exact SOP IDs and page-level hyperlinks from thousands of documents in Veeva Vault, supporting both natural-language and direct SOP-number queries.", bullet_style))
 story.append(Paragraph("• <b>Business impact:</b> Scaled in six phases across 25 global sites; achieved ~79% adoption with 85–90% retention. Reduced SOP lookup time from ~2 hours/week to ~20 minutes/week per operator, saving ~790,000 minutes weekly and generating an estimated £59k–£75k MAU.", bullet_style))
 story.append(Spacer(1, 4))
 
 # Contracting Assistant
-story.append(Paragraph("<b>Contracting Assistant</b> – AstraZeneca <font color='#555555' size=8.5>(May 2023 – Dec 2024)</font>", job_title_style))
+story.append(Paragraph("<b>Contracting Assistant</b> – Client 1 <font color='#555555' size=8.5>(May 2023 – Dec 2024)</font>", job_title_style))
 story.append(Paragraph("• GenAI-powered assistant for contract and legal teams to support contract negotiation, review, and risk assessment with third-party vendors. Enables natural-language querying over enterprise contract templates using a RAG-based approach, returning context-aware responses with page-level document hyperlinks for traceability.", bullet_style))
 story.append(Paragraph("• <b>Business impact:</b> Rolled out to ~550 users; achieved ~89% adoption and ~97% retention. Reduced contract review effort by 60–65% and eliminated manual comparison errors in contract analysis.", bullet_style))
 story.append(Spacer(1, 8))
