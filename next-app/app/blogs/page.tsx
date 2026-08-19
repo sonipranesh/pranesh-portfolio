@@ -1,38 +1,158 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 interface BlogPost {
   id: string;
+  category: string;
   tag: string;
-  readTime: string;
-  date: string;
   title: string;
-  summary: string;
-  link: string;
+  subtitle: string;
+  date: string;
+  readTime: string;
+  excerpt: string;
+  content: string;
+  keyTakeaways: string[];
 }
 
+const BLOG_POSTS: BlogPost[] = [
+  {
+    id: 'rag-at-scale',
+    category: 'RAG & EVALUATION',
+    tag: '01 / SYSTEM ARCHITECTURE',
+    title: 'Why Most Enterprise RAG Systems Fail at Scale — And How Grounded Evaluation Fixes It',
+    subtitle: 'Moving past naive cosine similarity toward hybrid search, page-level citation mapping, and rigorous evaluation dimensions.',
+    date: 'AUG 2026',
+    readTime: '8 MIN READ',
+    excerpt: 'In enterprise deployments across life sciences and legal operations, standard RAG pipelines often suffer from hallucination leaks, inaccurate chunking, and lack of citation traceability. This essay outlines the multi-stage evaluation framework required to achieve 97%+ retention in production.',
+    keyTakeaways: [
+      'Why vector similarity alone fails when querying regulated document repositories like Veeva Vault or CAN Handbooks.',
+      'Setting up automated evaluation dimensions: Context Recall, Top-K Recall, Citation Precision, and Abstention Accuracy.',
+      'The critical separation between AI-powered discovery and authoritative human interpretation.'
+    ],
+    content: `
+      <p>Building a RAG prototype in Python takes twenty lines of code. Building a production RAG system that 550+ enterprise legal users and manufacturing operators rely on every single day is a fundamentally different engineering challenge.</p>
+      
+      <h3>The Failure Modes of Naive RAG</h3>
+      <p>Most naive RAG implementations rely purely on dense vector embeddings and top-k cosine similarity. In enterprise environments containing thousands of multi-page PDFs, technical SOPs, or legal contracts, this approach fails for three distinct reasons:</p>
+      <ol>
+        <li><strong>Loss of Document Context:</strong> Naive chunking slices paragraphs out of context, losing critical metadata like document status (Active vs Edit status) or section hierarchies.</li>
+        <li><strong>Lack of Citation Traceability:</strong> Enterprise users cannot trust a summary unless they can click directly to the exact page and paragraph in the source document.</li>
+        <li><strong>Silent Hallucinations:</strong> When a vector query returns weakly relevant chunks, standard LLM prompts force the model to attempt an answer anyway rather than abstaining cleanly.</li>
+      </ol>
+
+      <h3>The Production Evaluation Framework</h3>
+      <p>To eliminate these risks, evaluation must move beyond superficial manual testing. During production rollouts for Client 1, we implemented systematic automated evaluation across thirteen dimensions:</p>
+      <ul>
+        <li><strong>Context Recall & Precision:</strong> Verifying that the retrieval engine surfaces 100% of applicable reference clauses while excluding noise.</li>
+        <li><strong>Citation Precision:</strong> Ensuring every hyperlink generated points to the exact page-numbered source text.</li>
+        <li><strong>Abstention Accuracy:</strong> Testing that out-of-scope or unanswerable queries cleanly abstain rather than hallucinating unsupported guidance.</li>
+      </ul>
+
+      <h3>Key Takeaway for AI Product Owners</h3>
+      <p>The success of an enterprise GenAI product is measured not by how creative its model output is, but by how reliably it prevents errors in high-stakes operational workflows.</p>
+    `
+  },
+  {
+    id: 'agentic-workflows-gxp',
+    category: 'ENTERPRISE GenAI',
+    tag: '02 / AGENTIC WORKFLOWS',
+    title: 'The Shift from Conversational Chatbots to Autonomous Agentic Workflows in GxP',
+    subtitle: 'Why single-prompt chat windows are being replaced by multi-agent tool execution and deterministic validation gates.',
+    date: 'JUL 2026',
+    readTime: '6 MIN READ',
+    excerpt: 'Regulated environments like clinical trials and GxP manufacturing do not need open-ended chatbots. They need agentic workflows with explicit tool-use, human-in-the-loop approval gates, and deterministic audit trails.',
+    keyTakeaways: [
+      'The structural limitation of single-prompt conversational chat in regulated clinical operations.',
+      'Architecting multi-tier agent workflows for Master-to-Country Informed Consent Form (ICF) generation.',
+      'Designing mandatory human review checkpoints before AI edits ship.'
+    ],
+    content: `
+      <p>For the past three years, enterprise software has been dominated by the "chat sidebar" paradigm. However, in regulated industries such as healthcare, clinical trial operations, and pharmaceutical manufacturing, conversational chatbots present a fundamental flaw: unpredictability.</p>
+      
+      <h3>Why Chatbots Fail in Clinical Operations</h3>
+      <p>Authoring clinical functional plans (such as TMF, Master ICFs, and regulatory compliance checklists under 21 CFR Part 11 and ICH GCP) requires precision. An unconstrained chat interface allows users to request changes, but offers no guarantee that the model won't subtly alter approved master language or drop required regulatory citations.</p>
+
+      <h3>The Dual-Pipeline Architecture</h3>
+      <p>When designing <strong>AI Doc Author</strong> for Client 2, we divided the workflow into two distinct, purpose-built engines:</p>
+      <ul>
+        <li><strong>Deterministic Pipeline:</strong> Standard study data (protocol IDs, site metadata, study arms) is populated directly from SQL source systems with zero model involvement — ensuring 100% data fidelity.</li>
+        <li><strong>Constrained Agentic Workflow:</strong> Complex tasks requiring judgment (matching Master ICF language against country-specific regulatory rulebooks) use tool-calling agents scoped strictly to semantic presence/absence validation, returning auditable rationales.</li>
+      </ul>
+
+      <h3>Human-in-the-Loop Audit Gates</h3>
+      <p>Crucially, no AI-generated section edit or compliance checklist answer is finalized autonomously. Every output is presented to human reviewers with explicit status tags (<em>Proposed</em>, <em>Needs Review</em>, <em>Approved</em>) and source-linked citations.</p>
+    `
+  },
+  {
+    id: 'veeva-vault-genai-lessons',
+    category: 'ENTERPRISE SCALE',
+    tag: '03 / LESSONS FROM FIELD',
+    title: 'Veeva Vault + GenAI: Lessons from 25 Global Site Deployments',
+    subtitle: 'Product design, wave-based site activation, and change management strategies for 790,000 minutes saved weekly.',
+    date: 'JUN 2026',
+    readTime: '7 MIN READ',
+    excerpt: 'Rolling out the GenAI SOP Assistant across 25 global manufacturing sites required more than technical architecture — it required user-centric design, wave-based activation, and building deep trust with shop-floor operators.',
+    keyTakeaways: [
+      'Designing intuitive natural-language discovery for operators accustomed to manual document IDs.',
+      'Managing wave-based site activations (4–5 sites per wave) with SME champion networks.',
+      'Achieving ~79% adoption and 85–90% retention across global manufacturing plants.'
+    ],
+    content: `
+      <p>Manufacturing operators in global pharmaceutical sites handle thousands of Standard Operating Procedures (SOPs), Work Instructions (WIs), and Forms stored across Veeva Vault repositories. Prior to AI intervention, locating the exact active document version took roughly 2 hours per week per operator.</p>
+
+      <h3>Product Decision: Discovery Over Interpretation</h3>
+      <p>A core architectural decision when building the <strong>GenAI SOP Assistant</strong> for Client 1 was deciding what the AI should <em>not</em> do. Rather than asking the LLM to summarize complex manufacturing procedures (which risks dangerous interpretation errors), the system was optimized for authoritative discovery: <strong>"Which active document should I look at, and on exactly which page?"</strong></p>
+
+      <h3>Rollout & Change Management Strategy</h3>
+      <p>Rolling out an AI product across 25 global sites requires a disciplined wave-activation strategy:</p>
+      <ul>
+        <li><strong>Six Wave Deployments:</strong> Activating 4–5 sites per wave allowed the product team to gather feedback, monitor usage telemetry, and refine retrieval edge cases.</li>
+        <li><strong>Site SME Champions:</strong> Training local super-users created immediate trust and accelerated peer onboarding.</li>
+        <li><strong>Admin Insights Dashboard:</strong> Tracking query retention, top search categories, and zero-hit queries ensured continuous system optimization.</li>
+      </ul>
+
+      <p>The result: SOP lookup time dropped from 2 hours/week to ~20 minutes/week, saving an estimated <strong>790,000 minutes every week</strong>.</p>
+    `
+  },
+  {
+    id: 'po-framework-evals',
+    category: 'PRODUCT LEADERSHIP',
+    tag: '04 / AI PRODUCT OWNERSHIP',
+    title: 'The AI Product Owner’s Guide to LLM Evaluation & Edge Case Management',
+    subtitle: 'How product leaders can bridge the gap between engineering benchmarks and real-world business adoption.',
+    date: 'MAY 2026',
+    readTime: '9 MIN READ',
+    excerpt: 'Traditional software metrics like uptime and latency are insufficient for GenAI products. AI Product Owners must master evaluation metrics like Context Precision, Hallucination Rate, and Out-of-Scope Leakage.',
+    keyTakeaways: [
+      'Translating business requirements into quantitative LLM evaluation test suites.',
+      'Collaborating with QA teams to curate golden dataset edge cases.',
+      'Balancing model latency vs grounded reasoning cost.'
+    ],
+    content: `
+      <p>As an AI Product Owner, one of the most critical responsibilities is defining what "good" looks like for a non-deterministic product. Traditional PRDs define feature requirements; AI PRDs must define accuracy bounds, retrieval hit rates, and acceptable failure modes.</p>
+
+      <h3>Curating the Golden Test Dataset</h3>
+      <p>Before writing code or tuning prompts, product owners must partner with business SMEs to curate a golden test dataset. This dataset should include:</p>
+      <ul>
+        <li>Standard operational queries with ground-truth source citations.</li>
+        <li>Edge cases involving outdated or edited documents.</li>
+        <li>Out-of-scope adversarial prompts designed to test system guardrails.</li>
+      </ul>
+
+      <h3>Continuous Feedback & Post-Launch Iteration</h3>
+      <p>Launching the product is only the first step. Capturing implicit feedback (e.g., user copy events, citation clicks) and explicit feedback (thumbs up/down with rationale) feeds directly back into prompt refinement and vector index tuning.</p>
+    `
+  }
+];
+
 export default function BlogsPage() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
-  const [selectedTag, setSelectedTag] = React.useState<string>('ALL');
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
+  const [activePost, setActivePost] = useState<BlogPost | null>(null);
 
-  const handleLetsBuildTogether = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const isMobile =
-      typeof window !== 'undefined' &&
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    if (isMobile) {
-      window.open(
-        "https://api.whatsapp.com/send?phone=772796969906&text=Hi%20Pranesh,%20I'd%20like%20to%20connect%20about%20an%20AI%20product%20opportunity!",
-        '_blank'
-      );
-    } else {
-      window.open("https://www.linkedin.com/in/pranesh-soni", "_blank");
-    }
-  };
-
-  React.useEffect(() => {
+  useEffect(() => {
     const cursor = document.getElementById('cursor');
     const label = document.getElementById('cursorLabel');
     let bindCursorEvents = () => {};
@@ -49,7 +169,13 @@ export default function BlogsPage() {
         const target = e.currentTarget as HTMLElement;
         if (cursor && label) {
           cursor.classList.add('active');
-          label.textContent = target.dataset.cursor || target.textContent?.trim().slice(0, 24) || 'READ ARTICLE';
+          let text = target.dataset.cursor;
+          if (!text) {
+            if (target.classList.contains('blog-card')) text = 'READ ESSAY';
+            else if (target.classList.contains('cways-logo')) text = 'HOME';
+            else text = target.textContent?.trim().slice(0, 20) || 'EXPLORE';
+          }
+          label.textContent = text;
         }
       }
 
@@ -61,7 +187,7 @@ export default function BlogsPage() {
       }
 
       bindCursorEvents = function () {
-        document.querySelectorAll('[data-cursor], a, button, .blog-card-item').forEach(el => {
+        document.querySelectorAll('[data-cursor], a, button, .blog-card, .filter-chip').forEach(el => {
           el.removeEventListener('mouseenter', onMouseEnter);
           el.removeEventListener('mouseleave', onMouseLeave);
           el.addEventListener('mouseenter', onMouseEnter);
@@ -77,84 +203,31 @@ export default function BlogsPage() {
     }
   }, []);
 
-  const blogPosts: BlogPost[] = [
-    {
-      id: '1',
-      tag: 'RAG ARCHITECTURE',
-      readTime: '6 MIN READ',
-      date: 'AUG 2024',
-      title: 'The Architecture of Enterprise RAG: Lessons from Scaling to 550+ Users in Life Sciences',
-      summary:
-        'Building RAG systems for enterprise contracts and SOP discovery requires low-temperature grounded generation, page-level citation mapping, and dual-stage candidate reranking to eliminate hallucination in regulated environments.',
-      link: 'https://substack.com/@praneshsoni'
-    },
-    {
-      id: '2',
-      tag: 'COMPLIANCE & GXP',
-      readTime: '8 MIN READ',
-      date: 'NOV 2024',
-      title: 'Why Human-in-the-Loop is Non-Negotiable for GxP & Clinical AI Workflows',
-      summary:
-        'Operating within 21 CFR Part 11 and ICH GCP boundaries: balancing deterministic data pipelines with LLM judgment without risking audit failure or silent document drift.',
-      link: 'https://substack.com/@praneshsoni'
-    },
-    {
-      id: '3',
-      tag: 'PRODUCT LEADERSHIP',
-      readTime: '5 MIN READ',
-      date: 'JAN 2025',
-      title: "From PRD to Production: The AI Product Owner's Evaluation Playbook",
-      summary:
-        'How to structure AI quality validation dimensions spanning Context Precision, Top-K Recall, Groundedness, and Abstention Accuracy to achieve 89% adoption and 97% user retention.',
-      link: 'https://substack.com/@praneshsoni'
-    },
-    {
-      id: '4',
-      tag: 'AI VISION & AGENTS',
-      readTime: '7 MIN READ',
-      date: 'FEB 2025',
-      title: 'Everyone Deserves a Jarvis: Expanding Human Capability with Agentic AI',
-      summary:
-        'Reducing the friction between intent and execution — why multi-step agentic workflows allow individual product builders to take complex ideas from concept map to production software.',
-      link: 'https://substack.com/@praneshsoni'
-    }
-  ];
+  const categories = ['ALL', 'RAG & EVALUATION', 'ENTERPRISE GenAI', 'ENTERPRISE SCALE', 'PRODUCT LEADERSHIP'];
 
-  const tags = ['ALL', 'RAG ARCHITECTURE', 'COMPLIANCE & GXP', 'PRODUCT LEADERSHIP', 'AI VISION & AGENTS'];
+  const filteredPosts = selectedCategory === 'ALL'
+    ? BLOG_POSTS
+    : BLOG_POSTS.filter(post => post.category === selectedCategory);
 
-  const filteredPosts =
-    selectedTag === 'ALL'
-      ? blogPosts
-      : blogPosts.filter(p => p.tag === selectedTag);
+  const featuredPost = BLOG_POSTS[0];
 
   return (
-    <div className="about-page-container blogs-page-container">
+    <div className="blogs-page-wrapper">
+      <div className="noise"></div>
       <div className="cursor" id="cursor">
         <span className="cursor-label" id="cursorLabel"></span>
       </div>
 
-      {/* NAVBAR */}
+      {/* HEADER NAVBAR */}
       <header className="cways-header about-nav">
-        <Link href="/" className="cways-logo" data-cursor="PRANESH">
-          pranesh soni
-        </Link>
+        <Link href="/" className="cways-logo" data-cursor="PRANESH">pranesh soni</Link>
 
         <nav className="cways-nav">
-          <Link href="/about" data-cursor="ABOUT">
-            About
-          </Link>
-          <Link href="/#work" data-cursor="SERVICES">
-            Services
-          </Link>
-          <Link href="/#work" data-cursor="PORTFOLIO">
-            Portfolio
-          </Link>
-          <Link href="/blogs" className="active" data-cursor="BLOGS">
-            Blogs
-          </Link>
-          <Link href="/#why-me" data-cursor="WHY ME">
-            Why Me
-          </Link>
+          <Link href="/about" data-cursor="ABOUT">About</Link>
+          <Link href="/#work" data-cursor="SERVICES">Services</Link>
+          <Link href="/#work" data-cursor="PORTFOLIO">Portfolio</Link>
+          <Link href="/blogs" className="active" data-cursor="BLOGS">Blogs</Link>
+          <Link href="/#why-me" data-cursor="WHY ME">Why Me</Link>
         </nav>
 
         <div className="header-actions">
@@ -163,9 +236,7 @@ export default function BlogsPage() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle navigation menu"
           >
-            {isMenuOpen ? (
-              'CLOSE ✕'
-            ) : (
+            {isMenuOpen ? "CLOSE ✕" : (
               <span className="hamburger-wrap">
                 <svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1 1.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
@@ -186,13 +257,11 @@ export default function BlogsPage() {
         </div>
       </header>
 
-      {/* MOBILE MENU OVERLAY */}
+      {/* MOBILE MENU DRAWER */}
       {isMenuOpen && (
         <div className="cways-mobile-menu-overlay about-mobile-menu">
           <div className="cways-mobile-menu-header">
-            <Link href="/" className="cways-logo" onClick={() => setIsMenuOpen(false)}>
-              pranesh soni
-            </Link>
+            <Link href="/" className="cways-logo" onClick={() => setIsMenuOpen(false)}>pranesh soni</Link>
             <button className="cways-mobile-menu-close" onClick={() => setIsMenuOpen(false)}>
               CLOSE ✕
             </button>
@@ -214,139 +283,135 @@ export default function BlogsPage() {
               <span className="num">05</span> WHY ME
             </Link>
           </div>
-          <div className="cways-mobile-menu-footer">
-            <a
-              href="#contact"
-              onClick={e => {
-                setIsMenuOpen(false);
-                handleLetsBuildTogether(e);
-              }}
-              className="cways-btn-primary"
-            >
-              LET&apos;S CONNECT ↗
-            </a>
-          </div>
         </div>
       )}
 
-      {/* BLOGS HERO SECTION */}
-      <section className="blogs-hero-section">
-        <div className="blogs-hero-inner">
-          <div className="section-label">04 / THOUGHTS &amp; INSIGHTS</div>
-          <h1 className="cways-section-title light-theme blogs-main-title">
-            WRITING &amp;<br />
-            <span className="cways-stroke-text-light">MANIFESTO.</span>
-          </h1>
-          <p className="blogs-hero-subtext">
-            Perspectives on building enterprise GenAI products, RAG architecture, agentic workflows, GxP compliance, and the future of human-AI collaboration in regulated industries.
-          </p>
+      {/* MAIN CONTENT AREA */}
+      <main className="blogs-main-content">
+        {/* BLOG HERO SECTION */}
+        <section className="blogs-hero">
+          <div className="blogs-hero-inner">
+            <div className="section-label">04 / WRITING &amp; ESSAYS</div>
+            <h1 className="cways-section-title">
+              AI PRODUCT<br />
+              <span className="cways-stroke-text-dark">PERSPECTIVES &amp;</span><br />
+              ESSAYS.
+            </h1>
+            <p className="blogs-hero-sub">
+              Deep dives on AI product ownership, enterprise RAG evaluation, agentic workflows, and shipping compliant GenAI systems across life sciences &amp; healthcare.
+            </p>
+          </div>
+        </section>
 
-          {/* TAG FILTERS */}
-          <div className="blogs-filter-bar">
-            {tags.map(t => (
+        {/* FEATURED ESSAY BANNER */}
+        <section className="featured-blog-section">
+          <div className="featured-blog-card" onClick={() => setActivePost(featuredPost)} data-cursor="FEATURED ESSAY">
+            <div className="featured-tag-strip">
+              <span className="featured-badge">FEATURED ESSAY</span>
+              <span className="blog-meta-info">{featuredPost.date} • {featuredPost.readTime}</span>
+            </div>
+            <h2 className="featured-title">{featuredPost.title}</h2>
+            <p className="featured-sub">{featuredPost.subtitle}</p>
+            <p className="featured-excerpt">{featuredPost.excerpt}</p>
+            <div className="featured-footer">
+              <span className="read-btn">READ ESSAY ↗</span>
+              <span className="tag-pill">{featuredPost.category}</span>
+            </div>
+          </div>
+        </section>
+
+        {/* CATEGORY FILTER CHIPS */}
+        <section className="blogs-filter-section">
+          <div className="filter-chips-container">
+            {categories.map(cat => (
               <button
-                key={t}
-                className={`blog-filter-btn ${selectedTag === t ? 'active' : ''}`}
-                onClick={() => setSelectedTag(t)}
-                data-cursor="FILTER"
+                key={cat}
+                className={`filter-chip ${selectedCategory === cat ? 'active' : ''}`}
+                onClick={() => setSelectedCategory(cat)}
+                data-cursor={cat}
               >
-                {t}
+                {cat}
               </button>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* BLOG POSTS GRID SECTION */}
-      <section className="blogs-grid-section">
-        <div className="blogs-grid-inner">
+        {/* ARTICLES GRID */}
+        <section className="blogs-grid-section">
           <div className="blogs-grid">
-            {filteredPosts.map((post, idx) => (
-              <a
+            {filteredPosts.map(post => (
+              <article
                 key={post.id}
-                href={post.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="blog-card-item"
-                data-cursor="READ ARTICLE ↗"
+                className="blog-card"
+                onClick={() => setActivePost(post)}
+                data-cursor="READ ARTICLE"
               >
-                <div className="blog-card-meta">
-                  <span className="blog-card-tag">{post.tag}</span>
-                  <div className="blog-card-time-date">
-                    <span>{post.readTime}</span>
-                    <span className="sep">•</span>
-                    <span>{post.date}</span>
-                  </div>
+                <div className="blog-card-top">
+                  <span className="blog-tag">{post.tag}</span>
+                  <span className="blog-meta-date">{post.date} • {post.readTime}</span>
                 </div>
-                <h2 className="blog-card-title">{post.title}</h2>
-                <p className="blog-card-summary">{post.summary}</p>
-                <div className="blog-card-cta">
-                  <span>READ ON SUBSTACK</span>
-                  <span className="arrow">↗</span>
+                <h3 className="blog-card-title">{post.title}</h3>
+                <p className="blog-card-excerpt">{post.excerpt}</p>
+                <div className="blog-card-footer">
+                  <span className="read-link">READ FULL ESSAY ↗</span>
+                  <span className="category-label">{post.category}</span>
                 </div>
-              </a>
+              </article>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* SUBSTACK NEWSLETTER BANNER */}
-      <section className="blogs-newsletter-section">
-        <div className="blogs-newsletter-inner">
-          <div className="newsletter-badge">SUBSTACK NEWSLETTER</div>
-          <h2>Subscribe for deep-dives on AI Product Architecture &amp; Enterprise RAG.</h2>
-          <p>Get notified whenever I publish new technical insights, product teardowns, and framework breakdowns.</p>
-          <a
-            href="https://substack.com/@praneshsoni"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cways-btn-primary"
-            data-cursor="SUBSTACK ↗"
-          >
-            SUBSCRIBE ON SUBSTACK ↗
-          </a>
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="cways-footer-theme" id="contact">
-        <div className="cways-footer-inner">
-          <div className="cways-footer-eyebrow">08 / LET&apos;S BUILD</div>
-          <h2 className="cways-footer-heading">
-            GOT A GOOD<br />
-            <span className="cways-stroke-text-dark">PROBLEM?</span>
-          </h2>
-          <p className="cways-footer-subtext">
-            AI product opportunity, prototype build, life sciences RAG solution, or strategic advisory — let&apos;s start a conversation.
-          </p>
-          <a href="mailto:praneshsoni@outlook.com" className="cways-footer-email" data-cursor="EMAIL">
-            PRANESHSONI@OUTLOOK.COM
-          </a>
-          <div className="cways-footer-author-row">
-            <span className="author-dot"></span>
-            <span className="author-name">PRANESH SONI</span>
-            <span className="author-sep">—</span>
-            <span className="author-title">AI PRODUCT OWNER &amp; BUILDER</span>
-          </div>
-          <div className="cways-footer-socials">
-            <a href="https://www.linkedin.com/in/pranesh-soni" target="_blank" rel="noopener noreferrer" data-cursor="LINKEDIN">
-              LINKEDIN
-            </a>
-            <a href="https://substack.com/@praneshsoni" target="_blank" rel="noopener noreferrer" data-cursor="SUBSTACK">
-              SUBSTACK
-            </a>
-          </div>
-          <div className="cways-footer-bottom-bar">
-            <div className="cways-footer-copy">© 2026 PRANESH SONI.</div>
-            <div className="cways-footer-nav-links">
-              <Link href="/" className="cways-back-top" data-cursor="TOP">
-                Back to home ↑
-              </Link>
+        {/* SUBSTACK / NEWSLETTER SECTION */}
+        <section className="blogs-newsletter-section">
+          <div className="newsletter-box">
+            <div className="section-label">SUBSCRIBE / THOUGHT LEADERSHIP</div>
+            <h2>STAY UPDATED ON AI PRODUCT ESSAYS.</h2>
+            <p>Get long-form insights on enterprise RAG evaluation, prompt engineering, and GenAI product leadership delivered to your inbox.</p>
+            <div className="newsletter-form">
+              <input type="email" placeholder="Enter your work email address" className="newsletter-input" />
+              <button className="newsletter-btn" data-cursor="SUBSCRIBE" onClick={() => alert("Thank you for subscribing! You will receive the latest AI product essays.")}>
+                SUBSCRIBE ↗
+              </button>
             </div>
           </div>
-          <div className="cways-footer-stroke-brand">PRANESH SONI</div>
+        </section>
+      </main>
+
+      {/* FULL ARTICLE READING MODAL */}
+      {activePost && (
+        <div className="blog-modal-backdrop active" onClick={() => setActivePost(null)}>
+          <div className="blog-modal-content active" onClick={e => e.stopPropagation()}>
+            <div className="blog-modal-header">
+              <span className="modal-badge">{activePost.tag}</span>
+              <button className="modal-close" onClick={() => setActivePost(null)} data-cursor="CLOSE">✕</button>
+            </div>
+            <div className="blog-modal-body">
+              <div className="blog-modal-meta">
+                <span>{activePost.date}</span> • <span>{activePost.readTime}</span> • <span className="category-pill">{activePost.category}</span>
+              </div>
+              <h1 className="blog-modal-title">{activePost.title}</h1>
+              <p className="blog-modal-subtitle">{activePost.subtitle}</p>
+
+              <div className="takeaways-card">
+                <h4>KEY TAKEAWAYS</h4>
+                <ul>
+                  {activePost.keyTakeaways.map((item, idx) => (
+                    <li key={idx}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="blog-article-html" dangerouslySetInnerHTML={{ __html: activePost.content }} />
+
+              <div className="blog-modal-footer">
+                <button className="cways-btn-primary" onClick={() => setActivePost(null)} data-cursor="CLOSE">
+                  CLOSE ESSAY ✕
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-      </footer>
+      )}
     </div>
   );
 }
