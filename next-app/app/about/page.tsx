@@ -72,7 +72,7 @@ export default function AboutPage() {
                     <Link href="/about" className="active" data-cursor="ABOUT">About</Link>
                     <Link href="/#work" data-cursor="SERVICES">Services</Link>
                     <Link href="/#work" data-cursor="PORTFOLIO">Portfolio</Link>
-                    <Link href="/#manifesto" data-cursor="BLOGS">Blogs</Link>
+                    <Link href="/blogs" data-cursor="BLOGS">Blogs</Link>
                     <Link href="/#why-me" data-cursor="WHY ME">Why Me</Link>
                 </nav>
 
@@ -122,7 +122,7 @@ export default function AboutPage() {
                         <Link href="/#work" onClick={() => setIsMenuOpen(false)}>
                             <span className="num">03</span> PORTFOLIO
                         </Link>
-                        <Link href="/#manifesto" onClick={() => setIsMenuOpen(false)}>
+                        <Link href="/blogs" onClick={() => setIsMenuOpen(false)}>
                             <span className="num">04</span> BLOGS
                         </Link>
                         <Link href="/#why-me" onClick={() => setIsMenuOpen(false)}>

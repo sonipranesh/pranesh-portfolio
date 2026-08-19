@@ -685,7 +685,7 @@ export default function Home(): React.JSX.Element {
                             <Link href="/about" data-cursor="ABOUT">About</Link>
                             <a href="#work" data-cursor="SERVICES">Services</a>
                             <a href="#work" data-cursor="PORTFOLIO">Portfolio</a>
-                            <a href="#manifesto" data-cursor="BLOGS">Blogs</a>
+                            <Link href="/blogs" data-cursor="BLOGS">Blogs</Link>
                             <a href="#why-me" data-cursor="WHY ME">Why Me</a>
                         </nav>
 
@@ -735,9 +735,9 @@ export default function Home(): React.JSX.Element {
                                 <a href="#work" onClick={() => setIsMenuOpen(false)}>
                                     <span className="num">03</span> PORTFOLIO
                                 </a>
-                                <a href="#manifesto" onClick={() => setIsMenuOpen(false)}>
+                                <Link href="/blogs" onClick={() => setIsMenuOpen(false)}>
                                     <span className="num">04</span> BLOGS
-                                </a>
+                                </Link>
                                 <a href="#why-me" onClick={() => setIsMenuOpen(false)}>
                                     <span className="num">05</span> WHY ME
                                 </a>
