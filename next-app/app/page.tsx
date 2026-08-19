@@ -3,7 +3,20 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import ScrollStack, { ScrollStackItem } from '@/app/components/ScrollStack';
-import ParticleImage from '@/app/components/ParticleImage';
+import LogoLoop from '@/app/components/LogoLoop';
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiPython, SiPostgresql, SiDocker } from 'react-icons/si';
+import { FaAws } from 'react-icons/fa';
+
+const techLogos = [
+  { node: <SiReact />, title: "React", href: "https://react.dev" },
+  { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
+  { node: <SiTypescript />, title: "TypeScript", href: "https://www.typescriptlang.org" },
+  { node: <SiTailwindcss />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
+  { node: <SiPython />, title: "Python", href: "https://www.python.org" },
+  { node: <FaAws />, title: "AWS", href: "https://aws.amazon.com" },
+  { node: <SiPostgresql />, title: "PostgreSQL", href: "https://www.postgresql.org" },
+  { node: <SiDocker />, title: "Docker", href: "https://www.docker.com" }
+];
 
 export default function Home(): React.JSX.Element {
     const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
@@ -695,7 +708,6 @@ export default function Home(): React.JSX.Element {
 
                 {/* HERO SECTION (CWAYS.IN REPLICATED DESIGN & SINGLE SCROLL FLOW) */}
                 <section className="hero-layer cways-hero-theme" id="heroLayer">
-                    <ParticleImage imageSrc="/hero_silhouette_bg.jpg" />
                     {/* NAVBAR AT THE TOP OF HERO SECTION (CWAYS STYLE WITH REPLICATED DESIGN) */}
                     <header className="cways-header">
                         <Link href="/" className="cways-logo" data-cursor="PRANESH">pranesh soni</Link>
@@ -806,14 +818,26 @@ export default function Home(): React.JSX.Element {
                     </a>
                 </section>
 
-                {/* MANIFESTO SECTION */}
+                {/* SECTION 2: TECH STACK */}
                 <section className="manifesto stack-card" id="manifesto">
-                    <div className="section-label">02 / THE POINT OF VIEW</div>
+                    <div className="section-label">02 / TECH STACK</div>
                     <h2 className="cways-section-title">
-                        TECHNOLOGY IS INTERESTING.<br />
-                        <span className="cways-stroke-text-dark">WHAT PEOPLE DO WITH IT</span><br />
-                        IS MORE INTERESTING.
+                        TECH STACK.
                     </h2>
+                    <div className="tech-stack-loop-container" style={{ marginTop: '40px', position: 'relative', overflow: 'hidden' }}>
+                        <LogoLoop
+                            logos={techLogos}
+                            speed={30}
+                            direction="left"
+                            logoHeight={44}
+                            gap={36}
+                            hoverSpeed={0}
+                            scaleOnHover
+                            fadeOut
+                            fadeOutColor="var(--paper)"
+                            ariaLabel="Technology partners"
+                        />
+                    </div>
                 </section>
 
                 {/* SECTION 3: PURE CSS STICKY STACKING CARDS */}
