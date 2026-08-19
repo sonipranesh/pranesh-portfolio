@@ -677,6 +677,18 @@ export default function Home(): React.JSX.Element {
 
                 {/* HERO SECTION (CWAYS.IN REPLICATED DESIGN & SINGLE SCROLL FLOW) */}
                 <section className="hero-layer cways-hero-theme" id="heroLayer">
+                    {/* CREATIVE ANIMATED NEURAL NODE CONSTELLATION BACKGROUND */}
+                    <div className="hero-neural-bg" aria-hidden="true">
+                        <svg className="hero-svg-canvas" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="150" y1="200" x2="450" y2="350" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
+                            <line x1="450" y1="350" x2="850" y2="220" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
+                            <line x1="850" y1="220" x2="1250" y2="420" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
+                            <circle cx="150" cy="200" r="4" fill="#ef6047" className="neural-node-pulse" />
+                            <circle cx="450" cy="350" r="5" fill="#ffffff" className="neural-node-pulse-delay" />
+                            <circle cx="850" cy="220" r="4" fill="#ef6047" className="neural-node-pulse" />
+                            <circle cx="1250" cy="420" r="5" fill="#ffffff" className="neural-node-pulse-delay" />
+                        </svg>
+                    </div>
                     {/* NAVBAR AT THE TOP OF HERO SECTION (CWAYS STYLE WITH REPLICATED DESIGN) */}
                     <header className="cways-header">
                         <Link href="/" className="cways-logo" data-cursor="PRANESH">pranesh soni</Link>
@@ -960,6 +972,12 @@ export default function Home(): React.JSX.Element {
 
                 {/* SECTION 5: WHY ME */}
                 <section className="why-me-section stack-card" id="why-me">
+                    {/* CREATIVE ANIMATED RADAR PULSE BACKGROUND */}
+                    <div className="whyme-radar-bg" aria-hidden="true">
+                        <div className="radar-ring r1"></div>
+                        <div className="radar-ring r2"></div>
+                        <div className="radar-ring r3"></div>
+                    </div>
                     <div className="why-me-inner">
                         <div className="section-label">05 / WHY ME</div>
                         <h2 className="cways-section-title light-theme">

@@ -143,6 +143,17 @@ export default function AboutPage() {
 
             {/* MAIN CONTENT AREA */}
             <main className="about-main-content">
+                {/* CREATIVE ANIMATED BLUEPRINT & PRODUCT ARCHITECTURE BACKGROUND */}
+                <div className="about-blueprint-bg" aria-hidden="true">
+                    <div className="blueprint-grid-mesh"></div>
+                    <svg className="blueprint-svg-canvas" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="220" cy="280" r="190" stroke="rgba(17,17,17,0.05)" strokeWidth="1.5" strokeDasharray="6 6" className="rotating-blueprint-ring" />
+                        <circle cx="1220" cy="620" r="220" stroke="rgba(239,96,71,0.06)" strokeWidth="1.5" strokeDasharray="12 8" className="rotating-blueprint-ring-reverse" />
+                        <line x1="0" y1="420" x2="1440" y2="420" stroke="rgba(17,17,17,0.04)" strokeWidth="1" strokeDasharray="4 4" />
+                        <line x1="720" y1="0" x2="720" y2="1800" stroke="rgba(17,17,17,0.04)" strokeWidth="1" strokeDasharray="4 4" />
+                    </svg>
+                </div>
+
                 <div className="about-hero-block">
                     <h1 className="cways-page-title">
                         ABOUT.<br />
