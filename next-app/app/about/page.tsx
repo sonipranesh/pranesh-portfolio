@@ -16,8 +16,54 @@ export default function AboutPage() {
         }
     };
 
+    React.useEffect(() => {
+        const cursor = document.getElementById('cursor');
+        const label = document.getElementById('cursorLabel');
+
+        if (matchMedia('(pointer:fine)').matches && cursor && label) {
+            const onMouseMove = (e: MouseEvent) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            };
+
+            window.addEventListener('mousemove', onMouseMove, { passive: true });
+
+            function onMouseEnter(e: Event) {
+                const target = e.currentTarget as HTMLElement;
+                if (cursor && label) {
+                    cursor.classList.add('active');
+                    label.textContent = target.dataset.cursor || 'EXPLORE';
+                }
+            }
+
+            function onMouseLeave() {
+                if (cursor && label) {
+                    cursor.classList.remove('active');
+                    label.textContent = '';
+                }
+            }
+
+            const bindTargets = document.querySelectorAll('[data-cursor], a, button');
+            bindTargets.forEach(el => {
+                el.addEventListener('mouseenter', onMouseEnter);
+                el.addEventListener('mouseleave', onMouseLeave);
+            });
+
+            return () => {
+                window.removeEventListener('mousemove', onMouseMove);
+                bindTargets.forEach(el => {
+                    el.removeEventListener('mouseenter', onMouseEnter);
+                    el.removeEventListener('mouseleave', onMouseLeave);
+                });
+            };
+        }
+    }, []);
+
     return (
         <div className="about-page-container">
+            <div className="cursor" id="cursor">
+                <span className="cursor-label" id="cursorLabel"></span>
+            </div>
             {/* NAVBAR */}
             <header className="cways-header about-nav">
                 <Link href="/" className="cways-logo" data-cursor="PRANESH">pranesh soni</Link>

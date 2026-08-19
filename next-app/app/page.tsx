@@ -32,23 +32,27 @@ export default function Home(): React.JSX.Element {
         // 2. CUSTOM CURSOR
         const cursor = document.getElementById('cursor');
         const label = document.getElementById('cursorLabel');
-        let mx = innerWidth / 2, my = innerHeight / 2, cx = mx, cy = my;
 
-        if (matchMedia('(pointer:fine)').matches) {
-            addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-            (function tick() {
-                cx += (mx - cx) * 0.18;
-                cy += (my - cy) * 0.18;
-                if (cursor) {
-                    cursor.style.left = cx + 'px';
-                    cursor.style.top = cy + 'px';
+        if (matchMedia('(pointer:fine)').matches && cursor && label) {
+            window.addEventListener('mousemove', e => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            }, { passive: true });
+
+            function onMouseEnter(e: Event) {
+                const target = e.currentTarget as HTMLElement;
+                if (cursor && label) {
+                    cursor.classList.add('active');
+                    label.textContent = target.dataset.cursor || 'EXPLORE';
                 }
-                if (label) {
-                    label.style.left = mx + 'px';
-                    label.style.top = my + 'px';
+            }
+
+            function onMouseLeave() {
+                if (cursor && label) {
+                    cursor.classList.remove('active');
+                    label.textContent = '';
                 }
-                requestAnimationFrame(tick);
-            })();
+            }
 
             function bindCursorEvents() {
                 document.querySelectorAll('[data-cursor], a, button, .lab-project').forEach(el => {
@@ -57,17 +61,6 @@ export default function Home(): React.JSX.Element {
                     el.addEventListener('mouseenter', onMouseEnter);
                     el.addEventListener('mouseleave', onMouseLeave);
                 });
-            }
-
-            function onMouseEnter(e) {
-                cursor.classList.add('active');
-                label.classList.add('show');
-                label.textContent = e.currentTarget.dataset.cursor || 'EXPLORE';
-            }
-
-            function onMouseLeave() {
-                cursor.classList.remove('active');
-                label.classList.remove('show');
             }
 
             bindCursorEvents();
@@ -662,8 +655,9 @@ export default function Home(): React.JSX.Element {
         <>
 
             <div className="noise"></div>
-            <div className="cursor" id="cursor"></div>
-            <div className="cursor-label" id="cursorLabel"></div>
+            <div className="cursor" id="cursor">
+                <span className="cursor-label" id="cursorLabel"></span>
+            </div>
 
             <main id="top" className="stack-container intro-flowing">
 

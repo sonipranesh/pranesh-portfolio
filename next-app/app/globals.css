@@ -93,36 +93,51 @@ textarea {
 
 .cursor {
     position: fixed;
-    z-index: 101;
-    width: 10px;
-    height: 10px;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    background: var(--ink);
+    background: #ffffff;
+    mix-blend-mode: difference;
     pointer-events: none;
     transform: translate(-50%, -50%);
-    transition: width .3s var(--ease), height .3s var(--ease), background .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: width 0.22s var(--ease), height 0.22s var(--ease), border-radius 0.22s var(--ease), background 0.22s var(--ease), padding 0.22s var(--ease);
+    box-sizing: border-box;
 }
 
 .cursor.active {
-    width: 72px;
-    height: 72px;
+    width: max-content;
+    height: 44px;
+    min-height: 44px;
+    padding: 0 22px;
+    border-radius: 9999px;
     background: var(--red);
+    mix-blend-mode: normal;
+    box-shadow: 0 12px 35px rgba(239, 96, 71, 0.45);
 }
 
 .cursor-label {
-    position: fixed;
-    z-index: 102;
-    pointer-events: none;
-    font: 600 10px var(--font-mono);
-    transform: translate(12px, 12px);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
     opacity: 0;
-    transition: opacity .2s;
-    color: white;
-    letter-spacing: .05em;
+    transition: opacity 0.15s ease-in-out;
+    pointer-events: none;
+    text-transform: uppercase;
+    line-height: 1;
+    display: inline-block;
 }
 
-.cursor-label.show {
-    opacity: 1
+.cursor.active .cursor-label {
+    opacity: 1;
 }
 
 /* CWAYS REPLICATED NAVBAR (NON-STICKY - SHARES EXACT HERO BACKGROUND) */
