@@ -218,6 +218,51 @@ export default function BlogsPage() {
         <span className="cursor-label" id="cursorLabel"></span>
       </div>
 
+      {/* CREATIVE ANIMATED PEN WRITING BACKGROUND (INDEPENDENT OF MOUSE) */}
+      <div className="pen-writing-bg" aria-hidden="true">
+        <div className="manuscript-lines"></div>
+        <svg className="pen-svg-canvas" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="inkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#ef6047" stopOpacity="0.08" />
+              <stop offset="50%" stopColor="#111111" stopOpacity="0.18" />
+              <stop offset="100%" stopColor="#ef6047" stopOpacity="0.12" />
+            </linearGradient>
+          </defs>
+
+          {/* CONTINUOUS CURSIVE INK STROKE 1 */}
+          <path
+            className="writing-stroke-path path-1"
+            d="M -100 180 Q 200 80, 450 220 T 950 140 T 1550 280 T 2100 160"
+            stroke="url(#inkGradient)"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            fill="none"
+          />
+
+          {/* CONTINUOUS CURSIVE INK STROKE 2 */}
+          <path
+            className="writing-stroke-path path-2"
+            d="M -150 480 C 150 380, 350 580, 650 440 C 950 300, 1150 540, 1550 420"
+            stroke="url(#inkGradient)"
+            strokeWidth="2"
+            strokeDasharray="8 8"
+            strokeLinecap="round"
+            fill="none"
+          />
+
+          {/* FLOATING FOUNTAIN PEN NIB DRAWING ALONG THE PATH */}
+          <g className="floating-pen-nib">
+            <path
+              d="M 0 0 L 14 -28 L 22 -20 L 0 0 Z"
+              fill="#111111"
+              opacity="0.35"
+            />
+            <circle cx="0" cy="0" r="3" fill="#ef6047" opacity="0.75" />
+          </g>
+        </svg>
+      </div>
+
       {/* HEADER NAVBAR */}
       <header className="cways-header about-nav">
         <Link href="/" className="cways-logo" data-cursor="PRANESH">pranesh soni</Link>
@@ -285,43 +330,6 @@ export default function BlogsPage() {
           </div>
         </div>
       )}
-
-      {/* AMBIENT WRITING & TYPING BACKGROUND (MINIMALIST CREATIVE ANIMATION) */}
-      <div className="blogs-ambient-bg" aria-hidden="true">
-        <svg className="blogs-pen-svg" viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            className="blogs-writing-line"
-            d="M 20 220 Q 140 80 260 180 T 480 120 Q 540 80 580 140"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
-          <path
-            className="blogs-writing-line-secondary"
-            d="M 50 250 Q 180 190 320 240 T 550 210"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeDasharray="4 6"
-            strokeLinecap="round"
-          />
-          <g className="blogs-pen-nib">
-            <path
-              d="M 565 125 L 590 100 L 598 108 L 573 133 Z M 573 133 L 580 140 L 565 140 Z"
-              fill="currentColor"
-            />
-            <circle cx="580" cy="120" r="1.5" fill="currentColor" />
-          </g>
-        </svg>
-
-        <div className="blogs-floating-glyphs">
-          <span className="glyph-item g1">✍︎</span>
-          <span className="glyph-item g2">¶</span>
-          <span className="glyph-item g3">§</span>
-          <span className="glyph-item g4">↵</span>
-          <span className="glyph-item g5">✦</span>
-          <span className="glyph-item g6">⌘</span>
-        </div>
-      </div>
 
       {/* MAIN CONTENT AREA */}
       <main className="blogs-main-content">
