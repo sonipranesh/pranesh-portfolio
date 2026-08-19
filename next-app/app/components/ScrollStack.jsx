@@ -1,7 +1,6 @@
 'use client';
 
 import { useLayoutEffect, useRef, useCallback } from 'react';
-import Lenis from 'lenis';
 import './ScrollStack.css';
 
 export const ScrollStackItem = ({ children, itemClassName = '' }) => (
@@ -11,10 +10,10 @@ export const ScrollStackItem = ({ children, itemClassName = '' }) => (
 const ScrollStack = ({
   children,
   className = '',
-  itemDistance = 350,
+  itemDistance = 120,
   itemScale = 0.04,
-  itemStackDistance = 16,
-  stackPosition = '130px',
+  itemStackDistance = 24,
+  stackPosition = '140px',
   scaleEndPosition = '60px',
   baseScale = 0.90,
   rotationAmount = 0,
@@ -80,7 +79,6 @@ const ScrollStack = ({
 
     const { scrollTop, containerHeight } = getScrollData();
     const stackPositionPx = parsePercentage(stackPosition, containerHeight);
-    const scaleEndPositionPx = parsePercentage(scaleEndPosition, containerHeight);
 
     const endElement = useWindowScroll
       ? document.querySelector('.scroll-stack-end')
@@ -99,10 +97,11 @@ const ScrollStack = ({
       if (!card) return;
 
       const cardTop = getStaticCardTop(card, i);
-      const triggerStart = cardTop - stackPositionPx - itemStackDistance * i;
-      const triggerEnd = cardTop - scaleEndPositionPx;
       const pinStart = cardTop - stackPositionPx - itemStackDistance * i;
-      const pinEnd = endElementTop ? (endElementTop - containerHeight / 2) : (triggerEnd + 500);
+      const pinEnd = endElementTop ? (endElementTop - containerHeight / 2) : (pinStart + 600);
+
+      const triggerStart = pinStart;
+      const triggerEnd = pinStart + 350;
 
       const scaleProgress = calculateProgress(scrollTop, triggerStart, triggerEnd);
       const targetScale = baseScale + i * itemScale;
@@ -117,6 +116,7 @@ const ScrollStack = ({
 
       const transform = `translate3d(0, ${translateY}px, 0) scale(${scale})`;
       card.style.transform = transform;
+      card.style.zIndex = i + 1;
 
       if (i === cardsRef.current.length - 1) {
         const isInView = scrollTop >= pinStart && scrollTop <= pinEnd;
@@ -134,7 +134,6 @@ const ScrollStack = ({
     itemScale,
     itemStackDistance,
     stackPosition,
-    scaleEndPosition,
     baseScale,
     useWindowScroll,
     onStackComplete,
@@ -211,7 +210,7 @@ const ScrollStack = ({
     <div className={`scroll-stack-scroller ${className}`.trim()} ref={scrollerRef}>
       <div className="scroll-stack-inner">
         {children}
-        <div className="scroll-stack-end" style={{ height: '500px' }} />
+        <div className="scroll-stack-end" style={{ height: '400px' }} />
       </div>
     </div>
   );
