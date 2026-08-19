@@ -95,6 +95,23 @@ export default function Home(): React.JSX.Element {
             });
         }
 
+        // 4.5 HEADER SCROLL REVEAL OBSERVER
+        const headerRevealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('header-revealed');
+                }
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.cways-section-title, .cways-hero-title, .cways-footer-heading, .section-label, .belief-quote, .os-title-block').forEach(el => {
+            el.classList.add('header-reveal-target');
+            headerRevealObserver.observe(el);
+        });
+
         // 5. PROJECT STRIP CAROUSEL NAVIGATION
         const stripWrap = document.getElementById('projectStripWrap');
         const stripPrev = document.getElementById('stripPrev');
