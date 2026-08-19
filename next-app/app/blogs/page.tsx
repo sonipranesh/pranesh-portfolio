@@ -442,7 +442,7 @@ export default function BlogsPage() {
               <div className="blog-article-html" dangerouslySetInnerHTML={{ __html: activePost.content }} />
 
               <div className="blog-modal-footer">
-                <button className="cways-btn-primary" onClick={() => setActivePost(null)} data-cursor="CLOSE">
+                <button className="modal-close" onClick={() => setActivePost(null)} data-cursor="CLOSE">
                   CLOSE ESSAY ✕
                 </button>
               </div>

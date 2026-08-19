@@ -1231,7 +1231,7 @@ export default function Home(): React.JSX.Element {
             <div className="auth-modal-box" id="authModal">
                 <div className="auth-header">
                     <h3>SIGN IN TO LAB 👤</h3>
-                    <button className="auth-close" id="authClose">&times;</button>
+                    <button className="auth-close" id="authClose" data-cursor="CLOSE">CLOSE ✕</button>
                 </div>
                 <p style={{ fontSize: "0.85rem", color: "var(--muted)", marginBottom: "20px", lineHeight: "1.5" }}>Access exclusive AI prototype
                     sandboxes, PRD templates, and prototype demos.</p>
@@ -1245,7 +1245,7 @@ export default function Home(): React.JSX.Element {
             <div className="modal-content" id="projectModal">
                 <div className="modal-header">
                     <span className="modal-badge" id="modalBadge">01 / REASON</span>
-                    <button className="modal-close" id="modalClose" aria-label="Close modal" data-cursor="CLOSE">&times;</button>
+                    <button className="modal-close" id="modalClose" aria-label="Close modal" data-cursor="CLOSE">CLOSE ✕</button>
                 </div>
                 <div className="modal-body">
                     <div className="modal-title-area">
