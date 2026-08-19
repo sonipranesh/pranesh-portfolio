@@ -3924,111 +3924,122 @@ footer {
 }
 
 /* ==========================================================================
-   BLOGS PAGE STYLES
+   BLOGS PAGE STYLES & AMBIENT ANIMATION
    ========================================================================== */
 .blogs-page-wrapper {
     min-height: 100vh;
     background: var(--paper);
     color: var(--ink);
     position: relative;
+    overflow-x: hidden;
 }
 
-/* ==========================================================================
-   CREATIVE WRITING & TYPING BACKGROUND FOR BLOGS
-   ========================================================================== */
-.writing-background-layer {
+/* NO ORANGE/RED HOVER POINTER ON BLOGS PAGE */
+.blogs-page-wrapper .cursor.active {
+    width: 12px !important;
+    height: 12px !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    mix-blend-mode: difference !important;
+    box-shadow: none !important;
+    border-radius: 50% !important;
+}
+
+.blogs-page-wrapper .cursor-label {
+    display: none !important;
+    opacity: 0 !important;
+}
+
+/* AMBIENT CREATIVE WRITING & TYPING BACKGROUND */
+.blogs-ambient-bg {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 600px;
     pointer-events: none;
     overflow: hidden;
     z-index: 0;
 }
 
-/* SUBTLE NOTEBOOK GUIDELINES */
-.paper-lines {
+.blogs-pen-svg {
     position: absolute;
-    inset: 0;
-    background-image: repeating-linear-gradient(
-        transparent,
-        transparent 31px,
-        rgba(0, 0, 0, 0.032) 32px
-    );
-    opacity: 0.85;
-}
-
-.margin-line {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: clamp(20px, 4vw, 50px);
-    width: 1px;
-    background: rgba(239, 96, 71, 0.12); /* Subtle editorial red margin line */
-}
-
-/* FOUNTAIN PEN ANIMATED PATH */
-.pen-drawing-svg {
-    position: absolute;
-    top: 100px;
-    right: 3%;
-    width: clamp(350px, 55vw, 850px);
+    top: 90px;
+    right: 4%;
+    width: clamp(320px, 45vw, 620px);
     height: auto;
-    opacity: 0.28;
+    color: var(--ink);
+    opacity: 0.16;
 }
 
-.pen-path {
-    stroke: rgba(17, 17, 17, 0.22);
-    stroke-width: 2.2;
-    stroke-linecap: round;
-    stroke-dasharray: 1400;
-    stroke-dashoffset: 1400;
-    animation: drawInkLine 10s ease-in-out infinite alternate;
+.blogs-writing-line {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawInkLine 14s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.blogs-writing-line-secondary {
+    stroke-dasharray: 800;
+    stroke-dashoffset: 800;
+    animation: drawInkLineSecondary 14s cubic-bezier(0.4, 0, 0.2, 1) infinite 2s;
+    opacity: 0.5;
 }
 
 @keyframes drawInkLine {
-    0% {
-        stroke-dashoffset: 1400;
-    }
-    100% {
-        stroke-dashoffset: 0;
-    }
+    0% { stroke-dashoffset: 1000; opacity: 0; }
+    15% { opacity: 0.8; }
+    60% { stroke-dashoffset: 0; opacity: 0.8; }
+    85% { stroke-dashoffset: 0; opacity: 0.4; }
+    100% { stroke-dashoffset: -1000; opacity: 0; }
 }
 
-/* FLOATING TYPEWRITER GLYPHS */
-.floating-glyphs-layer {
-    position: absolute;
-    inset: 0;
+@keyframes drawInkLineSecondary {
+    0% { stroke-dashoffset: 800; opacity: 0; }
+    20% { opacity: 0.6; }
+    65% { stroke-dashoffset: 0; opacity: 0.6; }
+    85% { stroke-dashoffset: 0; opacity: 0.3; }
+    100% { stroke-dashoffset: -800; opacity: 0; }
 }
 
-.glyph {
+.blogs-pen-nib {
+    animation: floatPenNib 14s ease-in-out infinite;
+}
+
+@keyframes floatPenNib {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(-8px, -4px); }
+    100% { transform: translate(0, 0); }
+}
+
+.blogs-floating-glyphs {
     position: absolute;
+    top: 260px;
+    right: 8%;
+    display: flex;
+    gap: 24px;
     font-family: var(--font-mono);
-    color: rgba(17, 17, 17, 0.05);
-    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--ink);
+    opacity: 0.22;
     user-select: none;
-    animation: floatGlyph 12s ease-in-out infinite alternate;
 }
 
-.g1 { top: 180px; left: 8%; font-size: 3rem; animation-delay: 0s; }
-.g2 { top: 320px; right: 12%; font-size: 2.5rem; animation-delay: 2s; }
-.g3 { top: 600px; left: 4%; font-size: 2.2rem; animation-delay: 4s; }
-.g4 { top: 950px; right: 6%; font-size: 2.8rem; animation-delay: 1s; }
-.g5 { top: 1200px; left: 10%; font-size: 1.1rem; border: 1px solid rgba(0,0,0,0.06); padding: 4px 8px; border-radius: 6px; animation-delay: 3s; }
-.g6 { top: 1500px; right: 14%; font-size: 1.1rem; animation-delay: 5s; }
-.g7 { top: 1850px; left: 6%; font-size: 1.1rem; border: 1px solid rgba(0,0,0,0.06); padding: 4px 8px; border-radius: 6px; animation-delay: 2.5s; }
-.g8 { top: 2200px; right: 10%; font-size: 1.1rem; border: 1px solid rgba(0,0,0,0.06); padding: 4px 8px; border-radius: 6px; animation-delay: 0.5s; }
-.g9 { top: 2500px; left: 12%; font-size: 2.8rem; animation-delay: 3.5s; }
-.g10 { top: 2800px; right: 8%; font-size: 2.2rem; animation-delay: 1.8s; }
+.glyph-item {
+    display: inline-block;
+    animation: floatTypingGlyph 6s ease-in-out infinite alternate;
+}
 
-@keyframes floatGlyph {
-    0% {
-        transform: translateY(0px) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-18px) rotate(4deg);
-    }
-    100% {
-        transform: translateY(12px) rotate(-3deg);
-    }
+.glyph-item.g1 { animation-delay: 0s; }
+.glyph-item.g2 { animation-delay: 1s; }
+.glyph-item.g3 { animation-delay: 2s; }
+.glyph-item.g4 { animation-delay: 3s; }
+.glyph-item.g5 { animation-delay: 4s; }
+.glyph-item.g6 { animation-delay: 5s; }
+
+@keyframes floatTypingGlyph {
+    0% { transform: translateY(0px) scale(0.92); opacity: 0.15; }
+    50% { transform: translateY(-14px) scale(1.1); opacity: 0.45; }
+    100% { transform: translateY(0px) scale(0.92); opacity: 0.15; }
 }
 
 .blogs-main-content {

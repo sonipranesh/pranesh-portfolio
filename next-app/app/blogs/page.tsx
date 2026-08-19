@@ -214,32 +214,6 @@ export default function BlogsPage() {
   return (
     <div className="blogs-page-wrapper">
       <div className="noise"></div>
-      
-      {/* CREATIVE WRITING & TYPING BACKGROUND LAYER */}
-      <div className="writing-background-layer">
-        <div className="paper-lines"></div>
-        <div className="margin-line"></div>
-
-        {/* FOUNTAIN PEN INK STROKE DRAWING SVG */}
-        <svg className="pen-drawing-svg" viewBox="0 0 1200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M 50,200 Q 200,80 400,220 T 750,150 T 1150,250" className="pen-path" />
-        </svg>
-
-        {/* FLOATING TYPEWRITER GLYPHS & KEYCAPS */}
-        <div className="floating-glyphs-layer">
-          <span className="glyph g1">¶</span>
-          <span className="glyph g2">§</span>
-          <span className="glyph g3">✎</span>
-          <span className="glyph g4">✍</span>
-          <span className="glyph g5">⌘K</span>
-          <span className="glyph g6">[prose]</span>
-          <span className="glyph g7">↵ enter</span>
-          <span className="glyph g8">shift ⇧</span>
-          <span className="glyph g9">¶</span>
-          <span className="glyph g10">✍</span>
-        </div>
-      </div>
-
       <div className="cursor" id="cursor">
         <span className="cursor-label" id="cursorLabel"></span>
       </div>
@@ -312,12 +286,48 @@ export default function BlogsPage() {
         </div>
       )}
 
+      {/* AMBIENT WRITING & TYPING BACKGROUND (MINIMALIST CREATIVE ANIMATION) */}
+      <div className="blogs-ambient-bg" aria-hidden="true">
+        <svg className="blogs-pen-svg" viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            className="blogs-writing-line"
+            d="M 20 220 Q 140 80 260 180 T 480 120 Q 540 80 580 140"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <path
+            className="blogs-writing-line-secondary"
+            d="M 50 250 Q 180 190 320 240 T 550 210"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeDasharray="4 6"
+            strokeLinecap="round"
+          />
+          <g className="blogs-pen-nib">
+            <path
+              d="M 565 125 L 590 100 L 598 108 L 573 133 Z M 573 133 L 580 140 L 565 140 Z"
+              fill="currentColor"
+            />
+            <circle cx="580" cy="120" r="1.5" fill="currentColor" />
+          </g>
+        </svg>
+
+        <div className="blogs-floating-glyphs">
+          <span className="glyph-item g1">✍︎</span>
+          <span className="glyph-item g2">¶</span>
+          <span className="glyph-item g3">§</span>
+          <span className="glyph-item g4">↵</span>
+          <span className="glyph-item g5">✦</span>
+          <span className="glyph-item g6">⌘</span>
+        </div>
+      </div>
+
       {/* MAIN CONTENT AREA */}
       <main className="blogs-main-content">
         {/* BLOG HERO SECTION */}
         <section className="blogs-hero">
           <div className="blogs-hero-inner">
-            <div className="section-label">04 / PERSPECTIVES</div>
             <h1 className="cways-section-title">
               PERSPECTIVES.
             </h1>
