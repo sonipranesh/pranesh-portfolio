@@ -415,34 +415,13 @@ export default function BlogsPage() {
         </section>
       </main>
 
-      {/* FULL ARTICLE READING MODAL (FULL WINDOW OVERLAY) */}
+      {/* FULL ARTICLE READING MODAL */}
       {activePost && (
         <div className="blog-modal-backdrop active" onClick={() => setActivePost(null)}>
-          <div className="blog-modal-content active full-window-blog-modal" onClick={e => e.stopPropagation()}>
-            {/* CONTINUOUS PEN WRITING BACKGROUND ANIMATION FOR BLOG ESSAYS */}
-            <div className="blogs-pen-bg" aria-hidden="true">
-              <svg className="blogs-pen-canvas" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <line x1="0" y1="180" x2="1440" y2="180" stroke="rgba(17, 17, 17, 0.04)" strokeWidth="1" strokeDasharray="8 8" />
-                <line x1="0" y1="360" x2="1440" y2="360" stroke="rgba(17, 17, 17, 0.04)" strokeWidth="1" strokeDasharray="8 8" />
-                <line x1="0" y1="540" x2="1440" y2="540" stroke="rgba(17, 17, 17, 0.04)" strokeWidth="1" strokeDasharray="8 8" />
-                <line x1="0" y1="720" x2="1440" y2="720" stroke="rgba(17, 17, 17, 0.04)" strokeWidth="1" strokeDasharray="8 8" />
-                <path
-                  d="M 100 240 Q 350 140 600 280 T 1100 200 T 1380 320"
-                  stroke="rgba(239, 96, 71, 0.14)"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  fill="none"
-                  className="animated-ink-stroke"
-                />
-                <g className="animated-pen-nib">
-                  <path d="M -20 -40 L 0 0 L 20 -40 Z" fill="var(--ink)" opacity="0.15" />
-                  <circle cx="0" cy="0" r="3" fill="var(--red)" />
-                </g>
-              </svg>
-            </div>
+          <div className="blog-modal-content active" onClick={e => e.stopPropagation()}>
             <div className="blog-modal-header">
               <span className="modal-badge">{activePost.tag}</span>
-              <button className="modal-close" onClick={() => setActivePost(null)} data-cursor="CLOSE">✕</button>
+              <button className="modal-close" onClick={() => setActivePost(null)} data-cursor="CLOSE">CLOSE ✕</button>
             </div>
             <div className="blog-modal-body">
               <div className="blog-modal-meta">
