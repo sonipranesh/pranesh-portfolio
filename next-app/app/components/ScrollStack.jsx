@@ -10,10 +10,10 @@ export const ScrollStackItem = ({ children, itemClassName = '' }) => (
 const ScrollStack = ({
   children,
   className = '',
-  itemDistance = 120,
+  itemDistance = 280,
   itemScale = 0.04,
   itemStackDistance = 24,
-  stackPosition = '140px',
+  stackPosition = '130px',
   scaleEndPosition = '60px',
   baseScale = 0.90,
   rotationAmount = 0,
@@ -210,7 +210,7 @@ const ScrollStack = ({
     <div className={`scroll-stack-scroller ${className}`.trim()} ref={scrollerRef}>
       <div className="scroll-stack-inner">
         {children}
-        <div className="scroll-stack-end" style={{ height: '400px' }} />
+        <div className="scroll-stack-end" style={{ height: '600px' }} />
       </div>
     </div>
   );

@@ -616,25 +616,25 @@ export default function Home(): React.JSX.Element {
                         </nav>
 
                         <div className="header-actions">
-                            <button 
-                                className="cways-menu-toggle" 
+                            <button
+                                className="cways-menu-toggle"
                                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                                 aria-label="Toggle navigation menu"
                             >
                                 {isMenuOpen ? "CLOSE ✕" : (
                                     <span className="hamburger-wrap">
                                         <svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1 1.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                                            <path d="M1 6.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                                            <path d="M1 11.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                                            <path d="M1 1.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                                            <path d="M1 6.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                                            <path d="M1 11.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                                         </svg>
                                     </span>
                                 )}
                             </button>
-                            <a 
-                                href="/Pranesh_Soni_Resume.pdf" 
-                                download="Pranesh_Soni_Resume.pdf" 
-                                className="cways-header-cta cways-desktop-only-cta" 
+                            <a
+                                href="/Pranesh_Soni_Resume.pdf"
+                                download="Pranesh_Soni_Resume.pdf"
+                                className="cways-header-cta cways-desktop-only-cta"
                                 data-cursor="DOWNLOAD RESUME"
                             >
                                 RESUME <span className="arrow" style={{ transform: 'none', marginLeft: '6px', fontSize: '0.95rem' }}>↓</span>
@@ -669,9 +669,9 @@ export default function Home(): React.JSX.Element {
                                 </Link>
                             </div>
                             <div className="cways-mobile-menu-footer">
-                                <a 
-                                    href="#contact" 
-                                    onClick={(e) => { setIsMenuOpen(false); handleLetsBuildTogether(e); }} 
+                                <a
+                                    href="#contact"
+                                    onClick={(e) => { setIsMenuOpen(false); handleLetsBuildTogether(e); }}
                                     className="cways-btn-primary"
                                 >
                                     LET'S BUILD TOGETHER
@@ -727,10 +727,10 @@ export default function Home(): React.JSX.Element {
                     </h2>
                 </section>
 
-                {/* SECTION 3: SCROLL STACK CARDS */}
-                <section className="work stack-card" id="work">
+                {/* SECTION 3: PURE CSS STICKY STACKING CARDS */}
+                <section className="work-sticky-section" id="work">
                     <div className="work-split-container">
-                        {/* LEFT COLUMN: STICKY HEADING & SUBTEXT */}
+                        {/* LEFT COLUMN: STICKY SECTION HEADING & SUBTEXT */}
                         <div className="work-left-col">
                             <div className="section-label">03 / SELECTED BUILDS</div>
                             <h2 className="cways-section-title light-theme">
@@ -745,7 +745,7 @@ export default function Home(): React.JSX.Element {
 
                         {/* RIGHT COLUMN: SCROLL STACK CARDS */}
                         <div className="work-right-col">
-                            <ScrollStack useWindowScroll={true} itemDistance={120} itemScale={0.04} itemStackDistance={24} baseScale={0.90} stackPosition="140px">
+                            <ScrollStack useWindowScroll={true} itemDistance={280} itemScale={0.04} itemStackDistance={24} baseScale={0.90} stackPosition="130px">
                                 {/* CARD 1 */}
                                 <ScrollStackItem>
                                     <article className="lab-project" data-cursor="OPEN PROJECT" data-project="contract">
