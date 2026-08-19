@@ -32,6 +32,7 @@ export default function Home(): React.JSX.Element {
         // 2. CUSTOM CURSOR
         const cursor = document.getElementById('cursor');
         const label = document.getElementById('cursorLabel');
+        let bindCursorEvents = () => {};
 
         if (matchMedia('(pointer:fine)').matches && cursor && label) {
             window.addEventListener('mousemove', e => {
@@ -43,7 +44,19 @@ export default function Home(): React.JSX.Element {
                 const target = e.currentTarget as HTMLElement;
                 if (cursor && label) {
                     cursor.classList.add('active');
-                    label.textContent = target.dataset.cursor || 'EXPLORE';
+                    let text = target.dataset.cursor;
+                    if (!text) {
+                        if (target.classList.contains('modal-close') || target.id === 'modalClose') {
+                            text = 'CLOSE';
+                        } else if (target.classList.contains('modal-tab')) {
+                            text = target.textContent?.trim() || 'TAB';
+                        } else if (target.classList.contains('lab-project')) {
+                            text = 'OPEN PROJECT';
+                        } else {
+                            text = target.textContent?.trim().slice(0, 24) || 'EXPLORE';
+                        }
+                    }
+                    label.textContent = text;
                 }
             }
 
@@ -54,14 +67,14 @@ export default function Home(): React.JSX.Element {
                 }
             }
 
-            function bindCursorEvents() {
-                document.querySelectorAll('[data-cursor], a, button, .lab-project').forEach(el => {
+            bindCursorEvents = function() {
+                document.querySelectorAll('[data-cursor], a, button, .lab-project, .modal-close, .modal-tab').forEach(el => {
                     el.removeEventListener('mouseenter', onMouseEnter);
                     el.removeEventListener('mouseleave', onMouseLeave);
                     el.addEventListener('mouseenter', onMouseEnter);
                     el.addEventListener('mouseleave', onMouseLeave);
                 });
-            }
+            };
 
             bindCursorEvents();
         }
@@ -535,6 +548,7 @@ export default function Home(): React.JSX.Element {
             if (modalBackdrop) modalBackdrop.classList.add('active');
             if (projectModal) projectModal.classList.add('active');
             document.body.style.overflow = 'hidden';
+            bindCursorEvents();
         }
 
         function closeProjectModal() {
@@ -1152,7 +1166,7 @@ export default function Home(): React.JSX.Element {
             <div className="modal-content" id="projectModal">
                 <div className="modal-header">
                     <span className="modal-badge" id="modalBadge">01 / REASON</span>
-                    <button className="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+                    <button className="modal-close" id="modalClose" aria-label="Close modal" data-cursor="CLOSE">&times;</button>
                 </div>
                 <div className="modal-body">
                     <div className="modal-title-area">
@@ -1161,9 +1175,9 @@ export default function Home(): React.JSX.Element {
                     </div>
 
                     <div className="modal-tabs">
-                        <button className="modal-tab active" data-tab="overview">OVERVIEW</button>
-                        <button className="modal-tab" data-tab="architecture">ARCHITECTURE & RAG</button>
-                        <button className="modal-tab" id="modalKpiTabBtn" data-tab="kpis">PRODUCT KPIs &amp; IMPACT</button>
+                        <button className="modal-tab active" data-tab="overview" data-cursor="OVERVIEW">OVERVIEW</button>
+                        <button className="modal-tab" data-tab="architecture" data-cursor="ARCHITECTURE & RAG">ARCHITECTURE &amp; RAG</button>
+                        <button className="modal-tab" id="modalKpiTabBtn" data-tab="kpis" data-cursor="PRODUCT KPI & IMPACT">PRODUCT KPIs &amp; IMPACT</button>
                     </div>
 
                     <div className="tab-pane active" id="tab-overview">
