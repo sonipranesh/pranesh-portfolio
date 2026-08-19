@@ -2715,7 +2715,7 @@ footer {
     width: 100%;
     min-height: 100vh;
     background: #08080a;
-    background-image: url('/hero_bg.jpg');
+    background-image: url('/hero_silhouette_bg.jpg');
     background-size: cover;
     background-position: center right;
     background-repeat: no-repeat;
@@ -2730,9 +2730,8 @@ footer {
 .cways-hero-bg-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, rgba(8, 8, 10, 0.95) 0%, rgba(8, 8, 10, 0.78) 48%, rgba(8, 8, 10, 0.35) 100%),
-        radial-gradient(circle at 15% 45%, rgba(255, 68, 20, 0.4) 0%, transparent 65%),
-        radial-gradient(circle at 80% 30%, rgba(0, 180, 210, 0.22) 0%, transparent 55%);
+    background: linear-gradient(90deg, rgba(8, 8, 10, 0.92) 0%, rgba(8, 8, 10, 0.68) 45%, rgba(8, 8, 10, 0.25) 100%),
+        radial-gradient(circle at 75% 45%, rgba(255, 120, 30, 0.18) 0%, transparent 65%);
     z-index: 1;
     pointer-events: none;
 }
@@ -4699,76 +4698,4 @@ footer {
     display: inline-block;
     transition: transform 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.15s,
                 opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
-}
-
-/* ==========================================================================
-   REACT BITS LIQUID SWAP GLASS BALL REVEAL STYLES
-   ========================================================================== */
-.liquid-swap-container {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.liquid-swap-canvas {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-.liquid-swap-canvas canvas {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover;
-}
-
-.liquid-swap-trigger-btn {
-    position: absolute;
-    bottom: 40px;
-    right: 60px;
-    z-index: 20;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 24px;
-    border-radius: 9999px;
-    background: rgba(17, 17, 17, 0.65);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #ffffff;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    cursor: pointer;
-    transition: all 0.3s var(--ease);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
-}
-
-.liquid-swap-trigger-btn:hover {
-    background: var(--red);
-    border-color: var(--red);
-    transform: translateY(-2px);
-    box-shadow: 0 16px 40px rgba(239, 96, 71, 0.4);
-}
-
-.liquid-icon {
-    font-size: 1rem;
-    line-height: 1;
-}
-
-@media (max-width: 768px) {
-    .liquid-swap-trigger-btn {
-        bottom: 24px;
-        right: 24px;
-        padding: 10px 18px;
-        font-size: 0.7rem;
-    }
 }

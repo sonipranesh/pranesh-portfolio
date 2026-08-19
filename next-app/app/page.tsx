@@ -3,7 +3,6 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import ScrollStack, { ScrollStackItem } from '@/app/components/ScrollStack';
-import LiquidSwap from '@/app/components/LiquidSwap';
 
 export default function Home(): React.JSX.Element {
     const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
@@ -695,8 +694,6 @@ export default function Home(): React.JSX.Element {
 
                 {/* HERO SECTION (CWAYS.IN REPLICATED DESIGN & SINGLE SCROLL FLOW) */}
                 <section className="hero-layer cways-hero-theme" id="heroLayer">
-                    {/* LIQUID SWAP GLASS BALL REVEAL COMPONENT */}
-                    <LiquidSwap img1="/hero_bg.jpg" img2="/hero-portrait-bg.jpg" />
                     {/* CREATIVE ANIMATED NEURAL NODE CONSTELLATION BACKGROUND */}
                     <div className="hero-neural-bg" aria-hidden="true">
                         <svg className="hero-svg-canvas" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
