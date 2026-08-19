@@ -2737,6 +2737,14 @@ footer {
     pointer-events: none;
 }
 
+.particle-image-canvas-wrapper {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
 .cways-hero-bg-overlay {
     position: absolute;
     inset: 0;

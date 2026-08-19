@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import ScrollStack, { ScrollStackItem } from '@/app/components/ScrollStack';
+import ParticleImage from '@/app/components/ParticleImage';
 
 export default function Home(): React.JSX.Element {
     const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
@@ -694,6 +695,7 @@ export default function Home(): React.JSX.Element {
 
                 {/* HERO SECTION (CWAYS.IN REPLICATED DESIGN & SINGLE SCROLL FLOW) */}
                 <section className="hero-layer cways-hero-theme" id="heroLayer">
+                    <ParticleImage imageSrc="/hero_silhouette_bg.jpg" />
                     {/* NAVBAR AT THE TOP OF HERO SECTION (CWAYS STYLE WITH REPLICATED DESIGN) */}
                     <header className="cways-header">
                         <Link href="/" className="cways-logo" data-cursor="PRANESH">pranesh soni</Link>
