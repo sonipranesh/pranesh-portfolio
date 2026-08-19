@@ -70,8 +70,7 @@ export default function AboutPage() {
 
                 <nav className="cways-nav">
                     <Link href="/about" className="active" data-cursor="ABOUT">About</Link>
-                    <Link href="/#work" data-cursor="SERVICES">Services</Link>
-                    <Link href="/#work" data-cursor="PORTFOLIO">Portfolio</Link>
+                    <Link href="/#work" data-cursor="PROJECTS">Projects</Link>
                     <Link href="/blogs" data-cursor="BLOGS">Blogs</Link>
                     <Link href="/#why-me" data-cursor="WHY ME">Why Me</Link>
                 </nav>
@@ -117,16 +116,13 @@ export default function AboutPage() {
                             <span className="num">01</span> ABOUT
                         </Link>
                         <Link href="/#work" onClick={() => setIsMenuOpen(false)}>
-                            <span className="num">02</span> SERVICES
-                        </Link>
-                        <Link href="/#work" onClick={() => setIsMenuOpen(false)}>
-                            <span className="num">03</span> PORTFOLIO
+                            <span className="num">02</span> PROJECTS
                         </Link>
                         <Link href="/blogs" onClick={() => setIsMenuOpen(false)}>
-                            <span className="num">04</span> BLOGS
+                            <span className="num">03</span> BLOGS
                         </Link>
                         <Link href="/#why-me" onClick={() => setIsMenuOpen(false)}>
-                            <span className="num">05</span> WHY ME
+                            <span className="num">04</span> WHY ME
                         </Link>
                     </div>
                     <div className="cways-mobile-menu-footer">
