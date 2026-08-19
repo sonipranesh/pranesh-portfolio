@@ -678,7 +678,7 @@ export default function Home(): React.JSX.Element {
                             <a href="#work" data-cursor="SERVICES">Services</a>
                             <a href="#work" data-cursor="PORTFOLIO">Portfolio</a>
                             <a href="#manifesto" data-cursor="BLOGS">Blogs</a>
-                            <Link href="/about" data-cursor="WHY ME">Why Me</Link>
+                            <a href="#why-me" data-cursor="WHY ME">Why Me</a>
                         </nav>
 
                         <div className="header-actions">
@@ -730,9 +730,9 @@ export default function Home(): React.JSX.Element {
                                 <a href="#manifesto" onClick={() => setIsMenuOpen(false)}>
                                     <span className="num">04</span> BLOGS
                                 </a>
-                                <Link href="/about" onClick={() => setIsMenuOpen(false)}>
+                                <a href="#why-me" onClick={() => setIsMenuOpen(false)}>
                                     <span className="num">05</span> WHY ME
-                                </Link>
+                                </a>
                             </div>
                             <div className="cways-mobile-menu-footer">
                                 <a
