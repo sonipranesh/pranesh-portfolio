@@ -712,13 +712,65 @@ nav a:active {
     overflow: hidden;
 }
 
-/* MANIFESTO (STACK CARD 1) */
+/* MANIFESTO / TECH STACK (SECTION 2) */
 .manifesto {
-    min-height: 85vh;
-    padding: 120px 6vw 100px;
+    min-height: auto;
+    padding: 100px 6vw 90px;
     position: relative;
     background: var(--paper);
     z-index: 10;
+}
+
+.tech-stack-loop-wrapper {
+    width: 100%;
+    margin-top: 48px;
+    padding: 32px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+}
+
+/* LOGO LOOP KEYFRAME ANIMATIONS */
+@keyframes logoLoopLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes logoLoopRight {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes logoLoopUp {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+@keyframes logoLoopDown {
+    0% {
+        transform: translateY(-50%);
+    }
+}
+
+.logo-loop-track:hover {
+    animation-play-state: paused;
+}
+
+.logo-loop-item.scale-hover:hover {
+    transform: scale(1.22);
+    color: var(--red) !important;
 }
 
 .section-label {

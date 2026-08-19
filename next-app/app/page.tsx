@@ -3,19 +3,53 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import ScrollStack, { ScrollStackItem } from '@/app/components/ScrollStack';
-import LogoLoop from '@/app/components/LogoLoop';
-import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiPython, SiPostgresql, SiDocker } from 'react-icons/si';
-import { FaAws } from 'react-icons/fa';
+import LogoLoop, { LogoItem } from '@/app/components/LogoLoop';
+import {
+  SiJira,
+  SiConfluence,
+  SiStreamlit,
+  SiGradio,
+  SiLangchain,
+  SiClaude,
+  SiAnthropic,
+  SiPython,
+  SiReact,
+  SiNextdotjs,
+  SiFastapi
+} from 'react-icons/si';
+import { FaAws } from 'react-icons/fa6';
 
-const techLogos = [
+const OpenAIIcon = () => (
+  <svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0813 4.779-2.7582a.7938.7938 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.5045 4.5045 0 0 1-4.4952 4.4953zM3.6 18.304a4.4707 4.4707 0 0 1-.5355-3.0141l.142.0852 4.7837 2.7582a.7794.7794 0 0 0 .7855 0l5.8336-3.3684v2.3324a.0805.0805 0 0 1-.0332.0615L9.74 19.9502A4.4997 4.4997 0 0 1 3.6 18.304zm-1.4643-10.374a4.4611 4.4611 0 0 1 2.3409-1.9706V11.58a.7842.7842 0 0 0 .3927.6813l5.8336 3.3684-2.0152 1.1638a.0805.0805 0 0 1-.0711 0l-4.831-2.7915A4.4952 4.4952 0 0 1 2.1357 7.93zm16.4862 3.1232l-5.8336-3.3684 2.0152-1.1638a.0805.0805 0 0 1 .0711 0l4.831 2.7915a4.4952 4.4952 0 0 1-.6767 8.1042v-5.682a.7842.7842 0 0 0-.407-.6815zm2.0104-3.0238l-.1419-.0852-4.7742-2.7582a.7794.7794 0 0 0-.7855 0L9.0919 8.5602V6.2278a.0805.0805 0 0 1 .0332-.0615l4.8358-2.7915a4.4997 4.4997 0 0 1 6.891 4.8876zM7.742 10.7497l2.02-1.1639a.0805.0805 0 0 1 .0711 0l4.831 2.7915a4.4952 4.4952 0 0 1-.6767 8.1042v-5.682a.7842.7842 0 0 0-.407-.6815z"/>
+  </svg>
+);
+
+const techLogos: LogoItem[] = [
+  // Agile Management
+  { node: <SiJira />, title: "Agile: Jira", href: "https://www.atlassian.com/software/jira" },
+  { node: <SiConfluence />, title: "Agile: Confluence", href: "https://www.atlassian.com/software/confluence" },
+
+  // Cloud Infrastructure
+  { node: <FaAws />, title: "AWS Cloud Services", href: "https://aws.amazon.com" },
+
+  // Agentic & Orchestration Frameworks
+  { node: <SiLangchain />, title: "Agentic Frameworks: LangChain", href: "https://www.langchain.com" },
+
+  // Rapid Prototyping
+  { node: <SiStreamlit />, title: "Rapid Prototyping: Streamlit", href: "https://streamlit.io" },
+  { node: <SiGradio />, title: "Rapid Prototyping: Gradio", href: "https://gradio.app" },
+
+  // Core AI Models
+  { node: <OpenAIIcon />, title: "ChatGPT / OpenAI", href: "https://chatgpt.com" },
+  { node: <SiClaude />, title: "Claude", href: "https://claude.ai" },
+  { node: <SiAnthropic />, title: "Anthropic API", href: "https://www.anthropic.com" },
+
+  // Core Stack
+  { node: <SiPython />, title: "Python", href: "https://www.python.org" },
   { node: <SiReact />, title: "React", href: "https://react.dev" },
   { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
-  { node: <SiTypescript />, title: "TypeScript", href: "https://www.typescriptlang.org" },
-  { node: <SiTailwindcss />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
-  { node: <SiPython />, title: "Python", href: "https://www.python.org" },
-  { node: <FaAws />, title: "AWS", href: "https://aws.amazon.com" },
-  { node: <SiPostgresql />, title: "PostgreSQL", href: "https://www.postgresql.org" },
-  { node: <SiDocker />, title: "Docker", href: "https://www.docker.com" }
+  { node: <SiFastapi />, title: "FastAPI", href: "https://fastapi.tiangolo.com" },
 ];
 
 export default function Home(): React.JSX.Element {
@@ -820,22 +854,22 @@ export default function Home(): React.JSX.Element {
 
                 {/* SECTION 2: TECH STACK */}
                 <section className="manifesto stack-card" id="manifesto">
-                    <div className="section-label">02 / TECH STACK</div>
+                    <div className="section-label">02 / TECH STACK &amp; TOOLKIT</div>
                     <h2 className="cways-section-title">
-                        TECH STACK.
+                        TECH<br />
+                        <span className="cways-stroke-text-dark">STACK.</span>
                     </h2>
-                    <div className="tech-stack-loop-container" style={{ marginTop: '40px', position: 'relative', overflow: 'hidden' }}>
+
+                    <div className="tech-stack-loop-wrapper">
                         <LogoLoop
                             logos={techLogos}
-                            speed={30}
+                            speed={28}
                             direction="left"
-                            logoHeight={44}
-                            gap={36}
-                            hoverSpeed={0}
+                            logoHeight={52}
+                            gap={48}
                             scaleOnHover
                             fadeOut
-                            fadeOutColor="var(--paper)"
-                            ariaLabel="Technology partners"
+                            ariaLabel="PM & AI Tech Stack"
                         />
                     </div>
                 </section>
