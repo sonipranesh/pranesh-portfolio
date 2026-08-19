@@ -1242,7 +1242,25 @@ export default function Home(): React.JSX.Element {
 
             {/* PROJECT DETAIL MODAL */}
             <div className="modal-backdrop" id="modalBackdrop"></div>
-            <div className="modal-content" id="projectModal">
+            <div className="modal-content full-window-modal" id="projectModal">
+                {/* MINIMAL BACKGROUND ANIMATION RELEVANT TO PROJECTS & ARCHITECTURE */}
+                <div className="projects-architecture-bg" aria-hidden="true">
+                    <svg className="projects-svg-canvas" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        {/* ARCHITECTURE SYSTEM FLOW GRID */}
+                        <pattern id="projectGrid" width="60" height="60" patternUnits="userSpaceOnUse">
+                            <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(17, 17, 17, 0.03)" strokeWidth="1" />
+                        </pattern>
+                        <rect width="100%" height="100%" fill="url(#projectGrid)" />
+                        {/* CONNECTING DATA STREAM PIPELINES */}
+                        <path d="M100 200 H400 V500 H900 V750 H1340" stroke="rgba(17,17,17,0.06)" strokeWidth="1.5" strokeDasharray="6 6" className="flow-dash-anim" />
+                        <path d="M250 100 V650 H1150" stroke="rgba(239,96,71,0.08)" strokeWidth="1.5" strokeDasharray="4 4" className="flow-dash-anim-rev" />
+                        {/* GLOWING SYSTEM RETRIEVAL NODES */}
+                        <circle cx="400" cy="200" r="6" fill="#ef6047" className="project-node-pulse" />
+                        <circle cx="900" cy="500" r="7" fill="#ef6047" className="project-node-pulse-delay" />
+                        <circle cx="250" cy="650" r="5" fill="#111111" className="project-node-pulse" />
+                        <circle cx="1150" cy="650" r="6" fill="#ef6047" className="project-node-pulse-delay" />
+                    </svg>
+                </div>
                 <div className="modal-header">
                     <span className="modal-badge" id="modalBadge">01 / REASON</span>
                     <button className="modal-close" id="modalClose" aria-label="Close modal" data-cursor="CLOSE">&times;</button>
