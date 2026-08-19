@@ -3945,13 +3945,19 @@ footer {
     text-align: left;
 }
 
-.blogs-hero,
+.blogs-hero {
+    max-width: 1180px;
+    margin-left: 0;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+
 .featured-blog-section,
 .blogs-filter-section,
 .blogs-grid-section,
 .blogs-newsletter-section {
     max-width: 1180px;
-    margin-left: 0;
+    margin-left: auto;
     margin-right: auto;
 }
 
@@ -4079,6 +4085,7 @@ footer {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .filter-chip {
