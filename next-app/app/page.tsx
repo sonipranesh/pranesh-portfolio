@@ -13,8 +13,6 @@ import {
   SiClaude,
   SiAnthropic,
   SiPython,
-  SiReact,
-  SiNextdotjs,
   SiFastapi
 } from 'react-icons/si';
 import { FaAws } from 'react-icons/fa6';
@@ -47,8 +45,6 @@ const techLogos: LogoItem[] = [
 
   // Core Stack
   { node: <SiPython />, title: "Python", href: "https://www.python.org" },
-  { node: <SiReact />, title: "React", href: "https://react.dev" },
-  { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
   { node: <SiFastapi />, title: "FastAPI", href: "https://fastapi.tiangolo.com" },
 ];
 
