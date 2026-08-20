@@ -1043,24 +1043,29 @@ export default function Home(): React.JSX.Element {
 
                         <div className="why-me-grid">
                             <div className="why-card">
-                                <div className="why-num">01 / PRODUCT + AI</div>
-                                <h3>PRODUCT THINKING + AI DEPTH</h3>
-                                <p>I bridge product strategy and AI implementation — from identifying the problem to shaping workflows, retrieval, model behavior, evaluation and the final user experience.</p>
+                                <div className="why-num">01 / CLARITY</div>
+                                <h3>MAKE THE UNCLEAR, CLEAR</h3>
+                                <p>I bring structure to ambiguous problems — clarifying the objective, constraints, stakeholders and what needs to be decided before the team starts building.</p>
                             </div>
                             <div className="why-card">
-                                <div className="why-num">02 / BUILDER MINDSET</div>
-                                <h3>I DON'T JUST SPECIFY. I BUILD.</h3>
-                                <p>I use AI-native tools to prototype, experiment and ship — reducing the distance between product idea and working product.</p>
+                                <div className="why-num">02 / JUDGMENT</div>
+                                <h3>PRIORITIZE. DECIDE. MOVE.</h3>
+                                <p>When everything is important, I make the trade-offs explicit — balancing customer value, business impact, effort, risk and urgency to decide what moves now, what waits and what doesn't get built.</p>
                             </div>
                             <div className="why-card">
-                                <div className="why-num">03 / TRUST BY DESIGN</div>
-                                <h3>TRUST IS A PRODUCT FEATURE</h3>
-                                <p>For enterprise AI, a good answer isn't enough. I think about grounding, evaluation, human oversight, failure modes and what the system should refuse to do.</p>
+                                <div className="why-num">03 / INFLUENCE</div>
+                                <h3>TURN CONFLICT INTO A DECISION</h3>
+                                <p>When business, engineering, design or customers pull in different directions, I surface the trade-offs, build alignment and drive toward a decision — escalating when it genuinely needs a higher-level call.</p>
                             </div>
                             <div className="why-card">
-                                <div className="why-num">04 / REAL-WORLD DELIVERY</div>
-                                <h3>BUILT FOR REAL-WORLD SCALE</h3>
-                                <p>I work across clients, stakeholders, architecture, UX, engineering, QA, UAT and adoption — connecting strategy with the realities of delivery.</p>
+                                <div className="why-num">04 / OWNERSHIP</div>
+                                <h3>OWN THE OUTCOME, NOT JUST THE PLAN</h3>
+                                <p>I don't disappear after the PRD. I stay close to delivery — resolving blockers, clarifying scope, managing changes, handling escalations and learning from what happens after launch.</p>
+                            </div>
+                            <div className="why-card">
+                                <div className="why-num">05 / EVOLUTION</div>
+                                <h3>LEARN IT. TRY IT. BUILD WITH IT.</h3>
+                                <p>I actively keep pace with where the industry is moving — learning new technologies, experimenting with emerging AI tools and turning that knowledge into working prototypes, sharper product thinking and better ways of solving problems. So that I can serve you better.</p>
                             </div>
                         </div>
                     </div>
