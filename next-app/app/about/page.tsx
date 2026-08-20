@@ -78,25 +78,25 @@ export default function AboutPage() {
                 </nav>
 
                 <div className="header-actions">
-                    <button 
-                        className="cways-menu-toggle about-menu-toggle" 
+                    <button
+                        className="cways-menu-toggle about-menu-toggle"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         aria-label="Toggle navigation menu"
                     >
                         {isMenuOpen ? "CLOSE ✕" : (
                             <span className="hamburger-wrap">
                                 <svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 1.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                                    <path d="M1 6.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                                    <path d="M1 11.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                                    <path d="M1 1.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                                    <path d="M1 6.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                                    <path d="M1 11.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                                 </svg>
                             </span>
                         )}
                     </button>
-                    <a 
-                        href="/Pranesh_Soni_Resume.pdf" 
-                        download="Pranesh_Soni_Resume.pdf" 
-                        className="cways-header-cta cways-desktop-only-cta" 
+                    <a
+                        href="/Pranesh_Soni_Resume.pdf"
+                        download="Pranesh_Soni_Resume.pdf"
+                        className="cways-header-cta cways-desktop-only-cta"
                         data-cursor="DOWNLOAD RESUME"
                     >
                         RESUME <span className="arrow" style={{ transform: 'none', marginLeft: '6px', fontSize: '0.95rem' }}>↓</span>
@@ -128,9 +128,9 @@ export default function AboutPage() {
                         </Link>
                     </div>
                     <div className="cways-mobile-menu-footer">
-                        <a 
-                            href="#contact" 
-                            onClick={(e) => { setIsMenuOpen(false); handleLetsBuildTogether(e); }} 
+                        <a
+                            href="#contact"
+                            onClick={(e) => { setIsMenuOpen(false); handleLetsBuildTogether(e); }}
                             className="cways-btn-primary"
                         >
                             LET'S BUILD TOGETHER
@@ -158,10 +158,10 @@ export default function AboutPage() {
                         <span className="cways-stroke-text-dark">PRANESH.</span>
                     </h1>
 
-                    <div className="about-role-tag">AI PRODUCT</div>
+                    <div className="about-role-tag">AI PRODUCT OWNER / MANAGER</div>
 
                     <p className="cways-hero-subtitle">
-                        Pranesh is an AI Product professional with over three years of experience building and delivering AI products, turning complex workflows into intuitive, high-value software solutions.
+                        Pranesh is an AI product manager with over three years of experience building and delivering AI-based products, turning complex workflows into intuitive, high-value software solutions.
                     </p>
                 </div>
 
@@ -192,9 +192,9 @@ export default function AboutPage() {
                     </div>
 
                     <div className="cways-grid-item">
-                        <h3 className="cways-grid-title">HANDS-ON AI PRODUCT BUILDER</h3>
+                        <h3 className="cways-grid-title">FREELANCE AI PO/PM SERVICES</h3>
                         <p className="cways-grid-desc">
-                            He works as a hands-on <strong>AI Product professional</strong> — from initial opportunity discovery and workflow design to prototyping, deployment, and adoption.
+                            He serves as an individual contributor and helps companies and startups offering his services as a <strong>Freelancer for the AI PO/PM domain</strong> — from initial opportunity discovery and RAG architecture to deployment and adoption.
                         </p>
                     </div>
                 </div>
@@ -202,10 +202,10 @@ export default function AboutPage() {
                 {/* CALL TO ACTION BUTTONS */}
                 <div className="about-actions">
                     <Link href="/#work" className="cways-btn-primary" data-cursor="WORK">VIEW WORK</Link>
-                    <a 
-                        href="#contact" 
-                        onClick={handleLetsBuildTogether} 
-                        className="cways-btn-outline" 
+                    <a
+                        href="#contact"
+                        onClick={handleLetsBuildTogether}
+                        className="cways-btn-outline"
                         data-cursor="CONNECT"
                     >
                         LET'S BUILD TOGETHER
@@ -216,18 +216,15 @@ export default function AboutPage() {
             {/* UNIFIED FOOTER */}
             <footer className="cways-footer-theme" id="contact">
                 <div className="cways-footer-inner">
-                    <div className="cways-footer-eyebrow">08 / CONTACT</div>
+                    <div className="cways-footer-eyebrow">08 / LET'S BUILD</div>
 
                     <h2 className="cways-footer-heading">
-                        BUILD SOMETHING<br />
-                        <span className="cways-stroke-text-dark">WITH AI.</span>
+                        GOT A GOOD<br />
+                        <span className="cways-stroke-text-dark">PROBLEM?</span>
                     </h2>
 
-                    <p className="cways-footer-subtext" style={{ fontSize: '1.2rem', fontWeight: 800, color: '#111', marginBottom: '10px' }}>
-                        Got an AI product idea worth exploring? Let's turn it into something real.
-                    </p>
-                    <p className="cways-footer-subtext" style={{ fontSize: '0.95rem', color: '#555', marginTop: 0, marginBottom: '28px' }}>
-                        Whether it's shaping the product, rethinking a workflow, validating an idea, or building a working prototype — I like getting close to the problem and figuring out what AI can actually make possible.
+                    <p className="cways-footer-subtext">
+                        AI product opportunity, prototype build, life sciences RAG solution, or strategic advisory — let's start a conversation.
                     </p>
 
                     <a href="mailto:praneshsoni@outlook.com" className="cways-footer-email" data-cursor="EMAIL">
@@ -238,7 +235,7 @@ export default function AboutPage() {
                         <span className="author-dot"></span>
                         <span className="author-name">PRANESH SONI</span>
                         <span className="author-sep">—</span>
-                        <span className="author-title">AI PRODUCT</span>
+                        <span className="author-title">AI PRODUCT OWNER & BUILDER</span>
                     </div>
 
                     <div className="cways-footer-socials">

@@ -155,7 +155,7 @@ export default function BlogsPage() {
   useEffect(() => {
     const cursor = document.getElementById('cursor');
     const label = document.getElementById('cursorLabel');
-    let bindCursorEvents = () => {};
+    let bindCursorEvents = () => { };
 
     if (matchMedia('(pointer:fine)').matches && cursor && label) {
       const onMouseMove = (e: MouseEvent) => {
@@ -336,7 +336,7 @@ export default function BlogsPage() {
               PERSPECTIVES.
             </h1>
             <p className="blogs-hero-sub">
-              Deep dives on AI product management, enterprise RAG evaluation, human-in-the-loop workflows, and shipping compliant GenAI systems.
+              Deep dives on AI product ownership, enterprise RAG evaluation, agentic workflows, and shipping compliant GenAI systems across life sciences &amp; healthcare.
             </p>
           </div>
         </section>
