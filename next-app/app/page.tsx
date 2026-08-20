@@ -13,9 +13,10 @@ import {
   SiClaude,
   SiAnthropic,
   SiPython,
-  SiFastapi
+  SiFastapi,
+  SiSubstack
 } from 'react-icons/si';
-import { FaAws } from 'react-icons/fa6';
+import { FaAws, FaLinkedin } from 'react-icons/fa6';
 
 const OpenAIIcon = () => (
   <svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor">
@@ -1070,24 +1071,10 @@ export default function Home(): React.JSX.Element {
                     </div>
                 </section>
 
-                {/* SECTION 6: WHY AI? */}
-                <section className="belief stack-card">
-                    <div>
-                        <div className="section-label">06 / WHY AI?</div>
-                        <h2 className="cways-section-title light-theme">
-                            EVERYONE<br />
-                            DESERVES<br />
-                            <span className="cways-stroke-text-light">A JARVIS.</span>
-                        </h2>
-                        <p>AI removes the friction between intent and execution. It makes humans more capable and lets an individual take an idea from workflow to working software.</p>
-                    </div>
-                    <div className="jarvis">JARVIS // HUMAN CAPABILITY SHOULD EXPAND.</div>
-                </section>
-
-                {/* SECTION 7: TIMELINE */}
+                {/* SECTION 6: TIMELINE */}
                 <section className="timeline stack-card">
                     <div className="timeline-head">
-                        <div className="section-label">07 / THE PERSON</div>
+                        <div className="section-label">06 / THE PERSON</div>
                         <h2 className="cways-section-title">
                             HOW I GOT<br />
                             <span className="cways-stroke-text-dark">HERE.</span>
@@ -1126,7 +1113,7 @@ export default function Home(): React.JSX.Element {
                 <footer className="cways-footer-theme" id="contact">
                     <div className="cways-footer-inner">
                         {/* EYEBROW TAG */}
-                        <div className="cways-footer-eyebrow">08 / LET'S BUILD</div>
+                        <div className="cways-footer-eyebrow">07 / LET'S BUILD</div>
 
                         {/* HEADING */}
                         <h2 className="cways-footer-heading">
@@ -1152,13 +1139,13 @@ export default function Home(): React.JSX.Element {
                             <span className="author-title">AI PRODUCT OWNER & BUILDER</span>
                         </div>
 
-                        {/* SOCIAL LINK ROW */}
+                        {/* SOCIAL LINK ROW WITH LOGOS */}
                         <div className="cways-footer-socials">
                             <a href="https://www.linkedin.com/in/pranesh-soni" target="_blank" rel="noopener noreferrer" data-cursor="LINKEDIN">
-                                LINKEDIN
+                                <FaLinkedin className="social-icon" /> LINKEDIN
                             </a>
                             <a href="https://substack.com/@praneshsoni" target="_blank" rel="noopener noreferrer" data-cursor="SUBSTACK">
-                                SUBSTACK
+                                <SiSubstack className="social-icon" /> SUBSTACK
                             </a>
                         </div>
 

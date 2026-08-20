@@ -2,6 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { SiSubstack } from 'react-icons/si';
+import { FaLinkedin } from 'react-icons/fa6';
 
 export default function AboutPage() {
     const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
@@ -238,10 +240,10 @@ export default function AboutPage() {
 
                     <div className="cways-footer-socials">
                         <a href="https://www.linkedin.com/in/pranesh-soni" target="_blank" rel="noopener noreferrer" data-cursor="LINKEDIN">
-                            LINKEDIN
+                            <FaLinkedin className="social-icon" /> LINKEDIN
                         </a>
                         <a href="https://substack.com/@praneshsoni" target="_blank" rel="noopener noreferrer" data-cursor="SUBSTACK">
-                            SUBSTACK
+                            <SiSubstack className="social-icon" /> SUBSTACK
                         </a>
                     </div>
 

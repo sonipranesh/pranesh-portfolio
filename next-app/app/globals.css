@@ -3362,17 +3362,30 @@ footer {
 
 .cways-footer-socials a {
     font-family: 'Inter', sans-serif;
-    font-size: 0.73rem;
+    font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.2em;
     color: #6a6a64;
     text-transform: uppercase;
     text-decoration: none;
-    transition: color 0.25s ease;
+    transition: color 0.25s ease, transform 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cways-footer-socials a .social-icon {
+    font-size: 1.15rem;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
 }
 
 .cways-footer-socials a:hover {
     color: #111111;
+}
+
+.cways-footer-socials a:hover .social-icon {
+    color: var(--red);
+    transform: scale(1.22);
 }
 
 .cways-footer-bottom-bar {
