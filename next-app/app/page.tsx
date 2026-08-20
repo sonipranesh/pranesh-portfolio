@@ -561,28 +561,6 @@ export default function Home(): React.JSX.Element {
                         <span>10+ Plan Types Scaled</span> • <span>~70% ICF Automation</span> • <span>~80% Error Reduction</span>
                     </div>
                 </div>`
-            },
-            loop: {
-                badge: "04 / BUILD",
-                category: "INDEPENDENT AI BUILD / AI-NATIVE PRODUCT",
-                title: "Loop — Independent AI Product Build",
-                problem: `<p>Loop is an independently built AI product demonstrating how I use AI-native tools to move rapidly from <strong>product concept → interactive prototype → working product</strong>.</p><p>While enterprise case studies demonstrate my ability to operate within complex organizational environments, GxP compliance, and large-scale delivery, <strong>Loop proves personal builder capability and hands-on AI execution</strong>.</p><p>Built independently using modern AI-native development workflows, rapid prototyping frameworks, and LLM integrations.</p>`,
-                features: `• <strong>AI-Native Product Architecture</strong> — Designed and built from scratch using modern AI frameworks.<br/><br/>• <strong>Rapid Idea-to-Code Execution</strong> — Demonstrates personal builder capability and direct technical ownership.<br/><br/>• <strong>Human-Centered UX Design</strong> — High-contrast, responsive interface built around user feedback.<br/><br/>• <strong>Constrained AI Interactions</strong> — Predictable, grounded AI outputs without unconstrained drift.`,
-                arch: `<p>Built using AI-native tooling, modern Web APIs, and LLM integration patterns. Focuses on speed-to-market, clean component architecture, and intuitive user workflows.</p>`,
-                role: "Product Owner & Builder",
-                domain: "Independent Product / AI-Native Execution",
-                tech: "AI-Native Tools · Next.js · Python · Rapid Prototyping · LLM Integration",
-                outcome: "Personal Ownership & Rapid AI-Native Product Execution",
-                demoSample: "Loop Product Workflow Prototype",
-                kpisHtml: `<div class="kpi-chart-card">
-                    <div class="kpi-card-header">
-                        <h4 class="kpi-chart-title">Builder Mindset &amp; Speed</h4>
-                        <p class="kpi-chart-sub">Demonstrating personal product building and rapid execution capability.</p>
-                    </div>
-                    <div class="kpi-badge-impact">
-                        <span class="impact-arrow">⚡</span> <strong>Personal Ownership &amp; Hands-on AI Product Execution</strong>
-                    </div>
-                </div>`
             }
         };
 
@@ -768,8 +746,9 @@ export default function Home(): React.JSX.Element {
                         <nav className="cways-nav">
                             <Link href="/about" data-cursor="ABOUT">About</Link>
                             <a href="#work" data-cursor="PROJECTS">Projects</a>
-                            <Link href="/blogs" data-cursor="BLOGS">Blogs</Link>
+                            <a href="#how-i-work" data-cursor="HOW I WORK">How I Work</a>
                             <a href="#why-me" data-cursor="WHY ME">Why Me</a>
+                            <Link href="/blogs" data-cursor="BLOGS">Blogs</Link>
                         </nav>
 
                         <div className="header-actions">
@@ -813,14 +792,20 @@ export default function Home(): React.JSX.Element {
                                     <span className="num">01</span> ABOUT
                                 </Link>
                                 <a href="#work" onClick={() => setIsMenuOpen(false)}>
-                                    <span className="num">02</span> PROJECTS
+                                    <span className="num">02</span> SELECTED WORK
                                 </a>
-                                <Link href="/blogs" onClick={() => setIsMenuOpen(false)}>
-                                    <span className="num">03</span> BLOGS
-                                </Link>
+                                <a href="#how-i-work" onClick={() => setIsMenuOpen(false)}>
+                                    <span className="num">03</span> HOW I WORK
+                                </a>
                                 <a href="#why-me" onClick={() => setIsMenuOpen(false)}>
                                     <span className="num">04</span> WHY ME
                                 </a>
+                                <a href="#about" onClick={() => setIsMenuOpen(false)}>
+                                    <span className="num">05</span> CREDENTIALS
+                                </a>
+                                <Link href="/blogs" onClick={() => setIsMenuOpen(false)}>
+                                    <span className="num">06</span> BLOGS
+                                </Link>
                             </div>
                             <div className="cways-mobile-menu-footer">
                                 <a
@@ -871,44 +856,12 @@ export default function Home(): React.JSX.Element {
                     </a>
                 </section>
 
-                {/* SECTION 2: TECH STACK */}
-                <section className="manifesto stack-card" id="manifesto">
-                    <div className="section-label">02 / TECH STACK &amp; TOOLKIT</div>
-                    <h2 className="cways-section-title">
-                        TECH<br />
-                        <span className="cways-stroke-text-dark">STACK.</span>
-                    </h2>
-
-                    <div className="tech-stack-loop-wrapper">
-                        <LogoLoop
-                            logos={techLogos}
-                            speed={28}
-                            direction="left"
-                            logoHeight={52}
-                            gap={48}
-                            scaleOnHover
-                            fadeOut
-                            ariaLabel="PM & AI Tech Stack"
-                        />
-                    </div>
-                </section>
-
-                {/* CREDENTIALS BAR */}
-                <div className="credentials-strip-container" style={{ padding: '0 clamp(24px, 5vw, 60px)', margin: '40px 0 20px' }}>
-                    <div className="credentials-bar" style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', padding: '16px 24px', background: 'rgba(255,255,255,0.03)', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.08)' }}>
-                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 800, color: 'var(--red)', letterSpacing: '0.18em' }}>CREDENTIALS</span>
-                        <span style={{ fontSize: '0.88rem', color: '#fff', fontWeight: 600 }}>SAFe® 6.0 Product Owner / Product Manager</span>
-                        <span style={{ color: 'rgba(255,255,255,0.2)' }}>|</span>
-                        <span style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.85)' }}>AWS Certified AI Practitioner</span>
-                    </div>
-                </div>
-
-                {/* SECTION 3: PURE CSS STICKY STACKING CARDS */}
+                {/* SECTION 2: SELECTED WORK */}
                 <section className="work-sticky-section" id="work">
                     <div className="work-split-container">
                         {/* LEFT COLUMN: STICKY SECTION HEADING & SUBTEXT */}
                         <div className="work-left-col">
-                            <div className="section-label">03 / SELECTED BUILDS</div>
+                            <div className="section-label">02 / SELECTED WORK</div>
                             <h2 className="cways-section-title light-theme">
                                 THREE<br />
                                 <span className="cways-stroke-text-light">THINGS</span><br />
@@ -1013,50 +966,40 @@ export default function Home(): React.JSX.Element {
                                         </div>
                                     </article>
                                 </ScrollStackItem>
-
-                                {/* CARD 4 */}
-                                <ScrollStackItem>
-                                    <article className="lab-project" data-cursor="OPEN PROJECT" data-project="loop">
-                                        <div className="project-art p4" style={{ background: 'linear-gradient(135deg, #111115 0%, #1a1a24 100%)', border: '1px solid rgba(255,255,255,0.12)' }}>
-                                            <span className="project-num" style={{ color: 'var(--red)' }}>04 / BUILD — INDEPENDENT</span>
-                                            <div className="mock loop-ui" style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '12px', padding: '20px', border: '1px solid rgba(255,255,255,0.08)' }}>
-                                                <div className="mini-mono" style={{ color: 'var(--red)', letterSpacing: '0.15em' }}>INDEPENDENT AI BUILD / PRODUCT EXECUTION</div>
-                                                <div className="mini-title" style={{ color: '#fff', fontSize: '1.35rem', fontWeight: 800, margin: '8px 0 12px' }}>AI-Native Product<br />Execution.</div>
-                                                <div className="chips" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '14px' }}>
-                                                    <span className="chip hot">BUILT INDEPENDENTLY</span>
-                                                    <span className="chip">PRODUCT + AI</span>
-                                                    <span className="chip">BUILDER MINDSET</span>
-                                                </div>
-                                                <div className="risk" style={{ background: 'rgba(255, 85, 51, 0.08)', borderLeft: '3px solid var(--red)', color: 'rgba(255,255,255,0.9)', padding: '12px', fontSize: '0.82rem', borderRadius: '4px' }}>
-                                                    IDEATION → PROTOTYPE → PRODUCT<br /><br />
-                                                    An independently built AI product demonstrating how I use AI-native tools to move from idea to working product with personal speed and execution.
-                                                </div>
-                                            </div>
-                                            <div className="project-name" style={{ color: '#fff', marginTop: '16px' }}>
-                                                <small style={{ color: 'var(--red)', display: 'block', letterSpacing: '0.1em' }}>INDEPENDENT / BUILDER / AI-NATIVE</small>
-                                                Loop — Independent AI Product
-                                            </div>
-                                            <div className="project-open-badge">EXPLORE PROJECT ↗</div>
-                                        </div>
-                                    </article>
-                                </ScrollStackItem>
                             </ScrollStack>
                         </div>
                     </div>
+
+                    {/* TECH STACK MARQUEE EMBEDDED IN SELECTED WORK */}
+                    <div className="tech-stack-loop-wrapper" style={{ marginTop: '60px', padding: '0 clamp(24px, 5vw, 60px)' }}>
+                        <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 800, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.15em', marginBottom: '16px', textTransform: 'uppercase' }}>
+                            TECH STACK &amp; TOOLKIT
+                        </div>
+                        <LogoLoop
+                            logos={techLogos}
+                            speed={28}
+                            direction="left"
+                            logoHeight={52}
+                            gap={48}
+                            scaleOnHover
+                            fadeOut
+                            ariaLabel="PM & AI Tech Stack"
+                        />
+                    </div>
                 </section>
 
-                {/* SECTION 4: HOW I BUILD */}
-                <section className="prototype stack-card" id="lab">
+                {/* SECTION 3: HOW I WORK */}
+                <section className="prototype stack-card" id="how-i-work">
                     <div className="proto-top">
                         <div>
-                            <div className="section-label">04 / HOW I BUILD</div>
+                            <div className="section-label">03 / HOW I WORK</div>
                             <h2 className="cways-section-title">
                                 FROM<br />
                                 <span className="cways-stroke-text-dark">PROBLEM</span><br />
                                 TO PROTOTYPE.
                             </h2>
                         </div>
-                        <p>I enjoy understanding the core business problem, shaping the workflow, architecting the RAG pipeline, and building functional AI products.</p>
+                        <p>I understand the problem. I understand the AI. And I build the thing.</p>
                     </div>
                     <div className="os">
                         <div className="os-step">
@@ -1085,9 +1028,46 @@ export default function Home(): React.JSX.Element {
                             <p>Adoption<br />Change management<br />What's next?</p>
                         </div>
                     </div>
+
+                    <div className="why-me-grid" style={{ marginTop: '48px', textTransform: 'none' }}>
+                        <div className="why-card" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.08)' }}>
+                            <div className="why-num" style={{ color: 'var(--red)' }}>01 / PROBLEM FIRST</div>
+                            <h3 style={{ color: '#111' }}>START WITH THE PROBLEM</h3>
+                            <p style={{ color: '#555' }}>I don't start with "Where can we use AI?" I start with "What problem is worth solving?" Then I work backwards from the user, workflow and outcome.</p>
+                        </div>
+                        <div className="why-card" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.08)' }}>
+                            <div className="why-num" style={{ color: 'var(--red)' }}>02 / SYSTEM DESIGN</div>
+                            <h3 style={{ color: '#111' }}>DESIGN THE AI, NOT JUST THE UI</h3>
+                            <p style={{ color: '#555' }}>An AI product is more than a chatbot interface. I think about what the system should know, retrieve, generate, avoid and when a human should stay in control.</p>
+                        </div>
+                        <div className="why-card" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.08)' }}>
+                            <div className="why-num" style={{ color: 'var(--red)' }}>03 / EVALUATION</div>
+                            <h3 style={{ color: '#111' }}>MAKE AI MEASURABLE</h3>
+                            <p style={{ color: '#555' }}>"Looks good" isn't an evaluation strategy. I think about accuracy, groundedness, relevance, citations, failure modes and real user outcomes.</p>
+                        </div>
+                        <div className="why-card" style={{ background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.08)' }}>
+                            <div className="why-num" style={{ color: 'var(--red)' }}>04 / ITERATION</div>
+                            <h3 style={{ color: '#111' }}>BUILD → TEST → LEARN</h3>
+                            <p style={{ color: '#555' }}>I prefer working prototypes over assumptions. Build something, test it, learn from it and iterate.</p>
+                        </div>
+                    </div>
+
+                    <div className="philosophy-progression" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', flexWrap: 'wrap', marginTop: '36px', paddingTop: '24px', borderTop: '1px solid rgba(0,0,0,0.08)' }}>
+                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800, color: 'var(--red)', letterSpacing: '0.12em' }}>PROBLEM</span>
+                        <span style={{ color: '#888', fontSize: '0.8rem' }}>→</span>
+                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800, color: '#111', letterSpacing: '0.12em' }}>WORKFLOW</span>
+                        <span style={{ color: '#888', fontSize: '0.8rem' }}>→</span>
+                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800, color: '#111', letterSpacing: '0.12em' }}>AI</span>
+                        <span style={{ color: '#888', fontSize: '0.8rem' }}>→</span>
+                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800, color: '#111', letterSpacing: '0.12em' }}>CONSTRAINTS</span>
+                        <span style={{ color: '#888', fontSize: '0.8rem' }}>→</span>
+                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800, color: '#111', letterSpacing: '0.12em' }}>EVALUATION</span>
+                        <span style={{ color: '#888', fontSize: '0.8rem' }}>→</span>
+                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800, color: 'var(--red)', letterSpacing: '0.12em' }}>OUTCOME</span>
+                    </div>
                 </section>
 
-                {/* SECTION 5: WHY ME */}
+                {/* SECTION 4: WHY ME */}
                 <section className="why-me-section stack-card" id="why-me">
                     {/* CREATIVE ANIMATED RADAR PULSE BACKGROUND */}
                     <div className="whyme-radar-bg" aria-hidden="true">
@@ -1096,13 +1076,13 @@ export default function Home(): React.JSX.Element {
                         <div className="radar-ring r3"></div>
                     </div>
                     <div className="why-me-inner">
-                        <div className="section-label">05 / WHY ME</div>
+                        <div className="section-label">04 / WHY ME</div>
                         <h2 className="cways-section-title light-theme">
                             WHY<br />
                             <span className="cways-stroke-text-light">ME.</span>
                         </h2>
                         <div className="why-me-sub">
-                            Bridging complex AI technology with enterprise business impact across life sciences, healthcare &amp; clinical operations.
+                            Bridging complex AI technology with enterprise business impact across life sciences &amp; clinical operations.
                         </div>
 
                         <div className="why-me-grid">
@@ -1112,81 +1092,44 @@ export default function Home(): React.JSX.Element {
                                 <p>I bridge product strategy and AI implementation — from identifying the problem to shaping workflows, retrieval, model behavior, evaluation and the final user experience.</p>
                             </div>
                             <div className="why-card">
-                                <div className="why-num">02 / BUILDER MINDSET</div>
-                                <h3>I DON'T JUST SPECIFY. I BUILD.</h3>
-                                <p>I use AI-native tools to prototype, experiment and ship — reducing the distance between product idea and working product.</p>
-                            </div>
-                            <div className="why-card">
-                                <div className="why-num">03 / TRUST BY DESIGN</div>
+                                <div className="why-num">02 / TRUST BY DESIGN</div>
                                 <h3>TRUST IS A PRODUCT FEATURE</h3>
                                 <p>For enterprise AI, a good answer isn't enough. I think about grounding, evaluation, human oversight, failure modes and what the system should refuse to do.</p>
                             </div>
                             <div className="why-card">
-                                <div className="why-num">04 / REAL-WORLD DELIVERY</div>
-                                <h3>BUILT FOR REAL-WORLD SCALE</h3>
-                                <p>I work across clients, stakeholders, architecture, UX, engineering, QA, UAT and adoption — connecting strategy with the realities of delivery.</p>
+                                <div className="why-num">03 / END-TO-END OWNERSHIP</div>
+                                <h3>END-TO-END PRODUCT OWNERSHIP</h3>
+                                <p>I work across stakeholders, architecture, UX, engineering, QA, UAT and adoption — connecting strategy with the realities of delivery.</p>
+                            </div>
+                            <div className="why-card">
+                                <div className="why-num">04 / BUILDER MINDSET</div>
+                                <h3>I DON'T JUST SPECIFY. I BUILD.</h3>
+                                <p>I use AI-native tools to prototype, experiment and ship — reducing the distance between product idea and working product.</p>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                {/* SECTION 6: HOW I THINK */}
-                <section className="belief stack-card">
-                    <div>
-                        <div className="section-label">06 / HOW I THINK</div>
-                        <h2 className="cways-section-title light-theme">
-                            HOW I<br />
-                            <span className="cways-stroke-text-light">THINK.</span>
-                        </h2>
-
-                        <div className="why-me-grid" style={{ marginTop: '36px' }}>
-                            <div className="why-card">
-                                <div className="why-num">01 / PROBLEM FIRST</div>
-                                <h3>START WITH THE PROBLEM</h3>
-                                <p>I don't start with "Where can we use AI?" I start with "What problem is worth solving?" Then I work backwards from the user, workflow and outcome.</p>
-                            </div>
-                            <div className="why-card">
-                                <div className="why-num">02 / SYSTEM DESIGN</div>
-                                <h3>DESIGN THE AI, NOT JUST THE UI</h3>
-                                <p>An AI product is more than a chatbot interface. I think about what the system should know, retrieve, generate, avoid and when a human should stay in control.</p>
-                            </div>
-                            <div className="why-card">
-                                <div className="why-num">03 / EVALUATION</div>
-                                <h3>MAKE AI MEASURABLE</h3>
-                                <p>"Looks good" isn't an evaluation strategy. I think about accuracy, groundedness, relevance, citations, failure modes and real user outcomes.</p>
-                            </div>
-                            <div className="why-card">
-                                <div className="why-num">04 / ITERATION</div>
-                                <h3>BUILD → TEST → LEARN</h3>
-                                <p>I prefer working prototypes over assumptions. Build something, test it, learn from it and iterate.</p>
-                            </div>
-                        </div>
-
-                        <div className="philosophy-progression" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', flexWrap: 'wrap', marginTop: '36px', paddingTop: '24px', borderTop: '1px solid rgba(255,255,255,0.12)' }}>
-                            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800, color: 'var(--red)', letterSpacing: '0.12em' }}>PROBLEM</span>
-                            <span style={{ color: 'var(--muted)', fontSize: '0.8rem' }}>→</span>
-                            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800, color: '#fff', letterSpacing: '0.12em' }}>WORKFLOW</span>
-                            <span style={{ color: 'var(--muted)', fontSize: '0.8rem' }}>→</span>
-                            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800, color: '#fff', letterSpacing: '0.12em' }}>AI</span>
-                            <span style={{ color: 'var(--muted)', fontSize: '0.8rem' }}>→</span>
-                            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800, color: '#fff', letterSpacing: '0.12em' }}>CONSTRAINTS</span>
-                            <span style={{ color: 'var(--muted)', fontSize: '0.8rem' }}>→</span>
-                            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800, color: '#fff', letterSpacing: '0.12em' }}>EVALUATION</span>
-                            <span style={{ color: 'var(--muted)', fontSize: '0.8rem' }}>→</span>
-                            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800, color: 'var(--red)', letterSpacing: '0.12em' }}>OUTCOME</span>
-                        </div>
-                    </div>
-                </section>
-
-                {/* SECTION 7: TIMELINE */}
-                <section className="timeline stack-card">
+                {/* SECTION 5: ABOUT & CREDENTIALS */}
+                <section className="timeline stack-card" id="about">
                     <div className="timeline-head">
-                        <div className="section-label">07 / THE PERSON</div>
+                        <div className="section-label">05 / ABOUT &amp; CREDENTIALS</div>
                         <h2 className="cways-section-title">
                             HOW I GOT<br />
                             <span className="cways-stroke-text-dark">HERE.</span>
                         </h2>
                     </div>
+
+                    {/* INTEGRATED CREDENTIALS BAR */}
+                    <div className="credentials-bar" style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', padding: '16px 24px', background: 'rgba(0,0,0,0.03)', borderRadius: '10px', border: '1px solid rgba(0,0,0,0.08)', margin: '24px 0 36px' }}>
+                        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 800, color: 'var(--red)', letterSpacing: '0.18em' }}>CREDENTIALS</span>
+                        <span style={{ fontSize: '0.88rem', color: '#111', fontWeight: 700 }}>SAFe® 6.0 Product Owner / Product Manager</span>
+                        <span style={{ color: 'rgba(0,0,0,0.2)' }}>|</span>
+                        <span style={{ fontSize: '0.88rem', color: '#333', fontWeight: 600 }}>AWS Certified AI Practitioner</span>
+                        <span style={{ color: 'rgba(0,0,0,0.2)' }}>|</span>
+                        <span style={{ fontSize: '0.88rem', color: '#333', fontWeight: 600 }}>IIM Jammu (MBA, Class of 2023)</span>
+                    </div>
+
                     <div className="timeline-track-wrap">
                         <div className="timeline-track">
                             <div className="t-item">
@@ -1197,8 +1140,7 @@ export default function Home(): React.JSX.Element {
                             <div className="t-item">
                                 <div className="t-year">2023 / EXCHANGE</div>
                                 <h3>SOLBRIDGE</h3>
-                                <p>Selected for Student Exchange Program at SolBridge International School of Business, South
-                                    Korea.</p>
+                                <p>Selected for Student Exchange Program at SolBridge International School of Business, South Korea.</p>
                             </div>
                             <div className="t-item">
                                 <div className="t-year">3+ YEARS</div>
@@ -1214,11 +1156,11 @@ export default function Home(): React.JSX.Element {
                     </div>
                 </section>
 
-                {/* UNIFIED CWAYS.IN STYLE FOOTER WITH MERGED HEADING & CONTENT */}
+                {/* SECTION 6: CONTACT */}
                 <footer className="cways-footer-theme" id="contact">
                     <div className="cways-footer-inner">
                         {/* EYEBROW TAG */}
-                        <div className="cways-footer-eyebrow">08 / CONTACT</div>
+                        <div className="cways-footer-eyebrow">06 / CONTACT</div>
 
                         {/* HEADING */}
                         <h2 className="cways-footer-heading">
@@ -1306,13 +1248,6 @@ export default function Home(): React.JSX.Element {
                             <div className="search-item-sub">Human-in-the-loop AI for regulatory &amp; clinical document drafting</div>
                         </div>
                         <span className="search-item-tag">03 / CREATE</span>
-                    </div>
-                    <div className="search-item" data-action="project" data-target="loop">
-                        <div>
-                            <div className="search-item-title">Loop — Independent AI Build</div>
-                            <div className="search-item-sub">AI-native builder project &amp; rapid prototyping</div>
-                        </div>
-                        <span className="search-item-tag">04 / BUILD</span>
                     </div>
                     <div className="search-item" data-action="scroll" data-target="#lab">
                         <div>
