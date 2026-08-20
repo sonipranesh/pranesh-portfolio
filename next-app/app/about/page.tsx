@@ -158,10 +158,10 @@ export default function AboutPage() {
                         <span className="cways-stroke-text-dark">PRANESH.</span>
                     </h1>
 
-                    <div className="about-role-tag">AI PRODUCT OWNER / MANAGER</div>
+                    <div className="about-role-tag">AI PRODUCT</div>
 
                     <p className="cways-hero-subtitle">
-                        Pranesh is an AI product manager with over three years of experience building and delivering AI-based products, turning complex workflows into intuitive, high-value software solutions.
+                        Pranesh is an AI Product professional with over three years of experience building and delivering AI products, turning complex workflows into intuitive, high-value software solutions.
                     </p>
                 </div>
 
@@ -187,14 +187,14 @@ export default function AboutPage() {
                     <div className="cways-grid-item">
                         <h3 className="cways-grid-title">EDUCATION & CERTIFICATIONS</h3>
                         <p className="cways-grid-desc">
-                            He holds an <strong>MBA from IIM Jammu, class of 2023</strong>, along with the <strong>SAFe 6.0 POPM certification</strong>, and is an <strong>AWS Certified AI Practitioner</strong>. He keeps upskilling in the field as it moves, leaning fully on market AI tools to build end-to-end products like Loop.
+                            He holds an <strong>MBA from IIM Jammu, class of 2023</strong>, along with the <strong>SAFe® 6.0 POPM certification</strong>, and is an <strong>AWS Certified AI Practitioner</strong>. He keeps upskilling in the field as it moves, leaning on AI-native tools to build functional products.
                         </p>
                     </div>
 
                     <div className="cways-grid-item">
-                        <h3 className="cways-grid-title">FREELANCE AI PO/PM SERVICES</h3>
+                        <h3 className="cways-grid-title">HANDS-ON AI PRODUCT BUILDER</h3>
                         <p className="cways-grid-desc">
-                            He serves as an individual contributor and helps companies and startups offering his services as a <strong>Freelancer for the AI PO/PM domain</strong> — from initial opportunity discovery and RAG architecture to deployment and adoption.
+                            He works as a hands-on <strong>AI Product professional</strong> — from initial opportunity discovery and workflow design to prototyping, deployment, and adoption.
                         </p>
                     </div>
                 </div>
@@ -216,15 +216,18 @@ export default function AboutPage() {
             {/* UNIFIED FOOTER */}
             <footer className="cways-footer-theme" id="contact">
                 <div className="cways-footer-inner">
-                    <div className="cways-footer-eyebrow">08 / LET'S BUILD</div>
+                    <div className="cways-footer-eyebrow">08 / CONTACT</div>
 
                     <h2 className="cways-footer-heading">
-                        GOT A GOOD<br />
-                        <span className="cways-stroke-text-dark">PROBLEM?</span>
+                        BUILD SOMETHING<br />
+                        <span className="cways-stroke-text-dark">WITH AI.</span>
                     </h2>
 
-                    <p className="cways-footer-subtext">
-                        AI product opportunity, prototype build, life sciences RAG solution, or strategic advisory — let's start a conversation.
+                    <p className="cways-footer-subtext" style={{ fontSize: '1.2rem', fontWeight: 800, color: '#111', marginBottom: '10px' }}>
+                        Got an AI product idea worth exploring? Let's turn it into something real.
+                    </p>
+                    <p className="cways-footer-subtext" style={{ fontSize: '0.95rem', color: '#555', marginTop: 0, marginBottom: '28px' }}>
+                        Whether it's shaping the product, rethinking a workflow, validating an idea, or building a working prototype — I like getting close to the problem and figuring out what AI can actually make possible.
                     </p>
 
                     <a href="mailto:praneshsoni@outlook.com" className="cways-footer-email" data-cursor="EMAIL">
@@ -235,7 +238,7 @@ export default function AboutPage() {
                         <span className="author-dot"></span>
                         <span className="author-name">PRANESH SONI</span>
                         <span className="author-sep">—</span>
-                        <span className="author-title">AI PRODUCT OWNER & BUILDER</span>
+                        <span className="author-title">AI PRODUCT</span>
                     </div>
 
                     <div className="cways-footer-socials">

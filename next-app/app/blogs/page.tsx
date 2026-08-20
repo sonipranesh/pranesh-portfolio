@@ -336,7 +336,7 @@ export default function BlogsPage() {
               PERSPECTIVES.
             </h1>
             <p className="blogs-hero-sub">
-              Deep dives on AI product ownership, enterprise RAG evaluation, agentic workflows, and shipping compliant GenAI systems across life sciences &amp; healthcare.
+              Deep dives on AI product management, enterprise RAG evaluation, human-in-the-loop workflows, and shipping compliant GenAI systems.
             </p>
           </div>
         </section>
