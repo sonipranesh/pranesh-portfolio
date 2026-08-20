@@ -54,11 +54,11 @@ export default function Home(): React.JSX.Element {
 
     const handleLetsBuildTogether = (e: React.MouseEvent) => {
         e.preventDefault();
-        const isMobile = typeof window !== 'undefined' && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        if (isMobile) {
-            window.open("https://api.whatsapp.com/send?phone=772796969906&text=Hi%20Pranesh,%20I'd%20like%20to%20connect%20about%20an%20AI%20product%20opportunity!", "_blank");
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
         } else {
-            window.open("https://www.linkedin.com/in/pranesh-soni", "_blank");
+            window.location.hash = '#contact';
         }
     };
 
@@ -485,14 +485,14 @@ export default function Home(): React.JSX.Element {
             },
             doc: {
                 badge: "03 / CREATE",
-                category: "DOC AUTHOR / WORKFLOW AUTOMATION",
+                category: "DOC AUTHOR / HUMAN-IN-THE-LOOP GENERATION",
                 title: "Doc Author — Clinical Functional Plan & ICF Workflow Automation",
                 problem: `<p>Study teams at Client 2 authored a wide range of clinical functional plan templates — TMF, PRP, MDRP, Informed Consent Forms (ICFs), and others — by hand for every study. The work was repetitive, slow, and error-prone: study-specific data had to be manually sourced from multiple systems, and for ICFs specifically, teams walked through a three-tier authoring and compliance process entirely manually — a sponsor-approved Master ICF, up to seven country- or site-specific variants adapted to local regulatory and ethical requirements, and a detailed compliance checklist verifying everything from regulatory citation coverage to document formatting.</p><p>The real challenge wasn't a single bottleneck — it was two structurally different problems disguised as one workflow. Most templates needed straightforward, high-confidence data population from systems that already held the answer. ICFs needed judgment: comparing sponsor-approved master language against country-specific legal and ethical requirements — something a fixed query couldn't do, and something an unconstrained AI couldn't be trusted to do silently inside a regulated consent document.</p><p>Doc Author's automation layer was designed around that distinction rather than defaulting to one AI system for everything. Deterministic template fields are populated by a data pipeline pulling directly from source systems — no model involved, no room for drift. The ICF family, where matching judgment against country-specific rules is unavoidable, uses a constrained, citation-traceable AI workflow with mandatory human review before anything is finalized — never an autonomous edit that ships without a person checking it against its source.</p><p>Now scaling across <strong>10+ plan types in active quarterly production</strong>, the platform has automated an estimated <strong>40% of data pointers on conventional templates</strong> (saving roughly 30 minutes per user per study) and reached roughly <strong>70% automation on ICF and checklist fields</strong>, with manual review error margins down an estimated <strong>80% on the ICF workflow specifically</strong>.</p>`,
                 features: `• <strong>Study-Specific Data Auto-Population</strong> — Conventional plan templates are populated directly from source systems via a structured data pipeline, eliminating manual re-entry of study, protocol, and site information already held elsewhere.<br/><br/>• <strong>Master-to-Country ICF Rule Matching</strong> — Compares sponsor-approved Master ICF language against country-specific requirements gathered during business intake, proposing section-level edits rather than regenerating documents wholesale.<br/><br/>• <strong>Compliance Checklist Auto-Verification</strong> — Checks each checklist requirement against the relevant ICF section(s), including cross-document checks across Main, Assent, and sub-study (e.g. Pregnancy, Pregnant Partner) variants, with every answer traceable to the exact source passage and regulatory citation it was checked against.<br/><br/>• <strong>Human-in-the-Loop Approval Gates</strong> — No AI-proposed edit or checklist answer is finalized without explicit reviewer confirmation; every row carries a status (proposed, needs review, needs mapping, final) rather than auto-submitting.<br/><br/>• <strong>Multi-Template, Multi-Country Scalability</strong> — Built to extend across 7 master ICF variants and multiple country rule sets per study without re-architecting per template type.<br/><br/>• <strong>Controlled, Auditable AI</strong> — Deterministic checks (exact regulatory language, document formatting) are handled by rule-based logic, not the model — the AI is used only where genuine semantic judgment is required, keeping the system's behavior predictable and its outputs defensible in an audit.`,
                 arch: `<p>Built as two purpose-fit pipelines rather than one general system. The conventional-template path is a direct data pipeline: study, protocol, and site data is pulled from source systems and mapped to template fields with no model in the loop, keeping output fully deterministic and instantly auditable.</p><p>The ICF path is a constrained, tool-based AI workflow. A structured rules table — mapping each requirement to its regulatory citation, applicable document type, and source section — drives both the rule-matching step (which compares Master ICF language against country requirements and proposes section-level edits) and the checklist-verification step (which checks presence, absence, and exact regulatory language across the relevant documents). Deterministic checks, like exact-statement matching and document formatting, are handled by rule-based logic rather than the model; the AI is scoped to semantic presence/absence judgments only, each returned with a short rationale tied to the source text it evaluated. Every proposed edit and checklist answer is surfaced to a reviewer with its full source trail before it can be marked final — the system proposes, it does not decide.</p>`,
                 role: "Product Owner / Business Analyst",
                 domain: "Life Sciences · Clinical Operations · Regulatory Document Automation",
-                tech: "Python · Data Pipelines · LLM Orchestration · Vector Search & Embeddings · Document Processing & Extraction · Cloud Infrastructure",
+                tech: "Cloud Infrastructure · LLM Orchestration · Document Intelligence · Structured Generation · Human-in-the-Loop Validation",
                 outcome: "~40% conventional fields automated · ~30 mins saved per user/study · ~70% automation on ICF workflow · ~80% reduction in ICF review error margin · 10+ plan types scaled (Jan 2026 – present)",
                 demoSample: "Draft Section 3.1 Study Objectives for Clinical Protocol Phase IIa.",
                 kpisHtml: `<div class="kpi-chart-card">
@@ -559,6 +559,28 @@ export default function Home(): React.JSX.Element {
                     </div>
                     <div class="kpi-summary-strip">
                         <span>10+ Plan Types Scaled</span> • <span>~70% ICF Automation</span> • <span>~80% Error Reduction</span>
+                    </div>
+                </div>`
+            },
+            loop: {
+                badge: "04 / BUILD",
+                category: "INDEPENDENT AI BUILD / AI-NATIVE PRODUCT",
+                title: "Loop — Independent AI Product Build",
+                problem: `<p>Loop is an independently built AI product demonstrating how I use AI-native tools to move rapidly from <strong>product concept → interactive prototype → working product</strong>.</p><p>While enterprise case studies demonstrate my ability to operate within complex organizational environments, GxP compliance, and large-scale delivery, <strong>Loop proves personal builder capability and hands-on AI execution</strong>.</p><p>Built independently using modern AI-native development workflows, rapid prototyping frameworks, and LLM integrations.</p>`,
+                features: `• <strong>AI-Native Product Architecture</strong> — Designed and built from scratch using modern AI frameworks.<br/><br/>• <strong>Rapid Idea-to-Code Execution</strong> — Demonstrates personal builder capability and direct technical ownership.<br/><br/>• <strong>Human-Centered UX Design</strong> — High-contrast, responsive interface built around user feedback.<br/><br/>• <strong>Constrained AI Interactions</strong> — Predictable, grounded AI outputs without unconstrained drift.`,
+                arch: `<p>Built using AI-native tooling, modern Web APIs, and LLM integration patterns. Focuses on speed-to-market, clean component architecture, and intuitive user workflows.</p>`,
+                role: "Product Owner & Builder",
+                domain: "Independent Product / AI-Native Execution",
+                tech: "AI-Native Tools · Next.js · Python · Rapid Prototyping · LLM Integration",
+                outcome: "Personal Ownership & Rapid AI-Native Product Execution",
+                demoSample: "Loop Product Workflow Prototype",
+                kpisHtml: `<div class="kpi-chart-card">
+                    <div class="kpi-card-header">
+                        <h4 class="kpi-chart-title">Builder Mindset &amp; Speed</h4>
+                        <p class="kpi-chart-sub">Demonstrating personal product building and rapid execution capability.</p>
+                    </div>
+                    <div class="kpi-badge-impact">
+                        <span class="impact-arrow">⚡</span> <strong>Personal Ownership &amp; Hands-on AI Product Execution</strong>
                     </div>
                 </div>`
             }
@@ -662,9 +684,9 @@ export default function Home(): React.JSX.Element {
                 setTimeout(() => {
                     sandboxOutput.innerHTML = `
         <strong>AI ASSESSMENT COMPLETE:</strong><br>
-        • Status: Verified grounded response.<br>
-        • Actionable Output: Generated 3 structured insights and compliance check.<br>
-        • Confidence: 96% based on input vector similarity.
+        • Status: Grounded interaction pattern.<br>
+        • Actionable Output: 3 structured insights & compliance check.<br>
+        • INTERACTION PROTOTYPE: Simulated response — no live model inference is performed.
       `;
                 }, 500);
             });
@@ -941,7 +963,7 @@ export default function Home(): React.JSX.Element {
                                                 </div>
                                                 <div className="risk" style={{ background: '#eaf2fd', borderLeftColor: '#5d81e0', color: '#111' }}>
                                                     LOOKUP TIME: ~2 HRS/WK → ~20 MINS/WK<br /><br />
-                                                    Instant SOP retrieval across thousands of Veeva Vault documents with exact page-level citations &amp; £59k–£75k MAU savings.
+                                                    Instant SOP retrieval across thousands of Veeva Vault documents with exact page-level citations &amp; ~790K min/week saved.
                                                 </div>
                                             </div>
                                             <div className="project-name">
@@ -970,12 +992,39 @@ export default function Home(): React.JSX.Element {
                                                 <div className="doc-line short"></div>
                                                 <div className="doc-box">
                                                     SQL DATA PIPELINE (10+ PLAN TYPES)<br /><br />
-                                                    AGENTIC ICF GENERATION &amp; COMPLIANCE CHECKLISTS
+                                                    HUMAN-IN-THE-LOOP ICF GENERATION &amp; COMPLIANCE CHECKLISTS
                                                 </div>
                                             </div>
                                             <div className="project-name">
-                                                <small>AUTHOR / WORKFLOW / AGENTIC GXP</small>
+                                                <small>AUTHOR / WORKFLOW / HUMAN-IN-THE-LOOP</small>
                                                 AI Doc Author
+                                            </div>
+                                            <div className="project-open-badge">EXPLORE PROJECT ↗</div>
+                                        </div>
+                                    </article>
+                                </ScrollStackItem>
+
+                                {/* CARD 4 */}
+                                <ScrollStackItem>
+                                    <article className="lab-project" data-cursor="OPEN PROJECT" data-project="loop">
+                                        <div className="project-art p4" style={{ background: 'linear-gradient(135deg, #111115 0%, #1a1a24 100%)', border: '1px solid rgba(255,255,255,0.12)' }}>
+                                            <span className="project-num" style={{ color: 'var(--red)' }}>04 / BUILD — INDEPENDENT</span>
+                                            <div className="mock loop-ui" style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '12px', padding: '20px', border: '1px solid rgba(255,255,255,0.08)' }}>
+                                                <div className="mini-mono" style={{ color: 'var(--red)', letterSpacing: '0.15em' }}>INDEPENDENT AI BUILD / PRODUCT EXECUTION</div>
+                                                <div className="mini-title" style={{ color: '#fff', fontSize: '1.35rem', fontWeight: 800, margin: '8px 0 12px' }}>AI-Native Product<br />Execution.</div>
+                                                <div className="chips" style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '14px' }}>
+                                                    <span className="chip hot">BUILT INDEPENDENTLY</span>
+                                                    <span className="chip">PRODUCT + AI</span>
+                                                    <span className="chip">BUILDER MINDSET</span>
+                                                </div>
+                                                <div className="risk" style={{ background: 'rgba(255, 85, 51, 0.08)', borderLeft: '3px solid var(--red)', color: 'rgba(255,255,255,0.9)', padding: '12px', fontSize: '0.82rem', borderRadius: '4px' }}>
+                                                    IDEATION → PROTOTYPE → PRODUCT<br /><br />
+                                                    An independently built AI product demonstrating how I use AI-native tools to move from idea to working product with personal speed and execution.
+                                                </div>
+                                            </div>
+                                            <div className="project-name" style={{ color: '#fff', marginTop: '16px' }}>
+                                                <small style={{ color: 'var(--red)', display: 'block', letterSpacing: '0.1em' }}>INDEPENDENT / BUILDER / AI-NATIVE</small>
+                                                Loop — Independent AI Product
                                             </div>
                                             <div className="project-open-badge">EXPLORE PROJECT ↗</div>
                                         </div>
@@ -987,7 +1036,7 @@ export default function Home(): React.JSX.Element {
                 </section>
 
                 {/* SECTION 4: HOW I BUILD */}
-                <section className="prototype stack-card" id="about">
+                <section className="prototype stack-card" id="lab">
                     <div className="proto-top">
                         <div>
                             <div className="section-label">04 / HOW I BUILD</div>
@@ -1048,24 +1097,24 @@ export default function Home(): React.JSX.Element {
 
                         <div className="why-me-grid">
                             <div className="why-card">
-                                <div className="why-num">01 / DUAL CAPABILITY</div>
-                                <h3>STRATEGIC VISION + AI MASTERY</h3>
-                                <p>IIM Jammu MBA combined with AWS Certified AI Practitioner credentials. I translate high-level business goals into practical prompt engineering, RAG pipelines, and agentic workflows.</p>
+                                <div className="why-num">01 / PRODUCT + AI</div>
+                                <h3>PRODUCT THINKING + AI DEPTH</h3>
+                                <p>I bridge product strategy and AI implementation — from identifying the problem to shaping workflows, retrieval, model behavior, evaluation and the final user experience.</p>
                             </div>
                             <div className="why-card">
-                                <div className="why-num">02 / PROVEN SCALE</div>
-                                <h3>ENTERPRISE SCALE &amp; ADOPTION</h3>
-                                <p>Track record of shipping enterprise GenAI products for Client 1 &amp; Client 2 — powering 550+ legal users, 25 manufacturing sites, 89% adoption, and saving 790,000 mins/week.</p>
+                                <div className="why-num">02 / BUILDER MINDSET</div>
+                                <h3>I DON'T JUST SPECIFY. I BUILD.</h3>
+                                <p>I use AI-native tools to prototype, experiment and ship — reducing the distance between product idea and working product.</p>
                             </div>
                             <div className="why-card">
-                                <div className="why-num">03 / COMPLIANCE RIGOR</div>
-                                <h3>GXP &amp; REGULATORY RIGOR</h3>
-                                <p>Deep experience operating within GxP, 21 CFR Part 11, ICH GCP, and Veeva Vault document ecosystems, ensuring AI solutions maintain strict data governance and compliance audit trails.</p>
+                                <div className="why-num">03 / TRUST BY DESIGN</div>
+                                <h3>TRUST IS A PRODUCT FEATURE</h3>
+                                <p>For enterprise AI, a good answer isn't enough. I think about grounding, evaluation, human oversight, failure modes and what the system should refuse to do.</p>
                             </div>
                             <div className="why-card">
-                                <div className="why-num">04 / END-TO-END LEADERSHIP</div>
-                                <h3>END-TO-END PRODUCT LEADERSHIP</h3>
-                                <p>From user discovery, workflow mapping, and PRD authoring to model evaluation, prototype coding, cross-functional stakeholder alignment, and organizational change management.</p>
+                                <div className="why-num">04 / REAL-WORLD DELIVERY</div>
+                                <h3>BUILT FOR REAL-WORLD SCALE</h3>
+                                <p>I work across clients, stakeholders, architecture, UX, engineering, QA, UAT and adoption — connecting strategy with the realities of delivery.</p>
                             </div>
                         </div>
                     </div>
@@ -1075,14 +1124,37 @@ export default function Home(): React.JSX.Element {
                 <section className="belief stack-card">
                     <div>
                         <div className="section-label">06 / WHY AI?</div>
-                        <h2 className="cways-section-title light-theme">
-                            EVERYONE<br />
-                            DESERVES<br />
-                            <span className="cways-stroke-text-light">A JARVIS.</span>
+                        <h2 className="cways-section-title light-theme" style={{ fontSize: 'clamp(2.0rem, 3.8vw, 3.8rem)', lineHeight: 1.05 }}>
+                            THE HARD PART ISN'T<br />
+                            MAKING AI ANSWER.<br />
+                            <span className="cways-stroke-text-light">IT'S MAKING PEOPLE TRUST THE ANSWER.</span>
                         </h2>
-                        <p>AI removes the friction between intent and execution. It makes humans more capable and lets an individual take an idea from workflow to working software.</p>
+                        <p style={{ fontSize: '1.05rem', lineHeight: 1.6, maxWidth: '780px', margin: '24px 0 16px', color: 'rgba(255,255,255,0.92)' }}>
+                            AI can generate an answer in seconds. But enterprise products aren't judged by how quickly they answer. They're judged by whether the answer is grounded, explainable, relevant, safe — and appropriate for the context in which it is being used.
+                        </p>
+                        <p style={{ fontSize: '0.98rem', lineHeight: 1.6, maxWidth: '780px', color: 'rgba(255,255,255,0.75)', margin: '0 0 32px' }}>
+                            That's where I focus. I build AI products around the question that matters after the demo: <em style={{ fontStyle: 'normal', color: 'var(--red)', fontWeight: 600 }}>"Can we trust this enough to use it?"</em>
+                        </p>
+
+                        <div className="philosophy-progression" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '16px', marginTop: '24px', paddingTop: '24px', borderTop: '1px solid rgba(255,255,255,0.12)' }}>
+                            <div className="p-step" style={{ background: 'rgba(255,255,255,0.04)', padding: '14px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.08)' }}>
+                                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 800, color: '#fff', letterSpacing: '0.12em' }}>CAPABILITY</div>
+                                <div style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '4px' }}>Makes AI useful</div>
+                            </div>
+                            <div className="p-step" style={{ background: 'rgba(255,255,255,0.04)', padding: '14px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.08)' }}>
+                                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 800, color: '#fff', letterSpacing: '0.12em' }}>CONTEXT</div>
+                                <div style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '4px' }}>Makes it relevant</div>
+                            </div>
+                            <div className="p-step" style={{ background: 'rgba(255,255,255,0.04)', padding: '14px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.08)' }}>
+                                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 800, color: '#fff', letterSpacing: '0.12em' }}>CONTROL</div>
+                                <div style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '4px' }}>Makes it safe</div>
+                            </div>
+                            <div className="p-step highlight" style={{ background: 'rgba(255, 85, 51, 0.12)', padding: '14px', borderRadius: '8px', border: '1px solid var(--red)' }}>
+                                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 800, color: 'var(--red)', letterSpacing: '0.12em' }}>CONFIDENCE</div>
+                                <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.9)', marginTop: '4px' }}>Makes it adoptable</div>
+                            </div>
+                        </div>
                     </div>
-                    <div className="jarvis">JARVIS // HUMAN CAPABILITY SHOULD EXPAND.</div>
                 </section>
 
                 {/* SECTION 7: TIMELINE */}
@@ -1097,10 +1169,14 @@ export default function Home(): React.JSX.Element {
                     <div className="timeline-track-wrap">
                         <div className="timeline-track">
                             <div className="t-item">
+                                <div className="t-year">CERTIFICATION</div>
+                                <h3>SAFe® 6.0 POPM</h3>
+                                <p>SAFe® 6.0 Product Owner / Product Manager certified — Agile release train alignment &amp; enterprise product management.</p>
+                            </div>
+                            <div className="t-item">
                                 <div className="t-year">2023</div>
                                 <h3>IIM JAMMU</h3>
-                                <p>MBA — Strategy & Analytics. Industry Interaction Cell. Hosted corporate seminars and
-                                    leadership conclaves.</p>
+                                <p>MBA — Product, strategy &amp; business foundation.</p>
                             </div>
                             <div className="t-item">
                                 <div className="t-year">2023 / EXCHANGE</div>
@@ -1128,6 +1204,41 @@ export default function Home(): React.JSX.Element {
                     <div className="cways-footer-inner">
                         {/* EYEBROW TAG */}
                         <div className="cways-footer-eyebrow">08 / LET'S BUILD</div>
+
+                        {/* HEADING */}
+                        <h2 className="cways-footer-heading">
+                            BUILDING SOMETHING<br />
+                            <span className="cways-stroke-text-dark">WITH AI?</span>
+                        </h2>
+
+                        {/* SUBTEXT */}
+                        <p className="cways-footer-subtext">
+                            I work with teams that are exploring, validating or building AI products — from early product discovery to working prototypes and production-ready workflows.
+                        </p>
+
+                        {/* ENGAGEMENT / CONSULTING OFFERING GRID */}
+                        <div className="engagement-offerings" style={{ margin: '40px 0 48px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px', textAlign: 'left' }}>
+                            <div style={{ background: '#f5f5f0', padding: '24px', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.08)' }}>
+                                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 800, color: 'var(--red)', letterSpacing: '0.15em', marginBottom: '8px' }}>DISCOVERY</div>
+                                <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#111', marginBottom: '8px' }}>AI PRODUCT DISCOVERY</h4>
+                                <p style={{ fontSize: '0.85rem', color: '#555', lineHeight: 1.5, margin: 0 }}>Turn an ambiguous AI opportunity into a structured product direction and concrete backlog.</p>
+                            </div>
+                            <div style={{ background: '#f5f5f0', padding: '24px', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.08)' }}>
+                                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 800, color: 'var(--red)', letterSpacing: '0.15em', marginBottom: '8px' }}>PROTOTYPING</div>
+                                <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#111', marginBottom: '8px' }}>AI PROTOTYPING</h4>
+                                <p style={{ fontSize: '0.85rem', color: '#555', lineHeight: 1.5, margin: 0 }}>Go from idea to working AI prototype quickly enough to test the actual user experience.</p>
+                            </div>
+                            <div style={{ background: '#f5f5f0', padding: '24px', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.08)' }}>
+                                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 800, color: 'var(--red)', letterSpacing: '0.15em', marginBottom: '8px' }}>ADVISORY</div>
+                                <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#111', marginBottom: '8px' }}>PRODUCT + AI ADVISORY</h4>
+                                <p style={{ fontSize: '0.85rem', color: '#555', lineHeight: 1.5, margin: 0 }}>Evaluate AI product concepts, workflows, architecture decisions, and product risk profiles.</p>
+                            </div>
+                            <div style={{ background: '#f5f5f0', padding: '24px', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.08)' }}>
+                                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 800, color: 'var(--red)', letterSpacing: '0.15em', marginBottom: '8px' }}>FRACTIONAL</div>
+                                <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#111', marginBottom: '8px' }}>FRACTIONAL AI SUPPORT</h4>
+                                <p style={{ fontSize: '0.85rem', color: '#555', lineHeight: 1.5, margin: 0 }}>Hands-on product leadership for teams that need AI product execution without a full-time function.</p>
+                            </div>
+                        </div>
 
                         {/* HEADING */}
                         <h2 className="cways-footer-heading">
@@ -1195,23 +1306,30 @@ export default function Home(): React.JSX.Element {
                     <div className="search-item" data-action="project" data-target="contract">
                         <div>
                             <div className="search-item-title">GenAI Contracting Assistant</div>
-                            <div className="search-item-sub">Clause risk scoring & RAG clause retrieval</div>
+                            <div className="search-item-sub">Clause risk scoring &amp; RAG clause retrieval</div>
                         </div>
                         <span className="search-item-tag">01 / REASON</span>
                     </div>
                     <div className="search-item" data-action="project" data-target="sop">
                         <div>
                             <div className="search-item-title">GenAI SOP Assistant</div>
-                            <div className="search-item-sub">Graph RAG knowledge engine & SOP search</div>
+                            <div className="search-item-sub">Hybrid RAG knowledge engine &amp; SOP search</div>
                         </div>
                         <span className="search-item-tag">02 / RETRIEVE</span>
                     </div>
                     <div className="search-item" data-action="project" data-target="doc">
                         <div>
                             <div className="search-item-title">AI Doc Author</div>
-                            <div className="search-item-sub">Multi-agent regulatory & clinical document drafter</div>
+                            <div className="search-item-sub">Human-in-the-loop AI for regulatory &amp; clinical document drafting</div>
                         </div>
                         <span className="search-item-tag">03 / CREATE</span>
+                    </div>
+                    <div className="search-item" data-action="project" data-target="loop">
+                        <div>
+                            <div className="search-item-title">Loop — Independent AI Build</div>
+                            <div className="search-item-sub">AI-native builder project &amp; rapid prototyping</div>
+                        </div>
+                        <span className="search-item-tag">04 / BUILD</span>
                     </div>
                     <div className="search-item" data-action="scroll" data-target="#lab">
                         <div>
@@ -1227,11 +1345,10 @@ export default function Home(): React.JSX.Element {
             <div className="auth-modal-backdrop" id="authModalBackdrop"></div>
             <div className="auth-modal-box" id="authModal">
                 <div className="auth-header">
-                    <h3>SIGN IN TO LAB 👤</h3>
+                    <h3>LAB PREVIEW ⚡</h3>
                     <button className="auth-close" id="authClose" data-cursor="CLOSE">CLOSE ✕</button>
                 </div>
-                <p style={{ fontSize: "0.85rem", color: "var(--muted)", marginBottom: "20px", lineHeight: "1.5" }}>Access exclusive AI prototype
-                    sandboxes, PRD templates, and prototype demos.</p>
+                <p style={{ fontSize: "0.85rem", color: "var(--muted)", marginBottom: "20px", lineHeight: "1.5" }}>Access experimental AI prototype sandboxes, PRD templates, and interaction flows.</p>
                 <input type="email" className="auth-input" id="authEmail"
                     placeholder="Enter your work email (e.g. name@company.com)" />
                 <button className="auth-submit-btn" id="authSubmit">CONTINUE WITH DEMO ACCESS ⚡</button>
@@ -1247,7 +1364,7 @@ export default function Home(): React.JSX.Element {
                 <div className="modal-body">
                     <div className="modal-title-area">
                         <div className="modal-sub" id="modalCategory">GENAI CONTRACTING ASSISTANT</div>
-                        <h2 id="modalTitle">Contract Liability & Clause Analyser</h2>
+                        <h2 id="modalTitle">Contract Liability &amp; Clause Analyser</h2>
                     </div>
 
                     <div className="modal-tabs">
@@ -1289,7 +1406,7 @@ export default function Home(): React.JSX.Element {
                                     </div>
                                     <div className="spec-item">
                                         <label>Outcome</label>
-                                        <span id="modalOutcome">Reduced initial clause review time by 68%</span>
+                                        <span id="modalOutcome">60–65% reduction in initial clause review time</span>
                                     </div>
                                 </div>
                             </div>
