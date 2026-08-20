@@ -1071,10 +1071,24 @@ export default function Home(): React.JSX.Element {
                     </div>
                 </section>
 
-                {/* SECTION 6: TIMELINE */}
+                {/* SECTION 6: WHY AI? */}
+                <section className="belief stack-card">
+                    <div>
+                        <div className="section-label">06 / WHY AI?</div>
+                        <h2 className="cways-section-title light-theme">
+                            EVERYONE<br />
+                            DESERVES<br />
+                            <span className="cways-stroke-text-light">A JARVIS.</span>
+                        </h2>
+                        <p>AI removes the friction between intent and execution. It makes humans more capable and lets an individual take an idea from workflow to working software.</p>
+                    </div>
+                    <div className="jarvis">JARVIS // HUMAN CAPABILITY SHOULD EXPAND.</div>
+                </section>
+
+                {/* SECTION 7: TIMELINE */}
                 <section className="timeline stack-card">
                     <div className="timeline-head">
-                        <div className="section-label">06 / THE PERSON</div>
+                        <div className="section-label">07 / THE PERSON</div>
                         <h2 className="cways-section-title">
                             HOW I GOT<br />
                             <span className="cways-stroke-text-dark">HERE.</span>
@@ -1113,7 +1127,7 @@ export default function Home(): React.JSX.Element {
                 <footer className="cways-footer-theme" id="contact">
                     <div className="cways-footer-inner">
                         {/* EYEBROW TAG */}
-                        <div className="cways-footer-eyebrow">07 / LET'S BUILD</div>
+                        <div className="cways-footer-eyebrow">08 / LET'S BUILD</div>
 
                         {/* HEADING */}
                         <h2 className="cways-footer-heading">
