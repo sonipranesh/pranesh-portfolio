@@ -819,18 +819,18 @@ export default function Home(): React.JSX.Element {
 
                     {/* HERO TITLE & CONTENT */}
                     <div className="cways-hero-content">
-                        <div className="cways-eyebrow">AI PRODUCT</div>
+                        <div className="cways-eyebrow">A I &nbsp; P R O D U C T &nbsp; O W N E R</div>
 
                         <h1 className="cways-hero-title">
-                            I BUILD<br />
+                            BUILDING<br />
+                            ENTERPRISE<br />
                             AI PRODUCTS<br />
-                            THAT TURN<br />
-                            COMPLEXITY<br />
-                            <span className="cways-stroke-text">INTO POSSIBILITY.</span>
+                            THAT MOVE<br />
+                            <span className="cways-stroke-text">FORWARD.</span>
                         </h1>
 
                         <p className="cways-hero-sub">
-                            I'm Pranesh — an AI Product professional turning complex problems into working AI products.
+                            An AI Product professional turning complex enterprise problems into working AI products, state-of-the-art visual layouts, and digital experiences.
                         </p>
 
                         <div className="cways-hero-actions">
