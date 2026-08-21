@@ -3722,34 +3722,60 @@ footer {
         padding: 9px 14px !important;
     }
 
-    /* Hero Section Responsive Viewport (Always 100dvh full-screen) */
+    /* Hero Section Responsive Viewport (Always 100dvh exact full-screen welcome view) */
+    .hero-layer,
     .cways-hero-theme {
+        width: 100vw !important;
+        max-width: 100vw !important;
         min-height: 100vh !important;
         min-height: 100dvh !important;
         height: 100vh !important;
         height: 100dvh !important;
+        max-height: 100dvh !important;
         display: flex !important;
         flex-direction: column !important;
-        justify-content: space-between !important;
+        justify-content: center !important;
+        align-items: center !important;
         padding: 0 !important;
+        margin: 0 !important;
         position: relative !important;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
+    }
+
+    .cways-hero-theme::before {
+        content: '' !important;
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background-image: url('/hero_silhouette_mobile.jpg') !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        filter: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+        z-index: 0 !important;
+        pointer-events: none !important;
     }
 
     /* Hero Section - Consumes full height: Text vertically centered in hero height, buttons & scroll at bottom */
     .cways-hero-content {
         position: relative !important;
-        min-height: 100vh !important;
-        min-height: 100dvh !important;
-        height: 100dvh !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-height: 100% !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
         align-items: center !important;
-        padding: calc(84px + env(safe-area-inset-top, 0px)) 24px calc(185px + env(safe-area-inset-bottom, 0px)) !important;
+        padding: calc(72px + env(safe-area-inset-top, 0px)) 24px calc(150px + env(safe-area-inset-bottom, 0px)) !important;
         max-width: 100% !important;
         text-align: center !important;
         margin: 0 !important;
         box-sizing: border-box !important;
+        overflow: hidden !important;
     }
 
     .cways-hero-text-block {
@@ -3768,7 +3794,7 @@ footer {
         letter-spacing: 0.22em !important;
         word-spacing: 0.35em !important;
         color: #ffd285 !important;
-        margin-bottom: 14px !important;
+        margin-bottom: 12px !important;
         margin-left: auto !important;
         margin-right: auto !important;
         justify-content: center !important;
@@ -3777,17 +3803,17 @@ footer {
     }
 
     .cways-hero-title {
-        font-size: clamp(2rem, 8.8vw, 3.2rem) !important;
+        font-size: clamp(1.9rem, 8.2vw, 3rem) !important;
         font-weight: 900 !important;
         line-height: 1.15 !important;
         letter-spacing: -0.035em !important;
-        margin-bottom: 16px !important;
+        margin-bottom: 14px !important;
         text-align: center !important;
         text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
     }
 
     .cways-hero-sub {
-        font-size: clamp(1rem, 3.8vw, 1.05rem) !important;
+        font-size: clamp(0.95rem, 3.6vw, 1.05rem) !important;
         line-height: 1.5 !important;
         color: rgba(255, 255, 255, 0.85) !important;
         margin-bottom: 0 !important;
@@ -3800,7 +3826,7 @@ footer {
 
     .cways-hero-bottom-block {
         position: absolute !important;
-        bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important;
+        bottom: calc(82px + env(safe-area-inset-bottom, 0px)) !important;
         left: 50% !important;
         transform: translateX(-50%) !important;
         display: flex !important;
