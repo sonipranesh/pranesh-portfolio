@@ -4,49 +4,88 @@ import React, { useEffect } from 'react';
 import Link from 'next/link';
 import ScrollStack, { ScrollStackItem } from '@/app/components/ScrollStack';
 import LogoLoop, { LogoItem } from '@/app/components/LogoLoop';
+import BubbleMenu from '@/app/components/BubbleMenu';
+
+const bubbleMenuItems = [
+  {
+    label: 'about',
+    href: '/about',
+    ariaLabel: 'About',
+    rotation: -8,
+    hoverStyles: { bgColor: '#ffffff', textColor: '#000000' }
+  },
+  {
+    label: 'projects',
+    href: '/projects',
+    ariaLabel: 'Projects',
+    rotation: 8,
+    hoverStyles: { bgColor: '#ffffff', textColor: '#000000' }
+  },
+  {
+    label: 'blogs',
+    href: '/blogs',
+    ariaLabel: 'Blogs',
+    rotation: -6,
+    hoverStyles: { bgColor: '#ffffff', textColor: '#000000' }
+  },
+  {
+    label: 'why me',
+    href: '/#why-me',
+    ariaLabel: 'Why Me',
+    rotation: 6,
+    hoverStyles: { bgColor: '#ffffff', textColor: '#000000' }
+  },
+  {
+    label: "let's build",
+    href: '/#contact',
+    ariaLabel: 'Contact',
+    rotation: -6,
+    hoverStyles: { bgColor: '#ffffff', textColor: '#000000' }
+  }
+];
 import {
-  SiJira,
-  SiConfluence,
-  SiStreamlit,
-  SiGradio,
-  SiLangchain,
-  SiClaude,
-  SiAnthropic,
-  SiPython,
-  SiFastapi,
-  SiSubstack
+    SiJira,
+    SiConfluence,
+    SiStreamlit,
+    SiGradio,
+    SiLangchain,
+    SiClaude,
+    SiAnthropic,
+    SiPython,
+    SiFastapi,
+    SiSubstack
 } from 'react-icons/si';
 import { FaAws, FaLinkedin } from 'react-icons/fa6';
 
 const OpenAIIcon = () => (
-  <svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0813 4.779-2.7582a.7938.7938 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.5045 4.5045 0 0 1-4.4952 4.4953zM3.6 18.304a4.4707 4.4707 0 0 1-.5355-3.0141l.142.0852 4.7837 2.7582a.7794.7794 0 0 0 .7855 0l5.8336-3.3684v2.3324a.0805.0805 0 0 1-.0332.0615L9.74 19.9502A4.4997 4.4997 0 0 1 3.6 18.304zm-1.4643-10.374a4.4611 4.4611 0 0 1 2.3409-1.9706V11.58a.7842.7842 0 0 0 .3927.6813l5.8336 3.3684-2.0152 1.1638a.0805.0805 0 0 1-.0711 0l-4.831-2.7915A4.4952 4.4952 0 0 1 2.1357 7.93zm16.4862 3.1232l-5.8336-3.3684 2.0152-1.1638a.0805.0805 0 0 1 .0711 0l4.831 2.7915a4.4952 4.4952 0 0 1-.6767 8.1042v-5.682a.7842.7842 0 0 0-.407-.6815zm2.0104-3.0238l-.1419-.0852-4.7742-2.7582a.7794.7794 0 0 0-.7855 0L9.0919 8.5602V6.2278a.0805.0805 0 0 1 .0332-.0615l4.8358-2.7915a4.4997 4.4997 0 0 1 6.891 4.8876zM7.742 10.7497l2.02-1.1639a.0805.0805 0 0 1 .0711 0l4.831 2.7915a4.4952 4.4952 0 0 1-.6767 8.1042v-5.682a.7842.7842 0 0 0-.407-.6815z"/>
-  </svg>
+    <svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0813 4.779-2.7582a.7938.7938 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.5045 4.5045 0 0 1-4.4952 4.4953zM3.6 18.304a4.4707 4.4707 0 0 1-.5355-3.0141l.142.0852 4.7837 2.7582a.7794.7794 0 0 0 .7855 0l5.8336-3.3684v2.3324a.0805.0805 0 0 1-.0332.0615L9.74 19.9502A4.4997 4.4997 0 0 1 3.6 18.304zm-1.4643-10.374a4.4611 4.4611 0 0 1 2.3409-1.9706V11.58a.7842.7842 0 0 0 .3927.6813l5.8336 3.3684-2.0152 1.1638a.0805.0805 0 0 1-.0711 0l-4.831-2.7915A4.4952 4.4952 0 0 1 2.1357 7.93zm16.4862 3.1232l-5.8336-3.3684 2.0152-1.1638a.0805.0805 0 0 1 .0711 0l4.831 2.7915a4.4952 4.4952 0 0 1-.6767 8.1042v-5.682a.7842.7842 0 0 0-.407-.6815zm2.0104-3.0238l-.1419-.0852-4.7742-2.7582a.7794.7794 0 0 0-.7855 0L9.0919 8.5602V6.2278a.0805.0805 0 0 1 .0332-.0615l4.8358-2.7915a4.4997 4.4997 0 0 1 6.891 4.8876zM7.742 10.7497l2.02-1.1639a.0805.0805 0 0 1 .0711 0l4.831 2.7915a4.4952 4.4952 0 0 1-.6767 8.1042v-5.682a.7842.7842 0 0 0-.407-.6815z" />
+    </svg>
 );
 
 const techLogos: LogoItem[] = [
-  // Agile Management
-  { node: <SiJira />, title: "Agile: Jira", href: "https://www.atlassian.com/software/jira" },
-  { node: <SiConfluence />, title: "Agile: Confluence", href: "https://www.atlassian.com/software/confluence" },
+    // Agile Management
+    { node: <SiJira />, title: "Agile: Jira", href: "https://www.atlassian.com/software/jira" },
+    { node: <SiConfluence />, title: "Agile: Confluence", href: "https://www.atlassian.com/software/confluence" },
 
-  // Cloud Infrastructure
-  { node: <FaAws />, title: "AWS Cloud Services", href: "https://aws.amazon.com" },
+    // Cloud Infrastructure
+    { node: <FaAws />, title: "AWS Cloud Services", href: "https://aws.amazon.com" },
 
-  // Agentic & Orchestration Frameworks
-  { node: <SiLangchain />, title: "Agentic Frameworks: LangChain", href: "https://www.langchain.com" },
+    // Agentic & Orchestration Frameworks
+    { node: <SiLangchain />, title: "Agentic Frameworks: LangChain", href: "https://www.langchain.com" },
 
-  // Rapid Prototyping
-  { node: <SiStreamlit />, title: "Rapid Prototyping: Streamlit", href: "https://streamlit.io" },
-  { node: <SiGradio />, title: "Rapid Prototyping: Gradio", href: "https://gradio.app" },
+    // Rapid Prototyping
+    { node: <SiStreamlit />, title: "Rapid Prototyping: Streamlit", href: "https://streamlit.io" },
+    { node: <SiGradio />, title: "Rapid Prototyping: Gradio", href: "https://gradio.app" },
 
-  // Core AI Models
-  { node: <OpenAIIcon />, title: "ChatGPT / OpenAI", href: "https://chatgpt.com" },
-  { node: <SiClaude />, title: "Claude", href: "https://claude.ai" },
-  { node: <SiAnthropic />, title: "Anthropic API", href: "https://www.anthropic.com" },
+    // Core AI Models
+    { node: <OpenAIIcon />, title: "ChatGPT / OpenAI", href: "https://chatgpt.com" },
+    { node: <SiClaude />, title: "Claude", href: "https://claude.ai" },
+    { node: <SiAnthropic />, title: "Anthropic API", href: "https://www.anthropic.com" },
 
-  // Core Stack
-  { node: <SiPython />, title: "Python", href: "https://www.python.org" },
-  { node: <SiFastapi />, title: "FastAPI", href: "https://fastapi.tiangolo.com" },
+    // Core Stack
+    { node: <SiPython />, title: "Python", href: "https://www.python.org" },
+    { node: <SiFastapi />, title: "FastAPI", href: "https://fastapi.tiangolo.com" },
 ];
 
 export default function Home(): React.JSX.Element {
@@ -77,7 +116,7 @@ export default function Home(): React.JSX.Element {
         // 2. CUSTOM CURSOR
         const cursor = document.getElementById('cursor');
         const label = document.getElementById('cursorLabel');
-        let bindCursorEvents = () => {};
+        let bindCursorEvents = () => { };
 
         if (matchMedia('(pointer:fine)').matches && cursor && label) {
             window.addEventListener('mousemove', e => {
@@ -112,7 +151,7 @@ export default function Home(): React.JSX.Element {
                 }
             }
 
-            bindCursorEvents = function() {
+            bindCursorEvents = function () {
                 document.querySelectorAll('[data-cursor], a, button, .lab-project, .modal-close, .modal-tab').forEach(el => {
                     el.removeEventListener('mouseenter', onMouseEnter);
                     el.removeEventListener('mouseleave', onMouseLeave);
@@ -745,27 +784,24 @@ export default function Home(): React.JSX.Element {
 
                         <nav className="cways-nav">
                             <Link href="/about" data-cursor="ABOUT">About</Link>
-                            <a href="#work" data-cursor="PROJECTS">Projects</a>
+                            <Link href="/projects" data-cursor="PROJECTS">Projects</Link>
                             <Link href="/blogs" data-cursor="BLOGS">Blogs</Link>
                             <a href="#why-me" data-cursor="WHY ME">Why Me</a>
                         </nav>
 
                         <div className="header-actions">
-                            <button
-                                className="cways-menu-toggle"
-                                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                                aria-label="Toggle navigation menu"
-                            >
-                                {isMenuOpen ? "CLOSE ✕" : (
-                                    <span className="hamburger-wrap">
-                                        <svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1 1.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                                            <path d="M1 6.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                                            <path d="M1 11.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                                        </svg>
-                                    </span>
-                                )}
-                            </button>
+                            <div className="mobile-bubble-menu-wrapper">
+                                <BubbleMenu
+                                    items={bubbleMenuItems}
+                                    menuAriaLabel="Toggle navigation menu"
+                                    menuBg="#ffffff"
+                                    menuContentColor="#111111"
+                                    useFixedPosition={true}
+                                    animationEase="back.out(1.5)"
+                                    animationDuration={0.5}
+                                    staggerDelay={0.12}
+                                />
+                            </div>
                             <a
                                 href="/Pranesh_Soni_Resume.pdf"
                                 download="Pranesh_Soni_Resume.pdf"
@@ -776,41 +812,6 @@ export default function Home(): React.JSX.Element {
                             </a>
                         </div>
                     </header>
-
-                    {/* FULL SCREEN OVERLAY MOBILE & PORTRAIT MENU DRAWER */}
-                    {isMenuOpen && (
-                        <div className="cways-mobile-menu-overlay">
-                            <div className="cways-mobile-menu-header">
-                                <Link href="/" className="cways-logo" onClick={() => setIsMenuOpen(false)}>pranesh soni</Link>
-                                <button className="cways-mobile-menu-close" onClick={() => setIsMenuOpen(false)}>
-                                    CLOSE ✕
-                                </button>
-                            </div>
-                            <div className="cways-mobile-menu-links">
-                                <Link href="/about" onClick={() => setIsMenuOpen(false)}>
-                                    <span className="num">01</span> ABOUT
-                                </Link>
-                                <a href="#work" onClick={() => setIsMenuOpen(false)}>
-                                    <span className="num">02</span> PROJECTS
-                                </a>
-                                <Link href="/blogs" onClick={() => setIsMenuOpen(false)}>
-                                    <span className="num">03</span> BLOGS
-                                </Link>
-                                <a href="#why-me" onClick={() => setIsMenuOpen(false)}>
-                                    <span className="num">04</span> WHY ME
-                                </a>
-                            </div>
-                            <div className="cways-mobile-menu-footer">
-                                <a
-                                    href="#contact"
-                                    onClick={(e) => { setIsMenuOpen(false); handleLetsBuildTogether(e); }}
-                                    className="cways-btn-primary"
-                                >
-                                    LET'S BUILD TOGETHER
-                                </a>
-                            </div>
-                        </div>
-                    )}
 
                     {/* ATMOSPHERIC DUAL LIGHTING BACKGROUND OVERLAY */}
                     <div className="cways-hero-bg-overlay"></div>
@@ -882,8 +883,8 @@ export default function Home(): React.JSX.Element {
                             <div className="credential-card" style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '20px 24px', background: '#ffffff', borderRadius: '14px', border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 4px 20px rgba(0,0,0,0.03)', transition: 'all 0.3s ease' }}>
                                 <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(17, 17, 17, 0.04)', border: '1px solid rgba(17, 17, 17, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                                     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M12 2L3 7V17L12 22L21 17V7L12 2Z" stroke="#111111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                        <path d="M12 6L16.5 8.5V13.5L12 16L7.5 13.5V8.5L12 6Z" stroke="#111111" strokeWidth="1.5"/>
+                                        <path d="M12 2L3 7V17L12 22L21 17V7L12 2Z" stroke="#111111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                        <path d="M12 6L16.5 8.5V13.5L12 16L7.5 13.5V8.5L12 6Z" stroke="#111111" strokeWidth="1.5" />
                                     </svg>
                                 </div>
                                 <div>
