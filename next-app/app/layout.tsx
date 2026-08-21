@@ -1,10 +1,22 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import SplashCursor from "./components/SplashCursor";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#08080a",
+};
 
 export const metadata: Metadata = {
   title: "Pranesh Soni — AI Product Owner & Builder",
   description: "Pranesh Soni — AI Product Owner & Builder. Building AI capabilities for life sciences and turning complex workflows into working prototypes.",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Pranesh Soni",
+  },
 };
 
 export default function RootLayout({
@@ -15,6 +27,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="theme-color" content="#08080a" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
