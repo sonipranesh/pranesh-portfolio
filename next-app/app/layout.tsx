@@ -23,7 +23,16 @@ export default function RootLayout({
         />
         <script
           dangerouslySetInnerHTML={{
-            __html: `if (typeof window !== 'undefined') { if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; } window.scrollTo(0, 0); }`,
+            __html: `if (typeof window !== 'undefined') {
+              if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+              if (location.hash) { history.replaceState(null, '', location.pathname); }
+              window.scrollTo(0, 0);
+              window.addEventListener('pageshow', function() {
+                if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+                if (location.hash) { history.replaceState(null, '', location.pathname); }
+                window.scrollTo(0, 0);
+              });
+            }`,
           }}
         />
       </head>

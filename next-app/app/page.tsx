@@ -120,6 +120,9 @@ export default function Home(): React.JSX.Element {
             if ('scrollRestoration' in window.history) {
                 window.history.scrollRestoration = 'manual';
             }
+            if (window.location.hash) {
+                window.history.replaceState(null, '', window.location.pathname);
+            }
             window.scrollTo(0, 0);
         }
 
