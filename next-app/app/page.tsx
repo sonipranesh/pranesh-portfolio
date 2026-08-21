@@ -877,30 +877,30 @@ export default function Home(): React.JSX.Element {
 
                     {/* HERO TITLE & CONTENT */}
                     <div className="cways-hero-content">
-                        <div className="cways-eyebrow">AI PRODUCT</div>
+                        <div className="cways-hero-text-block">
+                            <div className="cways-eyebrow">AI PRODUCT</div>
 
-                        <h1 className="cways-hero-title">
-                            I BUILD<br />
-                            AI PRODUCTS<br />
-                            THAT TURN<br />
-                            COMPLEXITY<br />
-                            <span className="cways-stroke-text">INTO POSSIBILITY.</span>
-                        </h1>
+                            <h1 className="cways-hero-title">
+                                I BUILD AI PRODUCTS THAT TURN COMPLEXITY <span className="cways-stroke-text">INTO POSSIBILITY.</span>
+                            </h1>
 
-                        <p className="cways-hero-sub">
-                            I'm Pranesh — an AI Product professional turning complex problems into working AI products.
-                        </p>
+                            <p className="cways-hero-sub">
+                                I'm Pranesh — an AI Product professional turning complex problems into working AI products.
+                            </p>
+                        </div>
 
-                        <div className="cways-hero-actions">
-                            <a href="#work" className="cways-btn-primary" data-cursor="WORK">VIEW WORK</a>
-                            <a
-                                href="#contact"
-                                onClick={handleLetsBuildTogether}
-                                className="cways-btn-outline"
-                                data-cursor="BUILD"
-                            >
-                                LET'S BUILD TOGETHER
-                            </a>
+                        <div className="cways-hero-bottom-block">
+                            <div className="cways-hero-actions">
+                                <a href="#work" className="cways-btn-primary" data-cursor="WORK">VIEW WORK</a>
+                                <a
+                                    href="#contact"
+                                    onClick={handleLetsBuildTogether}
+                                    className="cways-btn-outline"
+                                    data-cursor="BUILD"
+                                >
+                                    LET'S BUILD TOGETHER
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -913,8 +913,7 @@ export default function Home(): React.JSX.Element {
                 <section className="manifesto stack-card" id="manifesto">
                     <div className="section-label">02 / CAPABILITIES &amp; CREDENTIALS</div>
                     <h2 className="cways-section-title">
-                        PM &amp; AI<br />
-                        <span className="cways-stroke-text-dark">TECH STACK.</span>
+                        PM &amp; AI <span className="cways-stroke-text-dark">TECH STACK.</span>
                     </h2>
 
                     <div className="tech-stack-loop-wrapper">
@@ -975,9 +974,7 @@ export default function Home(): React.JSX.Element {
                         <div className="work-left-col">
                             <div className="section-label">03 / SELECTED BUILDS</div>
                             <h2 className="cways-section-title light-theme">
-                                THREE<br />
-                                <span className="cways-stroke-text-light">THINGS</span><br />
-                                I BUILT.
+                                THREE <span className="cways-stroke-text-light">THINGS</span> I BUILT.
                             </h2>
                             <p className="work-subtext">
                                 Actual enterprise AI products I built from vision to production rollout across life sciences &amp; clinical operations.
@@ -1094,8 +1091,7 @@ export default function Home(): React.JSX.Element {
                     <div className="why-me-inner">
                         <div className="section-label">04 / WHY ME</div>
                         <h2 className="cways-section-title light-theme">
-                            WHY<br />
-                            <span className="cways-stroke-text-light">ME.</span>
+                            WHY <span className="cways-stroke-text-light">ME.</span>
                         </h2>
                         <div className="why-me-sub">
                             Bridging complex AI technology with enterprise business impact across life sciences, healthcare &amp; clinical operations.
@@ -1136,8 +1132,7 @@ export default function Home(): React.JSX.Element {
                     <div>
                         <div className="section-label">05 / HOW I THINK</div>
                         <h2 className="cways-section-title light-theme">
-                            HOW I<br />
-                            <span className="cways-stroke-text-light">THINK.</span>
+                            HOW I <span className="cways-stroke-text-light">THINK.</span>
                         </h2>
 
                         <div className="why-me-grid" style={{ marginTop: '36px' }}>
@@ -1184,8 +1179,7 @@ export default function Home(): React.JSX.Element {
                     <div className="timeline-head">
                         <div className="section-label">06 / THE PERSON</div>
                         <h2 className="cways-section-title">
-                            HOW I GOT<br />
-                            <span className="cways-stroke-text-dark">HERE.</span>
+                            HOW I GOT <span className="cways-stroke-text-dark">HERE.</span>
                         </h2>
                     </div>
 
@@ -1276,8 +1270,7 @@ export default function Home(): React.JSX.Element {
 
                         {/* HEADING */}
                         <h2 className="cways-footer-heading">
-                            BUILD SOMETHING<br />
-                            <span className="cways-stroke-text-dark">WITH AI.</span>
+                            BUILD SOMETHING <span className="cways-stroke-text-dark">WITH AI.</span>
                         </h2>
 
                         {/* SUBTEXT */}

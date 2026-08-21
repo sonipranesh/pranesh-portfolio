@@ -211,8 +211,7 @@ export default function AboutPage() {
 
                 <div className="about-hero-block">
                     <h1 className="cways-page-title">
-                        ABOUT.<br />
-                        <span className="cways-stroke-text-dark">PRANESH.</span>
+                        ABOUT. <span className="cways-stroke-text-dark">PRANESH.</span>
                     </h1>
 
                     <div className="about-role-tag">AI PRODUCT OWNER / MANAGER</div>
@@ -276,8 +275,7 @@ export default function AboutPage() {
                     <div className="cways-footer-eyebrow">08 / LET'S BUILD</div>
 
                     <h2 className="cways-footer-heading">
-                        GOT A GOOD<br />
-                        <span className="cways-stroke-text-dark">PROBLEM?</span>
+                        GOT A GOOD <span className="cways-stroke-text-dark">PROBLEM?</span>
                     </h2>
 
                     <p className="cways-footer-subtext">
