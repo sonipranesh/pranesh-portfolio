@@ -206,6 +206,13 @@ export default function BlogsPage() {
   const [activePost, setActivePost] = useState<BlogPost | null>(null);
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'manual';
+      }
+      window.scrollTo(0, 0);
+    }
+
     const cursor = document.getElementById('cursor');
     const label = document.getElementById('cursorLabel');
     let bindCursorEvents = () => { };

@@ -116,6 +116,13 @@ export default function Home(): React.JSX.Element {
     };
 
     useEffect(() => {
+        if (typeof window !== 'undefined') {
+            if ('scrollRestoration' in window.history) {
+                window.history.scrollRestoration = 'manual';
+            }
+            window.scrollTo(0, 0);
+        }
+
         // 1. PARALLAX HERO SCROLL OBSERVER (DIMS & SCALES HERO AS OVERLAPPING CARDS SLIDE UP)
         const heroLayer = document.getElementById('heroLayer');
         window.addEventListener('scroll', () => {

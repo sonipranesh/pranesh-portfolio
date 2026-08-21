@@ -72,6 +72,13 @@ export default function AboutPage() {
     };
 
     React.useEffect(() => {
+        if (typeof window !== 'undefined') {
+            if ('scrollRestoration' in window.history) {
+                window.history.scrollRestoration = 'manual';
+            }
+            window.scrollTo(0, 0);
+        }
+
         const cursor = document.getElementById('cursor');
         const label = document.getElementById('cursorLabel');
 
