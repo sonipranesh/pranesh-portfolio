@@ -4,45 +4,6 @@ import React, { useEffect } from 'react';
 import Link from 'next/link';
 import ScrollStack, { ScrollStackItem } from '@/app/components/ScrollStack';
 import LogoLoop, { LogoItem } from '@/app/components/LogoLoop';
-import BubbleMenu from '@/app/components/BubbleMenu';
-
-const bubbleMenuItems = [
-  {
-    label: 'about',
-    href: '/about',
-    ariaLabel: 'About',
-    rotation: -8,
-    hoverStyles: { bgColor: '#ffffff', textColor: '#000000' }
-  },
-  {
-    label: 'projects',
-    href: '/projects',
-    ariaLabel: 'Projects',
-    rotation: 8,
-    hoverStyles: { bgColor: '#ffffff', textColor: '#000000' }
-  },
-  {
-    label: 'blogs',
-    href: '/blogs',
-    ariaLabel: 'Blogs',
-    rotation: -6,
-    hoverStyles: { bgColor: '#ffffff', textColor: '#000000' }
-  },
-  {
-    label: 'why me',
-    href: '/#why-me',
-    ariaLabel: 'Why Me',
-    rotation: 6,
-    hoverStyles: { bgColor: '#ffffff', textColor: '#000000' }
-  },
-  {
-    label: "let's build",
-    href: '/#contact',
-    ariaLabel: 'Contact',
-    rotation: -6,
-    hoverStyles: { bgColor: '#ffffff', textColor: '#000000' }
-  }
-];
 import {
     SiJira,
     SiConfluence,
@@ -105,7 +66,6 @@ export default function Home(): React.JSX.Element {
         // 1. PARALLAX HERO SCROLL OBSERVER (DIMS & SCALES HERO AS OVERLAPPING CARDS SLIDE UP)
         const heroLayer = document.getElementById('heroLayer');
         window.addEventListener('scroll', () => {
-            if (typeof window !== 'undefined' && window.innerWidth <= 768) return;
             const scrollY = window.scrollY;
             if (heroLayer) {
                 const progress = Math.min(1, scrollY / (window.innerHeight * 0.8));
@@ -785,24 +745,27 @@ export default function Home(): React.JSX.Element {
 
                         <nav className="cways-nav">
                             <Link href="/about" data-cursor="ABOUT">About</Link>
-                            <Link href="/projects" data-cursor="PROJECTS">Projects</Link>
+                            <a href="#work" data-cursor="PROJECTS">Projects</a>
                             <Link href="/blogs" data-cursor="BLOGS">Blogs</Link>
                             <a href="#why-me" data-cursor="WHY ME">Why Me</a>
                         </nav>
 
                         <div className="header-actions">
-                            <div className="mobile-bubble-menu-wrapper">
-                                <BubbleMenu
-                                    items={bubbleMenuItems}
-                                    menuAriaLabel="Toggle navigation menu"
-                                    menuBg="#ffffff"
-                                    menuContentColor="#111111"
-                                    useFixedPosition={true}
-                                    animationEase="back.out(1.5)"
-                                    animationDuration={0.5}
-                                    staggerDelay={0.12}
-                                />
-                            </div>
+                            <button
+                                className="cways-menu-toggle"
+                                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                                aria-label="Toggle navigation menu"
+                            >
+                                {isMenuOpen ? "CLOSE ✕" : (
+                                    <span className="hamburger-wrap">
+                                        <svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1 1.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                                            <path d="M1 6.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                                            <path d="M1 11.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                                        </svg>
+                                    </span>
+                                )}
+                            </button>
                             <a
                                 href="/Pranesh_Soni_Resume.pdf"
                                 download="Pranesh_Soni_Resume.pdf"
@@ -814,23 +777,58 @@ export default function Home(): React.JSX.Element {
                         </div>
                     </header>
 
+                    {/* FULL SCREEN OVERLAY MOBILE & PORTRAIT MENU DRAWER */}
+                    {isMenuOpen && (
+                        <div className="cways-mobile-menu-overlay">
+                            <div className="cways-mobile-menu-header">
+                                <Link href="/" className="cways-logo" onClick={() => setIsMenuOpen(false)}>pranesh soni</Link>
+                                <button className="cways-mobile-menu-close" onClick={() => setIsMenuOpen(false)}>
+                                    CLOSE ✕
+                                </button>
+                            </div>
+                            <div className="cways-mobile-menu-links">
+                                <Link href="/about" onClick={() => setIsMenuOpen(false)}>
+                                    <span className="num">01</span> ABOUT
+                                </Link>
+                                <a href="#work" onClick={() => setIsMenuOpen(false)}>
+                                    <span className="num">02</span> PROJECTS
+                                </a>
+                                <Link href="/blogs" onClick={() => setIsMenuOpen(false)}>
+                                    <span className="num">03</span> BLOGS
+                                </Link>
+                                <a href="#why-me" onClick={() => setIsMenuOpen(false)}>
+                                    <span className="num">04</span> WHY ME
+                                </a>
+                            </div>
+                            <div className="cways-mobile-menu-footer">
+                                <a
+                                    href="#contact"
+                                    onClick={(e) => { setIsMenuOpen(false); handleLetsBuildTogether(e); }}
+                                    className="cways-btn-primary"
+                                >
+                                    LET'S BUILD TOGETHER
+                                </a>
+                            </div>
+                        </div>
+                    )}
+
                     {/* ATMOSPHERIC DUAL LIGHTING BACKGROUND OVERLAY */}
                     <div className="cways-hero-bg-overlay"></div>
 
                     {/* HERO TITLE & CONTENT */}
                     <div className="cways-hero-content">
-                        <div className="cways-eyebrow">A I &nbsp; P R O D U C T &nbsp; O W N E R</div>
+                        <div className="cways-eyebrow">AI PRODUCT</div>
 
                         <h1 className="cways-hero-title">
-                            BUILDING<br />
-                            ENTERPRISE<br />
+                            I BUILD<br />
                             AI PRODUCTS<br />
-                            THAT MOVE<br />
-                            <span className="cways-stroke-text">FORWARD.</span>
+                            THAT TURN<br />
+                            COMPLEXITY<br />
+                            <span className="cways-stroke-text">INTO POSSIBILITY.</span>
                         </h1>
 
                         <p className="cways-hero-sub">
-                            An AI Product professional turning complex enterprise problems into working AI products, state-of-the-art visual layouts, and digital experiences.
+                            I'm Pranesh — an AI Product professional turning complex problems into working AI products.
                         </p>
 
                         <div className="cways-hero-actions">
