@@ -105,6 +105,7 @@ export default function Home(): React.JSX.Element {
         // 1. PARALLAX HERO SCROLL OBSERVER (DIMS & SCALES HERO AS OVERLAPPING CARDS SLIDE UP)
         const heroLayer = document.getElementById('heroLayer');
         window.addEventListener('scroll', () => {
+            if (typeof window !== 'undefined' && window.innerWidth <= 768) return;
             const scrollY = window.scrollY;
             if (heroLayer) {
                 const progress = Math.min(1, scrollY / (window.innerHeight * 0.8));
