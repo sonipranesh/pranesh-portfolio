@@ -2,6 +2,59 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import BubbleMenu from '@/app/components/BubbleMenu';
+
+const bubbleMenuItems = [
+  {
+    label: 'home',
+    href: '/',
+    ariaLabel: 'Home',
+    rotation: -8,
+    hoverStyles: { bgColor: '#3b82f6', textColor: '#ffffff' }
+  },
+  {
+    label: 'about',
+    href: '/about',
+    ariaLabel: 'About',
+    rotation: 8,
+    hoverStyles: { bgColor: '#10b981', textColor: '#ffffff' }
+  },
+  {
+    label: 'projects',
+    href: '/#work',
+    ariaLabel: 'Projects',
+    rotation: -8,
+    hoverStyles: { bgColor: '#f59e0b', textColor: '#ffffff' }
+  },
+  {
+    label: 'blog',
+    href: '/blogs',
+    ariaLabel: 'Blog',
+    rotation: 8,
+    hoverStyles: { bgColor: '#ef4444', textColor: '#ffffff' }
+  },
+  {
+    label: 'why me',
+    href: '/#why-me',
+    ariaLabel: 'Why Me',
+    rotation: -8,
+    hoverStyles: { bgColor: '#06b6d4', textColor: '#ffffff' }
+  },
+  {
+    label: 'contact',
+    href: '/#contact',
+    ariaLabel: 'Contact',
+    rotation: 8,
+    hoverStyles: { bgColor: '#8b5cf6', textColor: '#ffffff' }
+  },
+  {
+    label: "let's build",
+    href: '/#contact',
+    ariaLabel: "Let's Build",
+    rotation: 4,
+    hoverStyles: { bgColor: '#10b981', textColor: '#ffffff' }
+  }
+];
 
 interface BlogPost {
   id: string;
@@ -275,21 +328,18 @@ export default function BlogsPage() {
         </nav>
 
         <div className="header-actions">
-          <button
-            className="cways-menu-toggle about-menu-toggle"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle navigation menu"
-          >
-            {isMenuOpen ? "CLOSE ✕" : (
-              <span className="hamburger-wrap">
-                <svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1 1.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                  <path d="M1 6.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                  <path d="M1 11.5H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-              </span>
-            )}
-          </button>
+          <BubbleMenu
+            logo={<span style={{ fontWeight: 700 }}>PS</span>}
+            items={bubbleMenuItems}
+            menuAriaLabel="Toggle navigation"
+            menuBg="#ffffff"
+            menuContentColor="#111111"
+            useFixedPosition={false}
+            animationEase="back.out(1.5)"
+            animationDuration={0.5}
+            staggerDelay={0.12}
+            className="cways-bubble-menu-mobile"
+          />
           <a
             href="/Pranesh_Soni_Resume.pdf"
             download="Pranesh_Soni_Resume.pdf"

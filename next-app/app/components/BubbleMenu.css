@@ -1,0 +1,190 @@
+/* BUBBLE MENU COMPONENT */
+.bubble-menu-wrapper {
+  position: relative;
+  z-index: 99999;
+}
+
+/* CIRCULAR CLOSED MENU TRIGGER BUTTON (MATCHING SCREENSHOT PERFECTLY) */
+.bubble-menu-circle-trigger {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  min-height: 52px;
+  border-radius: 50%;
+  background-color: #f4f3eb;
+  color: #111111;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background-color 0.2s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.bubble-menu-circle-trigger:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  background-color: #ffffff;
+}
+
+.bubble-menu-circle-trigger:active {
+  transform: scale(0.95);
+}
+
+.bubble-menu-circle-trigger svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+/* FULLSCREEN OVERLAY MENU (TOP ALIGNED) */
+.bubble-menu-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: calc(115px + env(safe-area-inset-top, 0px));
+  padding-bottom: 40px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* OVERLAY DARK BACKGROUND */
+.bubble-menu-overlay-bg {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1;
+}
+
+/* TOP-RIGHT CLOSE CIRCLE BUTTON */
+.bubble-menu-close-btn {
+  position: fixed;
+  top: calc(24px + env(safe-area-inset-top, 0px));
+  right: calc(24px + env(safe-area-inset-right, 0px));
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: #111111;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease;
+  z-index: 10;
+  outline: none;
+}
+
+.bubble-menu-close-btn:hover {
+  transform: scale(1.1) rotate(90deg);
+  background-color: #f4f3eb;
+}
+
+.bubble-menu-close-btn:active {
+  transform: scale(0.95);
+}
+
+/* TOP ALIGNED FLOATING BUBBLE PILLS GRID */
+.bubble-menu-grid-container {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(150px, 185px));
+  gap: 20px 16px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 420px;
+  padding: 10px 20px 30px;
+  box-sizing: border-box;
+}
+
+/* INDIVIDUAL FLOATING BUBBLE PILL ITEM (INCREASED HEIGHT) */
+.bubble-pill-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 68px;
+  padding: 22px 30px;
+  background-color: var(--pill-bg, #f4f3eb);
+  color: var(--pill-color, #111111);
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.08);
+  transform-origin: center center;
+  transform: scale(0) rotate(var(--pill-rotation, 0deg));
+  opacity: 0;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+  white-space: nowrap;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-align: center;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bubble-pill-item.is-full-width {
+  grid-column: 1 / -1;
+  justify-self: center;
+  min-width: 200px;
+}
+
+.bubble-pill-item:hover {
+  background-color: var(--pill-hover-bg, #3b82f6) !important;
+  color: var(--pill-hover-text, #ffffff) !important;
+  transform: scale(1.08) rotate(0deg) !important;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
+}
+
+.bubble-pill-label {
+  text-transform: lowercase;
+  letter-spacing: 0.01em;
+}
+
+/* PHONE SCREEN RESPONSIVENESS */
+@media (max-width: 480px) {
+  .bubble-menu-grid-container {
+    grid-template-columns: repeat(2, minmax(135px, 165px));
+    gap: 16px 14px;
+    padding: 0 16px 30px;
+  }
+
+  .bubble-pill-item {
+    min-height: 62px;
+    padding: 18px 24px;
+    font-size: 1.2rem;
+  }
+
+  .bubble-menu-close-btn {
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .bubble-menu-circle-trigger {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+  }
+}
