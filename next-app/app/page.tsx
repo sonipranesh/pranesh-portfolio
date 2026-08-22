@@ -895,15 +895,6 @@ export default function Home(): React.JSX.Element {
                                     <span className="num">04</span> WHY ME
                                 </a>
                             </div>
-                            <div className="cways-mobile-menu-footer">
-                                <a
-                                    href="#contact"
-                                    onClick={(e) => { setIsMenuOpen(false); handleLetsBuildTogether(e); }}
-                                    className="cways-btn-primary"
-                                >
-                                    LET'S BUILD TOGETHER
-                                </a>
-                            </div>
                         </div>
                     )}
 
