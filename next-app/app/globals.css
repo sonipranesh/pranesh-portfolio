@@ -3934,6 +3934,52 @@ footer {
         padding-bottom: calc(48px + env(safe-area-inset-bottom, 0px)) !important;
     }
 
+    /* SECTION 3 (WORK) COMPACT MOBILE HEIGHT: Black background covers only heading + 1 card + minimal padding */
+    .work-sticky-section {
+        padding-top: 40px !important;
+        padding-bottom: 20px !important;
+        background: var(--ink) !important;
+        position: relative !important;
+        overflow: visible !important;
+    }
+
+    .work-split-container {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+        padding: 0 16px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .work-left-col {
+        position: relative !important;
+        top: auto !important;
+        padding: 0 !important;
+        margin-bottom: 4px !important;
+    }
+
+    .work-subtext {
+        margin-top: 8px !important;
+        margin-bottom: 12px !important;
+        font-size: 0.88rem !important;
+        line-height: 1.5 !important;
+        max-width: 100% !important;
+    }
+
+    .work-right-col {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .why-me-section {
+        margin-top: 0 !important;
+        padding: 48px 18px !important;
+        position: relative !important;
+        z-index: 30 !important;
+    }
+
     /* MOBILE COMPACT SECTION HEIGHTS: Remove 85vh/90vh/100vh so sections wrap tightly around text */
     /* MOBILE UNIFORM SECTION SPACING: Section 2, Section 3, Section 4 all start with identical 48px top padding */
     .manifesto,

@@ -170,9 +170,14 @@ const ScrollStack = ({
 
     cardsRef.current = cards;
 
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    const effectiveDistance = isMobile ? 120 : itemDistance;
+
     cards.forEach((card, i) => {
       if (i < cards.length - 1) {
-        card.style.marginBottom = `${itemDistance}px`;
+        card.style.marginBottom = `${effectiveDistance}px`;
+      } else {
+        card.style.marginBottom = '0px';
       }
       card.style.willChange = 'transform';
       card.style.transformOrigin = 'top center';
@@ -187,6 +192,13 @@ const ScrollStack = ({
       targetScrollObj.addEventListener('scroll', handleScroll, { passive: true });
       window.addEventListener('resize', () => {
         initialCardTopsRef.current = [];
+        const isMob = typeof window !== 'undefined' && window.innerWidth <= 768;
+        const effDist = isMob ? 120 : itemDistance;
+        cardsRef.current.forEach((c, idx) => {
+          if (idx < cardsRef.current.length - 1) {
+            c.style.marginBottom = `${effDist}px`;
+          }
+        });
         handleScroll();
       });
     }
@@ -214,7 +226,7 @@ const ScrollStack = ({
     <div className={`scroll-stack-scroller ${className}`.trim()} ref={scrollerRef}>
       <div className="scroll-stack-inner">
         {children}
-        <div className="scroll-stack-end" style={{ height: '600px' }} />
+        <div className="scroll-stack-end" />
       </div>
     </div>
   );
