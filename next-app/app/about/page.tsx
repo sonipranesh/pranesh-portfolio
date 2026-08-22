@@ -239,87 +239,68 @@ export default function AboutPage() {
                     </div>
                 </div>
 
-                {/* THE PERSON TIMELINE VIEW */}
-                <section className="timeline" style={{ marginTop: '64px', marginBottom: '48px', width: '100%' }}>
-                    <div className="timeline-head">
+                {/* THE PERSON VERTICAL TIMELINE FLOW (MATCHING SCREENSHOT) */}
+                <section className="about-vertical-timeline" id="timeline">
+                    <div className="about-timeline-head">
                         <div className="section-label">THE PERSON</div>
                         <h2 className="cways-section-title">
                             HOW I GOT <span className="cways-stroke-text-dark">HERE.</span>
                         </h2>
+                        <p className="about-timeline-subtext">
+                            From premier business education and global immersion to enterprise AI delivery and hands-on product execution.
+                        </p>
                     </div>
 
-                    <div className="creative-timeline-container" style={{ marginTop: '36px' }}>
-                        {/* TOP JOURNEY EVOLUTION TRACKER */}
-                        <div className="timeline-journey-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', flexWrap: 'wrap', padding: '18px 24px', background: '#ffffff', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 2px 12px rgba(0,0,0,0.02)', marginBottom: '32px' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#111111' }}></span>
-                                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800, color: 'var(--ink)', letterSpacing: '0.15em' }}>PRODUCT JOURNEY</span>
-                            </div>
-                            <div className="journey-nodes" style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 700 }}>
-                                <span style={{ color: '#111111' }}>01 FOUNDATION</span>
-                                <span style={{ color: '#bbb' }}>→</span>
-                                <span style={{ color: '#111111' }}>02 GLOBAL</span>
-                                <span style={{ color: '#bbb' }}>→</span>
-                                <span style={{ color: '#111111' }}>03 ENTERPRISE</span>
-                                <span style={{ color: '#bbb' }}>→</span>
-                                <span style={{ color: '#ffffff', background: '#111111', padding: '2px 8px', borderRadius: '4px', fontWeight: 800 }}>04 NOW / BUILDING</span>
-                            </div>
-                        </div>
+                    <div className="vertical-timeline-flow">
+                        <div className="timeline-vertical-rail" aria-hidden="true"></div>
 
-                        {/* CREATIVE GRID TIMELINE CARDS */}
-                        <div className="creative-timeline-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px' }}>
-                            {/* MILESTONE CARD 1 */}
-                            <div className="timeline-card-node" style={{ background: '#ffffff', borderRadius: '16px', padding: '28px', border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 4px 20px rgba(0,0,0,0.03)', position: 'relative', overflow: 'hidden' }}>
-                                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: '#111111' }}></div>
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-                                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', fontWeight: 800, color: '#777777', letterSpacing: '0.12em' }}>MILESTONE 01</span>
-                                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 800, color: '#111111', background: '#f0f0ed', padding: '4px 10px', borderRadius: '20px' }}>2023</span>
-                                </div>
-                                <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#111111', marginBottom: '6px', letterSpacing: '-0.02em' }}>IIM JAMMU</h3>
-                                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 700, color: '#666666', letterSpacing: '0.1em', marginBottom: '14px', textTransform: 'uppercase' }}>MBA — PRODUCT &amp; STRATEGY</div>
-                                <p style={{ fontSize: '0.88rem', color: '#555555', lineHeight: 1.6, margin: 0 }}>
+                        <div className="timeline-flow-item">
+                            <div className="timeline-node-marker">
+                                <span className="timeline-node-circle">01</span>
+                            </div>
+                            <div className="timeline-flow-content">
+                                <div className="timeline-flow-eyebrow">2023 · MBA — PRODUCT &amp; STRATEGY</div>
+                                <h3 className="timeline-flow-title">IIM JAMMU</h3>
+                                <p className="timeline-flow-desc">
                                     Graduated with an MBA focusing on product management, business strategy, technology workflows, and leadership fundamentals.
                                 </p>
                             </div>
+                        </div>
 
-                            {/* MILESTONE CARD 2 */}
-                            <div className="timeline-card-node" style={{ background: '#ffffff', borderRadius: '16px', padding: '28px', border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 4px 20px rgba(0,0,0,0.03)', position: 'relative', overflow: 'hidden' }}>
-                                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: '#111111' }}></div>
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-                                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', fontWeight: 800, color: '#777777', letterSpacing: '0.12em' }}>MILESTONE 02</span>
-                                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 800, color: '#111111', background: '#f0f0ed', padding: '4px 10px', borderRadius: '20px' }}>2023 / EXCH</span>
-                                </div>
-                                <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#111111', marginBottom: '6px', letterSpacing: '-0.02em' }}>SOLBRIDGE</h3>
-                                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 700, color: '#666666', letterSpacing: '0.1em', marginBottom: '14px', textTransform: 'uppercase' }}>SOUTH KOREA EXCHANGE</div>
-                                <p style={{ fontSize: '0.88rem', color: '#555555', lineHeight: 1.6, margin: 0 }}>
-                                    Selected for the Student Exchange Program at SolBridge International School of Business, gaining global tech &amp; market perspective.
+                        <div className="timeline-flow-item">
+                            <div className="timeline-node-marker">
+                                <span className="timeline-node-circle">02</span>
+                            </div>
+                            <div className="timeline-flow-content">
+                                <div className="timeline-flow-eyebrow">2023 / EXCH · SOUTH KOREA EXCHANGE</div>
+                                <h3 className="timeline-flow-title">SOLBRIDGE</h3>
+                                <p className="timeline-flow-desc">
+                                    Selected for the Student Exchange Program at SolBridge International School of Business, gaining global tech and market perspective.
                                 </p>
                             </div>
+                        </div>
 
-                            {/* MILESTONE CARD 3 */}
-                            <div className="timeline-card-node" style={{ background: '#ffffff', borderRadius: '16px', padding: '28px', border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 4px 20px rgba(0,0,0,0.03)', position: 'relative', overflow: 'hidden' }}>
-                                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: '#111111' }}></div>
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-                                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', fontWeight: 800, color: '#111111', letterSpacing: '0.12em' }}>MILESTONE 03</span>
-                                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 800, color: '#ffffff', background: '#111111', padding: '4px 10px', borderRadius: '20px' }}>3+ YEARS</span>
-                                </div>
-                                <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#111111', marginBottom: '6px', letterSpacing: '-0.02em' }}>AI PRODUCT OWNER</h3>
-                                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 700, color: '#666666', letterSpacing: '0.1em', marginBottom: '14px', textTransform: 'uppercase' }}>ENTERPRISE DEPLOYMENT</div>
-                                <p style={{ fontSize: '0.88rem', color: '#555555', lineHeight: 1.6, margin: 0 }}>
+                        <div className="timeline-flow-item">
+                            <div className="timeline-node-marker">
+                                <span className="timeline-node-circle">03</span>
+                            </div>
+                            <div className="timeline-flow-content">
+                                <div className="timeline-flow-eyebrow">3+ YEARS · ENTERPRISE DEPLOYMENT</div>
+                                <h3 className="timeline-flow-title">AI PRODUCT OWNER</h3>
+                                <p className="timeline-flow-desc">
                                     Delivering enterprise AI products across discovery, RAG system architecture, stakeholder alignment, UAT, and global scaling.
                                 </p>
                             </div>
+                        </div>
 
-                            {/* MILESTONE CARD 4 */}
-                            <div className="timeline-card-node" style={{ background: '#111111', color: '#ffffff', borderRadius: '16px', padding: '28px', border: '1px solid rgba(255,255,255,0.12)', boxShadow: '0 8px 30px rgba(0,0,0,0.12)', position: 'relative', overflow: 'hidden' }}>
-                                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: '#ffffff' }}></div>
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-                                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', fontWeight: 800, color: '#ffffff', letterSpacing: '0.12em' }}>MILESTONE 04</span>
-                                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 800, color: '#111111', background: '#ffffff', padding: '4px 10px', borderRadius: '20px' }}>NOW</span>
-                                </div>
-                                <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#ffffff', marginBottom: '6px', letterSpacing: '-0.02em' }}>BUILDING THE FUTURE</h3>
-                                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 700, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.1em', marginBottom: '14px', textTransform: 'uppercase' }}>HANDS-ON AI EXECUTION</div>
-                                <p style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.75)', lineHeight: 1.6, margin: 0 }}>
+                        <div className="timeline-flow-item">
+                            <div className="timeline-node-marker">
+                                <span className="timeline-node-circle">04</span>
+                            </div>
+                            <div className="timeline-flow-content">
+                                <div className="timeline-flow-eyebrow">NOW · HANDS-ON AI EXECUTION</div>
+                                <h3 className="timeline-flow-title">BUILDING THE FUTURE</h3>
+                                <p className="timeline-flow-desc">
                                     Prototyping, experimenting, and bringing AI products from vision to working code — turning complex AI capabilities into trusted products.
                                 </p>
                             </div>

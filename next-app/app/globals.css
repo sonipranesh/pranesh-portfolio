@@ -3194,6 +3194,118 @@ footer {
     flex-wrap: wrap;
 }
 
+/* ABOUT PAGE: REFINED VERTICAL TIMELINE FLOW (MATCHING REFERENCE SCREENSHOT) */
+.about-vertical-timeline {
+    width: 100%;
+    max-width: 1180px;
+    margin: 80px 0 60px;
+    position: relative;
+}
+
+.about-timeline-head {
+    margin-bottom: 48px;
+    max-width: 720px;
+}
+
+.about-timeline-subtext {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    line-height: 1.6;
+    color: #555550;
+    margin: 12px 0 0;
+}
+
+.vertical-timeline-flow {
+    position: relative;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.timeline-vertical-rail {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    bottom: 20px;
+    width: 1.5px;
+    background: rgba(17, 17, 17, 0.15);
+    z-index: 1;
+}
+
+.timeline-flow-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+    z-index: 2;
+}
+
+.timeline-node-marker {
+    flex-shrink: 0;
+    width: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timeline-node-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1.5px solid #111111;
+    background: var(--bg, #f4f1ea);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #111111;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.timeline-flow-item:last-child .timeline-node-circle {
+    background: #111111;
+    color: #ffffff;
+    border-color: #111111;
+}
+
+.timeline-flow-content {
+    flex: 1;
+    padding-top: 4px;
+    max-width: 780px;
+}
+
+.timeline-flow-eyebrow {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: #777777;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.timeline-flow-title {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: #111111;
+    margin: 0 0 10px;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.timeline-flow-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.92rem, 1.4vw, 1.02rem);
+    line-height: 1.65;
+    color: #555550;
+    margin: 0;
+}
+
 .cways-stroke-text {
     color: transparent;
     -webkit-text-stroke: 1.8px rgba(255, 255, 255, 0.45);
@@ -4315,6 +4427,81 @@ footer {
         font-size: 0.9rem !important;
         line-height: 1.6 !important;
         text-align: left !important;
+    }
+
+    /* ABOUT VERTICAL TIMELINE ON MOBILE (MATCHING SCREENSHOT) */
+    .about-vertical-timeline {
+        margin: 48px 0 36px !important;
+    }
+
+    .about-timeline-head {
+        margin-bottom: 28px !important;
+    }
+
+    .about-timeline-subtext {
+        font-size: 0.92rem !important;
+        line-height: 1.55 !important;
+        margin-top: 10px !important;
+    }
+
+    .vertical-timeline-flow {
+        gap: 32px !important;
+    }
+
+    .timeline-vertical-rail {
+        left: 17px !important;
+        top: 15px !important;
+        bottom: 15px !important;
+    }
+
+    .timeline-flow-item {
+        gap: 16px !important;
+        align-items: flex-start !important;
+    }
+
+    .timeline-node-marker {
+        width: 36px !important;
+    }
+
+    .timeline-node-circle {
+        width: 34px !important;
+        height: 34px !important;
+        font-size: 0.72rem !important;
+    }
+
+    .timeline-flow-content {
+        padding-top: 2px !important;
+    }
+
+    .timeline-flow-eyebrow {
+        font-size: 0.66rem !important;
+        letter-spacing: 0.1em !important;
+        margin-bottom: 4px !important;
+    }
+
+    .timeline-flow-title {
+        font-size: 1.22rem !important;
+        margin-bottom: 6px !important;
+        line-height: 1.2 !important;
+    }
+
+    .timeline-flow-desc {
+        font-size: 0.88rem !important;
+        line-height: 1.55 !important;
+    }
+
+    .about-actions {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 12px !important;
+        margin-top: 36px !important;
+    }
+
+    .about-actions a {
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
     }
 
     /* Section Titles */
