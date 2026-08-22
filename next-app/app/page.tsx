@@ -1174,112 +1174,36 @@ export default function Home(): React.JSX.Element {
                     </div>
                 </section>
 
-                {/* SECTION 6: INNOVATIVE TIMELINE VIEW */}
-                <section className="timeline stack-card">
-                    <div className="timeline-head">
-                        <div className="section-label">06 / THE PERSON</div>
-                        <h2 className="cways-section-title">
-                            HOW I GOT <span className="cways-stroke-text-dark">HERE.</span>
-                        </h2>
-                    </div>
-
-                    <div className="creative-timeline-container" style={{ marginTop: '40px' }}>
-                        {/* TOP JOURNEY EVOLUTION TRACKER */}
-                        <div className="timeline-journey-bar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', flexWrap: 'wrap', padding: '18px 24px', background: '#ffffff', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 2px 12px rgba(0,0,0,0.02)', marginBottom: '32px' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#111111' }}></span>
-                                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 800, color: 'var(--ink)', letterSpacing: '0.15em' }}>PRODUCT JOURNEY</span>
-                            </div>
-                            <div className="journey-nodes" style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 700 }}>
-                                <span style={{ color: '#111111' }}>01 FOUNDATION</span>
-                                <span style={{ color: '#bbb' }}>→</span>
-                                <span style={{ color: '#111111' }}>02 GLOBAL</span>
-                                <span style={{ color: '#bbb' }}>→</span>
-                                <span style={{ color: '#111111' }}>03 ENTERPRISE</span>
-                                <span style={{ color: '#bbb' }}>→</span>
-                                <span style={{ color: '#ffffff', background: '#111111', padding: '2px 8px', borderRadius: '4px', fontWeight: 800 }}>04 NOW / BUILDING</span>
-                            </div>
-                        </div>
-
-                        {/* CREATIVE GRID TIMELINE CARDS */}
-                        <div className="creative-timeline-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px' }}>
-                            {/* MILESTONE CARD 1 */}
-                            <div className="timeline-card-node" style={{ background: '#ffffff', borderRadius: '16px', padding: '28px', border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 4px 20px rgba(0,0,0,0.03)', position: 'relative', overflow: 'hidden' }}>
-                                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: '#111111' }}></div>
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-                                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', fontWeight: 800, color: '#777777', letterSpacing: '0.12em' }}>MILESTONE 01</span>
-                                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 800, color: '#111111', background: '#f0f0ed', padding: '4px 10px', borderRadius: '20px' }}>2023</span>
-                                </div>
-                                <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#111111', marginBottom: '6px', letterSpacing: '-0.02em' }}>IIM JAMMU</h3>
-                                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 700, color: '#666666', letterSpacing: '0.1em', marginBottom: '14px', textTransform: 'uppercase' }}>MBA — PRODUCT &amp; STRATEGY</div>
-                                <p style={{ fontSize: '0.88rem', color: '#555555', lineHeight: 1.6, margin: 0 }}>
-                                    Graduated with an MBA focusing on product management, business strategy, technology workflows, and leadership fundamentals.
-                                </p>
-                            </div>
-
-                            {/* MILESTONE CARD 2 */}
-                            <div className="timeline-card-node" style={{ background: '#ffffff', borderRadius: '16px', padding: '28px', border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 4px 20px rgba(0,0,0,0.03)', position: 'relative', overflow: 'hidden' }}>
-                                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: '#111111' }}></div>
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-                                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', fontWeight: 800, color: '#777777', letterSpacing: '0.12em' }}>MILESTONE 02</span>
-                                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 800, color: '#111111', background: '#f0f0ed', padding: '4px 10px', borderRadius: '20px' }}>2023 / EXCH</span>
-                                </div>
-                                <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#111111', marginBottom: '6px', letterSpacing: '-0.02em' }}>SOLBRIDGE</h3>
-                                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 700, color: '#666666', letterSpacing: '0.1em', marginBottom: '14px', textTransform: 'uppercase' }}>SOUTH KOREA EXCHANGE</div>
-                                <p style={{ fontSize: '0.88rem', color: '#555555', lineHeight: 1.6, margin: 0 }}>
-                                    Selected for the Student Exchange Program at SolBridge International School of Business, gaining global tech &amp; market perspective.
-                                </p>
-                            </div>
-
-                            {/* MILESTONE CARD 3 */}
-                            <div className="timeline-card-node" style={{ background: '#ffffff', borderRadius: '16px', padding: '28px', border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 4px 20px rgba(0,0,0,0.03)', position: 'relative', overflow: 'hidden' }}>
-                                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: '#111111' }}></div>
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-                                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', fontWeight: 800, color: '#111111', letterSpacing: '0.12em' }}>MILESTONE 03</span>
-                                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 800, color: '#ffffff', background: '#111111', padding: '4px 10px', borderRadius: '20px' }}>3+ YEARS</span>
-                                </div>
-                                <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#111111', marginBottom: '6px', letterSpacing: '-0.02em' }}>AI PRODUCT OWNER</h3>
-                                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 700, color: '#666666', letterSpacing: '0.1em', marginBottom: '14px', textTransform: 'uppercase' }}>ENTERPRISE DEPLOYMENT</div>
-                                <p style={{ fontSize: '0.88rem', color: '#555555', lineHeight: 1.6, margin: 0 }}>
-                                    Delivering enterprise AI products across discovery, RAG system architecture, stakeholder alignment, UAT, and global scaling.
-                                </p>
-                            </div>
-
-                            {/* MILESTONE CARD 4 */}
-                            <div className="timeline-card-node" style={{ background: '#111111', color: '#ffffff', borderRadius: '16px', padding: '28px', border: '1px solid rgba(255,255,255,0.12)', boxShadow: '0 8px 30px rgba(0,0,0,0.12)', position: 'relative', overflow: 'hidden' }}>
-                                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: '#ffffff' }}></div>
-                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-                                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', fontWeight: 800, color: '#ffffff', letterSpacing: '0.12em' }}>MILESTONE 04</span>
-                                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', fontWeight: 800, color: '#111111', background: '#ffffff', padding: '4px 10px', borderRadius: '20px' }}>NOW</span>
-                                </div>
-                                <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#ffffff', marginBottom: '6px', letterSpacing: '-0.02em' }}>BUILDING THE FUTURE</h3>
-                                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.72rem', fontWeight: 700, color: 'rgba(255,255,255,0.65)', letterSpacing: '0.1em', marginBottom: '14px', textTransform: 'uppercase' }}>HANDS-ON AI EXECUTION</div>
-                                <p style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.75)', lineHeight: 1.6, margin: 0 }}>
-                                    Prototyping, experimenting, and bringing AI products from vision to working code — turning complex AI capabilities into trusted products.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
                 {/* UNIFIED CWAYS.IN STYLE FOOTER WITH MERGED HEADING & CONTENT */}
                 <footer className="cways-footer-theme" id="contact">
                     <div className="cways-footer-inner">
                         {/* EYEBROW TAG */}
-                        <div className="cways-footer-eyebrow">07 / CONTACT</div>
+                        <div className="cways-footer-eyebrow">06 / CONTACT</div>
 
                         {/* HEADING */}
-                        <h2 className="cways-footer-heading">
-                            BUILD SOMETHING <span className="cways-stroke-text-dark">WITH AI.</span>
+                        <h2 className="cways-footer-heading" style={{ fontSize: 'clamp(2rem, 5.2vw, 4rem)', lineHeight: 1.15 }}>
+                            Got an AI product idea <span className="cways-stroke-text-dark">worth exploring?</span>
                         </h2>
 
-                        {/* SUBTEXT */}
-                        <p className="cways-footer-subtext" style={{ fontSize: '1.25rem', fontWeight: 800, color: '#111', marginBottom: '14px', lineHeight: 1.35 }}>
-                            Got an AI product idea worth exploring? Let's turn it into something real.
-                        </p>
-                        <p className="cways-footer-subtext" style={{ fontSize: '0.98rem', color: '#555', marginTop: 0, marginBottom: '36px', lineHeight: 1.6 }}>
-                            Whether it's shaping the product, rethinking a workflow, validating an idea, or building a working prototype — I like getting close to the problem and figuring out what AI can actually make possible.
-                        </p>
+                        {/* VALUE PROPOSITION POINTERS */}
+                        <ul className="cways-footer-pointers" style={{ listStyle: 'none', padding: 0, margin: '24px 0 32px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                            <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.98rem', color: '#444', fontWeight: 600 }}>
+                                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#111111', flexShrink: 0 }}></span>
+                                Shaping the product &amp; defining AI strategy
+                            </li>
+                            <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.98rem', color: '#444', fontWeight: 600 }}>
+                                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#111111', flexShrink: 0 }}></span>
+                                Rethinking workflows &amp; validating real feasibility
+                            </li>
+                            <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.98rem', color: '#444', fontWeight: 600 }}>
+                                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#111111', flexShrink: 0 }}></span>
+                                Building working prototypes to prove value fast
+                            </li>
+                            <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.98rem', color: '#444', fontWeight: 600 }}>
+                                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#111111', flexShrink: 0 }}></span>
+                                Getting close to the problem to see what AI can actually make possible
+                            </li>
+                        </ul>
 
                         {/* HUGE EMAIL HIGHLIGHT */}
                         <a href="mailto:praneshsoni@outlook.com" className="cways-footer-email" data-cursor="EMAIL">
