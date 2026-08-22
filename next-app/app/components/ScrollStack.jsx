@@ -63,22 +63,29 @@ const ScrollStack = ({
     if (initialCardTopsRef.current[index] !== undefined) {
       return initialCardTopsRef.current[index];
     }
-    let top = 0;
-    let curr = card;
-    while (curr && curr !== document.body) {
-      top += curr.offsetTop || 0;
-      curr = curr.offsetParent;
+    const rect = card.getBoundingClientRect();
+    let currentY = 0;
+    const currentTransform = card.style.transform;
+    if (currentTransform) {
+      const match = currentTransform.match(/translate3d\([^,]+,\s*([^p]+)px/);
+      if (match && match[1]) {
+        currentY = parseFloat(match[1]) || 0;
+      }
     }
+    const top = rect.top + (useWindowScroll ? window.scrollY : 0) - currentY;
     initialCardTopsRef.current[index] = top;
     return top;
-  }, []);
+  }, [useWindowScroll]);
 
   const updateCardTransforms = useCallback(() => {
     if (!cardsRef.current.length || isUpdatingRef.current) return;
     isUpdatingRef.current = true;
 
     const { scrollTop, containerHeight } = getScrollData();
-    const stackPositionPx = parsePercentage(stackPosition, containerHeight);
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+    const effectiveStackPosition = isMobile ? '84px' : stackPosition;
+    const stackPositionPx = parsePercentage(effectiveStackPosition, containerHeight);
+    const effectiveItemStackDistance = isMobile ? 18 : itemStackDistance;
 
     const endElement = useWindowScroll
       ? document.querySelector('.scroll-stack-end')
@@ -86,22 +93,19 @@ const ScrollStack = ({
 
     let endElementTop = 0;
     if (endElement) {
-      let curr = endElement;
-      while (curr && curr !== document.body) {
-        endElementTop += curr.offsetTop || 0;
-        curr = curr.offsetParent;
-      }
+      const rect = endElement.getBoundingClientRect();
+      endElementTop = rect.top + (useWindowScroll ? window.scrollY : 0);
     }
 
     cardsRef.current.forEach((card, i) => {
       if (!card) return;
 
       const cardTop = getStaticCardTop(card, i);
-      const pinStart = cardTop - stackPositionPx - itemStackDistance * i;
-      const pinEnd = endElementTop ? (endElementTop - containerHeight / 2) : (pinStart + 600);
+      const pinStart = cardTop - stackPositionPx - effectiveItemStackDistance * i;
+      const pinEnd = endElementTop ? (endElementTop - containerHeight * 0.45) : (pinStart + 700);
 
       const triggerStart = pinStart;
-      const triggerEnd = pinStart + 350;
+      const triggerEnd = pinStart + 260;
 
       const scaleProgress = calculateProgress(scrollTop, triggerStart, triggerEnd);
       const targetScale = baseScale + i * itemScale;
@@ -109,9 +113,9 @@ const ScrollStack = ({
 
       let translateY = 0;
       if (scrollTop >= pinStart && scrollTop <= pinEnd) {
-        translateY = scrollTop - cardTop + stackPositionPx + itemStackDistance * i;
+        translateY = scrollTop - cardTop + stackPositionPx + effectiveItemStackDistance * i;
       } else if (scrollTop > pinEnd) {
-        translateY = pinEnd - cardTop + stackPositionPx + itemStackDistance * i;
+        translateY = pinEnd - cardTop + stackPositionPx + effectiveItemStackDistance * i;
       }
 
       const transform = `translate3d(0, ${translateY}px, 0) scale(${scale})`;
