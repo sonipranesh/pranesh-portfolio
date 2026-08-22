@@ -5,6 +5,7 @@ import Link from 'next/link';
 import ScrollStack, { ScrollStackItem } from '@/app/components/ScrollStack';
 import LogoLoop, { LogoItem } from '@/app/components/LogoLoop';
 import BubbleMenu from '@/app/components/BubbleMenu';
+import SplitText from '@/app/components/SplitText';
 import {
     SiJira,
     SiConfluence,
@@ -215,7 +216,7 @@ export default function Home(): React.JSX.Element {
             rootMargin: '0px 0px -50px 0px'
         });
 
-        document.querySelectorAll('section:not(.hero-layer) .cways-section-title, section:not(.hero-layer) .section-label, .cways-footer-heading, .belief-quote, .os-title-block').forEach(el => {
+        document.querySelectorAll('section:not(.hero-layer) .section-label, .belief-quote, .os-title-block').forEach(el => {
             el.classList.add('section-header-hidden');
             headerRevealObserver.observe(el);
         });
@@ -912,9 +913,20 @@ export default function Home(): React.JSX.Element {
                 {/* SECTION 2: TECH STACK & CREDENTIALS */}
                 <section className="manifesto stack-card" id="manifesto">
                     <div className="section-label">02 / CAPABILITIES &amp; CREDENTIALS</div>
-                    <h2 className="cways-section-title">
-                        PM &amp; AI <span className="cways-stroke-text-dark">TECH STACK.</span>
-                    </h2>
+                    <SplitText
+                        text="PM & TECH STACK."
+                        className="cways-section-title"
+                        delay={40}
+                        duration={0.6}
+                        ease="power3.out"
+                        splitType="chars"
+                        from={{ opacity: 0, y: 40 }}
+                        to={{ opacity: 1, y: 0 }}
+                        threshold={0.1}
+                        rootMargin="-50px"
+                        strokeWords={['STACK.']}
+                        strokeClass="cways-stroke-text-dark"
+                    />
 
                     <div className="tech-stack-loop-wrapper">
                         <LogoLoop
@@ -973,9 +985,20 @@ export default function Home(): React.JSX.Element {
                         {/* LEFT COLUMN: STICKY SECTION HEADING & SUBTEXT */}
                         <div className="work-left-col">
                             <div className="section-label">03 / SELECTED BUILDS</div>
-                            <h2 className="cways-section-title light-theme">
-                                THREE <span className="cways-stroke-text-light">THINGS</span> I BUILT.
-                            </h2>
+                            <SplitText
+                                text="THREE THINGS I BUILT."
+                                className="cways-section-title light-theme"
+                                delay={40}
+                                duration={0.6}
+                                ease="power3.out"
+                                splitType="chars"
+                                from={{ opacity: 0, y: 40 }}
+                                to={{ opacity: 1, y: 0 }}
+                                threshold={0.1}
+                                rootMargin="-50px"
+                                strokeWords={['THINGS']}
+                                strokeClass="cways-stroke-text-light"
+                            />
                             <p className="work-subtext">
                                 Actual enterprise AI products I built from vision to production rollout across life sciences &amp; clinical operations.
                             </p>
@@ -1090,9 +1113,20 @@ export default function Home(): React.JSX.Element {
                     </div>
                     <div className="why-me-inner">
                         <div className="section-label">04 / WHY ME</div>
-                        <h2 className="cways-section-title light-theme">
-                            WHY <span className="cways-stroke-text-light">ME.</span>
-                        </h2>
+                        <SplitText
+                            text="WHY ME."
+                            className="cways-section-title light-theme"
+                            delay={40}
+                            duration={0.6}
+                            ease="power3.out"
+                            splitType="chars"
+                            from={{ opacity: 0, y: 40 }}
+                            to={{ opacity: 1, y: 0 }}
+                            threshold={0.1}
+                            rootMargin="-50px"
+                            strokeWords={['ME.']}
+                            strokeClass="cways-stroke-text-light"
+                        />
                         <div className="why-me-sub">
                             Bridging complex AI technology with enterprise business impact across life sciences, healthcare &amp; clinical operations.
                         </div>
@@ -1131,9 +1165,20 @@ export default function Home(): React.JSX.Element {
                 <section className="belief stack-card">
                     <div>
                         <div className="section-label">05 / HOW I THINK</div>
-                        <h2 className="cways-section-title light-theme">
-                            HOW I <span className="cways-stroke-text-light">THINK.</span>
-                        </h2>
+                        <SplitText
+                            text="HOW I THINK."
+                            className="cways-section-title light-theme"
+                            delay={40}
+                            duration={0.6}
+                            ease="power3.out"
+                            splitType="chars"
+                            from={{ opacity: 0, y: 40 }}
+                            to={{ opacity: 1, y: 0 }}
+                            threshold={0.1}
+                            rootMargin="-50px"
+                            strokeWords={['THINK.']}
+                            strokeClass="cways-stroke-text-light"
+                        />
 
                         <div className="why-me-grid" style={{ marginTop: '36px' }}>
                             <div className="why-card">
@@ -1181,9 +1226,21 @@ export default function Home(): React.JSX.Element {
                         <div className="cways-footer-eyebrow">06 / CONTACT</div>
 
                         {/* HEADING */}
-                        <h2 className="cways-footer-heading" style={{ fontSize: 'clamp(2rem, 5.2vw, 4rem)', lineHeight: 1.15 }}>
-                            Got an AI product idea <span className="cways-stroke-text-dark">worth exploring?</span>
-                        </h2>
+                        <SplitText
+                            text="Got an AI product idea worth exploring?"
+                            className="cways-footer-heading"
+                            style={{ fontSize: 'clamp(2rem, 5.2vw, 4rem)', lineHeight: 1.15 }}
+                            delay={30}
+                            duration={0.6}
+                            ease="power3.out"
+                            splitType="chars"
+                            from={{ opacity: 0, y: 40 }}
+                            to={{ opacity: 1, y: 0 }}
+                            threshold={0.1}
+                            rootMargin="-50px"
+                            strokeWords={['worth', 'exploring?']}
+                            strokeClass="cways-stroke-text-dark"
+                        />
 
                         {/* VALUE PROPOSITION POINTERS */}
                         <ul className="cways-footer-pointers" style={{ listStyle: 'none', padding: 0, margin: '24px 0 32px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
