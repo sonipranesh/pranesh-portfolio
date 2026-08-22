@@ -29,9 +29,11 @@ const ScrollStack = ({
   const isUpdatingRef = useRef(false);
 
   const calculateProgress = useCallback((scrollTop, start, end) => {
-    if (scrollTop < start) return 0;
-    if (scrollTop > end) return 1;
-    return (scrollTop - start) / (end - start);
+    if (scrollTop <= start) return 0;
+    if (scrollTop >= end) return 1;
+    const raw = (scrollTop - start) / (end - start);
+    // Smooth hermite interpolation curve for fluid bidirectional easing
+    return raw * raw * (3 - 2 * raw);
   }, []);
 
   const parsePercentage = useCallback((value, containerHeight) => {

@@ -22,15 +22,15 @@
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
   width: 100%;
-  margin: 0 0 32px;
+  margin: 0 0 24px;
   border-radius: 28px;
   box-sizing: border-box;
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   position: relative;
-  transition: transform 0.08s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-stack-end {
@@ -39,7 +39,11 @@
 }
 
 @media (max-width: 768px) {
+  .scroll-stack-card {
+    margin: 0 0 16px !important;
+  }
+
   .scroll-stack-end {
-    height: 40px !important;
+    height: 30px !important;
   }
 }
