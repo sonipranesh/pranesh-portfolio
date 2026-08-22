@@ -3442,14 +3442,18 @@ footer {
 
 .cways-footer-stroke-brand {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(3.6rem, 11.5vw, 13vw);
+    font-size: clamp(2rem, 11.5vw, 13vw);
     font-weight: 900;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
     text-transform: uppercase;
     color: transparent;
     -webkit-text-stroke: 1.5px rgba(17, 17, 17, 0.15);
     text-align: center;
     width: 100%;
+    white-space: nowrap;
+    word-break: keep-all;
+    display: block;
+    line-height: 0.9;
     margin-top: 48px;
     margin-bottom: -20px;
     user-select: none;
@@ -4238,6 +4242,21 @@ footer {
         gap: 12px !important;
         text-align: left !important;
         align-items: flex-start !important;
+    }
+
+    .cways-footer-stroke-brand {
+        font-size: 11.2vw !important;
+        white-space: nowrap !important;
+        word-break: keep-all !important;
+        overflow: visible !important;
+        text-align: center !important;
+        width: 100% !important;
+        display: block !important;
+        letter-spacing: -0.03em !important;
+        line-height: 0.9 !important;
+        margin-top: 32px !important;
+        margin-bottom: 0 !important;
+        -webkit-text-stroke: 1px rgba(17, 17, 17, 0.2) !important;
     }
 
 }
