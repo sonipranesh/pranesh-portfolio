@@ -5,42 +5,17 @@ import GlassSurface from './GlassSurface';
 import './WhyMeScrollytelling.css';
 
 const WHY_ME_POINTERS = [
-  {
-    id: 1,
-    step: '01 / 05',
-    tag: 'OWNERSHIP',
-    text: 'End-to-end ownership: PRD to launch to post-launch iteration'
-  },
-  {
-    id: 2,
-    step: '02 / 05',
-    tag: 'ALIGNMENT',
-    text: 'Align engineering, design, business & customers — even when they disagree'
-  },
-  {
-    id: 3,
-    step: '03 / 05',
-    tag: 'PRIORITIZATION',
-    text: 'Outcome-based prioritization, not opinion-based prioritization'
-  },
-  {
-    id: 4,
-    step: '04 / 05',
-    tag: 'DELIVERY',
-    text: 'Unblock, adapt scope, handle escalations — stay in it till it works'
-  },
-  {
-    id: 5,
-    step: '05 / 05',
-    tag: 'INNOVATION',
-    text: 'Turn new tech into working prototypes, not slide decks'
-  }
+  "End-to-end ownership: PRD to launch to post-launch iteration",
+  "Align engineering, design, business & customers — even when they disagree",
+  "Outcome-based prioritization, not opinion-based prioritization",
+  "Unblock, adapt scope, handle escalations — stay in it till it works",
+  "Turn new tech into working prototypes, not slide decks"
 ];
 
 export const WhyMeScrollytelling = () => {
   const trackRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [cardWidth, setCardWidth] = useState(740);
+  const [cardWidth, setCardWidth] = useState(780);
   const [cardHeight, setCardHeight] = useState(210);
   const isUpdatingRef = useRef(false);
 
@@ -50,15 +25,15 @@ export const WhyMeScrollytelling = () => {
     const w = window.innerWidth;
     if (w < 480) {
       setCardWidth(w - 36);
-      setCardHeight(230);
+      setCardHeight(220);
     } else if (w < 768) {
       setCardWidth(w - 56);
-      setCardHeight(220);
-    } else if (w < 1024) {
-      setCardWidth(620);
       setCardHeight(210);
+    } else if (w < 1024) {
+      setCardWidth(640);
+      setCardHeight(200);
     } else {
-      setCardWidth(760);
+      setCardWidth(780);
       setCardHeight(210);
     }
   }, []);
@@ -79,11 +54,9 @@ export const WhyMeScrollytelling = () => {
       const totalScrollable = rect.height - windowHeight;
 
       if (totalScrollable > 0) {
-        // Calculate progress from 0 (top of section enters sticky) to 1 (bottom reaches unpin)
         const scrolled = -rect.top;
         const progress = Math.max(0, Math.min(1, scrolled / totalScrollable));
 
-        // Map progress across the 5 pointers with balanced intervals
         const totalItems = WHY_ME_POINTERS.length;
         const rawIndex = Math.floor(progress * totalItems);
         const nextIndex = Math.max(0, Math.min(totalItems - 1, rawIndex));
@@ -111,7 +84,6 @@ export const WhyMeScrollytelling = () => {
     };
   }, [handleScroll, updateCardDimensions]);
 
-  // Direct navigation for accessibility
   const handleDotClick = (idx) => {
     if (!trackRef.current) return;
     const rect = trackRef.current.getBoundingClientRect();
@@ -161,25 +133,20 @@ export const WhyMeScrollytelling = () => {
               mixBlendMode="screen"
               className="why-me-glass-card"
             >
-              <div className="why-me-pointer-container" key={currentPointer.id}>
-                <div className="why-me-pointer-header">
-                  <span className="why-me-pointer-num">{currentPointer.step}</span>
-                  <span className="why-me-pointer-separator">/</span>
-                  <span className="why-me-pointer-tag">{currentPointer.tag}</span>
-                </div>
-                <p className="why-me-pointer-text">{currentPointer.text}</p>
+              <div className="why-me-pointer-container" key={currentIndex}>
+                <p className="why-me-pointer-text">{currentPointer}</p>
               </div>
             </GlassSurface>
 
             {/* INTERACTIVE STEP PROGRESS INDICATORS */}
             <div className="why-me-step-tracker" role="tablist" aria-label="Why Me Pointers">
-              {WHY_ME_POINTERS.map((item, idx) => (
+              {WHY_ME_POINTERS.map((_, idx) => (
                 <button
-                  key={item.id}
+                  key={idx}
                   type="button"
                   role="tab"
                   aria-selected={currentIndex === idx}
-                  aria-label={`Step ${idx + 1}: ${item.tag}`}
+                  aria-label={`Pointer ${idx + 1}`}
                   className={`why-me-step-dot ${currentIndex === idx ? 'active' : ''} ${currentIndex > idx ? 'completed' : ''}`}
                   onClick={() => handleDotClick(idx)}
                 >

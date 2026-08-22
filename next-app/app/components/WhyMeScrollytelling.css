@@ -99,42 +99,17 @@
   }
 }
 
-.why-me-pointer-header {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: #111111;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 6px 14px;
-  border-radius: 9999px;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  text-transform: uppercase;
-}
-
-.why-me-pointer-separator {
-  opacity: 0.4;
-}
-
-.why-me-pointer-tag {
-  color: var(--blue, #2251d1);
-  font-weight: 800;
-}
-
 .why-me-pointer-text {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  font-size: clamp(1.15rem, 2.4vw, 1.7rem);
+  font-size: clamp(1.2rem, 2.6vw, 1.8rem);
   font-weight: 800;
   line-height: 1.35;
   letter-spacing: -0.025em;
   color: #ffffff;
   margin: 0;
-  max-width: 680px;
+  max-width: 720px;
   text-wrap: balance;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
 }
 
 /* STEP TRACKER DOTS */
@@ -209,12 +184,6 @@
   .why-me-pointer-text {
     font-size: clamp(1.05rem, 4.4vw, 1.35rem);
     line-height: 1.35;
-  }
-
-  .why-me-pointer-header {
-    font-size: 0.68rem;
-    padding: 4px 12px;
-    margin-bottom: 12px;
   }
 
   .why-me-step-tracker {

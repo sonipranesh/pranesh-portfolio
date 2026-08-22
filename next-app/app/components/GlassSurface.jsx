@@ -1,11 +1,12 @@
 'use client';
 
-import React, { useRef, useId } from 'react';
+import React, { useId } from 'react';
 import './GlassSurface.css';
 
 /**
  * GlassSurface Component
- * Implements high-end glassmorphism with dynamic displacement, refraction highlight, and chromatic glow.
+ * Creates an authentic liquid glass surface with SVG displacement refraction,
+ * chromatic aberration, specular highlights, and deep backdrop blur.
  */
 export const GlassSurface = ({
   width = 600,
@@ -24,7 +25,6 @@ export const GlassSurface = ({
   children
 }) => {
   const filterId = useId().replace(/:/g, '');
-  const containerRef = useRef(null);
 
   const formatUnit = (val) => {
     if (typeof val === 'number') return `${val}px`;
@@ -33,8 +33,7 @@ export const GlassSurface = ({
 
   return (
     <div
-      ref={containerRef}
-      className={`glass-surface-container ${className}`.trim()}
+      className={`glass-surface-card ${className}`.trim()}
       style={{
         width: typeof width === 'number' ? `${width}px` : width,
         minHeight: typeof height === 'number' ? `${height}px` : height,
@@ -42,15 +41,14 @@ export const GlassSurface = ({
         ...style
       }}
     >
-      {/* SVG FILTER DEFINITION FOR DISPLACEMENT & CHROMATIC OFFSET */}
-      <svg className="glass-surface-svg-filters" aria-hidden="true">
+      {/* SVG DISPLACEMENT & CHROMATIC REFRACTION FILTER */}
+      <svg className="glass-surface-svg-def" aria-hidden="true" width="0" height="0">
         <defs>
-          <filter id={`glass-filter-${filterId}`} x="-20%" y="-20%" width="140%" height="140%">
+          <filter id={`glass-distortion-${filterId}`} x="-20%" y="-20%" width="140%" height="140%">
             <feTurbulence
               type="fractalNoise"
-              baseFrequency="0.02 0.03"
-              numOctaves="3"
-              seed="5"
+              baseFrequency="0.03 0.04"
+              numOctaves="2"
               result="noise"
             />
             <feDisplacementMap
@@ -61,37 +59,37 @@ export const GlassSurface = ({
               yChannelSelector="G"
               result="displaced"
             />
-            <feOffset in="displaced" dx={redOffset * 0.1} dy={0} result="redShift" />
-            <feOffset in="displaced" dx={0} dy={greenOffset * 0.1} result="greenShift" />
-            <feOffset in="displaced" dx={-blueOffset * 0.1} dy={0} result="blueShift" />
+            <feOffset in="displaced" dx={redOffset * 0.2} dy={0} result="redShift" />
+            <feOffset in="displaced" dx={0} dy={greenOffset * 0.2} result="greenShift" />
+            <feOffset in="displaced" dx={-blueOffset * 0.2} dy={0} result="blueShift" />
             <feBlend mode={mixBlendMode} in="redShift" in2="greenShift" result="blend1" />
             <feBlend mode={mixBlendMode} in="blend1" in2="blueShift" result="blend2" />
           </filter>
         </defs>
       </svg>
 
-      {/* MULTI-LAYER GLASS BACKDROP & REFRACTION LAYERS */}
+      {/* FROSTED GLASS BACKGROUND & REFRACTION SHIMMER */}
       <div
-        className="glass-surface-backdrop"
+        className="glass-surface-layer-backdrop"
         style={{
           borderRadius: formatUnit(borderRadius),
-          opacity: opacity,
-          filter: `brightness(${brightness}%)`
+          opacity: opacity
         }}
       />
 
+      {/* SPECULAR SHINE & GLOSSY EDGE HIGHLIGHT */}
       <div
-        className="glass-surface-border-highlight"
+        className="glass-surface-layer-gloss"
         style={{ borderRadius: formatUnit(borderRadius) }}
       />
 
       <div
-        className="glass-surface-specular"
+        className="glass-surface-layer-border"
         style={{ borderRadius: formatUnit(borderRadius) }}
       />
 
-      {/* CONTENT LAYER */}
-      <div className="glass-surface-content">
+      {/* TEXT / CONTENT */}
+      <div className="glass-surface-body">
         {children}
       </div>
     </div>
@@ -99,3 +97,4 @@ export const GlassSurface = ({
 };
 
 export default GlassSurface;
+
