@@ -3973,11 +3973,19 @@ footer {
         margin: 0 !important;
     }
 
+    .work-sticky-section {
+        padding-top: 48px !important;
+        padding-bottom: 32px !important;
+        background: var(--ink) !important;
+        position: relative !important;
+        overflow: visible !important;
+    }
+
     .why-me-section {
         margin-top: 0 !important;
         padding: 48px 18px !important;
         position: relative !important;
-        z-index: 30 !important;
+        z-index: 1 !important;
     }
 
     /* MOBILE COMPACT SECTION HEIGHTS: Remove 85vh/90vh/100vh so sections wrap tightly around text */

@@ -83,29 +83,26 @@ const ScrollStack = ({
 
     const { scrollTop, containerHeight } = getScrollData();
     const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
-    const effectiveStackPosition = isMobile ? '84px' : stackPosition;
+    const effectiveStackPosition = isMobile ? '80px' : stackPosition;
     const stackPositionPx = parsePercentage(effectiveStackPosition, containerHeight);
-    const effectiveItemStackDistance = isMobile ? 18 : itemStackDistance;
+    const effectiveItemStackDistance = isMobile ? 16 : itemStackDistance;
 
-    const endElement = useWindowScroll
-      ? document.querySelector('.scroll-stack-end')
-      : scrollerRef.current?.querySelector('.scroll-stack-end');
-
-    let endElementTop = 0;
-    if (endElement) {
-      const rect = endElement.getBoundingClientRect();
-      endElementTop = rect.top + (useWindowScroll ? window.scrollY : 0);
-    }
+    const lastCardIndex = cardsRef.current.length - 1;
+    const lastCard = cardsRef.current[lastCardIndex];
+    const lastCardTop = lastCard ? getStaticCardTop(lastCard, lastCardIndex) : 0;
+    const allStackedScrollTop = lastCardTop - stackPositionPx - effectiveItemStackDistance * lastCardIndex;
+    const stackLinger = isMobile ? 40 : 120;
+    const universalPinEnd = allStackedScrollTop + stackLinger;
 
     cardsRef.current.forEach((card, i) => {
       if (!card) return;
 
       const cardTop = getStaticCardTop(card, i);
       const pinStart = cardTop - stackPositionPx - effectiveItemStackDistance * i;
-      const pinEnd = endElementTop ? (endElementTop - containerHeight * 0.45) : (pinStart + 700);
+      const pinEnd = universalPinEnd;
 
       const triggerStart = pinStart;
-      const triggerEnd = pinStart + 260;
+      const triggerEnd = pinStart + (isMobile ? 160 : 260);
 
       const scaleProgress = calculateProgress(scrollTop, triggerStart, triggerEnd);
       const targetScale = baseScale + i * itemScale;
