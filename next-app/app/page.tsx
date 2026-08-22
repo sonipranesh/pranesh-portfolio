@@ -61,13 +61,6 @@ const bubbleMenuItems = [
     ariaLabel: 'Contact',
     rotation: 8,
     hoverStyles: { bgColor: '#8b5cf6', textColor: '#ffffff' }
-  },
-  {
-    label: "let's build",
-    href: '#contact',
-    ariaLabel: "Let's Build",
-    rotation: 4,
-    hoverStyles: { bgColor: '#10b981', textColor: '#ffffff' }
   }
 ];
 
