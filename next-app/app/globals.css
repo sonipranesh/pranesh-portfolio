@@ -3934,36 +3934,44 @@ footer {
         padding-bottom: calc(48px + env(safe-area-inset-bottom, 0px)) !important;
     }
 
-    /* SECTION 3 (WORK) COMPACT MOBILE HEIGHT: Black background covers only heading + 1 card + minimal padding */
+    /* SECTION 3 (WORK) MOBILE STICKY HEADER & SEAMLESS CARDS */
     .work-sticky-section {
-        padding-top: 40px !important;
-        padding-bottom: 20px !important;
+        padding-top: calc(20px + env(safe-area-inset-top, 0px)) !important;
+        padding-bottom: 36px !important;
         background: var(--ink) !important;
         position: relative !important;
         overflow: visible !important;
     }
 
     .work-split-container {
-        grid-template-columns: 1fr !important;
-        gap: 16px !important;
-        padding: 0 16px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0px !important;
+        padding: 0 18px !important;
         width: 100% !important;
         max-width: 100% !important;
+        position: relative !important;
     }
 
     .work-left-col {
-        position: relative !important;
-        top: auto !important;
-        padding: 0 !important;
-        margin-bottom: 4px !important;
+        position: sticky !important;
+        top: calc(16px + env(safe-area-inset-top, 0px)) !important;
+        z-index: 10 !important;
+        height: fit-content !important;
+        align-self: flex-start !important;
+        width: 100% !important;
+        padding: 8px 0 16px 0 !important;
+        margin-bottom: 0 !important;
+        background: var(--ink) !important;
     }
 
     .work-subtext {
-        margin-top: 8px !important;
-        margin-bottom: 12px !important;
-        font-size: 0.88rem !important;
-        line-height: 1.5 !important;
+        margin-top: 6px !important;
+        margin-bottom: 8px !important;
+        font-size: 0.86rem !important;
+        line-height: 1.45 !important;
         max-width: 100% !important;
+        color: #9e9a92 !important;
     }
 
     .work-right-col {
@@ -3971,14 +3979,7 @@ footer {
         max-width: 100% !important;
         padding: 0 !important;
         margin: 0 !important;
-    }
-
-    .work-sticky-section {
-        padding-top: 48px !important;
-        padding-bottom: 32px !important;
-        background: var(--ink) !important;
         position: relative !important;
-        overflow: visible !important;
     }
 
     .why-me-section {

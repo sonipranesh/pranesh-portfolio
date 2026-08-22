@@ -85,15 +85,27 @@ const ScrollStack = ({
 
     const { scrollTop, containerHeight } = getScrollData();
     const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
-    const effectiveStackPosition = isMobile ? '80px' : stackPosition;
-    const stackPositionPx = parsePercentage(effectiveStackPosition, containerHeight);
-    const effectiveItemStackDistance = isMobile ? 16 : itemStackDistance;
+    
+    let stackPositionPx = 0;
+    if (isMobile) {
+      const headerEl = typeof document !== 'undefined' ? document.querySelector('.work-left-col') : null;
+      if (headerEl) {
+        const headerHeight = headerEl.offsetHeight || 180;
+        stackPositionPx = Math.max(210, headerHeight + 24);
+      } else {
+        stackPositionPx = 220;
+      }
+    } else {
+      stackPositionPx = parsePercentage(stackPosition, containerHeight);
+    }
+    
+    const effectiveItemStackDistance = isMobile ? 14 : itemStackDistance;
 
     const lastCardIndex = cardsRef.current.length - 1;
     const lastCard = cardsRef.current[lastCardIndex];
     const lastCardTop = lastCard ? getStaticCardTop(lastCard, lastCardIndex) : 0;
     const allStackedScrollTop = lastCardTop - stackPositionPx - effectiveItemStackDistance * lastCardIndex;
-    const stackLinger = isMobile ? 40 : 120;
+    const stackLinger = isMobile ? 30 : 120;
     const universalPinEnd = allStackedScrollTop + stackLinger;
 
     cardsRef.current.forEach((card, i) => {
