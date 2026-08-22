@@ -784,6 +784,8 @@ nav a:active {
     text-transform: uppercase;
     color: var(--muted);
     letter-spacing: 0.12em;
+    display: inline-block;
+    margin-bottom: 24px;
 }
 
 .manifesto h2 {
@@ -3270,7 +3272,8 @@ footer {
     letter-spacing: 0.35em;
     color: #86868b;
     text-transform: uppercase;
-    margin-bottom: 16px;
+    display: inline-block;
+    margin-bottom: 24px;
 }
 
 /* UNIFIED EXPLICIT DESIGN TYPOGRAPHY SYSTEM (MATCHING ATTACHED SCREENSHOT) */
@@ -4059,9 +4062,14 @@ footer {
         text-align: left !important;
     }
 
-    .work-head .section-label {
-        margin: 0 !important;
-        padding: 0 !important;
+    .section-label {
+        display: inline-block !important;
+        margin-bottom: 20px !important;
+    }
+
+    .cways-footer-eyebrow {
+        display: inline-block !important;
+        margin-bottom: 20px !important;
     }
 
     .work-head h2 {
