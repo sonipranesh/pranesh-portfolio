@@ -3034,6 +3034,10 @@ footer {
     margin-right: auto;
 }
 
+.about-hero-block {
+    margin-bottom: 64px;
+}
+
 .about-role-tag {
     font-family: 'Inter', sans-serif;
     font-size: 0.82rem;
@@ -3042,7 +3046,8 @@ footer {
     word-spacing: 0.5em;
     color: #111111;
     text-transform: uppercase;
-    margin: 16px 0 28px;
+    margin: 32px 0 44px;
+    display: inline-block;
 }
 
 /* HIGH-CONTRAST BUTTONS FOR ABOUT PAGE (OFF-WHITE PAPER THEME) */
@@ -3076,16 +3081,16 @@ footer {
     max-width: 1240px;
     height: 1px;
     background: rgba(17, 17, 17, 0.12);
-    margin: 52px 0 52px;
+    margin: 64px 0 64px;
 }
 
 .cways-hero-subtitle {
     font-family: 'Inter', sans-serif;
     font-size: clamp(1.05rem, 1.8vw, 1.22rem);
-    line-height: 1.65;
+    line-height: 1.7;
     color: #555550;
-    max-width: 680px;
-    margin: 0;
+    max-width: 740px;
+    margin: 0 0 36px;
 }
 
 .cways-2col-grid {
@@ -4224,8 +4229,7 @@ footer {
     .work,
     .prototype,
     .lab,
-    .belief,
-    .about-main-content {
+    .belief {
         min-height: auto !important;
         height: auto !important;
         padding-top: 48px !important;
@@ -4368,41 +4372,49 @@ footer {
 
     /* About Page */
     .about-main-content {
-        padding-top: 100px !important;
-        padding-left: 18px !important;
-        padding-right: 18px !important;
-        padding-bottom: 60px !important;
+        padding-top: calc(140px + env(safe-area-inset-top, 0px)) !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        padding-bottom: 70px !important;
         text-align: left !important;
+    }
+
+    .about-hero-block {
+        margin-top: 18px !important;
+        margin-bottom: 48px !important;
     }
 
     .cways-page-title {
         font-size: clamp(2.2rem, 9vw, 3.8rem) !important;
         line-height: 0.94 !important;
         text-align: left !important;
+        margin-bottom: 22px !important;
     }
 
     .about-role-tag {
-        font-size: 0.72rem !important;
-        letter-spacing: 0.18em !important;
-        word-spacing: 0.3em !important;
-        margin: 12px 0 20px !important;
+        font-size: 0.74rem !important;
+        letter-spacing: 0.22em !important;
+        word-spacing: 0.38em !important;
+        margin: 24px 0 32px !important;
+        display: inline-block !important;
         text-align: left !important;
     }
 
     .cways-hero-subtitle {
-        font-size: 0.98rem !important;
-        line-height: 1.58 !important;
+        font-size: 1.02rem !important;
+        line-height: 1.66 !important;
         text-align: left !important;
+        margin-bottom: 24px !important;
     }
 
     .cways-grid-divider {
-        margin: 32px 0 36px !important;
+        margin: 48px 0 52px !important;
     }
 
     .cways-2col-grid {
         grid-template-columns: 1fr !important;
-        gap: 28px !important;
-        margin-bottom: 40px !important;
+        gap: 36px !important;
+        margin-bottom: 56px !important;
     }
 
     .cways-grid-item {
@@ -4604,7 +4616,7 @@ footer {
     }
 
     .about-main-content {
-        padding-top: 100px !important;
+        padding-top: calc(130px + env(safe-area-inset-top, 0px)) !important;
         padding-left: 20px !important;
         padding-right: 20px !important;
     }
