@@ -3197,10 +3197,13 @@ footer {
 }
 
 @keyframes heroScrollBlink {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 0.35;
         transform: translateX(-50%) translateY(0);
     }
+
     50% {
         opacity: 1;
         transform: translateX(-50%) translateY(4px);
@@ -3963,6 +3966,9 @@ footer {
         padding: 8px 0 16px 0 !important;
         margin-bottom: 0 !important;
         background: var(--ink) !important;
+        will-change: transform !important;
+        backface-visibility: hidden !important;
+        -webkit-backface-visibility: hidden !important;
     }
 
     .work-subtext {

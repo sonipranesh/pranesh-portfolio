@@ -105,8 +105,17 @@ const ScrollStack = ({
     const lastCard = cardsRef.current[lastCardIndex];
     const lastCardTop = lastCard ? getStaticCardTop(lastCard, lastCardIndex) : 0;
     const allStackedScrollTop = lastCardTop - stackPositionPx - effectiveItemStackDistance * lastCardIndex;
-    const stackLinger = isMobile ? 30 : 120;
-    const universalPinEnd = allStackedScrollTop + stackLinger;
+    const universalPinEnd = allStackedScrollTop;
+
+    const mobileHeaderEl = isMobile && typeof document !== 'undefined' ? document.querySelector('.work-left-col') : null;
+    if (mobileHeaderEl) {
+      if (scrollTop > allStackedScrollTop) {
+        const overflow = scrollTop - allStackedScrollTop;
+        mobileHeaderEl.style.transform = `translate3d(0, -${overflow}px, 0)`;
+      } else {
+        mobileHeaderEl.style.transform = 'translate3d(0, 0, 0)';
+      }
+    }
 
     cardsRef.current.forEach((card, i) => {
       if (!card) return;
@@ -220,6 +229,10 @@ const ScrollStack = ({
       }
       if (targetScrollObj) {
         targetScrollObj.removeEventListener('scroll', handleScroll);
+      }
+      const mobileHeaderEl = typeof document !== 'undefined' ? document.querySelector('.work-left-col') : null;
+      if (mobileHeaderEl) {
+        mobileHeaderEl.style.transform = '';
       }
       stackCompletedRef.current = false;
       cardsRef.current = [];
