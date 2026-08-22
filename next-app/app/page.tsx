@@ -5,6 +5,7 @@ import Link from 'next/link';
 import ScrollStack, { ScrollStackItem } from '@/app/components/ScrollStack';
 import LogoLoop, { LogoItem } from '@/app/components/LogoLoop';
 import BubbleMenu from '@/app/components/BubbleMenu';
+import WhyMeScrollytelling from '@/app/components/WhyMeScrollytelling';
 import {
     SiJira,
     SiConfluence,
@@ -1080,52 +1081,8 @@ export default function Home(): React.JSX.Element {
                     </div>
                 </section>
 
-                {/* SECTION 4: WHY ME */}
-                <section className="why-me-section stack-card" id="why-me">
-                    {/* CREATIVE ANIMATED RADAR PULSE BACKGROUND */}
-                    <div className="whyme-radar-bg" aria-hidden="true">
-                        <div className="radar-ring r1"></div>
-                        <div className="radar-ring r2"></div>
-                        <div className="radar-ring r3"></div>
-                    </div>
-                    <div className="why-me-inner">
-                        <div className="section-label">04 / WHY ME</div>
-                        <h2 className="cways-section-title light-theme">
-                            WHY <span className="cways-stroke-text-light">ME.</span>
-                        </h2>
-                        <div className="why-me-sub">
-                            Bridging complex AI technology with enterprise business impact across life sciences, healthcare &amp; clinical operations.
-                        </div>
-
-                        <div className="why-me-grid">
-                            <div className="why-card">
-                                <div className="why-num">01 / CLARITY</div>
-                                <h3>MAKE THE UNCLEAR, CLEAR</h3>
-                                <p>I bring structure to ambiguous problems — clarifying the objective, constraints, stakeholders and what needs to be decided before the team starts building.</p>
-                            </div>
-                            <div className="why-card">
-                                <div className="why-num">02 / JUDGMENT</div>
-                                <h3>PRIORITIZE. DECIDE. MOVE.</h3>
-                                <p>When everything is important, I make the trade-offs explicit — balancing customer value, business impact, effort, risk and urgency to decide what moves now, what waits and what doesn't get built.</p>
-                            </div>
-                            <div className="why-card">
-                                <div className="why-num">03 / INFLUENCE</div>
-                                <h3>TURN CONFLICT INTO A DECISION</h3>
-                                <p>When business, engineering, design or customers pull in different directions, I surface the trade-offs, build alignment and drive toward a decision — escalating when it genuinely needs a higher-level call.</p>
-                            </div>
-                            <div className="why-card">
-                                <div className="why-num">04 / OWNERSHIP</div>
-                                <h3>OWN THE OUTCOME, NOT JUST THE PLAN</h3>
-                                <p>I don't disappear after the PRD. I stay close to delivery — resolving blockers, clarifying scope, managing changes, handling escalations and learning from what happens after launch.</p>
-                            </div>
-                            <div className="why-card">
-                                <div className="why-num">05 / EVOLUTION</div>
-                                <h3>LEARN IT. TRY IT. BUILD WITH IT.</h3>
-                                <p>I actively keep pace with where the industry is moving — learning new technologies, experimenting with emerging AI tools and turning that knowledge into working prototypes, sharper product thinking and better ways of solving problems. So that I can serve you better.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                {/* SECTION 4: WHY ME (SCROLL-PINNED SCROLLYTELLING WITH GLASSSURFACE) */}
+                <WhyMeScrollytelling />
 
                 {/* SECTION 5: HOW I THINK */}
                 <section className="belief stack-card">
