@@ -952,7 +952,111 @@ nav a:active {
     }
 }
 
-/* SECTION 5: WHY ME STYLES (ELECTRIC BLUE THEME) */
+/* SECTION 4: WHY ME HORIZONTAL SCROLL ON VERTICAL MOUSE SCROLL */
+.why-me-section-wrapper {
+    position: relative;
+    background: var(--blue);
+    color: #ffffff;
+    height: 320vh;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 20;
+}
+
+.why-me-sticky-container {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100dvh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: calc(24px + env(safe-area-inset-top, 0px)) 0 calc(24px + env(safe-area-inset-bottom, 0px));
+    box-sizing: border-box;
+}
+
+.why-me-inner-sticky {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.why-me-header-block {
+    padding: 0 clamp(24px, 5vw, 60px);
+    margin-bottom: 24px;
+}
+
+.why-me-horizontal-viewport {
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 0 20px;
+}
+
+.why-me-horizontal-row {
+    display: flex;
+    flex-direction: row;
+    gap: 28px;
+    width: max-content;
+    padding: 0 clamp(24px, 5vw, 60px);
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+}
+
+.why-card-single-row {
+    width: clamp(320px, 28vw, 420px) !important;
+    min-width: clamp(320px, 28vw, 420px) !important;
+    max-width: 440px !important;
+    height: 320px !important;
+    min-height: 320px !important;
+    flex-shrink: 0 !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    border-radius: 20px !important;
+    padding: 32px 28px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12) !important;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease !important;
+}
+
+.why-card-single-row:hover {
+    background: rgba(255, 255, 255, 0.22) !important;
+    border-color: rgba(255, 255, 255, 0.45) !important;
+    transform: translateY(-6px) scale(1.02) !important;
+}
+
+@media (max-width: 768px) {
+    .why-me-section-wrapper {
+        height: 380vh;
+    }
+
+    .why-me-header-block {
+        padding: 0 20px;
+        margin-bottom: 16px;
+    }
+
+    .why-me-horizontal-row {
+        gap: 16px;
+        padding: 0 20px;
+    }
+
+    .why-card-single-row {
+        width: 82vw !important;
+        min-width: 82vw !important;
+        height: 310px !important;
+        min-height: 310px !important;
+        padding: 24px 20px !important;
+    }
+}
+
+/* SECTION 5: WHY ME / BELIEF STYLES (ELECTRIC BLUE THEME) */
 .why-me-section {
     background: var(--blue);
     color: #ffffff;

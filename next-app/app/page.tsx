@@ -5,7 +5,6 @@ import Link from 'next/link';
 import ScrollStack, { ScrollStackItem } from '@/app/components/ScrollStack';
 import LogoLoop, { LogoItem } from '@/app/components/LogoLoop';
 import BubbleMenu from '@/app/components/BubbleMenu';
-import WhyMeScrollytelling from '@/app/components/WhyMeScrollytelling';
 import {
     SiJira,
     SiConfluence,
@@ -788,7 +787,42 @@ export default function Home(): React.JSX.Element {
             lastScrollY = Math.max(0, currentScrollY);
         };
         window.addEventListener('scroll', handleHeaderScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleHeaderScroll);
+
+        // 12. WHY ME HORIZONTAL SCROLL ON VERTICAL MOUSE SCROLL
+        const whyMeSection = document.getElementById('why-me');
+        const whyMeRow = document.getElementById('whyMeRow');
+
+        const handleWhyMeScroll = () => {
+            if (!whyMeSection || !whyMeRow) return;
+            const rect = whyMeSection.getBoundingClientRect();
+            const trackTop = rect.top + window.scrollY;
+            const trackHeight = whyMeSection.offsetHeight;
+            const viewportHeight = window.innerHeight;
+            const scrollTop = window.scrollY;
+
+            const scrollDistance = trackHeight - viewportHeight;
+            if (scrollDistance <= 0) return;
+
+            const currentScroll = Math.max(0, Math.min(scrollDistance, scrollTop - trackTop));
+            const progress = currentScroll / scrollDistance;
+
+            const rowWidth = whyMeRow.scrollWidth;
+            const viewportWidth = window.innerWidth;
+            const maxTranslateX = Math.max(0, rowWidth - viewportWidth + 60);
+
+            const translateX = -progress * maxTranslateX;
+            whyMeRow.style.transform = `translate3d(${translateX}px, 0, 0)`;
+        };
+
+        window.addEventListener('scroll', handleWhyMeScroll, { passive: true });
+        window.addEventListener('resize', handleWhyMeScroll);
+        handleWhyMeScroll();
+
+        return () => {
+            window.removeEventListener('scroll', handleHeaderScroll);
+            window.removeEventListener('scroll', handleWhyMeScroll);
+            window.removeEventListener('resize', handleWhyMeScroll);
+        };
     }, []);
 
     return (
@@ -1081,8 +1115,59 @@ export default function Home(): React.JSX.Element {
                     </div>
                 </section>
 
-                {/* SECTION 4: WHY ME (SCROLL-PINNED SCROLLYTELLING WITH GLASSSURFACE) */}
-                <WhyMeScrollytelling />
+                {/* SECTION 4: WHY ME (HORIZONTAL SCROLL ROW ON MOUSE SCROLL) */}
+                <section className="why-me-section-wrapper" id="why-me">
+                    <div className="why-me-sticky-container">
+                        {/* CREATIVE ANIMATED RADAR PULSE BACKGROUND */}
+                        <div className="whyme-radar-bg" aria-hidden="true">
+                            <div className="radar-ring r1"></div>
+                            <div className="radar-ring r2"></div>
+                            <div className="radar-ring r3"></div>
+                        </div>
+                        <div className="why-me-inner-sticky">
+                            <div className="why-me-header-block">
+                                <div className="section-label">04 / WHY ME</div>
+                                <h2 className="cways-section-title light-theme">
+                                    WHY <span className="cways-stroke-text-light">ME.</span>
+                                </h2>
+                                <div className="why-me-sub">
+                                    Bridging complex AI technology with enterprise business impact across life sciences, healthcare &amp; clinical operations.
+                                </div>
+                            </div>
+
+                            {/* SINGLE ROW OF CARDS */}
+                            <div className="why-me-horizontal-viewport">
+                                <div className="why-me-horizontal-row" id="whyMeRow">
+                                    <div className="why-card why-card-single-row">
+                                        <div className="why-num">01 / CLARITY</div>
+                                        <h3>MAKE THE UNCLEAR, CLEAR</h3>
+                                        <p>I bring structure to ambiguous problems — clarifying the objective, constraints, stakeholders and what needs to be decided before the team starts building.</p>
+                                    </div>
+                                    <div className="why-card why-card-single-row">
+                                        <div className="why-num">02 / JUDGMENT</div>
+                                        <h3>PRIORITIZE. DECIDE. MOVE.</h3>
+                                        <p>When everything is important, I make the trade-offs explicit — balancing customer value, business impact, effort, risk and urgency to decide what moves now, what waits and what doesn't get built.</p>
+                                    </div>
+                                    <div className="why-card why-card-single-row">
+                                        <div className="why-num">03 / INFLUENCE</div>
+                                        <h3>TURN CONFLICT INTO A DECISION</h3>
+                                        <p>When business, engineering, design or customers pull in different directions, I surface the trade-offs, build alignment and drive toward a decision — escalating when it genuinely needs a higher-level call.</p>
+                                    </div>
+                                    <div className="why-card why-card-single-row">
+                                        <div className="why-num">04 / OWNERSHIP</div>
+                                        <h3>OWN THE OUTCOME, NOT JUST THE PLAN</h3>
+                                        <p>I don't disappear after the PRD. I stay close to delivery — resolving blockers, clarifying scope, managing changes, handling escalations and learning from what happens after launch.</p>
+                                    </div>
+                                    <div className="why-card why-card-single-row">
+                                        <div className="why-num">05 / EVOLUTION</div>
+                                        <h3>LEARN IT. TRY IT. BUILD WITH IT.</h3>
+                                        <p>I actively keep pace with where the industry is moving — learning new technologies, experimenting with emerging AI tools and turning that knowledge into working prototypes, sharper product thinking and better ways of solving problems. So that I can serve you better.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 {/* SECTION 5: HOW I THINK */}
                 <section className="belief stack-card">
