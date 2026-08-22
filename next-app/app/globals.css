@@ -4238,10 +4238,22 @@ footer {
     }
 
     .cways-footer-bottom-bar {
-        flex-direction: column !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
         gap: 12px !important;
-        text-align: left !important;
-        align-items: flex-start !important;
+    }
+
+    .cways-footer-nav-links {
+        margin-left: auto !important;
+        text-align: right !important;
+    }
+
+    .cways-back-top {
+        text-align: right !important;
+        white-space: nowrap !important;
     }
 
     .cways-footer-stroke-brand {
